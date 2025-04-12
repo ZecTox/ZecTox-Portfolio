@@ -337,11 +337,13 @@ function App() {
                   name: 'The Trianglemart',
                   url: 'https://thetrianglemart.com/',
                   contributions: [
-                    "Customized theme design",
-                    "Implemented product organization",
-                    "Enhanced site navigation",
-                    "Optimized performance"
-                  ]
+                    "Used the Dawn theme and customized the website extensively based on client requirements using Liquid templating",
+                    "Added multiple custom sections using HTML, CSS, and JavaScript within Shopify’s custom HTML section blocks",
+                    "Listed 2650+ products through mass import, ensuring proper structure and categorization",
+                    "Implemented custom forms using Shopify Forms to gather user information and messages via the Contact Us page",
+                    "Enabled Razorpay for secure and seamless payment processing",
+                    "Integrated Shiprocket to automate order fulfillment and shipping logistics"
+                  ]                  
                 }
               ].map((store, index) => (
                 <motion.div
