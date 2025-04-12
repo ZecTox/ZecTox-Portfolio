@@ -165,15 +165,15 @@ function App() {
                 className={`w-full md:w-2/3 text-center md:text-left ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}
               >
                 {/* Main Name */}
-                <h2 className="text-4xl sm:text-5xl font-bold mb-2">Tejas Kedare</h2>
+                <h2 className="text-3xl sm:text-4xl font-bold mb-2">Tejas Kedare</h2>
 
                 {/* Role as subheading */}
-                <p className={`text-base sm:text-lg mb-8 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                <p className={`text-base sm:text-lg mb-8 ${isDarkMode ? 'tex  t-gray-400' : 'text-gray-600'}`}>
                   Shopify Developer | DevOps Learner <span role="img" aria-label="cloud">☁️</span>
                 </p>
 
                 {/* "About Me" Heading */}
-                <h3 className="text-3xl font-bold sm:text-4xl mb-6">About Me</h3>
+                <h3 className="text-2xl font-bold sm:text-3xl mb-6">About Me</h3>
 
                 {/* Descriptive Paragraph */}
                 <p className={`text-lg leading-relaxed ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
