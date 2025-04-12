@@ -3,6 +3,8 @@ import { Menu, Github, Linkedin, Mail, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-scroll';
+import tejasImage from './image.png';
+
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -143,9 +145,9 @@ function App() {
               className="w-full md:w-1/3"
             >
               <motion.img
-                src="https://raw.githubusercontent.com/bolt-design-system/images/main/images/profile.jpg"
+                src={tejasImage}
                 alt="Profile"
-                className="rounded-full w-64 h-64 object-cover mx-auto shadow-xl"
+                className="rounded-full w-64 h-64 object-cover object-top mx-auto"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               />
