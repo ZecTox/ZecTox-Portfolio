@@ -448,7 +448,7 @@ function App() {
         </section>
 
         {/* Resume Section */}
-        <section id="resume" className={`py-20 ${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-50/50'} backdrop-blur-sm`}>
+        <section id="resume" className={`py-10 ${isDarkMode ? 'bg-gray-800/50' : 'bg-gray-50/50'} backdrop-blur-sm`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
@@ -480,7 +480,7 @@ function App() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className={`py-20 ${isDarkMode ? 'bg-gray-900/50' : 'bg-gray-50/50'} backdrop-blur-sm`}>
+        <section id="contact" className={`py-10 ${isDarkMode ? 'bg-gray-900/50' : 'bg-gray-50/50'} backdrop-blur-sm`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
@@ -541,7 +541,7 @@ function App() {
               viewport={{ once: true }}
               className={`text-center ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}
             >
-              © {new Date().getFullYear()} Portfolio. All rights reserved.
+              © {new Date().getFullYear()} Made by Tejas Kedare using Bolt.new
             </motion.p>
           </div>
         </footer>
