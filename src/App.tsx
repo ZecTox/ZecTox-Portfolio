@@ -160,15 +160,32 @@ function App() {
                   transition={{ duration: 0.3 }}
                 />
               </motion.div>
-              <motion.div 
+              <motion.div
                 variants={fadeInUp}
                 className={`w-full md:w-2/3 text-center md:text-left ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}
               >
-                <h2 className="text-3xl font-bold sm:text-4xl mb-6">About Me</h2>
-                <p className={`text-lg ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                  I'm a Shopify developer with 1+ Year of experience. During this time, I've gained a strong understanding of the Shopify dashboard, managing product listings, and using the Shopify theme editor to customize store designs. I'm also skilled in integrating various Shopify apps to enhance store functionality and improve the overall user experience. Additionally, I have a decent knowledge of custom theme development, allowing me to create more tailored solutions for clients. I'm dedicated to delivering efficient and user-friendly e-commerce solutions.
+                {/* Main Name */}
+                <h2 className="text-4xl sm:text-5xl font-bold mb-2">Tejas Kedare</h2>
+
+                {/* Role as subheading */}
+                <p className={`text-base sm:text-lg mb-8 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                  Shopify Developer | DevOps Learner <span role="img" aria-label="cloud">☁️</span>
+                </p>
+
+                {/* "About Me" Heading */}
+                <h3 className="text-3xl font-bold sm:text-4xl mb-6">About Me</h3>
+
+                {/* Descriptive Paragraph */}
+                <p className={`text-lg leading-relaxed ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                  I'm a Shopify developer with 1+ Year of experience. During this time, I've gained a strong
+                  understanding of the Shopify dashboard, managing product listings, and using the Shopify theme
+                  editor to customize store designs. I'm also skilled in integrating various Shopify apps to enhance
+                  store functionality and improve the overall user experience. Additionally, I have a decent knowledge
+                  of custom theme development, allowing me to create more tailored solutions for clients. I'm dedicated
+                  to delivering efficient and user-friendly e-commerce solutions.
                 </p>
               </motion.div>
+
             </motion.div>
           </div>
         </section>
