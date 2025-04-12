@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
-import { Menu, Github, Linkedin, Mail, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, Github, Linkedin, Mail, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-scroll';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [aboutRef, aboutInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2
+  });
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
 
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -20,48 +34,59 @@ function App() {
     }
   };
 
-  const [aboutRef, aboutInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.2
-  });
+  const navItems = [
+    'About',
+    'Experience',
+    'Projects',
+    'Technical Skills',
+    'Resume',
+    'Contact'
+  ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className={`min-h-screen ${isDarkMode ? 'dark bg-gray-900' : 'bg-gray-50'} transition-colors duration-300`}>
       {/* Header/Navigation */}
       <motion.nav 
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed w-full top-0 z-50 bg-white shadow-md backdrop-blur-sm bg-opacity-90"
+        className={`fixed w-full top-0 z-50 ${isDarkMode ? 'bg-gray-900/90' : 'bg-white/90'} shadow-md backdrop-blur-sm`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
-            <motion.div 
-              className="flex items-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <span className="text-xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
-                Portfolio
-              </span>
-            </motion.div>
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className={`p-2 rounded-lg ${isDarkMode ? 'text-yellow-400 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
+              >
+                {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
+              </button>
+            </div>
             <div className="hidden sm:flex sm:items-center sm:space-x-8">
-              {['About', 'Experience', 'Projects', 'Contact'].map((item) => (
-                <motion.a
+              {navItems.map((item) => (
+                <Link
                   key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-gray-700 hover:text-blue-600 transition-colors"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
+                  to={item.toLowerCase().replace(/\s+/g, '-')}
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={100}
+                  className={`cursor-pointer ${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'} transition-colors`}
                 >
-                  {item}
-                </motion.a>
+                  <motion.span
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {item}
+                  </motion.span>
+                </Link>
               ))}
             </div>
             <div className="sm:hidden flex items-center">
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 hover:text-gray-900"
+                className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </motion.button>
@@ -76,19 +101,26 @@ function App() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="sm:hidden bg-white"
+              className={`sm:hidden ${isDarkMode ? 'bg-gray-900' : 'bg-white'}`}
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
-                {['About', 'Education', 'Experience', 'Projects', 'Contact'].map((item) => (
-                  <motion.a
+                {navItems.map((item) => (
+                  <Link
                     key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors"
-                    whileHover={{ x: 10 }}
+                    to={item.toLowerCase().replace(/\s+/g, '-')}
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    className={`block px-3 py-2 ${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'} transition-colors`}
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {item}
-                  </motion.a>
+                    <motion.span
+                      whileHover={{ x: 10 }}
+                    >
+                      {item}
+                    </motion.span>
+                  </Link>
                 ))}
               </div>
             </motion.div>
@@ -97,7 +129,7 @@ function App() {
       </motion.nav>
 
       {/* About Section */}
-      <section id="about" className="pt-32 pb-20 bg-white">
+      <section id="about" className={`pt-32 pb-20 ${isDarkMode ? 'bg-gray-900' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             ref={aboutRef}
@@ -120,10 +152,10 @@ function App() {
             </motion.div>
             <motion.div 
               variants={fadeInUp}
-              className="w-full md:w-2/3 text-center md:text-left"
+              className={`w-full md:w-2/3 text-center md:text-left ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}
             >
-              <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-6">About Me</h2>
-              <p className="text-lg text-gray-600">
+              <h2 className="text-3xl font-bold sm:text-4xl mb-6">About Me</h2>
+              <p className={`text-lg ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                 I'm a Shopify developer with 1+ Year of experience. During this time, I've gained a strong understanding of the Shopify dashboard, managing product listings, and using the Shopify theme editor to customize store designs. I'm also skilled in integrating various Shopify apps to enhance store functionality and improve the overall user experience. Additionally, I have a decent knowledge of custom theme development, allowing me to create more tailored solutions for clients. I'm dedicated to delivering efficient and user-friendly e-commerce solutions.
               </p>
             </motion.div>
@@ -131,38 +163,14 @@ function App() {
         </div>
       </section>
 
-      {/* Education Section */}
-      {/* <section id="education" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl font-bold text-gray-900 sm:text-4xl text-center mb-12"
-          >
-            Education
-          </motion.h2>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
-            className="bg-white rounded-lg shadow-lg p-8 transition-all duration-300"
-          >
-            <h3 className="text-xl font-semibold text-gray-900">B.Tech. in Computer Science and Engineering</h3>
-            <p className="text-gray-600 mt-2">IIIT Dharwad</p>
-          </motion.div>
-        </div>
-      </section> */}
-
       {/* Experience Section */}
-      <section id="experience" className="py-20 bg-white">
+      <section id="experience" className={`py-20 ${isDarkMode ? 'bg-gray-900' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-gray-900 sm:text-4xl text-center mb-12"
+            className={`text-3xl font-bold sm:text-4xl text-center mb-12 ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}
           >
             Experience
           </motion.h2>
@@ -199,17 +207,18 @@ function App() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02 }}
-                className="bg-gray-50 rounded-lg p-8 shadow-lg transition-all duration-300"
+                className={`rounded-lg p-8 shadow-lg transition-all duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}
               >
-                <h3 className="text-xl font-semibold text-gray-900">{job.company}</h3>
-                <p className="text-gray-600 mt-2">{job.role}</p>
-                <ul className="mt-4 space-y-2 text-gray-600 list-disc list-inside">
+                <h3 className={`text-xl font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}>{job.company}</h3>
+                <p className={`mt-2 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{job.role}</p>
+                <ul className="mt-4 space-y-2 list-disc list-inside">
                   {job.tasks.map((task, i) => (
                     <motion.li
                       key={i}
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       transition={{ delay: i * 0.1 }}
+                      className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}
                     >
                       {task}
                     </motion.li>
@@ -222,13 +231,13 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-gray-50">
+      <section id="projects" className={`py-20 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-gray-900 sm:text-4xl text-center mb-12"
+            className={`text-3xl font-bold sm:text-4xl text-center mb-12 ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}
           >
             Shopify Stores
           </motion.h2>
@@ -250,16 +259,16 @@ function App() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.02 }}
-                className="bg-white rounded-lg shadow-lg overflow-hidden"
+                className={`rounded-lg shadow-lg overflow-hidden ${isDarkMode ? 'bg-gray-900' : 'bg-white'}`}
               >
                 <div className="flex flex-col md:flex-row">
                   <div className="w-full md:w-1/2 p-6">
-                    <h3 className="text-2xl font-semibold text-gray-900 mb-4">{store.name}</h3>
+                    <h3 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}>{store.name}</h3>
                     <motion.a 
                       href={store.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block text-blue-600 hover:text-blue-800 mb-4"
+                      className={`inline-block mb-4 ${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-800'}`}
                       whileHover={{ x: 5 }}
                     >
                       Visit Store →
@@ -270,9 +279,9 @@ function App() {
                       className="w-full rounded-lg shadow-md"
                     />
                   </div>
-                  <div className="w-full md:w-1/2 p-6 bg-gray-50">
-                    <h4 className="text-xl font-semibold text-gray-900 mb-4">My Contributions</h4>
-                    <p className="text-gray-600">
+                  <div className={`w-full md:w-1/2 p-6 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                    <h4 className={`text-xl font-semibold mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}>My Contributions</h4>
+                    <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
                       [Your contributions for {store.name} will go here. Please add details about your specific role, implementations, improvements, and achievements for this project.]
                     </p>
                   </div>
@@ -284,98 +293,69 @@ function App() {
       </section>
 
       {/* Technical Skills Section */}
-      <section id="technical-skills" className="py-20 bg-white">
+      <section id="technical-skills" className={`py-20 ${isDarkMode ? 'bg-gray-900' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-gray-900 sm:text-4xl text-center mb-12"
+            className={`text-3xl font-bold sm:text-4xl text-center mb-12 ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}
           >
             Technical Skills
           </motion.h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              whileHover={{ scale: 1.05 }}
-              className="bg-gray-50 rounded-lg p-8 shadow-lg"
-            >
-              <h3 className="text-xl font-semibold text-gray-900">Programming Languages</h3>
-              <ul className="mt-4 space-y-2 text-gray-600 list-disc list-inside">
-                {["C++", "Python", "HTML", "CSS", "JavaScript", "Shell scripting", "Selenium", "Git"].map((skill, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: i * 0.1 }}
-                  >
-                    {skill}
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              whileHover={{ scale: 1.05 }}
-              className="bg-gray-50 rounded-lg p-8 shadow-lg"
-            >
-              <h3 className="text-xl font-semibold text-gray-900">Tools & Technologies</h3>
-              <ul className="mt-4 space-y-2 text-gray-600 list-disc list-inside">
-                {["Shopify", "VS Code", "GitHub", "Jenkins", "Docker", "Kubernetes", "AWS", "VirtualBox", "Streamlit", "ChatGPT"].map((skill, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: i * 0.1 }}
-                  >
-                    {skill}
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              whileHover={{ scale: 1.05 }}
-              className="bg-gray-50 rounded-lg p-8 shadow-lg"
-            >
-              <h3 className="text-xl font-semibold text-gray-900">Other Skills</h3>
-              <ul className="mt-4 space-y-2 text-gray-600 list-disc list-inside">
-                {["Problem Solving", "Teamwork", "Collaboration", "Adaptability", "Time Management"].map((skill, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: i * 0.1 }}
-                  >
-                    {skill}
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
+            {[
+              {
+                title: "Programming Languages",
+                skills: ["C++", "Python", "HTML", "CSS", "JavaScript", "Shell scripting", "Selenium", "Git"]
+              },
+              {
+                title: "Tools & Technologies",
+                skills: ["Shopify", "VS Code", "GitHub", "Jenkins", "Docker", "Kubernetes", "AWS", "VirtualBox", "Streamlit", "ChatGPT"]
+              },
+              {
+                title: "Other Skills",
+                skills: ["Problem Solving", "Teamwork", "Collaboration", "Adaptability", "Time Management"]
+              }
+            ].map((category, index) => (
+              <motion.div
+                key={category.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                className={`rounded-lg p-8 shadow-lg ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}
+              >
+                <h3 className={`text-xl font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}>{category.title}</h3>
+                <ul className="mt-4 space-y-2 list-disc list-inside">
+                  {category.skills.map((skill, i) => (
+                    <motion.li
+                      key={i}
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: i * 0.1 }}
+                      className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}
+                    >
+                      {skill}
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Resume Section */}
-      <section id="resume" className="py-20 bg-gray-50">
+      <section id="resume" className={`py-20 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-gray-900 sm:text-4xl text-center mb-12"
+            className={`text-3xl font-bold sm:text-4xl text-center mb-12 ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}
           >
             My Resume
           </motion.h2>
@@ -401,13 +381,13 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-50">
+      <section id="contact" className={`py-20 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-gray-900 sm:text-4xl text-center mb-12"
+            className={`text-3xl font-bold sm:text-4xl text-center mb-12 ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}
           >
             Contact
           </motion.h2>
@@ -428,7 +408,7 @@ function App() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
+                className={`${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'} transition-colors`}
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -441,7 +421,7 @@ function App() {
               href="https://www.fiverr.com/s/yvbQjx6"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-700 hover:text-blue-600 transition-colors font-semibold"
+              className={`font-semibold ${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'} transition-colors`}
               whileHover={{ scale: 1.2, rotate: 5 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -454,13 +434,13 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white">
+      <footer className={`${isDarkMode ? 'bg-gray-900' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-gray-500"
+            className={`text-center ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}
           >
             © {new Date().getFullYear()} Portfolio. All rights reserved.
           </motion.p>
