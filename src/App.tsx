@@ -78,7 +78,7 @@ function App() {
                   spy={true}
                   smooth={true}
                   offset={-70}
-                  duration={500}
+                  duration={100}
                   className={`cursor-pointer ${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'} transition-all duration-300`}
                 >
                   <motion.span
@@ -119,7 +119,7 @@ function App() {
                     spy={true}
                     smooth={true}
                     offset={-70}
-                    duration={500}
+                    duration={100}
                     className={`block px-3 py-2 ${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'} transition-all duration-300`}
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -258,61 +258,80 @@ function App() {
                   name: 'Total Ingredients',
                   url: 'https://total-ingredients.com/',
                   contributions: [
-                    "Implemented custom theme modifications",
-                    "Integrated payment gateways and shipping solutions",
-                    "Optimized site performance and SEO",
-                    "Set up product inventory and variants"
+                    "Improved site performance by compressing and converting frequently used images to WebP format for faster loading.",
+                    "Independently managed and maintained the entire Shopify store, overseeing all aspects of its operation and performance.",
+                    "Independently managed and maintained the entire Shopify store, overseeing 450+ products and solely adding 250+ (Till now) new products to streamline updates and overall management.",
+                     /* Space left to add points if i remembered*/
                   ]
                 },
                 { 
                   name: 'Floaterz',
                   url: 'https://floaterz.com/',
                   contributions: [
-                    "Customized theme design and functionality",
-                    "Implemented responsive layouts",
-                    "Set up product collections and filters",
-                    "Integrated third-party apps"
-                  ]
+                    "Sourced and customized the Shopify theme based on client requirements",
+                    "Tailored theme design and functionality to align with brand identity",
+                    "Implemented fully responsive layouts across devices",
+                    "Set up product collections, advanced filters, and navigation",
+                    "Managed product listings, including 12 SKUs with multiple color variants",
+                    "Integrated multiple third-party apps to enhance site functionality",
+                    "Configured delivery estimator, bundle discount, and size chart applications for better user experience",
+                    "Set up AVADA SEO for basic on-site search optimization",
+                    "Integrated Judge.me for customer reviews and Instafeed for Instagram feed on homepage",
+                    "Enabled Razorpay for secure payment processing",
+                    "Connected Shiprocket for streamlined order fulfillment and shipping",
+                    "Created and structured the Terms & Policies section, including Privacy Policy, Refund Policy, Shipping Policy, Terms of Service, and Contact Information"
+                     /* Space left to add points if i remembered*/
+                  ]                  
                 },
                 { 
                   name: 'Lovebomb',
                   url: 'https://www.lovebomb.co.in/',
                   contributions: [
-                    "Developed custom theme features",
-                    "Optimized checkout process",
-                    "Implemented marketing tools",
-                    "Enhanced mobile experience"
-                  ]
+                    "Customized the entire website using custom HTML and CSS where required, based on client specifications",
+                    "Tailored the design and layout to suit a single-product website structure",
+                    "Integrated multiple third-party applications to enhance functionality and user experience",
+                    "Configured delivery estimator, bundle discount, and size chart applications for better user experience",
+                    "Set up AVADA SEO for basic on-site search optimization",
+                    "Integrated Judge.me for customer reviews and Instafeed for Instagram feed on homepage",
+                    "Enabled Razorpay for secure payment processing",
+                    "Connected Shiprocket for streamlined order fulfillment and shipping",
+                    "Created and structured the Terms & Policies section, including Privacy Policy, Refund Policy, Shipping Policy, Terms of Service, and Contact Information"
+                    /* Space left to add points if i remembered*/
+                  ]                  
                 },
                 { 
                   name: 'Veloara Luxury',
                   url: 'https://veloaraluxury.com/',
                   contributions: [
-                    "Created luxury shopping experience",
-                    "Implemented advanced filtering",
-                    "Set up inventory management",
-                    "Optimized site speed"
-                  ]
+                    "Sourced and implemented a GPL-licensed Shopify theme for the store",
+                    "Designed and wrote homepage content tailored to the brand’s positioning",
+                    "Listed 3 products with detailed descriptions and categorized them appropriately",
+                    "Enabled Razorpay for secure payment processing",
+                    "Connected Shiprocket for streamlined order fulfillment and shipping",
+                    "Created and structured the Terms & Policies section, including Privacy Policy, Refund Policy, Shipping Policy, Terms of Service, and Contact Information"
+                    /* Space left to add points if i remembered*/
+                  ]                  
                 },
                 { 
                   name: 'Dang Shoes',
                   url: 'https://www.dangshoes.com/',
                   contributions: [
-                    "Customized product display",
-                    "Implemented size guide",
-                    "Enhanced product filtering",
-                    "Optimized mobile navigation"
-                  ]
+                    "Performed complete product listing with accurate categorization and tagging",
+                    "Created and structured the Terms & Policies section, including Privacy Policy, Refund Policy, Shipping Policy, Terms of Service, and Contact Information"
+                    /* Space left to add points if i remembered*/
+                  ]                  
                 },
                 { 
                   name: 'Silaye',
                   url: 'https://silaye.in/',
                   contributions: [
-                    "Developed custom theme elements",
-                    "Set up product variants",
-                    "Implemented search functionality",
-                    "Enhanced user experience"
-                  ]
+                    "Implemented extensive customizations on the homepage using HTML, CSS, and JavaScript based on client requirements",
+                    "Developed a product reel video carousel for the homepage to enhance visual engagement",
+                    "Created a custom testimonial section with reviews and product images for added credibility",
+                    "Performed detailed product listing corrections with proper categorization based on client-provided data",
+                    "Configured GST settings for clothing by categorizing products according to pricing slabs",
+                    "Customized the footer by editing theme files and added a custom background image"
+                  ]                  
                 },
                 { 
                   name: 'The Trianglemart',
