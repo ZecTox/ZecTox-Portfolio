@@ -558,7 +558,7 @@ function App() {
               viewport={{ once: true }}
               className={`text-center ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}
             >
-              © {new Date().getFullYear()} Made by Tejas Kedare using Bolt.new
+              © {new Date().getFullYear()} | All Rights Reserved | Made by Tejas Kedare
             </motion.p>
           </div>
         </footer>
