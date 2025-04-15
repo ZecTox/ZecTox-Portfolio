@@ -278,7 +278,7 @@ function App() {
                     "Improved site performance by compressing and converting frequently used images to WebP format for faster loading.",
                     "Independently managed and maintained the entire Shopify store, overseeing all aspects of its operation and performance.",
                     "Independently managed and maintained the entire Shopify store, overseeing 450+ products and solely adding 250+ (Till now) new products to streamline updates and overall management.",
-                     /* Space left to add points if i remembered*/
+                    /* Space left to add points if i remembered*/
                   ]
                 },
                 { 
@@ -297,7 +297,7 @@ function App() {
                     "Enabled Razorpay for secure payment processing",
                     "Connected Shiprocket for streamlined order fulfillment and shipping",
                     "Created and structured the Terms & Policies section, including Privacy Policy, Refund Policy, Shipping Policy, Terms of Service, and Contact Information"
-                     /* Space left to add points if i remembered*/
+                    /* Space left to add points if i remembered*/
                   ]                  
                 },
                 { 
