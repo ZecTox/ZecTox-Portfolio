@@ -272,6 +272,16 @@ function App() {
             <div className="space-y-8">
               {[
                 { 
+                  name: 'Ratnaya Organics',
+                  url: 'https://total-ingredients.com/',
+                  contributions: [
+                    "Improved site performance by compressing and converting frequently used images to WebP format for faster loading.",
+                    "Independently managed and maintained the entire Shopify store, overseeing all aspects of its operation and performance.",
+                    "Independently managed and maintained the entire Shopify store, overseeing 450+ products and solely adding 250+ (Till now) new products to streamline updates and overall management.",
+                    /* Space left to add points if i remembered*/
+                  ]
+                },
+                { 
                   name: 'Total Ingredients',
                   url: 'https://total-ingredients.com/',
                   contributions: [
