@@ -273,12 +273,19 @@ function App() {
               {[
                 { 
                   name: 'Ratnaya Organics',
-                  url: 'https://total-ingredients.com/',
+                  url: 'https://ratnayaorganics.com/',
                   contributions: [
-                    "Improved site performance by compressing and converting frequently used images to WebP format for faster loading.",
-                    "Independently managed and maintained the entire Shopify store, overseeing all aspects of its operation and performance.",
-                    "Independently managed and maintained the entire Shopify store, overseeing 450+ products and solely adding 250+ (Till now) new products to streamline updates and overall management.",
-                    /* Space left to add points if i remembered*/
+                    "Sourced and customized the Shopify theme based on client requirements",
+                    "Tailored theme design and functionality to align with brand identity",
+                    "Implemented fully responsive layouts across devices",
+                    "Set up product collections, advanced filters, and navigation",
+                    "Managed the product listings",
+                    "Integrated multiple third-party apps to enhance site functionality",
+                    "Configured delivery estimator, bundle discount, and size chart applications for better user experience",
+                    "Integrated Judge.me for customer reviews and Instafeed for Instagram feed on homepage",
+                    "Enabled Razorpay for secure payment processing",
+                    "Connected Shiprocket for streamlined order fulfillment and shipping",
+                    "Created and structured the Terms & Policies section, including Privacy Policy, Refund Policy, Shipping Policy, Terms of Service, and Contact Information"
                   ]
                 },
                 { 
