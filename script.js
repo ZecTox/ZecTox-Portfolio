@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (button.textContent.includes('Download Resume')) {
             button.addEventListener('click', function() {
                 // Open resume in new tab
-                window.open('src/Tejas_Kedare_Resume_Shopify.pdf', '_blank');
+                window.open('project_images/Tejas_Kedare_Resume_Shopify.pdf', '_blank');
             });
         }
     });
