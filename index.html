@@ -1,14 +1,671 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Shopify developer with 1+ years experience skilled in dashboard management, product listings, custom themes, and app integrations to deliver efficient e-commerce solutions." />
-    <link rel="icon" type="image/png" href="src/image.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tejas Kedare Portfolio</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tejas Kedare - Portfolio Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="shopify-dashboard">
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+        
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="night-mode-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="nightModeToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Night Mode</span>
+                </div>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-item" data-section="overview">
+                    <i class="fas fa-home"></i>
+                    <span>Overview</span>
+                </div>
+                <div class="nav-item" data-section="experience">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </div>
+                <div class="nav-item" data-section="projects">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Shopify Stores</span>
+                </div>
+                <div class="nav-item" data-section="skills">
+                    <i class="fas fa-code"></i>
+                    <span>Technical Skills</span>
+                </div>
+                <div class="nav-item" data-section="contact">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="section-title">Resources</div>
+                <div class="nav-item" data-section="resume">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Resume</span>
+                </div>
+            </div>
+        </nav>
+
+
+<!-- Main Content -->
+<main class="main-content">
+    <!-- Header -->
+    <header class="header">
+        <!-- Mobile Hamburger Menu -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="header-left">
+            <h1 id="page-title">Portfolio Dashboard</h1>
+        </div>
+        <div class="header-right">
+
+            <button class="btn-secondary">
+                <i class="fas fa-download"></i>
+                Download Resume
+            </button>
+            <button class="btn-primary">
+                <i class="fas fa-envelope"></i>
+                Contact Me
+            </button>
+        </div>
+    </header>
+
+
+            <!-- Content Sections -->
+            <div class="content-wrapper">
+                <!-- All sections now visible in single page -->
+                <section id="overview" class="content-section">
+
+            <!-- About Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>About Me</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="profile-section">
+                                <div class="profile-image">
+                                    <img src="src/tejas_website_image.png" alt="Tejas Kedare" />
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Tejas Kedare</h3>
+                                    <p class="role">Shopify Developer & E-commerce Specialist <br> Devops and Cloud Learner ☁️</p>
+                                    <p class="description">
+                                        I'm a Shopify developer with 1+ Year of experience. During this time, I've gained a strong understanding of the Shopify dashboard, managing product listings, and using the Shopify theme editor to customize store designs. I'm also skilled in integrating various Shopify apps to enhance store functionality and improve the overall user experience. Additionally, I have a decent knowledge of custom theme development, allowing me to create more tailored solutions for clients. I'm dedicated to delivering efficient and user-friendly e-commerce solutions.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="section-title">
+                        <h2>Overview</h2>
+                    </div>
+                  
+                    <!-- Stats Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <span class="stat-title">Projects Completed</span>
+                                <span class="stat-period">All time</span>
+                            </div>
+                            <div class="stat-value">10+</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>Fulltime + Freelance</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <span class="stat-title">Years Experience</span>
+                                <span class="stat-period">Professional</span>
+                            </div>
+                            <div class="stat-value">1+</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>Growing</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <span class="stat-title">Client Satisfaction</span>
+                                <span class="stat-period">Good Rating</span>
+                            </div>
+                            <div class="stat-value">100%</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-star"></i>
+                                <span>5.0 stars</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <span class="stat-title">Technologies</span>
+                                <span class="stat-period">Mastered</span>
+                            </div>
+                            <div class="stat-value">10+</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-code"></i>
+                                <span>Always learning</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </section>
+
+                <section id="experience" class="content-section">
+                    <div class="section-title">
+                        <h2>Professional Experience</h2>
+                    </div>
+
+
+                    <div class="card">  <!-- TechSurvi Job Experience -->
+                        <div class="card-content">
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <div class="experience-title">
+                                        <h3>Web Developer - Shopify</h3>
+                                        <span class="experience-period">July 2025 - Present</span>
+                                    </div>
+                                    <span class="experience-company">TechSurvi <br> Pune, Maharahtra - Fulltime</span>
+                                </div>
+                                <div class="experience-description">
+                                    <ul>
+                                        <li>Developed and maintained high-performing, user-friendly Shopify eCommerce websites with custom themes and app integrations.</li>
+                                        <li>Managing Multiple Shopify Stores of National & International Clients</li>
+                                        <li>Integrating Organisations Shopify Listed Loyalty & Rewards App - Retenzy in multiple Shopify Stores</li>
+                                        <!-- <li>Collaborated with marketing teams to implement conversion rate optimization strategies</li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">  <!-- The Dhindora Club Job Experience -->
+                        <div class="card-content">
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <div class="experience-title">
+                                        <h3>Web Developer</h3>
+                                        <span class="experience-period">Dec 2024 - June 2025</span>
+                                    </div>
+                                    <span class="experience-company">The Dhindora Club<br> Hyderabad, Telangana - Fulltime</span>
+                                </div>
+                                <div class="experience-description">
+                                    <ul>
+                                        <li>Developed and maintained high-performing, user-friendly Shopify eCommerce websites with custom themes and app integrations.</li>
+                                        <li>Led client onboarding, gathered requirements, and maintained ongoing communication to ensure alignment with business goals.</li>
+                                        <li>Integrated third-party services and shipping partners to optimize order fulfillment and enhance customer experience.</li>
+                                        <li>Provided SEO/mobile optimization, payment gateway setup, and post-launch technical support.</li>
+                                        <li>Trained clients on managing their Shopify stores for efficient day-to-day operations.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">  <!-- Tru Herb Job Experience -->
+                        <div class="card-content">
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <div class="experience-title">
+                                        <h3>Junior Shopify Developer & Category Executive</h3>
+                                        <span class="experience-period">Sept 2024 - Dec 2024</span>
+                                    </div>
+                                    <span class="experience-company">Pure Tru Herb <br> Bangalore, Karnataka - Fulltime</span>
+                                </div>
+                                <div class="experience-description">
+                                    <ul>
+                                        <li>Managed and maintained the company's Shopify Store (www.total-ingredients.com), conducting regular tests to ensure functionality.</li>
+                                        <li>Oversaw 450+ products on the website, solely adding 200+ products to streamline updates and management.</li>
+                                        <li>Developed a Certificate of Analysis (COA) Creator application to automate document generation.</li>
+                                        <li>Built a sales data visualization app to enhance team decision-making with key metrics.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="projects" class="content-section">
+                    <div class="section-title">
+                        <h2>Shopify Stores</h2>
+                    </div>
+
+                    <div class="projects-grid">
+
+                        <!-- BASE TEMPLATE -->
+                        <!-- <div class="project-card">
+                            <div class="project-image">
+                                <img src=" basetemplate " alt="basetemplate">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Honax</h3>
+                                    <span class="project-status active">Completed</span>
+                                </div>
+                                <a href="honax.de" target="_blank" class="visit-store-link">Visit Store</a>
+                                <div class="project-work">
+                                    <h4>What I've Done:</h4>
+                                    <ul>
+                                        <li>Sourced Ella Theme and Developed the Whole Store from Scratch</li>
+                                        <li>Listed Products with Proper Variants</li>
+                                        <li>Optimized for Mobile Responsiveness</li>
+                                        <li>Enhanced user experience and conversion rates</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <!-- Honax -->
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="project_images/honax.webp" alt="honax">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Honax</h3>
+                                    <span class="project-status active">Completed</span>
+                                </div>
+                                <a href="honax.de" target="_blank" class="visit-store-link">Visit Store</a>
+                                <div class="project-work">
+                                    <h4>What I've Done:</h4>
+                                    <ul>
+                                        <li>Sourced Ella Theme and Developed the Whole Store from Scratch</li>
+                                        <li>Listed Products with Proper Variants</li>
+                                        <li>Optimized for Mobile Responsiveness</li>
+                                        <li>Enhanced User Experience and Conversion Rates</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Rulop Foods -->
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="project_images/rulopfoods.webp" alt="rulopfoods">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Rulop Foods</h3>
+                                    <span class="project-status active">Completed</span>
+                                </div>
+                                <a href="https://rulopfoods.co.uk/" target="_blank" class="visit-store-link">Visit Store</a>
+                                <div class="project-work">
+                                    <h4>What I've Done:</h4>
+                                    <ul>
+                                        <li>Sourced Ella Theme and Developed the Whole Store from Scratch</li>
+                                        <li>Complete Migration from Wix to Shopify Including All Customer Data</li>
+                                        <li>Did Professional Product Listing with Proper Categorization</li>
+                                        <li>Designed the Whole Store According to the Client's Requirements</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <!-- Ratnaya Organics -->
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="project_images/ratnayaorganics.webp" alt="ratnayaorganics">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Ratnaya Organics</h3>
+                                    <span class="project-status active">Completed</span>
+                                </div>
+                                <a href="https://ratnayaorganics.com/" target="_blank" class="visit-store-link">Visit Store</a>
+                                <div class="project-work">
+                                    <h4>What I've Done:</h4>
+                                    <ul>
+                                        <li>Sourced Custom Theme, Build Whole Brand Website from Zero</li>
+                                        <li>Excellent Product Listing with Proper Categorization</li>
+                                        <li>Integrated multiple third-party apps to enhance site functionality like Combined Listing, Custom Cart Slider, Live Google Reviews, etc and many more</li>
+                                        <li>Integrated Shiprocket as Shipping Partner and Razorpay as Payment Partner with Custom Payment Gateway Discounts</li>
+                                        <li>Created All Pages and Policies according to the Client's Requirements</li>
+                                        <li>Enhanced User Experience and Conversion rates with Custom Shipping Rates</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Total Ingredients -->
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="project_images/totalingredients.webp" alt="total-ingredients">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Total Ingredients</h3>
+                                    <span class="project-status active">Working</span>
+                                </div>
+                                <a href="https://total-ingredients.com/" target="_blank" class="visit-store-link">Visit Store</a>
+                                <div class="project-work">
+                                    <h4>What I've Done:</h4>
+                                    <ul>
+                                        <li>Independently Managed and Maintained the Entire Shopify store, overseeing 600+ products and solely adding 500+ (Till now) New products to Streamline Updates and Overall Management.</li>
+                                        <li>Converted the B2C Website to B2B Website</li>
+                                        <li>Time to Time Updates and Custom Solutions According to the Requirements</li>
+                                        <li>Excellent Product Categorization</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floaterz -->
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="project_images/floaterz.webp" alt="floaterz">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Floaterz</h3>
+                                    <span class="project-status active">Completed</span>
+                                </div>
+                                <a href="http://floaterz.com/" target="_blank" class="visit-store-link">Visit Store</a>
+                                <div class="project-work">
+                                    <h4>What I've Done:</h4>
+                                    <ul>
+                                        <li>Sourced Custom Theme with Various Features, Implemented Fully Responsive Layout.</li>
+                                        <li>Listed 16 SKUs with Proper SEO Descriptions and Proper Categorization</li>
+                                        <li>Integrated 3rd Party Apps for Size Chart, Delivery Estimator, Combo Discount, etc and many more according to requirements</li>
+                                        <li>Integrated Shiprocket as Shipping Partner and Razorpay as Payment Partner</li>
+                                        <li>Created All Pages and Policies according to the Client's Requirements</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lovebomb  -->
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="project_images/lovebomb.webp" alt="lovebomb">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Lovebomb Chocolates</h3>
+                                    <span class="project-status active">Completed</span>
+                                </div>
+                                <a href="https://www.lovebomb.co.in/" target="_blank" class="visit-store-link">Visit Store</a>
+                                <div class="project-work">
+                                    <h4>What I've Done:</h4>
+                                    <ul>
+                                        <li>Designed and developed chocolate e-commerce site</li>
+                                        <li>Integrated Shiprocket as Shipping Partner and Razorpay as Payment Partner</li>
+                                        <li>Integrated lot of 3rd Party Apps for Reels Video Section, SEO, Judge.Me for Reviews, Bundle Discount, Delivery Estimator, etc</li>
+                                        <li>Created All Pages and Policies according to the Client's Requirements</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Veloara Luxury Perfumes -->
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="project_images/veloaraluxury.webp" alt="veloaraluxury">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Veloara Luxury</h3>
+                                    <span class="project-status active">Completed</span>
+                                </div>
+                                <a href="https://veloaraluxury.com/" target="_blank" class="visit-store-link">Visit Store</a>
+                                <div class="project-work">
+                                    <h4>What I've Done:</h4>
+                                    <ul>
+                                        <li>Designed and developed luxury perfume e-commerce site</li>
+                                        <li>Implemented custom product pages with fragrance notes</li>
+                                        <li>Simple Product Listing</li>
+                                        <li>Integrated Shiprocket as Shipping Partner and Razorpay as Payment Partner</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Silaye -->
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="project_images/silaye.webp" alt="silaye">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Silaye</h3>
+                                    <span class="project-status active">Completed</span>
+                                </div>
+                                <a href="https://silaye.in/" ctarget="_blank" class="visit-store-link">Visit Store</a>
+                                <div class="project-work">
+                                    <h4>What I've Done:</h4>
+                                    <ul>
+                                        <li>Completed Whole Website Design with Custom Requirements</li>
+                                        <li>Did Detailed Product Listing with Proper Categorization</li>
+                                        <li>Configured GST for easy Tax Calculations using Collections</li>
+                                        <li>Integrated Shiprocket as Shipping Partner and Razorpay as Payment Partner</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dang Shoes -->
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="project_images/dangshoes.webp" alt="dangshoes">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Dang Shoes</h3>
+                                    <span class="project-status active">Completed</span>
+                                </div>
+                                <a href="https://www.dangshoes.com/" target="_blank" class="visit-store-link">Visit Store</a>
+                                <div class="project-work">
+                                    <h4>What I've Done:</h4>
+                                    <ul>
+                                        <li>Performed Complete Product Listing with Accurate Categorization and Tagging</li>
+                                        <li>Changed whole Website Design for Better UI</li>
+                                        <li>Created All Policies and Pages on Shopify Store</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Triangle Mart -->
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="https://images.pexels.com/photos/1124468/pexels-photo-1124468.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&dpr=1" alt="Doug Shoes">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Triangle Mart</h3>
+                                    <span class="project-status active">Store Closed</span>
+                                </div>
+                                <a href="https://thetrianglemart.com/" target="_blank" class="visit-store-link">Visit Store</a>
+                                <div class="project-work">
+                                    <h4>What I've Done:</h4>
+                                    <ul>
+                                        <li>Built Premiun Company Protfolio Website</li>
+                                        <li>Listed 2650+ Products using Bulk Import</li>
+                                        <li>Integrated Shiprocket as Shipping Partner and Razorpay as Payment Partner</li>
+                                        <li>Gave Custom Solutions and Built Multiple Forms for Smooth Contact application</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- demo project card -->
+                        <!-- <div class="project-card">
+                            <div class="project-image">
+                                <img src="https://images.pexels.com/photos/1124468/pexels-photo-1124468.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&dpr=1" alt="Doug Shoes">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Doug Shoes</h3>
+                                    <span class="project-status active">Active</span>
+                                </div>
+                                <a href="#" class="visit-store-link">Visit Store</a>
+                                <div class="project-work">
+                                    <h4>What I've Done:</h4>
+                                    <ul>
+                                        <li>Built premium footwear e-commerce site</li>
+                                        <li>Integrated 3D product view technology</li>
+                                        <li>Created interactive size guide</li>
+                                        <li>Developed quick shop functionality</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div> -->
+
+
+                    </div>
+                </section>
+
+                <section id="skills" class="content-section">
+                    <div class="section-title">
+                        <h2>Technical Skills</h2>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="skills-grid">
+                                <div class="skill-category">
+                                    <h3>Programming Languages</h3>
+                                    <div class="skill-items">
+                                        <span class="skill-tag">HTML</span>
+                                        <span class="skill-tag">CSS</span>
+                                        <span class="skill-tag">JavaScript</span>
+                                        <span class="skill-tag">Liquid</span>
+                                        <span class="skill-tag">Git</span>
+                                        <span class="skill-tag">Shell Scripting</span>
+                                        <span class="skill-tag">C++</span>
+                                        <span class="skill-tag">Python</span>
+                                    </div>
+                                </div>
+
+                                <div class="skill-category">
+                                    <h3>Tools, Technologies & Frameworks</h3>
+                                    <div class="skill-items">
+                                        <span class="skill-tag">Shopify</span>
+                                        <span class="skill-tag">VS Code</span>
+                                        <span class="skill-tag">ChatGPT</span>
+                                        <span class="skill-tag">GitHub</span>
+                                        <span class="skill-tag">AWS</span>
+                                        <span class="skill-tag">Streamlit</span>
+                                        <span class="skill-tag">VirtualBox</span>
+                                        <span class="skill-tag">Docker</span>
+                                        <span class="skill-tag">Kubernetes</span>
+                                        <!-- <span class="skill-tag">React</span> -->
+                                        <!-- <span class="skill-tag">Node.js</span> -->
+                                        <!-- <span class="skill-tag">GraphQL</span> -->
+                                        <!-- <span class="skill-tag">REST APIs</span> -->
+                                    </div>
+                                </div>
+
+                                <div class="skill-category">
+                                    <h3>Other Skills</h3>
+                                    <div class="skill-items">
+                                        <span class="skill-tag">UX/UI Design</span>
+                                        <span class="skill-tag">SEO</span>
+                                        <span class="skill-tag">Performance Optimization</span>
+                                        <span class="skill-tag">A/B Testing</span>
+                                        <span class="skill-tag">Analytics</span>
+                                        <span class="skill-tag">Problem Solving</span>
+                                        <span class="skill-tag">Teamwork</span>
+                                        <span class="skill-tag">Collaboration</span>
+                                        <span class="skill-tag">Adaptability</span>
+                                        <span class="skill-tag">Time Management</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="resume" class="content-section">
+                    <div class="section-title">
+                        <h2>Resume</h2>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="resume-section">
+                                <div class="resume-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="resume-info">
+                                    <h3>Tejas_Kedare_Resume.pdf</h3> <!-- tejas resume link -->
+                                    <p>Complete professional resume with detailed experience, skills, and achievements</p>
+                                    <button class="btn-primary">
+                                        <i class="fas fa-download"></i>
+                                        Download Resume
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contact" class="content-section">
+                    <div class="section-title">
+                        <h2>Contact Information</h2>
+                    </div>
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3>Email</h3>
+                                <p>tejaskedare.22@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3>LinkedIn</h3>
+                                <p>Click Here</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3>GitHub</h3>
+                                <p>Click Here</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="contact-info">
+                                <h3>Website</h3>
+                                <p>Click Here</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>

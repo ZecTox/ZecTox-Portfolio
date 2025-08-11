@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://zectox-portfolio.vercel.app/sitemap.xml
