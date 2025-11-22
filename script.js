@@ -1,5 +1,5 @@
 // Navigation functionality
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const navItems = document.querySelectorAll('.nav-item[data-section]');
     const pageTitle = document.getElementById('page-title');
     const nightModeToggle = document.getElementById('nightModeToggle');
@@ -12,15 +12,17 @@ document.addEventListener('DOMContentLoaded', function() {
         'overview': 'Portfolio Dashboard',
         'experience': 'Professional Experience',
         'projects': 'Shopify Stores',
+        'testimonials': 'Client Testimonials',
         'skills': 'Technical Skills',
         'resume': 'Resume',
+        'schedule': 'Schedule a Call',
         'contact': 'Contact Information'
     };
 
     // Night mode toggle functionality
-    nightModeToggle.addEventListener('change', function() {
+    nightModeToggle.addEventListener('change', function () {
         document.body.classList.toggle('night-mode', this.checked);
-        
+
         // Save preference to localStorage
         localStorage.setItem('nightMode', this.checked);
     });
@@ -48,24 +50,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Close mobile menu when clicking nav items
     navItems.forEach(item => {
-        item.addEventListener('click', function() {
+        item.addEventListener('click', function () {
             // Existing navigation code
             const targetSection = this.getAttribute('data-section');
             const targetElement = document.getElementById(targetSection);
-            
+
             // Remove active class from all nav items
             navItems.forEach(nav => nav.classList.remove('active'));
-            
+
             // Add active class to clicked nav item
             this.classList.add('active');
-            
+
             // Scroll to target section
             if (targetElement) {
-                targetElement.scrollIntoView({ 
+                targetElement.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
-                
+
                 // Update page title
                 pageTitle.textContent = sectionTitles[targetSection] || 'Portfolio Dashboard';
             }
@@ -78,10 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact card click handlers
     const contactCards = document.querySelectorAll('.contact-card');
     contactCards.forEach(card => {
-        card.addEventListener('click', function() {
+        card.addEventListener('click', function () {
             const contactType = this.querySelector('h3').textContent.toLowerCase();
-            
-            switch(contactType) {
+
+            switch (contactType) {
                 case 'email':
                     window.location.href = 'mailto:tejaskedare.22@gmail.com', '_blank';
                     break;
@@ -102,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const downloadButtons = document.querySelectorAll('button');
     downloadButtons.forEach(button => {
         if (button.textContent.includes('Download Resume')) {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 // Open resume in new tab
                 window.open('https://drive.google.com/file/d/1G7fBXyuW_6fvos6xbcTUWUTXWrX8Vy7p/view?usp=sharing', '_blank');
             });
@@ -112,16 +114,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact me button in header
     const contactButton = document.querySelector('.header-right .btn-primary');
     if (contactButton) {
-        contactButton.addEventListener('click', function() {
+        contactButton.addEventListener('click', function () {
             // Scroll to contact section
             navItems.forEach(nav => nav.classList.remove('active'));
-            
+
             const contactNav = document.querySelector('.nav-item[data-section="contact"]');
             const contactSection = document.getElementById('contact');
-            
+
             if (contactNav && contactSection) {
                 contactNav.classList.add('active');
-                contactSection.scrollIntoView({ 
+                contactSection.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
@@ -134,17 +136,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Update active nav item on scroll
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         const sections = document.querySelectorAll('.content-section');
         let current = '';
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 100;
             if (window.pageYOffset >= sectionTop) {
                 current = section.getAttribute('id');
             }
         });
-        
+
         navItems.forEach(nav => {
             nav.classList.remove('active');
             if (nav.getAttribute('data-section') === current) {
@@ -155,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Add keyboard navigation
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             closeMobileMenu();
         }
