@@ -159,7 +159,7 @@ input:checked+.toggle-slider:before {
     padding: 8px 20px;
     font-size: 12px;
     font-weight: 600;
-    color: #8a8a8a;
+    color: #5c5f62; /* Darkened from #8a8a8a for better contrast */
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -169,10 +169,11 @@ input:checked+.toggle-slider:before {
     align-items: center;
     gap: 12px;
     padding: 8px 20px;
-    color: #b5b5b5;
+    color: #e3e3e3; /* Already good contrast on dark bg, but ensuring */
     cursor: pointer;
     transition: all 0.2s ease;
     font-size: 14px;
+    text-decoration: none; /* Remove underline for anchor tags */
 }
 
 .nav-item:hover {
@@ -532,7 +533,7 @@ body.night-mode .btn-secondary:hover {
 
 .experience-company {
     font-size: 14px;
-    color: #6d7175;
+    color: #5c5f62; /* Darkened from #6d7175 */
 }
 
 .experience-description ul {
@@ -544,7 +545,7 @@ body.night-mode .btn-secondary:hover {
     position: relative;
     padding-left: 20px;
     margin-bottom: 8px;
-    color: #6d7175;
+    color: #4a4a4a; /* Darkened from #6d7175 */
     font-size: 14px;
 }
 

@@ -50,7 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Close mobile menu when clicking nav items
     navItems.forEach(item => {
-        item.addEventListener('click', function () {
+        item.addEventListener('click', function (e) {
+            e.preventDefault();
             // Existing navigation code
             const targetSection = this.getAttribute('data-section');
             const targetElement = document.getElementById(targetSection);
