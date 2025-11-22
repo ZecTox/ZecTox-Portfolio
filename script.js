@@ -136,8 +136,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Update active nav item on scroll
-    window.addEventListener('scroll', function () {
+    // Debounce function for performance
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // Update active nav item on scroll (debounced for performance)
+    const handleScroll = debounce(function () {
         const sections = document.querySelectorAll('.content-section');
         let current = '';
 
@@ -155,7 +168,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 pageTitle.textContent = sectionTitles[current] || 'Portfolio Dashboard';
             }
         });
-    });
+    }, 100); // Debounce for 100ms
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     // Add keyboard navigation
     document.addEventListener('keydown', function (e) {

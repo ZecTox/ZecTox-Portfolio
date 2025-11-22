@@ -571,6 +571,7 @@ body.night-mode .btn-secondary:hover {
     overflow: hidden;
     transition: all 0.2s ease;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    will-change: transform;
 }
 
 .project-card:hover {
@@ -742,6 +743,7 @@ body.night-mode .btn-secondary:hover {
     gap: 16px;
     transition: all 0.2s ease;
     cursor: pointer;
+    will-change: transform;
 }
 
 .contact-card:hover {
