@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Section titles mapping
     const sectionTitles = {
-        'overview': 'Portfolio Dashboard',
+        'overview': 'Shopify Developer Portfolio',
         'experience': 'Professional Experience',
         'projects': 'Shopify Stores',
         'testimonials': 'Client Testimonials',
