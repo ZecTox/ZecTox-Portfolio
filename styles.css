@@ -1337,3 +1337,63 @@ body.night-mode .back-link {
 body.night-mode .back-link:hover {
     color: #00a96e;
 }
+/* Blog CTA Section */
+.blog-cta-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.blog-cta-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background-color: #008060;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-cta-icon i {
+    font-size: 24px;
+    color: white;
+}
+
+.blog-cta-text {
+    flex: 1;
+}
+
+.blog-cta-text h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #202223;
+    margin-bottom: 8px;
+}
+
+.blog-cta-text p {
+    color: #6d7175;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Night Mode for Blog CTA */
+body.night-mode .blog-cta-text h3 {
+    color: #e3e3e3;
+}
+
+body.night-mode .blog-cta-text p {
+    color: #b5b5b5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .blog-cta-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .blog-cta-icon {
+        margin: 0 auto;
+    }
+}
