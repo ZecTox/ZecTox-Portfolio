@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'experience': 'Professional Experience',
         'projects': 'Shopify Stores',
         'testimonials': 'Client Testimonials',
+        'faq': 'Frequently Asked Questions',
         'skills': 'Technical Skills',
         'resume': 'Resume',
         'schedule': 'Schedule a Call',
@@ -187,6 +188,26 @@ document.addEventListener('DOMContentLoaded', function () {
     projectCards.forEach((card, index) => {
         card.style.animationDelay = `${index * 0.1}s`;
         card.classList.add('fade-in');
+    });
+
+    // FAQ Accordion functionality
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                otherItem.classList.remove('active');
+            });
+
+            // Toggle current item
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
     });
 });
 

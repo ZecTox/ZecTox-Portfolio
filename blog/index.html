@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Expert Shopify Developer | Tejas Kedare</title>
+    <link href="../styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="../src/tejas_website_image.webp" type="image/x-icon">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Insights, tips, and guides on Shopify development, speed optimization, and e-commerce growth strategies by Tejas Kedare.">
+</head>
+
+<body>
+    <div class="shopify-dashboard">
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="night-mode-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="nightModeToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Night Mode</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <a href="../index.html#overview" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Back to Home</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-blog"></i>
+                    <span>Blog</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <!-- Mobile Hamburger Menu -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="header-left">
+                    <h1 id="page-title">Blog & Insights</h1>
+                </div>
+                <div class="header-right">
+                    <button class="schedule-btn-nav" onclick="window.location.href='../index.html#schedule'">
+                        <i class="fas fa-calendar-check"></i>
+                        Schedule Meeting
+                    </button>
+                    <button class="btn-secondary" id="downloadResumeBtn">
+                        <i class="fas fa-download"></i>
+                        Download Resume
+                    </button>
+                    <a href="../index.html#contact" class="btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Me
+                    </a>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <section class="content-section">
+                    <div class="section-title">
+                        <h2>Latest Articles</h2>
+                    </div>
+
+                    <div class="projects-grid">
+                        <!-- Article 1 -->
+                        <div class="project-card blog-card">
+                            <div class="project-image">
+                                <img src="images/The Ultimate Guide to Shopify Speed Optimization.webp"
+                                     alt="Shopify Speed Optimization" style="object-fit: cover;">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>The Ultimate Guide to Shopify Speed Optimization</h3>
+                                    <span class="project-status active">New</span>
+                                </div>
+                                <div class="project-description">
+                                    <p>Learn how to boost your Shopify store's performance, improve Core Web Vitals, and
+                                        increase conversion rates with these proven optimization techniques.</p>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tag">Performance</span>
+                                    <span class="tag">SEO</span>
+                                    <span class="tag">Guide</span>
+                                </div>
+                                <a href="shopify-speed-optimization-guide.html" class="btn-secondary"
+                                    style="width: 100%; justify-content: center; margin-top: 12px;">
+                                    Read Article
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Article 2 -->
+                        <div class="project-card blog-card">
+                            <div class="project-image">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Custom Shopify Theme" style="object-fit: cover;">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Why Your Brand Needs a Custom Shopify Theme</h3>
+                                    <span class="project-status active">New</span>
+                                </div>
+                                <div class="project-description">
+                                    <p>Discover the benefits of a custom Shopify theme over pre-made templates. Learn how unique design, better performance, and tailored functionality can boost your brand.</p>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tag">Branding</span>
+                                    <span class="tag">Design</span>
+                                    <span class="tag">Strategy</span>
+                                </div>
+                                <a href="custom-shopify-theme-benefits.html" class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 12px;">
+                                    Read Article
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Article 3 -->
+                        <div class="project-card blog-card">
+                            <div class="project-image">
+                                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                                     alt="WooCommerce Migration" style="object-fit: cover;">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>The Complete Guide to Migrating from WooCommerce to Shopify</h3>
+                                    <span class="project-status active">New</span>
+                                </div>
+                                <div class="project-description">
+                                    <p>Thinking of moving from WooCommerce to Shopify? This guide covers everything you need to know about a seamless migration, preserving SEO, and data transfer.</p>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tag">Migration</span>
+                                    <span class="tag">WooCommerce</span>
+                                    <span class="tag">Guide</span>
+                                </div>
+                                <a href="woocommerce-to-shopify-migration-guide.html" class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 12px;">
+                                    Read Article
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Placeholder for more articles -->
+                        <div class="project-card" style="opacity: 0.7;">
+                            <div class="project-content"
+                                style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 40px;">
+                                <i class="fas fa-pen-fancy"
+                                    style="font-size: 48px; color: #e1e3e5; margin-bottom: 16px;"></i>
+                                <h3 style="color: #8a8a8a;">More Articles Coming Soon</h3>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Reusing the main script but we need to adjust paths or add inline script for blog specific behavior -->
+    <script src="../script.js"></script>
+</body>
+
+</html>

@@ -159,7 +159,8 @@ input:checked+.toggle-slider:before {
     padding: 8px 20px;
     font-size: 12px;
     font-weight: 600;
-    color: #5c5f62; /* Darkened from #8a8a8a for better contrast */
+    color: #5c5f62;
+    /* Darkened from #8a8a8a for better contrast */
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -169,11 +170,13 @@ input:checked+.toggle-slider:before {
     align-items: center;
     gap: 12px;
     padding: 8px 20px;
-    color: #e3e3e3; /* Already good contrast on dark bg, but ensuring */
+    color: #e3e3e3;
+    /* Already good contrast on dark bg, but ensuring */
     cursor: pointer;
     transition: all 0.2s ease;
     font-size: 14px;
-    text-decoration: none; /* Remove underline for anchor tags */
+    text-decoration: none;
+    /* Remove underline for anchor tags */
 }
 
 .nav-item:hover {
@@ -533,7 +536,8 @@ body.night-mode .btn-secondary:hover {
 
 .experience-company {
     font-size: 14px;
-    color: #5c5f62; /* Darkened from #6d7175 */
+    color: #5c5f62;
+    /* Darkened from #6d7175 */
 }
 
 .experience-description ul {
@@ -545,7 +549,8 @@ body.night-mode .btn-secondary:hover {
     position: relative;
     padding-left: 20px;
     margin-bottom: 8px;
-    color: #4a4a4a; /* Darkened from #6d7175 */
+    color: #4a4a4a;
+    /* Darkened from #6d7175 */
     font-size: 14px;
 }
 
@@ -1138,4 +1143,197 @@ body.night-mode .project-work li::before {
     #downloadResumeBtn {
         display: none;
     }
+}
+
+/* FAQ Section */
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-item {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e1e3e5;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-question {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: background-color 0.2s ease;
+}
+
+.faq-question:hover {
+    background-color: #f9fafb;
+}
+
+.faq-question h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #202223;
+    margin: 0;
+}
+
+.faq-toggle {
+    font-size: 14px;
+    color: #008060;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-toggle {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #fcfcfc;
+}
+
+.faq-answer p {
+    padding: 24px;
+    color: #6d7175;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    transition: max-height 0.5s ease-in;
+}
+
+/* Night Mode for FAQ */
+body.night-mode .faq-item,
+body.night-mode .faq-question {
+    background-color: #1f1f1f;
+    border-color: #404040;
+}
+
+body.night-mode .faq-question:hover {
+    background-color: #2a2a2a;
+}
+
+body.night-mode .faq-question h3 {
+    color: #e3e3e3;
+}
+
+body.night-mode .faq-answer {
+    background-color: #1a1a1a;
+}
+
+body.night-mode .faq-answer p {
+    color: #b5b5b5;
+}
+
+/* Blog Card Specifics */
+.blog-card .project-image {
+    height: auto;
+    aspect-ratio: 4/2;
+}
+
+.blog-card .project-image img {
+    object-fit: cover;
+}
+
+/* Article Content Styles */
+.article-content {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid #e1e3e5;
+    max-width: 800px;
+    margin: 0 auto;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.article-content h2 {
+    margin-top: 32px;
+    margin-bottom: 16px;
+    color: #202223;
+}
+
+.article-content h3 {
+    margin-top: 24px;
+    margin-bottom: 12px;
+    color: #202223;
+}
+
+.article-content p {
+    margin-bottom: 24px;
+    color: #4a4a4a;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.article-content ul {
+    margin-bottom: 24px;
+    padding-left: 24px;
+}
+
+.article-content li {
+    margin-bottom: 12px;
+    color: #4a4a4a;
+}
+
+.article-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.article-meta {
+    color: #6d7175;
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #5c5f62;
+    text-decoration: none;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+.back-link:hover {
+    color: #008060;
+}
+
+/* Night Mode for Article */
+body.night-mode .article-content {
+    background-color: #1f1f1f;
+    border-color: #404040;
+}
+
+body.night-mode .article-content h1,
+body.night-mode .article-content h2,
+body.night-mode .article-content h3 {
+    color: #e3e3e3;
+}
+
+body.night-mode .article-content p,
+body.night-mode .article-content li {
+    color: #b5b5b5;
+}
+
+body.night-mode .article-meta {
+    color: #9a9a9a;
+}
+
+body.night-mode .back-link {
+    color: #b5b5b5;
+}
+
+body.night-mode .back-link:hover {
+    color: #00a96e;
 }
