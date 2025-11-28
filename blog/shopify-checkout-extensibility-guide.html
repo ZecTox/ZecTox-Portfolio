@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The End of checkout.liquid: The Ultimate Guide to Shopify Checkout Extensibility - Tejas Kedare</title>
+    <link href="../styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="../src/tejas_website_image.webp" type="image/x-icon">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Shopify is deprecating checkout.liquid. Learn what Checkout Extensibility is, why you need to upgrade, and how to migrate your Shopify Plus store before the deadline.">
+    <meta name="keywords" content="Shopify Checkout Extensibility, checkout.liquid deprecation, Shopify Plus Developer, Shopify Functions, Checkout UI Extensions, Shopify Migration">
+    <link rel="canonical" href="https://zectox-portfolio.vercel.app/blog/shopify-checkout-extensibility-guide.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The End of checkout.liquid: Guide to Shopify Checkout Extensibility">
+    <meta property="og:description" content="Shopify is deprecating checkout.liquid. Learn how to migrate to Checkout Extensibility for a faster, upgrade-safe checkout.">
+    <!-- Image will be updated after generation -->
+    <meta property="og:image" content="">
+</head>
+
+<body>
+    <div class="shopify-dashboard">
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="night-mode-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="nightModeToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Night Mode</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <a href="../index.html#overview" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Back to Home</span>
+                </a>
+                <a href="index.html" class="nav-item active">
+                    <i class="fas fa-blog"></i>
+                    <span>Blog</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <!-- Mobile Hamburger Menu -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="header-left">
+                    <a href="index.html" class="back-link" style="margin-bottom: 0;">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </a>
+                </div>
+                <div class="header-right">
+                    <button class="schedule-btn-nav" onclick="window.location.href='../index.html#schedule'">
+                        <i class="fas fa-calendar-check"></i>
+                        Schedule Meeting
+                    </button>
+                    <button class="btn-secondary" id="downloadResumeBtn">
+                        <i class="fas fa-download"></i>
+                        Download Resume
+                    </button>
+                    <a href="../index.html#contact" class="btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Me
+                    </a>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <article class="article-content">
+                    <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden;">
+                        <img src="images/checkout_extensibility_banner.png"
+                            alt="Shopify Checkout Extensibility" style="width: 100%; height: auto; display: block;">
+                    </div>
+
+                    <div class="article-header">
+                        <h1>The End of checkout.liquid: The Ultimate Guide to Shopify Checkout Extensibility</h1>
+                        <div class="article-meta">
+                            <span>By Tejas Kedare</span> • <span>10 min read</span>
+                        </div>
+                    </div>
+
+                    <p class="lead">If you are a Shopify Plus merchant, a major change is coming. Shopify has announced the deprecation of <code>checkout.liquid</code>, the file that has powered custom checkouts for years. In its place comes <strong>Checkout Extensibility</strong>—a more secure, faster, and upgrade-safe way to customize your checkout.</p>
+
+                    <div style="background: rgba(255, 235, 59, 0.1); border-left: 4px solid #ffeb3b; padding: 16px; margin: 24px 0; border-radius: 4px;">
+                        <p style="margin: 0; color: #b2a300;"><strong>Deadline Alert:</strong> Shopify has set strict deadlines for this migration. Failing to upgrade could leave your checkout broken or unable to receive new features.</p>
+                    </div>
+
+                    <h2>What is Checkout Extensibility?</h2>
+                    <p>Historically, Shopify Plus merchants customized their checkout by directly editing the <code>checkout.liquid</code> code. While flexible, this approach had major downsides:</p>
+                    <ul>
+                        <li><strong>Upgrade Issues:</strong> Custom code meant you didn't get automatic updates from Shopify.</li>
+                        <li><strong>Security Risks:</strong> Direct code access could introduce vulnerabilities.</li>
+                        <li><strong>Performance:</strong> Poorly written scripts could slow down the checkout process.</li>
+                    </ul>
+                    <p><strong>Checkout Extensibility</strong> replaces this with a suite of app-based tools:</p>
+                    <ol>
+                        <li><strong>Checkout UI Extensions:</strong> For adding custom UI elements (banners, upsells, trust badges).</li>
+                        <li><strong>Shopify Functions:</strong> For backend logic like complex discounts, shipping rules, and payment customization.</li>
+                        <li><strong>Web Pixel API:</strong> For secure, non-blocking tracking and analytics.</li>
+                    </ol>
+
+                    <h2>Why You Should Migrate Now (Not Later)</h2>
+                    <h3>1. Lightning Fast Performance</h3>
+                    <p>Checkout Extensibility runs on Shopify's infrastructure, not in the browser's main thread. This means your checkout loads instantly, leading to higher conversion rates.</p>
+
+                    <h3>2. One-Click Upgrades</h3>
+                    <p>Since you aren't hacking the core code, you automatically get every new feature Shopify releases (like the new one-page checkout) without breaking your customizations.</p>
+
+                    <h3>3. Better Conversion with Shop Pay</h3>
+                    <p>The new system is fully integrated with Shop Pay, ensuring a seamless experience for the millions of users who use it.</p>
+
+                    <h2>How to Migrate: A Developer's Roadmap</h2>
+                    <p>Migrating isn't just a "copy-paste" job. It requires rebuilding your current customizations using the new tools.</p>
+
+                    <h3>Step 1: Audit Your Current Checkout</h3>
+                    <p>I start by listing every customization you currently have. Do you have a "Terms and Conditions" checkbox? A post-purchase upsell? A custom shipping logic?</p>
+
+                    <h3>Step 2: Map to New Tools</h3>
+                    <ul>
+                        <li><strong>Visual Changes:</strong> Use the Checkout Editor (drag and drop).</li>
+                        <li><strong>Custom UI:</strong> Build React-based Checkout UI Extensions.</li>
+                        <li><strong>Logic:</strong> Write Rust or JavaScript-based Shopify Functions.</li>
+                        <li><strong>Tracking:</strong> Move GTM and Facebook Pixel scripts to the Web Pixel API.</li>
+                    </ul>
+
+                    <h3>Step 3: Build and Test</h3>
+                    <p>I develop these extensions in a development environment, testing them rigorously to ensure they work under all conditions (mobile, different currencies, etc.).</p>
+
+                    <h3>Step 4: Go Live</h3>
+                    <p>Once tested, we publish the app to your store and switch over to the new checkout profile. The transition is seamless for your customers.</p>
+
+                    <h2>Common Migration Challenges</h2>
+                    <p><strong>"I have a complex script that hides shipping methods based on tags."</strong><br>
+                    <em>Solution:</em> We use Shopify Functions (Delivery Customization API) to handle this logic securely on the server side.</p>
+
+                    <p><strong>"I use a third-party app for upsells."</strong><br>
+                    <em>Solution:</em> Check if the app has upgraded to Checkout Extensibility. If not, we might need to find a modern alternative or build a custom extension.</p>
+
+                    <h2>Need Help Migrating?</h2>
+                    <p>The clock is ticking on <code>checkout.liquid</code>. Migrating requires a deep understanding of Shopify's new development stack (React, Remix, GraphQL).</p>
+                    <p>As a Shopify Developer, I specialize in these complex migrations. I can ensure your store moves to the new system smoothly, without losing data or sales.</p>
+
+                    <div
+                        style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e1e3e5; text-align: center;">
+                        <p><strong>Ready to future-proof your checkout?</strong></p>
+                        <a href="../index.html#contact" class="btn-primary">Discuss Your Migration</a>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </div>
+
+    <!-- Reusing the main script -->
+    <script src="/script.js"></script>
+</body>
+
+</html>

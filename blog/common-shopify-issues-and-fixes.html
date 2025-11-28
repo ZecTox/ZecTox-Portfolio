@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Critical Shopify Issues That Are Killing Your Sales (And How a Developer Fixes Them) - Tejas Kedare</title>
+    <link href="../styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="../src/tejas_website_image.webp" type="image/x-icon">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Is your Shopify store losing sales? Discover 5 common technical issues like slow speed, mobile failures, and app conflicts, and learn how an expert Shopify Developer fixes them.">
+    <meta name="keywords" content="Shopify Developer, Fix Shopify Store, Shopify Speed Optimization, Liquid Coding, Mobile Responsiveness, Shopify SEO, Tejas Kedare">
+    <link rel="canonical" href="https://zectox-portfolio.vercel.app/blog/common-shopify-issues-and-fixes.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="5 Critical Shopify Issues That Are Killing Your Sales">
+    <meta property="og:description" content="Discover 5 common technical issues like slow speed and mobile failures, and learn how an expert Shopify Developer fixes them.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+</head>
+
+<body>
+    <div class="shopify-dashboard">
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="night-mode-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="nightModeToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Night Mode</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <a href="../index.html#overview" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Back to Home</span>
+                </a>
+                <a href="index.html" class="nav-item active">
+                    <i class="fas fa-blog"></i>
+                    <span>Blog</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <!-- Mobile Hamburger Menu -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="header-left">
+                    <a href="index.html" class="back-link" style="margin-bottom: 0;">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </a>
+                </div>
+                <div class="header-right">
+                    <button class="schedule-btn-nav" onclick="window.location.href='../index.html#schedule'">
+                        <i class="fas fa-calendar-check"></i>
+                        Schedule Meeting
+                    </button>
+                    <button class="btn-secondary" id="downloadResumeBtn">
+                        <i class="fas fa-download"></i>
+                        Download Resume
+                    </button>
+                    <a href="../index.html#contact" class="btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Me
+                    </a>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <article class="article-content">
+                    <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden;">
+                        <img src="images/shopify_issues_banner.png"
+                            alt="Shopify Issues and Fixes" style="width: 100%; height: auto; display: block;">
+                    </div>
+
+                    <div class="article-header">
+                        <h1>5 Critical Shopify Issues That Are Killing Your Sales (And How a Developer Fixes Them)</h1>
+                        <div class="article-meta">
+                            <span>By Tejas Kedare</span> • <span>8 min read</span>
+                        </div>
+                    </div>
+
+                    <p>Running a Shopify store is more than just listing products. Behind the scenes, technical glitches, slow loading times, and poor mobile optimization can be silently draining your revenue. As a <strong>Shopify Developer</strong>, I audit dozens of stores every month, and I see the same costly mistakes repeated over and over.</p>
+                    
+                    <p>Here are the top 5 critical issues that might be killing your sales right now—and exactly how I fix them.</p>
+
+                    <h2>1. Slow Page Load Speed (The Silent Killer)</h2>
+                    <p><strong>The Problem:</strong> Did you know that 53% of mobile users abandon a site if it takes longer than 3 seconds to load? A slow store doesn't just annoy customers; it hurts your Google rankings (SEO) and drives up your Facebook Ad costs.</p>
+                    <p><strong>Common Causes:</strong></p>
+                    <ul>
+                        <li>Uncompressed, massive product images.</li>
+                        <li>Too many third-party apps running scripts in the background.</li>
+                        <li>Bloated theme code.</li>
+                    </ul>
+                    <p><strong>How I Fix It:</strong></p>
+                    <ul>
+                        <li><strong>Image Optimization:</strong> I implement automated compression and next-gen formats (WebP) without losing quality.</li>
+                        <li><strong>Code Splitting:</strong> I refactor the Liquid code to ensure only necessary scripts load on each page.</li>
+                        <li><strong>App Audit:</strong> I identify and remove "ghost code" left behind by uninstalled apps.</li>
+                    </ul>
+
+                    <h2>2. Mobile Responsiveness Failures</h2>
+                    <p><strong>The Problem:</strong> With over 70% of e-commerce traffic coming from mobile devices, a "desktop-first" design is a death sentence. I often see buttons that are too small to tap, text that overflows the screen, or pop-ups that are impossible to close on a phone.</p>
+                    <p><strong>How I Fix It:</strong></p>
+                    <p>I write custom CSS media queries to ensure your store looks perfect on every device—from an iPhone SE to a large desktop monitor. I test rigorously to ensure the "Add to Cart" button is always accessible and the checkout flow is frictionless on mobile.</p>
+
+                    <h2>3. App Conflicts & "Ghost Code"</h2>
+                    <p><strong>The Problem:</strong> Shopify's App Store is great, but installing too many apps can break your theme. Apps often inject code into your theme files, and when you delete the app, the code stays there, slowing down your site or causing layout bugs.</p>
+                    <p><strong>How I Fix It:</strong></p>
+                    <p>I perform a manual code cleanup. I dive into the <code>theme.liquid</code> and asset files to surgically remove old, unused code snippets. For essential features, I often build <strong>custom lightweight solutions</strong> using Liquid and JavaScript instead of relying on heavy monthly-subscription apps.</p>
+
+                    <h2>4. Broken Checkout & Cart Glitches</h2>
+                    <p><strong>The Problem:</strong> Nothing is worse than a customer trying to pay you and failing. Issues like the cart drawer not opening, discount codes not applying, or the checkout button being unresponsive are surprisingly common.</p>
+                    <p><strong>How I Fix It:</strong></p>
+                    <p>I debug the JavaScript events controlling your cart. I ensure that your AJAX cart updates instantly without requiring a page refresh. I also verify that your payment gateways and shipping rules are correctly configured to prevent checkout errors.</p>
+
+                    <h2>5. SEO & Indexing Problems</h2>
+                    <p><strong>The Problem:</strong> You have great products, but no one can find them. Common Shopify SEO issues include duplicate content (canonical tag errors), missing meta descriptions, and poor URL structures.</p>
+                    <p><strong>How I Fix It:</strong></p>
+                    <ul>
+                        <li><strong>Structured Data (Schema Markup):</strong> I add JSON-LD code so Google understands your products, reviews, and prices, helping you get those rich snippets in search results.</li>
+                        <li><strong>Canonical Tags:</strong> I ensure your theme correctly handles product variants and collection URLs to avoid duplicate content penalties.</li>
+                        <li><strong>Sitemap Management:</strong> I verify your sitemap is clean and submitted to Google Search Console.</li>
+                    </ul>
+
+                    <h2>Conclusion: Invest in a Technical Foundation</h2>
+                    <p>Your Shopify store is a machine. If the gears are grinding, you can't go fast. Fixing these technical issues isn't just an expense; it's an investment with a high ROI. A faster, smoother, bug-free store converts more visitors into paying customers.</p>
+
+                    <div
+                        style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e1e3e5; text-align: center;">
+                        <p><strong>Is your store suffering from these issues?</strong></p>
+                        <p>Don't let technical glitches cost you another sale.</p>
+                        <a href="../index.html#contact" class="btn-primary" style="margin-top: 16px;">Hire Me to Audit Your Store</a>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </div>
+
+    <!-- Reusing the main script -->
+    <script src="/script.js"></script>
+</body>
+
+</html>
