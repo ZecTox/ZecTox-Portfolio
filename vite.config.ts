@@ -11,6 +11,7 @@ const getBlogInputs = () => {
   const inputs: Record<string, string> = {
     main: resolve(root, 'index.html'),
     blog: resolve(blogDir, 'index.html'),
+    missing: resolve(root, '404.html'),
   };
 
   try {

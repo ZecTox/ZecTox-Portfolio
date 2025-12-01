@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Tejas Kedare</title>
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="styles.css" as="style">
+    <link href="styles.css" rel="stylesheet">
+
+    <!-- Defer Font Awesome CSS loading -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"
+        media="print" onload="this.media='all'">
+    <link rel="icon" href="src/tejas_website_image.webp" type="image/x-icon">
+
+    <meta name="description" content="Page not found.">
+    <meta name="robots" content="noindex, nofollow">
+</head>
+
+<body>
+    <div class="shopify-dashboard">
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="night-mode-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="nightModeToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Night Mode</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <a href="/" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Back to Home</span>
+                </a>
+                <a href="blog/" class="nav-item">
+                    <i class="fas fa-blog"></i>
+                    <span>Blog</span>
+                </a>
+                <a href="/#contact" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <!-- Mobile Hamburger Menu -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="header-left">
+                    <h1 id="page-title">Page Not Found</h1>
+                </div>
+                <div class="header-right">
+                    <a href="/" class="btn-primary">
+                        <i class="fas fa-home"></i>
+                        Back to Home
+                    </a>
+                </div>
+            </header>
+
+            <!-- Content Sections -->
+            <div class="content-wrapper">
+                <section class="content-section" style="min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+                    <div class="card" style="max-width: 600px; width: 100%; padding: 40px;">
+                        <div class="card-content">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 64px; color: #ff4d4d; margin-bottom: 24px;"></i>
+                            <h1 style="font-size: 32px; margin-bottom: 16px;">404 - Page Not Found</h1>
+                            <p style="font-size: 18px; color: #666; margin-bottom: 32px;">
+                                Oops! The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+                            </p>
+                            <div style="display: flex; gap: 16px; justify-content: center;">
+                                <a href="/" class="btn-primary">Go Home</a>
+                                <a href="blog/" class="btn-secondary">Read Blog</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Reusing the main script -->
+    <script src="/script.js"></script>
+</body>
+
+</html>
