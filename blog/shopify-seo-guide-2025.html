@@ -90,7 +90,7 @@
             <div class="sidebar-header">
                 <div class="night-mode-toggle">
                     <label class="toggle-switch">
-                        <input type="checkbox" id="nightModeToggle">
+                        <input type="checkbox" id="nightModeToggle" aria-label="Toggle Night Mode">
                         <span class="toggle-slider"></span>
                     </label>
                     <span class="toggle-label">Night Mode</span>
@@ -156,11 +156,13 @@
                     <p class="lead">SEO in 2025 is unrecognizable from just two years ago. The introduction of
                         <strong>Google's Search Generative Experience (SGE)</strong>, the dominance of <strong>Voice
                             Search</strong>, and the strict demands of <strong>Core Web Vitals</strong> have raised the
-                        bar.</p>
+                        bar.
+                    </p>
 
                     <p>If you are still stuffing keywords into meta tags, you are wasting your time. This guide is for
                         serious merchants and developers who want to understand the <em>technical</em> and
-                        <em>strategic</em> depth required to rank a Shopify store today.</p>
+                        <em>strategic</em> depth required to rank a Shopify store today.
+                    </p>
 
                     <div class="toc-box">
                         <h3>Table of Contents</h3>
@@ -186,7 +188,8 @@
                         <li><code>/collections/summer-sale/products/blue-shirt</code> (Duplicate)</li>
                     </ul>
                     <p>This splits your "link juice" and confuses Google. You must ensure your theme's
-                        <code>product-grid-item.liquid</code> links directly to the canonical URL.</p>
+                        <code>product-grid-item.liquid</code> links directly to the canonical URL.
+                    </p>
                     <div class="code-block">
                         &lt;!-- BAD: Links to collection path --&gt;
                         &lt;a href="{{ product.url | within: collection }}"&gt;
