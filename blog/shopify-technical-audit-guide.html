@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Comprehensive Shopify Technical Audit Checklist (2025 Edition) - Tejas Kedare</title>
+    <meta name="description" content="Is your Shopify store losing sales due to hidden technical issues? Complete this 2025 technical audit checklist to fix speed, SEO, and functionality bugs.">
+    <link href="../styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="canonical" href="https://zectox-portfolio.vercel.app/blog/shopify-technical-audit-guide">
+    <link rel="icon" href="../src/tejas_website_image.webp" type="image/x-icon">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://zectox-portfolio.vercel.app/blog/shopify-technical-audit-guide">
+    <meta property="og:title" content="The Comprehensive Shopify Technical Audit Checklist (2025 Edition)">
+    <meta property="og:description" content="Boost your conversion rate and SEO rankings. A step-by-step technical audit guide for serious Shopify merchants.">
+    <meta property="og:image" content="https://zectox-portfolio.vercel.app/blog/images/shopify-technical-audit-guide.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://zectox-portfolio.vercel.app/blog/shopify-technical-audit-guide">
+    <meta property="twitter:title" content="The Comprehensive Shopify Technical Audit Checklist (2025 Edition)">
+    <meta property="twitter:description" content="Boost your conversion rate and SEO rankings. A step-by-step technical audit guide for serious Shopify merchants.">
+    <meta property="twitter:image" content="https://zectox-portfolio.vercel.app/blog/images/shopify-technical-audit-guide.png">
+</head>
+
+<body>
+    <div class="shopify-dashboard">
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="night-mode-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="nightModeToggle" aria-label="Toggle Night Mode">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Night Mode</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <a href="../#overview" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Back to Home</span>
+                </a>
+                <a href="." class="nav-item active">
+                    <i class="fas fa-blog"></i>
+                    <span>Blog</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="header-left">
+                    <a href="." class="back-link" style="margin-bottom: 0;">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </a>
+                </div>
+                <div class="header-right">
+                    <button class="schedule-btn-nav" onclick="window.location.href='../index.html#schedule'">
+                        <i class="fas fa-calendar-check"></i>
+                        Schedule Meeting
+                    </button>
+                    <button class="btn-secondary" id="downloadResumeBtn">
+                        <i class="fas fa-download"></i>
+                        Download Resume
+                    </button>
+                    <a href="../#contact" class="btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Me
+                    </a>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <article class="article-content">
+                    <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden;">
+                        <img src="images/shopify-technical-audit-guide.png"
+                            alt="Shopify Technical Audit Checklist" style="width: 100%; height: auto; display: block;">
+                    </div>
+
+                    <div class="article-header">
+                        <h1>The Comprehensive Shopify Technical Audit Checklist (2025 Edition)</h1>
+                        <div class="article-meta">
+                            <span>By Tejas Kedare</span> • <span>15 min read</span> • <span>Dec 5, 2025</span>
+                        </div>
+                    </div>
+
+                    <p class="lead-text">A beautiful store that loads slowly or has broken links is like a Ferrari with a flat tire. It looks great, but it won't get you anywhere. This technical audit checklist covers the exact process I use when auditing 7 and 8-figure Shopify brands.</p>
+
+                    <h2>Phase 1: Performance & Speed (Core Web Vitals)</h2>
+                    <p>Google doesn't just want your site to be fast; they want it to represent a good user experience. Since March 2024, <strong>INP (Interaction to Next Paint)</strong> replaced FID, so if you haven't audited your site recently, you're likely failing.</p>
+
+                    <div class="info-box" style="background: rgba(149, 243, 255, 0.1); padding: 20px; border-radius: 8px; border-left: 4px solid #008060; margin: 20px 0;">
+                        <h3>⚡ Performance Checklist</h3>
+                        <ul>
+                            <li><strong>Run PageSpeed Insights:</strong> Aim for >70 on Mobile and >90 on Desktop.</li>
+                            <li><strong>Check LCP (Largest Contentful Paint):</strong> Is your hero banner loading under 2.5s? Use <code>fetchpriority="high"</code> on the LCP image.</li>
+                            <li><strong>Fix Layout Shifts (CLS):</strong> Ensure all images and video elements have explicit <code>width</code> and <code>height</code> attributes.</li>
+                            <li><strong>Lazy Load Images:</strong> Ensure all non-critical images have <code>loading="lazy"</code>.</li>
+                            <li><strong>Audit Third-Party Scripts:</strong> Remove unused apps. Move tracking pixels to Shopify Pixels (Customer Events) where possible.</li>
+                        </ul>
+                    </div>
+
+                    <h2>Phase 2: Technical SEO Audit</h2>
+                    <p>It doesn't matter how good your content is if Google can't crawl it efficiently.</p>
+                    
+                    <h3>1. Canonical Structure</h3>
+                    <p>Shopify creates duplicate URLs by default (e.g., <code>/collections/all/products/product-name</code> vs <code>/products/product-name</code>). Ensure your theme is editing the canonical tags correctly to point to the root product URL.</p>
+
+                    <h3>2. Structured Data (Schema Markup)</h3>
+                    <p>Use the <a href="https://validator.schema.org/" target="_blank" rel="noopener noreferrer">Schema Validator</a>. You should have valid JSON-LD for:</p>
+                    <ul>
+                        <li>Product (with Price, Availability, and AggregateRating)</li>
+                        <li>Organization</li>
+                        <li>BreadcrumbList</li>
+                        <li>Article (for blog posts)</li>
+                    </ul>
+
+                    <h3>3. Sitemap & Robots.txt</h3>
+                    <p>Verify that your <code>sitemap.xml</code> is submitted to Google Search Console and that your <code>robots.txt</code> isn't blocking critical resources.</p>
+
+                    <h2>Phase 3: Codebase & Theme Health</h2>
+                    <p>Over time, Shopify themes accumulate "code rot" from installed and uninstalled apps.</p>
+
+                    <div class="info-box" style="background: rgba(255, 149, 149, 0.1); padding: 20px; border-radius: 8px; border-left: 4px solid #d82c0d; margin: 20px 0;">
+                        <h3>🧹 Code Cleanup Checklist</h3>
+                        <ul>
+                            <li><strong>Inspect <code>theme.liquid</code>:</strong> Look for script tags from deleted apps. They often leave <code>render 'app-snippet'</code> lines that cause errors.</li>
+                            <li><strong>Check Assets Folder:</strong> Delete CSS and JS files that are no longer referenced.</li>
+                            <li><strong>Console Errors:</strong> Open Chrome DevTools > Console. Are there red errors? A clean console = a happy browser.</li>
+                        </ul>
+                    </div>
+
+                    <h2>Phase 4: App Audit (The Silent Killer)</h2>
+                    <p>Every app you install adds JavaScript execution time. Be ruthless.</p>
+                    <ul>
+                        <li><strong>Redundant Apps:</strong> Do you have three different apps for popups, rewards, and reviews? Consolidate them.</li>
+                        <li><strong>Frontend vs. Backend:</strong> Backend apps (like order management) usually don't slow down your site. Frontend apps (page builders, sliders) do.</li>
+                        <li><strong>Theme App Extensions:</strong> Ensure apps are using modern Theme App Extensions, which are faster and cleaner than old script tag injections.</li>
+                    </ul>
+
+                    <h2>Phase 5: User Experience (UX) & Accessibility</h2>
+                    <p>You can be sued for having an inaccessible website. Plus, accessibility improves SEO.</p>
+                    <ul>
+                        <li><strong>Alt Text:</strong> Do all images have descriptive alt text?</li>
+                        <li><strong>Keyboard Navigation:</strong> Can you tab through the entire checkout process?</li>
+                        <li><strong>Contrast Ratios:</strong> Is your grey text on a white background readable?</li>
+                        <li><strong>Broken Links:</strong> Use a crawler to find and fix 404 errors.</li>
+                    </ul>
+
+                    <h2>Ready to Scale?</h2>
+                    <p>If you went through this list and found more red flags than green checks, it might be time for a professional audit. I offer deep-dive technical audits that identify every bottleneck holding your sales back.</p>
+
+
+
+                    <div
+                        style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e1e3e5; text-align: center;">
+                        <p><strong>Overwhelmed by this list? Let me handle the audit for you.</strong></p>
+                        <a href="../#contact" class="btn-primary">Book a Technical Audit</a>
+                    </div>
+                </article>
+
+
+            </div>
+        </main>
+    </div>
+    
+    <script src="../script.js"></script>
+</body>
+</html>
