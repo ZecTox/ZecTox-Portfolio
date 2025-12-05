@@ -22,7 +22,56 @@
     <meta property="og:description"
         content="Shopify is deprecating checkout.liquid. Learn how to migrate to Checkout Extensibility for a faster, upgrade-safe checkout.">
     <!-- Image will be updated after generation -->
-    <meta property="og:image" content="">
+    <meta property="og:image"
+        content="https://zectox-portfolio.vercel.app/blog/images/checkout_extensibility_banner.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "The End of checkout.liquid: Guide to Shopify Checkout Extensibility",
+      "image": "https://zectox-portfolio.vercel.app/blog/images/checkout_extensibility_banner.png",
+      "datePublished": "2025-11-20",
+      "dateModified": "2025-11-20",
+      "author": {
+        "@type": "Person",
+        "name": "Tejas Kedare",
+        "url": "https://zectox-portfolio.vercel.app/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tejas Kedare Portfolio",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://zectox-portfolio.vercel.app/src/tejas_website_image.webp"
+        }
+      },
+      "description": "Shopify is deprecating checkout.liquid. Learn how to migrate to Checkout Extensibility for a faster, upgrade-safe checkout."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://zectox-portfolio.vercel.app/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://zectox-portfolio.vercel.app/blog/"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Checkout Extensibility Guide",
+        "item": "https://zectox-portfolio.vercel.app/blog/shopify-checkout-extensibility-guide"
+      }]
+    }
+    </script>
 </head>
 
 <body>
@@ -88,7 +137,7 @@
                 <article class="article-content">
                     <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden;">
                         <img src="images/checkout_extensibility_banner.png" alt="Shopify Checkout Extensibility"
-                            style="width: 100%; height: auto; display: block;">
+                            fetchpriority="high" style="width: 100%; height: auto; display: block;">
                     </div>
 
                     <div class="article-header">
@@ -112,7 +161,8 @@
 
                     <h2>What is Checkout Extensibility?</h2>
                     <p>Historically, Shopify Plus merchants customized their checkout by directly editing the
-                        <code>checkout.liquid</code> code. While flexible, this approach had major downsides:</p>
+                        <code>checkout.liquid</code> code. While flexible, this approach had major downsides:
+                    </p>
                     <ul>
                         <li><strong>Upgrade Issues:</strong> Custom code meant you didn't get automatic updates from
                             Shopify.</li>
