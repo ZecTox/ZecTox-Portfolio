@@ -228,3 +228,30 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Handle specific hash scroll on load (especially for redirects from other pages)
+function handleHashScroll() {
+    if (window.location.hash) {
+        const targetElement = document.querySelector(window.location.hash);
+        if (targetElement) {
+            // Immediate scroll attempt
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            // Small fallback just in case layout shifts happen
+            setTimeout(() => {
+                targetElement.scrollIntoView({
+                    behavior: 'auto',
+                    block: 'start'
+                });
+            }, 100);
+        }
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', handleHashScroll);
+} else {
+    handleHashScroll();
+}

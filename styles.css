@@ -200,6 +200,11 @@ input:checked+.toggle-slider:before {
     background-color: #f6f6f7;
 }
 
+/* Add scroll margin for sticky header */
+.content-section, section {
+    scroll-margin-top: 100px;
+}
+
 /* Header */
 .header {
     background-color: #ffffff;
