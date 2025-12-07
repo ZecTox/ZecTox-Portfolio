@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Why Page Builders (PageFly/GemPages) Are Destroying Your SEO - Tejas Kedare</title>
+     <link href="../styles.css" rel="stylesheet">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+     <link rel="icon" href="../src/tejas_website_image.webp" type="image/x-icon">
+
+     <!-- SEO Meta Tags -->
+     <meta name="description"
+          content="Is your Shopify store slow? Apps like PageFly, GemPages, and Shogun create bloated code that kills your core web vitals. Learn how to switch to high-performance Shopify 2.0 sections.">
+     <meta name="keywords"
+          content="Shopify Page Builder SEO, Remove PageFly, Remove GemPages, Shopify Speed Optimization, Custom Shopify Sections, Liquid vs Page Builders, Shopify Developer">
+     <link rel="canonical" href="https://zectox.is-a.dev/blog/page-builders-seo-guide">
+
+     <!-- Open Graph -->
+     <meta property="og:type" content="article">
+     <meta property="og:title" content="Why Page Builders (PageFly/GemPages) Are Destroying Your SEO">
+     <meta property="og:description"
+          content="The hidden cost of 'easy' design. How drag-and-drop apps generate spaghetti code and destroy your Google rankings.">
+     <meta property="og:image" content="https://zectox.is-a.dev/blog/images/page_builders_seo_banner.png">
+
+     <!-- Twitter -->
+     <meta property="twitter:card" content="summary_large_image">
+     <meta property="twitter:url" content="https://zectox.is-a.dev/blog/page-builders-seo-guide">
+     <meta property="twitter:title" content="Why Page Builders Are Destroying Your SEO">
+     <meta property="twitter:description"
+          content="The hidden cost of 'easy' design. How drag-and-drop apps generate spaghetti code and destroy your Google rankings.">
+     <meta property="twitter:image" content="https://zectox.is-a.dev/blog/images/page_builders_seo_banner.png">
+
+     <!-- JSON-LD Structured Data -->
+     <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Why Page Builders (PageFly/GemPages) Are Destroying Your SEO",
+      "image": "https://zectox.is-a.dev/blog/images/page_builders_seo_banner.png",
+      "datePublished": "2025-12-07",
+      "dateModified": "2025-12-07",
+      "author": {
+        "@type": "Person",
+        "name": "Tejas Kedare",
+        "url": "https://zectox.is-a.dev/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tejas Kedare Portfolio",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://zectox.is-a.dev/src/tejas_website_image.webp"
+        }
+      },
+      "description": "Is your Shopify store slow? Apps like PageFly and GemPages create bloated code that kills your core web vitals. Learn how to switch to high-performance Shopify 2.0 sections."
+    }
+    </script>
+     <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://zectox.is-a.dev/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://zectox.is-a.dev/blog/"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Page Builder SEO Guide",
+        "item": "https://zectox.is-a.dev/blog/page-builders-seo-guide"
+      }]
+    }
+    </script>
+</head>
+
+<body>
+     <div class="shopify-dashboard">
+          <!-- Mobile Overlay -->
+          <div class="mobile-overlay" id="mobileOverlay"></div>
+
+          <!-- Sidebar -->
+          <nav class="sidebar">
+               <div class="sidebar-header">
+                    <div class="night-mode-toggle">
+                         <label class="toggle-switch">
+                              <input type="checkbox" id="nightModeToggle" aria-label="Toggle Night Mode">
+                              <span class="toggle-slider"></span>
+                         </label>
+                         <span class="toggle-label">Night Mode</span>
+                    </div>
+               </div>
+
+               <div class="nav-section">
+                    <a href="../#overview" class="nav-item">
+                         <i class="fas fa-home"></i>
+                         <span>Back to Home</span>
+                    </a>
+                    <a href="." class="nav-item active">
+                         <i class="fas fa-blog"></i>
+                         <span>Blog</span>
+                    </a>
+               </div>
+          </nav>
+
+          <!-- Main Content -->
+          <main class="main-content">
+               <!-- Header -->
+               <header class="header">
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                         <i class="fas fa-bars"></i>
+                    </button>
+
+                    <div class="header-left">
+                         <a href="." class="back-link" style="margin-bottom: 0;">
+                              <i class="fas fa-arrow-left"></i> Back to Blog
+                         </a>
+                    </div>
+                    <div class="header-right">
+                         <button class="schedule-btn-nav" onclick="window.location.href='../index.html#schedule'">
+                              <i class="fas fa-calendar-check"></i>
+                              Schedule Meeting
+                         </button>
+                         <button class="btn-secondary" id="downloadResumeBtn">
+                              <i class="fas fa-download"></i>
+                              Download Resume
+                         </button>
+                         <a href="../#contact" class="btn-primary">
+                              <i class="fas fa-envelope"></i>
+                              Contact Me
+                         </a>
+                    </div>
+               </header>
+
+               <div class="content-wrapper">
+                    <article class="article-content">
+                         <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden;">
+                              <img src="images/page_builders_seo_banner.png" alt="Page Builder vs Native Code"
+                                   width="1200" height="630" fetchpriority="high"
+                                   style="width: 100%; height: auto; display: block;">
+                         </div>
+
+                         <div class="article-header">
+                              <h1>Why Page Builders (PageFly/GemPages) Are Destroying Your SEO</h1>
+                              <div class="article-meta">
+                                   <span>By Tejas Kedare</span> • <span>8 min read</span> • <span>Dec 7, 2025</span>
+                              </div>
+                         </div>
+
+                         <p class="lead">It starts innocently. You want a fancy landing page, but you don't know code.
+                              So you install a "Drag & Drop" Page Builder app. It looks great... until you check your
+                              Google Speed Score.</p>
+
+                         <p>Apps like PageFly, GemPages, and Shogun are powerful tools, but they come with a massive
+                              hidden cost: **Spaghetti Code**.</p>
+
+                         <h2>The "Spaghetti Code" Problem</h2>
+                         <p>When you drag a simple text block onto a canvas in a page builder, the app doesn't just
+                              write a simple `&lt;p&gt;` tag. It often wraps it in 5-10 layers of `&lt;div&gt;`
+                              containers and attaches heavy JavaScript libraries to handle the "dragging" logic—even on
+                              the live site.</p>
+                         <p>This results in:</p>
+                         <ul>
+                              <li><strong>Huge DOM Size:</strong> Google penalizes pages with too many HTML elements.
+                              </li>
+                              <li><strong>Unused JavaScript:</strong> Loading 5MB of scripts just to show a static
+                                   image.</li>
+                              <li><strong>Slow Parsing:</strong> Mobile phones struggle to process all that junk,
+                                   causing high TBT (Total Blocking Time).</li>
+                         </ul>
+
+                         <h2>The SEO Impact</h2>
+                         <div
+                              style="background: rgba(255, 77, 77, 0.1); border-left: 4px solid #ff4d4d; padding: 16px; margin: 24px 0; border-radius: 4px;">
+                              <p style="margin: 0;"><strong>Fact:</strong> Google's Core Web Vitals update made speed a
+                                   direct ranking factor.</p>
+                         </div>
+                         <p>If your landing page takes 4 seconds to load because of a page builder, your bounce rate
+                              skyrockets. High bounce rate + Slow speed = <strong>Google de-ranking your store</strong>.
+                         </p>
+
+                         <h2>The Solution: Shopify 2.0 "Sections Everywhere"</h2>
+                         <p>Since the release of Shopify Online Store 2.0 (OS 2.0), you <strong>do not need page
+                                   builders</strong> to have drag-and-drop functionality.</p>
+                         <p>As a developer, I build **Custom Liquid Sections**. These are:</p>
+                         <ul>
+                              <li><strong>Native:</strong> They live inside your theme (Dawn, Prestige, etc.).</li>
+                              <li><strong>Fast:</strong> 0kb of extra library code. Just pure HTML/CSS.</li>
+                              <li><strong>Drag-and-Drop:</strong> You can edit text, images, and layout in the Shopify
+                                   Customizer exactly like a page builder.</li>
+                         </ul>
+
+                         <h2>Comparison: Builder vs. Code</h2>
+                         <div style="overflow-x: auto;">
+                              <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
+                                   <thead>
+                                        <tr style="background: rgba(0, 128, 96, 0.1);">
+                                             <th style="padding: 12px; text-align: left; border: 1px solid #e1e3e5;">
+                                                  Feature</th>
+                                             <th style="padding: 12px; text-align: left; border: 1px solid #e1e3e5;">
+                                                  Page Builder App</th>
+                                             <th style="padding: 12px; text-align: left; border: 1px solid #e1e3e5;">
+                                                  Custom Liquid Sections</th>
+                                        </tr>
+                                   </thead>
+                                   <tbody>
+                                        <tr>
+                                             <td style="padding: 12px; border: 1px solid #e1e3e5;">Performance Score
+                                             </td>
+                                             <td style="padding: 12px; border: 1px solid #e1e3e5; color: #ff4d4d;">20-40
+                                                  (Mobile)</td>
+                                             <td style="padding: 12px; border: 1px solid #e1e3e5; color: #008060;">
+                                                  90-100 (Mobile)</td>
+                                        </tr>
+                                        <tr>
+                                             <td style="padding: 12px; border: 1px solid #e1e3e5;">Monthly Cost</td>
+                                             <td style="padding: 12px; border: 1px solid #e1e3e5;">$29 - $99 / month
+                                             </td>
+                                             <td style="padding: 12px; border: 1px solid #e1e3e5;">$0 / month</td>
+                                        </tr>
+                                        <tr>
+                                             <td style="padding: 12px; border: 1px solid #e1e3e5;">Code Quality</td>
+                                             <td style="padding: 12px; border: 1px solid #e1e3e5;">Bloated, Messy</td>
+                                             <td style="padding: 12px; border: 1px solid #e1e3e5;">Clean, Semantic</td>
+                                        </tr>
+                                   </tbody>
+                              </table>
+                         </div>
+
+                         <h2>How I Can Help</h2>
+                         <p>If you feel "trapped" by your page builder because you can't code, I can help you migrate.
+                         </p>
+                         <p>I will take your existing high-converting landing page designs and <strong>re-code them as
+                                   native Shopify 2.0 sections</strong>.</p>
+                         <p>You keep the design. You keep the drag-and-drop editing. You lose the monthly fees and the
+                              slow load times.</p>
+
+                         <div
+                              style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e1e3e5; text-align: center;">
+                              <p><strong>Ready to ditch the Page Builder bloat?</strong></p>
+                              <p>Let's rebuild your landing pages for maximum speed.</p>
+                              <a href="../#contact" class="btn-primary" style="margin-top: 16px;">Get a Quote for
+                                   Migration</a>
+                         </div>
+
+                    </article>
+               </div>
+          </main>
+     </div>
+
+     <!-- Reusing the main script -->
+     <script src="/script.js"></script>
+</body>
+
+</html>
