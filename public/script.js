@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     window.open('https://github.com/ZecTox', '_blank');
                     break;
                 case 'website':
-                    window.open('https://zectox-portfolio.vercel.app/', '_blank');
+                    window.open('https://zectox.is-a.dev/', '_blank');
                     break;
             }
         });
