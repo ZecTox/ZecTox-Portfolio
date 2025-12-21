@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify B2B in 2025: Is It Ready for Enterprise Wholesale? - Tejas Kedare</title>
+    <link href="../styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="../src/tejas_website_image.webp" type="image/x-icon">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="A detailed look at Shopify B2B features in 2025. Company Profiles, Quantity Breaks, Vaulted Cards, and why enterprise wholesalers are moving from Magento/Salesforce to Shopify.">
+    <meta name="keywords"
+        content="Shopify B2B 2025, Shopify Plus Wholesale, B2B Ecommerce Platform, Shopify vs Magento B2B, Enterprise Ecommerce">
+    <link rel="canonical" href="https://zectox.is-a.dev/blog/shopify-b2b-wholesale-guide-2025">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Shopify B2B in 2025: Is It Ready for Enterprise Wholesale?">
+    <meta property="og:description"
+        content="A detailed look at Shopify B2B features in 2025. Why enterprise wholesalers are moving from Magento/Salesforce to Shopify.">
+    <meta property="og:image" content="https://zectox.is-a.dev/blog/images/shopify_b2b_2025_banner.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Shopify B2B in 2025: Is It Ready for Enterprise Wholesale?",
+      "image": "https://zectox.is-a.dev/blog/images/shopify_b2b_2025_banner.png",
+      "datePublished": "2025-12-21",
+      "dateModified": "2025-12-21",
+      "author": {
+        "@type": "Person",
+        "name": "Tejas Kedare",
+        "url": "https://zectox.is-a.dev/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tejas Kedare Portfolio",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://zectox.is-a.dev/src/tejas_website_image.webp"
+        }
+      },
+      "description": "A detailed look at Shopify B2B features in 2025. Why enterprise wholesalers are moving from Magento/Salesforce to Shopify."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://zectox.is-a.dev/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://zectox.is-a.dev/blog/"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Shopify B2B Guide",
+        "item": "https://zectox.is-a.dev/blog/shopify-b2b-wholesale-guide-2025"
+      }]
+    }
+    </script>
+
+    <style>
+        .toc-box {
+            background: rgba(0, 128, 96, 0.05);
+            border: 1px solid rgba(0, 128, 96, 0.2);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+
+        .toc-box h3 {
+            margin-top: 0;
+            color: #008060;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 12px;
+        }
+
+        .toc-list a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .toc-list a:hover {
+            color: #008060;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9em;
+            margin: 24px 0;
+            border: 1px solid #333;
+        }
+
+        .tip-box {
+            border-left: 4px solid #008060;
+            background: rgba(0, 128, 96, 0.1);
+            padding: 20px;
+            margin: 24px 0;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shopify-dashboard">
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="night-mode-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="nightModeToggle" aria-label="Toggle Night Mode">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Night Mode</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <a href="../#overview" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Back to Home</span>
+                </a>
+                <a href="." class="nav-item active">
+                    <i class="fas fa-blog"></i>
+                    <span>Blog</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <!-- Mobile Hamburger Menu -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="header-left">
+                    <a href="." class="back-link" style="margin-bottom: 0;">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </a>
+                </div>
+                <div class="header-right">
+                    <button class="schedule-btn-nav" onclick="window.location.href='../index.html#schedule'">
+                        <i class="fas fa-calendar-check"></i>
+                        Schedule Meeting
+                    </button>
+                    <button class="btn-secondary" id="downloadResumeBtn">
+                        <i class="fas fa-download"></i>
+                        Download Resume
+                    </button>
+                    <a href="../#contact" class="btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Me
+                    </a>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <article class="article-content">
+                    <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden;">
+                        <img src="images/shopify_b2b_2025_banner.png" alt="Shopify B2B 2025 Guide"
+                            fetchpriority="high"
+                            style="width: 100%; height: auto; display: block;">
+                    </div>
+
+                    <div class="article-header">
+                        <h1>Shopify B2B in 2025: Is It Ready for Enterprise Wholesale?</h1>
+                        <div class="article-meta">
+                            <span>By Tejas Kedare</span> • <span>Updated: Dec 21, 2025</span> • <span>20 min read</span>
+                        </div>
+                    </div>
+
+                    <p class="lead">For years, "Shopify is only for small businesses" was the common refrain. In 2025, that myth is dead. With massive upgrades to <strong>Shopify Plus B2B</strong>, legacy giants on Magento, Salesforce, and Oracle are migrating in droves.</p>
+
+                    <p>Why the sudden shift? It comes down to one thing: <strong>Unified Commerce</strong>. Managing your DTC (Direct-to-Consumer) and B2B channels from a <em>single</em> admin panel is a game-changer for operational efficiency.</p>
+
+                    <div class="toc-box">
+                        <h3>Table of Contents</h3>
+                        <ul class="toc-list">
+                            <li><a href="#chapter-1">Chapter 1: The Unified Admin Experience</a></li>
+                            <li><a href="#chapter-2">Chapter 2: Critical B2B Features (Catalogs & Pricing)</a></li>
+                            <li><a href="#chapter-3">Chapter 3: The New B2B Checkout</a></li>
+                            <li><a href="#chapter-4">Chapter 4: Using "Company Profiles"</a></li>
+                        </ul>
+                    </div>
+
+                    <h2 id="chapter-1">Chapter 1: The Unified Admin Experience</h2>
+                    <p>The old way of doing B2B involved setting up a completely separate subdomain (e.g., <code>wholesale.brand.com</code>) with a duplicate inventory system. This was a nightmare for stock syncing.</p>
+                    
+                    <p>In 2025, Shopify B2B runs off the same product database. You toggle a setting on a product to make it available to "DTC," "B2B," or "Both." Inventory is deducted from the same warehouse in real-time, preventing overselling.</p>
+
+                    <h2 id="chapter-2">Chapter 2: Critical B2B Features (Catalogs & Pricing)</h2>
+                    <p>Shopify now supports complex pricing structures natively, without clunky apps.</p>
+
+                    <h3>Custom Price Lists (Catalogs)</h3>
+                    <p>You can assign specific "Catalogs" to specific companies. </p>
+                    <ul>
+                        <li><strong>Company A (Gold Tier):</strong> Gets 40% off retail price across the board.</li>
+                        <li><strong>Company B (Silver Tier):</strong> Gets 20% off only on the "Accessories" collection.</li>
+                    </ul>
+
+                    <h3>Quantity Breaks</h3>
+                    <p>Native volume pricing is built-in. "Buy 10 for $50 each, Buy 50 for $45 each." This is displayed clearly on the product page (PDP) for logged-in B2B customers.</p>
+
+                    <h2 id="chapter-3">Chapter 3: The New B2B Checkout</h2>
+                    <p>The friction of B2B buying has been removed. The new checkout experience mirrors the seamless consumer experience but adds enterprise necessities:</p>
+
+                    <ul>
+                        <li><strong>Vaulted Credit Cards:</strong> Wholesalers can save a card on file for quick re-ordering.</li>
+                        <li><strong>Net Terms:</strong> Assign Net 15, 30, or 60 terms to trusted partners. They checkout now, and Shopify tracks the "Payment Pending" status automatically.</li>
+                        <li><strong>PO Numbers:</strong> A mandatory field for purchase order numbers ensures your buyers can reconcile their own accounting.</li>
+                    </ul>
+
+                    <h2 id="chapter-4">Chapter 4: Using "Company Profiles"</h2>
+                    <p>The "Customer" data model has been upgraded to "Company" profiles. A Company can have multiple "Locations" and multiple "Contacts."</p>
+
+                    <p><strong>Example:</strong> A chain of coffee shops (The Company) has 10 locations. The Manager at Location A can order supplies shipped to Location A, billed to the Headquarters. The Regional Director can see all orders from all 10 locations. This hierarchy is now native to Shopify.</p>
+
+                    <h2>Conclusion: It's Time to Migrate</h2>
+                    <p>If you are paying $50,000+ a year for a legacy B2B platform that requires a team of developers to update a banner image, you are bleeding money. Shopify B2B offers 90% of the custom functionality at 10% of the headache.</p>
+
+                    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e1e3e5; text-align: center;">
+                        <p><strong>Planning a B2B Migration?</strong></p>
+                        <p>I have successfully migrated multiple enterprise wholesalers to Shopify Plus. Let's discuss your data structure.</p>
+                        <a href="../#contact" class="btn-primary" style="margin-top: 16px;">Discuss Your B2B Strategy</a>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </div>
+
+    <!-- Reusing the main script -->
+    <script src="/script.js"></script>
+</body>
+
+</html>
