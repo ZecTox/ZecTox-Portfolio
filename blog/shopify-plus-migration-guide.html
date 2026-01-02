@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify Plus Migration: The ROI Calculator & Technical Checklist (2026)</title>
+    <link href="../styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="../src/tejas_website_image.webp" type="image/x-icon">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Thinking about upgrading to Shopify Plus? Use this ROI calculator to see if the $2,500/month fee is worth it. Complete technical migration checklist included.">
+    <meta name="keywords"
+        content="shopify plus migration, shopify plus cost, shopify plus roi, hire shopify plus expert, migrate to shopify plus, shopify enterprise development">
+    <link rel="canonical" href="https://zectox.is-a.dev/blog/shopify-plus-migration-guide">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Shopify Plus Migration: The ROI Calculator & Technical Checklist">
+    <meta property="og:description"
+        content="Is Shopify Plus worth the $2,500/month? Here is the math, the benefits, and the migration roadmap.">
+    <meta property="og:image" content="https://zectox.is-a.dev/blog/images/shopify_plus_migration_banner.png">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N8KD9MB7');</script>
+    <!-- End Google Tag Manager -->
+
+    <style>
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 32px 0;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+            color: #008060;
+        }
+
+        .roi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 0.9em;
+        }
+
+        .roi-table th, .roi-table td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .roi-table th {
+            background: #008060;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8KD9MB7"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="shopify-dashboard">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="night-mode-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="nightModeToggle" aria-label="Toggle Night Mode">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Night Mode</span>
+                </div>
+            </div>
+            <div class="nav-section">
+                <a href="../#overview" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Back to Home</span>
+                </a>
+                <a href="." class="nav-item active">
+                    <i class="fas fa-blog"></i>
+                    <span>Blog</span>
+                </a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="header">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-left">
+                    <a href="." class="back-link" style="margin-bottom: 0;">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </a>
+                </div>
+                <div class="header-right">
+                    <button class="schedule-btn-nav" onclick="window.location.href='../#schedule'">
+                        <i class="fas fa-calendar-check"></i>
+                        Schedule Meeting
+                    </button>
+                    <a href="../#contact" class="btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Me
+                    </a>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <article class="article-content">
+                    <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden; background-color: #0b0c0d; display: flex; align-items: center; justify-content: center; min-height: 400px;">
+                        <img src="images/shopify_plus_migration_banner.png" alt="Shopify Plus Migration Guide"
+                            fetchpriority="high"
+                            style="width: 100%; height: auto; display: block;"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'padding:40px; text-align:center; color:#888;\'><i class=\'fas fa-rocket fa-3x\'></i><p>Shopify Plus Guide</p></div>'">
+                    </div>
+
+                    <div class="article-header">
+                        <span class="tag" style="background: #7c3aed; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; text-transform: uppercase; margin-bottom: 12px; display: inline-block;">Enterprise</span>
+                        <h1>Shopify Plus Migration: The ROI Calculator & Technical Checklist</h1>
+                        <div class="article-meta">
+                            <span>By Tejas Kedare</span> • <span>Updated: Jan 2, 2026</span> • <span>20 min read</span>
+                        </div>
+                    </div>
+
+                    <p class="lead">$2,500 a month. That's the starting price tag for Shopify Plus. For many merchants, it's scary. But for scaling brands, NOT switching might be costing you $10,000+ a month.</p>
+
+                    <p>I've managed migrations for brands doing $1M to $50M a year. This guide breaks down exactly when to switch and how to do it without losing data or ranking.</p>
+
+                    <h2>The Math: When Does "Plus" Pay for Itself?</h2>
+
+                    <p>It's simple math. The key is <strong>transaction fees</strong>.</p>
+                    <ul>
+                        <li><strong>Standard Shopify:</strong> ~2.4% + 30¢ (varies) + 0.5-2% external gateway fees.</li>
+                        <li><strong>Shopify Plus:</strong> ~2.15% (negotiable) + 0% external gateway fees (in some regions/setups).</li>
+                    </ul>
+
+                    <table class="roi-table">
+                        <thead>
+                            <tr>
+                                <th>Monthly GMV (Revenue)</th>
+                                <th>Standard Fees (Est.)</th>
+                                <th>Plus Fees (Est.)</th>
+                                <th>Savings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>$50,000</td>
+                                <td>$1,450</td>
+                                <td>$3,575 (Min fee + trans)</td>
+                                <td style="color: red;">-$2,125</td>
+                            </tr>
+                            <tr>
+                                <td>$200,000</td>
+                                <td>$5,800</td>
+                                <td>$6,800</td>
+                                <td style="color: red;">-$1,000</td>
+                            </tr>
+                            <tr>
+                                <td>$800,000</td>
+                                <td>$23,200</td>
+                                <td>$19,700</td>
+                                <td style="color: green;">+$3,500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p><strong>The Tipping Point:</strong> Usually around <strong>$800k - $1M / month</strong> in sales is where the transaction fee savings alone pay for the platform cost.</p>
+                    <p>BUT, that ignores the other massive value drivers...</p>
+
+                    <h2>The "Hidden" Value Drivers of Plus</h2>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4>Checkout Extensibility</h4>
+                            <p>Customize the checkout. Add upsells, trust badges, shipping rules. This alone can boost conversion by 10-15%.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>B2B Key Features</h4>
+                            <p>Wholesale channel is built-in. Custom price lists, payment terms, easy reordering. Replace expensive 3rd party B2B apps.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Script Editor / Functions</h4>
+                            <p>Complex discount logic (e.g., "Buy 3 socks get 1 hat 50% off if user is VIP"). Standard Shopify can't do this natively.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>API Limits</h4>
+                            <p>Double or triple the API rate limits. Crucial if you have heavy ERP or inventory syncs running.</p>
+                        </div>
+                    </div>
+
+                    <h2>The Technical Migration Checklist</h2>
+
+                    <p>Moving from Magento, WooCommerce, or Salesforce to Shopify Plus? Here is my battle-tested checklist.</p>
+
+                    <h3>1. Data Migration</h3>
+                    <ul>
+                        <li>[ ] Products & Variants (Metafields are tricky!)</li>
+                        <li>[ ] Customers (Tags, historical data)</li>
+                        <li>[ ] Orders (For history logging)</li>
+                        <li>[ ] Reviews (Need a compatible app like Yotpo/Okendo/Judge.me)</li>
+                        <li>[ ] Gift Cards (Tricky, often manual)</li>
+                    </ul>
+
+                    <h3>2. SEO Preservation (CRITICAL)</h3>
+                    <p><strong>Do not launch without a 301 redirect map.</strong> If you change URL structures (which Shopify forces), you lose all Google ranking unless you map `old-site.com/product-123` to `new-site.com/products/cool-shirt`.</p>
+
+                    <h3>3. Design & Theme</h3>
+                    <ul>
+                        <li>[ ] Rebuild theme on Shopify 2.0 architecture</li>
+                        <li>[ ] Implement Checkout Extensibility (Plus exclusive)</li>
+                        <li>[ ] Setup International Markets (Shopify Markets Pro)</li>
+                    </ul>
+
+                    <h2>How I Handle Plus Migrations</h2>
+
+                    <p>Migration is high-stakes. One mistake can wipe out a week's revenue or existing SEO traffic.</p>
+                    <p>My process involves:</p>
+                    <ol>
+                        <li><strong>Data Audit:</strong> We analyze your messy data before moving it.</li>
+                        <li><strong>Staging Build:</strong> We build the full store on a dev environment.</li>
+                        <li><strong>ERP Integration:</strong> Connect NetSuite, SAP, or Microsoft Dynamics.</li>
+                        <li><strong>SEO Mapping:</strong> Comprehensive 301 redirect map creation.</li>
+                        <li><strong>Soft Launch:</strong> Testing with a small segment or password protection.</li>
+                    </ol>
+
+                    <div style="background: var(--card-bg); padding: 32px; border-radius: 12px; margin: 40px 0; border: 2px solid #008060;">
+                        <h3 style="margin-top: 0; color: #008060;">Planning a Migration?</h3>
+                        <p style="font-size: 1.1em;">I specialize in high-complexity migrations to Shopify Plus.</p>
+                        <p>Let's map out your data, SEO, and integration needs to ensure a seamless switch.</p>
+                        <a href="../#contact" class="btn-primary" style="margin-top: 16px;">Discuss Your Migration</a>
+                    </div>
+
+                    <p><strong>Conclusion:</strong> Shopify Plus isn't just "expensive Shopify." It's an enterprise operating system. If you're doing over $5M/year, you are likely losing money by NOT being on it due to inefficiencies and lower conversion ceilings.</p>
+
+                    <hr style="margin: 60px 0;">
+
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <h3>Ready to Scale?</h3>
+                        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                            <a href="../#schedule" class="btn-primary">
+                                <i class="fas fa-calendar"></i> Book Migration Call
+                            </a>
+                        </div>
+                    </div>
+
+                </article>
+            </div>
+        </main>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
