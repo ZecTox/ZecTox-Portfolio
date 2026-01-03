@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             switch (contactType) {
                 case 'email':
-                    window.location.href = 'mailto:tejaskedare.22@gmail.com', '_blank';
+                    window.location.href = 'mailto:tejaskedare.22@gmail.com';
                     break;
                 case 'linkedin':
                     window.open('https://www.linkedin.com/in/zectox/', '_blank');

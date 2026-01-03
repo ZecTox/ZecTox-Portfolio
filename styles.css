@@ -1402,3 +1402,14 @@ body.night-mode .blog-cta-text p {
         margin: 0 auto;
     }
 }
+
+/* Utility Classes to Replace Inline Styles */
+.text-center { text-align: center; }
+.w-full { width: 100%; }
+.mt-12 { margin-top: 12px; }
+.justify-center { justify-content: center; }
+.object-cover { object-fit: cover; }
+.block-link { text-decoration: none; color: inherit; display: block; height: 100%; }
+.hover-translate:hover { transform: translateY(-4px); }
+.hover-scale:hover { transform: scale(1.02); }
+.transition-transform { transition: transform 0.2s; }
