@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify Subscription Apps Compared: Recharge vs Bold vs Skio vs Loop (2026)</title>
+    <link href="../styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="../src/tejas_website_image.webp" type="image/x-icon">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Choosing between Recharge, Bold, Skio, and Loop for Shopify subscriptions? This breakdown covers pricing, migration complexity, checkout integration, and which fits your subscription model.">
+    <meta name="keywords"
+        content="shopify subscription apps, recharge vs bold subscriptions, skio shopify, loop subscriptions review, best shopify subscription app 2026, recharge pricing, bold subscriptions vs recharge, shopify recurring payments">
+    <link rel="canonical" href="https://zectox.is-a.dev/blog/shopify-subscription-apps-comparison-2026">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Shopify Subscription Apps: Recharge vs Bold vs Skio vs Loop">
+    <meta property="og:description"
+        content="A practical comparison for merchants choosing a subscription platform. Covers pricing tiers, checkout integration, migration paths, and real limitations.">
+    <meta property="og:image" content="https://zectox.is-a.dev/blog/images/shopify_subscription_apps_comparison_banner.png">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N8KD9MB7');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Vercel Speed Insights -->
+    <script>window.si = window.si || function () { (window.si.q = window.si.q || []).push(arguments); };</script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+
+    <style>
+        .app-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+        .app-card h4 { margin-top: 0; }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 32px 0;
+            background: var(--card-bg);
+            font-size: 0.92em;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 14px 12px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+        .comparison-table th {
+            background: #008060;
+            color: white;
+            font-weight: 600;
+        }
+        .comparison-table th:nth-child(2) { background: #5433FF; }
+        .comparison-table th:nth-child(3) { background: #00b894; }
+        .comparison-table th:nth-child(4) { background: #6c5ce7; }
+        .comparison-table th:nth-child(5) { background: #e17055; }
+        .comparison-table td:first-child { font-weight: 500; }
+        .pro { color: #00b894; }
+        .con { color: #d63031; }
+        .neutral { color: #636e72; }
+        .verdict-box {
+            background: var(--card-bg);
+            border-left: 4px solid #008060;
+            padding: 24px;
+            margin: 32px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .warning-box {
+            background: var(--card-bg);
+            border-left: 4px solid #d63031;
+            padding: 24px;
+            margin: 32px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .toc {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 32px 0;
+        }
+        .toc h3 { margin-top: 0; }
+        .toc ul { list-style: none; padding-left: 0; }
+        .toc li { margin: 8px 0; }
+        .toc a { color: #008060; text-decoration: none; }
+        .faq-item { margin: 24px 0; }
+        .faq-item h4 { color: #008060; margin-bottom: 8px; }
+        .pricing-note {
+            background: linear-gradient(135deg, #f6f8fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8KD9MB7"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+    <div class="shopify-dashboard">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="night-mode-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="nightModeToggle" aria-label="Toggle Night Mode">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Night Mode</span>
+                </div>
+            </div>
+            <div class="nav-section">
+                <a href="../#overview" class="nav-item"><i class="fas fa-home"></i><span>Back to Home</span></a>
+                <a href="." class="nav-item active"><i class="fas fa-blog"></i><span>Blog</span></a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="header">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="fas fa-bars"></i></button>
+                <div class="header-left">
+                    <a href="." class="back-link" style="margin-bottom: 0;"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+                </div>
+                <div class="header-right">
+                    <button class="schedule-btn-nav" onclick="window.location.href='../#schedule'"><i class="fas fa-calendar-check"></i>Schedule Meeting</button>
+                    <a href="../#contact" class="btn-primary"><i class="fas fa-envelope"></i>Contact Me</a>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <article class="article-content">
+                    <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden; background: linear-gradient(135deg, #5433FF 0%, #20BDFF 50%, #A5FECB 100%); display: flex; align-items: center; justify-content: center; min-height: 300px;">
+                        <div style="text-align: center; color: white; padding: 40px;">
+                            <i class="fas fa-sync-alt" style="font-size: 4em; margin-bottom: 20px; opacity: 0.9;"></i>
+                            <h2 style="margin: 0; font-size: 1.8em;">Subscription Apps Comparison</h2>
+                        </div>
+                    </div>
+
+                    <div class="article-header">
+                        <span class="tag" style="background: #5433FF; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; text-transform: uppercase; margin-bottom: 12px; display: inline-block;">App Comparison</span>
+                        <h1>Shopify Subscription Apps: Recharge vs Bold vs Skio vs Loop</h1>
+                        <div class="article-meta">
+                            <span>By Tejas Kedare</span> | <span>Updated: January 15, 2026</span> | <span>18 min read</span>
+                        </div>
+                    </div>
+
+                    <p class="lead">Subscription commerce on Shopify requires a third-party app. You have four serious contenders: Recharge, Bold Subscriptions, Skio, and Loop. Each has different strengths, pricing models, and technical trade-offs. This guide helps you choose based on your business model, not marketing claims.</p>
+
+                    <p>If you are launching subscriptions for the first time, migrating from an existing provider, or re-evaluating your current setup, the wrong choice costs more than the monthly fee. It affects checkout conversion, customer portal experience, and long-term flexibility.</p>
+
+                    <p>This comparison is based on real implementation experience across dozens of Shopify stores running subscription models from simple replenishment to complex curated boxes.</p>
+
+                    <div class="toc">
+                        <h3>In This Guide</h3>
+                        <ul>
+                            <li><a href="#overview">1. Quick Overview of Each Platform</a></li>
+                            <li><a href="#pricing">2. Pricing Breakdown and Hidden Costs</a></li>
+                            <li><a href="#checkout">3. Checkout Integration and Conversion Impact</a></li>
+                            <li><a href="#portal">4. Customer Portal and Self-Service</a></li>
+                            <li><a href="#features">5. Feature Comparison Table</a></li>
+                            <li><a href="#migration">6. Migration Complexity and Lock-In</a></li>
+                            <li><a href="#when-to-use">7. When to Use Each Platform</a></li>
+                            <li><a href="#when-not">8. When NOT to Use Each Platform</a></li>
+                            <li><a href="#faq">9. Frequently Asked Questions</a></li>
+                            <li><a href="#recommendation">10. Final Recommendation Framework</a></li>
+                        </ul>
+                    </div>
+
+                    <h2 id="overview">1. Quick Overview of Each Platform</h2>
+
+                    <p>Before diving into details, here is a brief positioning of each app:</p>
+
+                    <div class="app-card" style="border-top: 4px solid #5433FF;">
+                        <h4>Recharge</h4>
+                        <p><strong>Market position:</strong> The incumbent. Largest market share among Shopify subscription apps. Powers major brands like Fiji Water, Native, and Hubble.</p>
+                        <p><strong>Best for:</strong> Established brands needing enterprise features, complex subscription logic, and proven reliability at scale.</p>
+                        <p><strong>Key consideration:</strong> Higher pricing and more complex setup. Overkill for simple use cases.</p>
+                    </div>
+
+                    <div class="app-card" style="border-top: 4px solid #00b894;">
+                        <h4>Bold Subscriptions</h4>
+                        <p><strong>Market position:</strong> Long-standing Shopify partner. Part of the Bold Commerce suite. Focus on flexibility and prepaid options.</p>
+                        <p><strong>Best for:</strong> Merchants wanting prepaid subscription models, tight integration with other Bold apps, or fixed-term subscription boxes.</p>
+                        <p><strong>Key consideration:</strong> Checkout experience historically weaker than competitors. Recent improvements with Checkout Extensions.</p>
+                    </div>
+
+                    <div class="app-card" style="border-top: 4px solid #6c5ce7;">
+                        <h4>Skio</h4>
+                        <p><strong>Market position:</strong> The challenger. Founded by ex-Recharge employees. Focus on passwordless login, faster customer portal, and modern UX.</p>
+                        <p><strong>Best for:</strong> DTC brands prioritizing customer experience, reducing churn through better self-service, and wanting a more modern stack.</p>
+                        <p><strong>Key consideration:</strong> Smaller company, less enterprise validation. Feature set still maturing compared to Recharge.</p>
+                    </div>
+
+                    <div class="app-card" style="border-top: 4px solid #e17055;">
+                        <h4>Loop Subscriptions</h4>
+                        <p><strong>Market position:</strong> Value-focused alternative. Aggressive pricing to compete with established players. Strong focus on retention features.</p>
+                        <p><strong>Best for:</strong> Cost-conscious merchants, those wanting built-in retention tools, and brands prioritizing subscription analytics.</p>
+                        <p><strong>Key consideration:</strong> Newer entrant with less proven track record at high scale. Feature depth still developing.</p>
+                    </div>
+
+                    <h2 id="pricing">2. Pricing Breakdown and Hidden Costs</h2>
+
+                    <p>Subscription app pricing is rarely straightforward. All four platforms use a combination of monthly fees and transaction-based fees. The total cost depends heavily on your average order value and subscription volume.</p>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Pricing Component</th>
+                                <th>Recharge</th>
+                                <th>Bold</th>
+                                <th>Skio</th>
+                                <th>Loop</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Starting Monthly Fee</td>
+                                <td>$99/mo</td>
+                                <td>$49.99/mo</td>
+                                <td>$299/mo</td>
+                                <td>$99/mo</td>
+                            </tr>
+                            <tr>
+                                <td>Transaction Fee (Standard)</td>
+                                <td>1% + 19c</td>
+                                <td>1% + 10c</td>
+                                <td>1% + 20c</td>
+                                <td>1% + 19c</td>
+                            </tr>
+                            <tr>
+                                <td>Enterprise/Pro Tier</td>
+                                <td>$499+/mo</td>
+                                <td>Custom</td>
+                                <td>$599+/mo</td>
+                                <td>$399/mo</td>
+                            </tr>
+                            <tr>
+                                <td>Free Trial</td>
+                                <td>30 days</td>
+                                <td>60 days</td>
+                                <td>30 days</td>
+                                <td>14 days</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="pricing-note">
+                        <strong>Real-world example:</strong> A brand processing $50,000/month in subscription revenue would pay approximately:
+                        <ul style="margin: 12px 0 0 0;">
+                            <li><strong>Recharge Standard:</strong> $99 + ~$500 in transaction fees = ~$599/month</li>
+                            <li><strong>Bold:</strong> $49.99 + ~$500 in transaction fees = ~$550/month</li>
+                            <li><strong>Skio:</strong> $299 + ~$500 in transaction fees = ~$799/month</li>
+                            <li><strong>Loop:</strong> $99 + ~$500 in transaction fees = ~$599/month</li>
+                        </ul>
+                    </div>
+
+                    <h3>Hidden Costs to Consider</h3>
+
+                    <p>The monthly fee is not the complete picture. Factor these additional costs:</p>
+
+                    <ul>
+                        <li><strong>Migration costs:</strong> Moving from one subscription app to another costs $2,000-$15,000+ in developer time depending on complexity and subscriber count.</li>
+                        <li><strong>Theme integration:</strong> Subscription widgets, PDP modifications, and portal customization require developer work. Budget $500-$3,000 for initial setup.</li>
+                        <li><strong>Checkout Extensions:</strong> If you need advanced checkout customization, some platforms charge extra or require higher tiers.</li>
+                        <li><strong>SMS/Email add-ons:</strong> Dunning management and retention campaigns may require additional integrations with Klaviyo, Postscript, or native add-ons.</li>
+                    </ul>
+
+                    <h2 id="checkout">3. Checkout Integration and Conversion Impact</h2>
+
+                    <p>This is where subscription apps differ most significantly. How the app handles checkout directly impacts conversion rate.</p>
+
+                    <h3>Recharge</h3>
+                    <p>Recharge now supports Shopify Checkout Extensions, meaning subscriptions can be processed through Shopify's native checkout. This was a major improvement from their legacy hosted checkout, which had lower conversion rates due to redirect friction.</p>
+                    <p><strong>Current state:</strong> Checkout Extensions on higher tiers. Legacy checkout still available but not recommended for new implementations.</p>
+
+                    <h3>Bold Subscriptions</h3>
+                    <p>Bold has historically used a redirect checkout model, which introduced friction. Their recent updates support Checkout Extensions on Shopify Plus stores. For non-Plus stores, the experience remains less native.</p>
+                    <p><strong>Current state:</strong> Best experience on Shopify Plus with Checkout Extensions. Standard Shopify stores have a functional but less seamless flow.</p>
+
+                    <h3>Skio</h3>
+                    <p>Skio was built from the ground up to work with Shopify Checkout Extensions. Their integration is native, with no redirects. This typically results in higher conversion rates compared to redirect-based flows.</p>
+                    <p><strong>Current state:</strong> Native Checkout Extensions integration. Considered best-in-class for checkout experience among the four.</p>
+
+                    <h3>Loop</h3>
+                    <p>Loop supports Checkout Extensions and provides a native checkout experience. Their integration is solid, though less mature than Recharge or Skio in terms of customization options.</p>
+                    <p><strong>Current state:</strong> Native checkout with fewer customization options than competitors.</p>
+
+                    <div class="verdict-box">
+                        <h4 style="margin-top: 0; color: #008060;">Checkout Verdict</h4>
+                        <p style="margin-bottom: 0;">If checkout conversion is your primary concern, Skio and Recharge (on Pro tier) offer the best native experiences. Bold requires Shopify Plus for optimal checkout integration. Loop is functional but less customizable.</p>
+                    </div>
+
+                    <h2 id="portal">4. Customer Portal and Self-Service</h2>
+
+                    <p>The customer portal determines how subscribers manage their subscriptions. A poor portal increases support tickets and churn. A good portal reduces both.</p>
+
+                    <h3>What Matters in a Subscription Portal</h3>
+                    <ul>
+                        <li><strong>Skip/pause functionality:</strong> Can customers easily skip an order or pause their subscription?</li>
+                        <li><strong>Swap products:</strong> For curated boxes, can customers change items without contacting support?</li>
+                        <li><strong>Edit frequency:</strong> Can subscribers change from monthly to bimonthly?</li>
+                        <li><strong>Update payment:</strong> How easy is it to update an expired card?</li>
+                        <li><strong>Mobile experience:</strong> Is the portal mobile-optimized?</li>
+                    </ul>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Portal Feature</th>
+                                <th>Recharge</th>
+                                <th>Bold</th>
+                                <th>Skio</th>
+                                <th>Loop</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Skip/Pause</td>
+                                <td class="pro">Yes</td>
+                                <td class="pro">Yes</td>
+                                <td class="pro">Yes (1-click)</td>
+                                <td class="pro">Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Product Swaps</td>
+                                <td class="pro">Yes</td>
+                                <td class="pro">Yes</td>
+                                <td class="pro">Yes</td>
+                                <td class="pro">Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Passwordless Login</td>
+                                <td class="neutral">Optional</td>
+                                <td class="con">No</td>
+                                <td class="pro">Native</td>
+                                <td class="pro">Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Custom Branding</td>
+                                <td class="pro">Extensive</td>
+                                <td class="neutral">Limited</td>
+                                <td class="pro">Extensive</td>
+                                <td class="neutral">Moderate</td>
+                            </tr>
+                            <tr>
+                                <td>Mobile UX</td>
+                                <td class="pro">Good</td>
+                                <td class="neutral">Adequate</td>
+                                <td class="pro">Excellent</td>
+                                <td class="pro">Good</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>Skio differentiates primarily on portal experience. Their passwordless login (via SMS or email magic link) removes friction for customers managing subscriptions. In real-world scenarios, this reduces login-related support tickets by 30-50%.</p>
+
+                    <h2 id="features">5. Feature Comparison Table</h2>
+
+                    <p>Beyond checkout and portal, here is a comprehensive feature comparison:</p>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Recharge</th>
+                                <th>Bold</th>
+                                <th>Skio</th>
+                                <th>Loop</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Prepaid Subscriptions</td>
+                                <td class="pro">Yes</td>
+                                <td class="pro">Yes (strong)</td>
+                                <td class="pro">Yes</td>
+                                <td class="pro">Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Gift Subscriptions</td>
+                                <td class="pro">Yes</td>
+                                <td class="pro">Yes</td>
+                                <td class="pro">Yes</td>
+                                <td class="neutral">Limited</td>
+                            </tr>
+                            <tr>
+                                <td>Build-a-Box</td>
+                                <td class="pro">Native</td>
+                                <td class="pro">Native</td>
+                                <td class="neutral">Via partner</td>
+                                <td class="neutral">Limited</td>
+                            </tr>
+                            <tr>
+                                <td>Tiered Discounts</td>
+                                <td class="pro">Yes</td>
+                                <td class="pro">Yes</td>
+                                <td class="pro">Yes</td>
+                                <td class="pro">Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Dunning Management</td>
+                                <td class="pro">Advanced</td>
+                                <td class="neutral">Basic</td>
+                                <td class="pro">Advanced</td>
+                                <td class="pro">Advanced</td>
+                            </tr>
+                            <tr>
+                                <td>Analytics Dashboard</td>
+                                <td class="pro">Comprehensive</td>
+                                <td class="neutral">Basic</td>
+                                <td class="pro">Good</td>
+                                <td class="pro">Strong</td>
+                            </tr>
+                            <tr>
+                                <td>API Access</td>
+                                <td class="pro">Full REST + GraphQL</td>
+                                <td class="pro">REST</td>
+                                <td class="pro">Full API</td>
+                                <td class="neutral">Limited</td>
+                            </tr>
+                            <tr>
+                                <td>Klaviyo Integration</td>
+                                <td class="pro">Native</td>
+                                <td class="pro">Native</td>
+                                <td class="pro">Native</td>
+                                <td class="pro">Native</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h2 id="migration">6. Migration Complexity and Lock-In</h2>
+
+                    <p>Switching subscription apps is painful. Customer payment methods, subscription schedules, and order history must be migrated. This is where many brands get stuck.</p>
+
+                    <h3>Migration Considerations by Platform</h3>
+
+                    <p><strong>Migrating TO Recharge:</strong> Recharge offers migration support and has more documentation due to market share. Most migration tools support Recharge as a destination. Expect 2-4 weeks for a full migration with developer assistance.</p>
+
+                    <p><strong>Migrating TO Bold:</strong> Bold provides migration services for a fee. Migrations from Recharge are documented. Complexity is moderate.</p>
+
+                    <p><strong>Migrating TO Skio:</strong> Skio actively courts Recharge customers and offers white-glove migration support. They have streamlined the Recharge-to-Skio migration path specifically. Expect 2-3 weeks with their assistance.</p>
+
+                    <p><strong>Migrating TO Loop:</strong> Loop offers migration support but has less tooling for complex migrations. Suitable for smaller subscriber bases (under 5,000 active subscribers).</p>
+
+                    <div class="warning-box">
+                        <h4 style="margin-top: 0; color: #d63031;">Lock-In Warning</h4>
+                        <p>All subscription apps create some degree of lock-in. Payment tokens (saved cards) are often non-transferable, meaning customers may need to re-enter payment details after migration. This causes subscriber drop-off of 5-15% during migrations.</p>
+                        <p style="margin-bottom: 0;">Factor this into your decision. The cost of migration is not just developer time; it is subscriber churn.</p>
+                    </div>
+
+                    <h2 id="when-to-use">7. When to Use Each Platform</h2>
+
+                    <h3>Choose Recharge When:</h3>
+                    <ul>
+                        <li>You process over $100,000/month in subscription revenue</li>
+                        <li>You need enterprise features like multi-store support or advanced APIs</li>
+                        <li>You have a development team that can leverage their extensive customization options</li>
+                        <li>You require proven reliability at scale with SLA guarantees</li>
+                        <li>You need complex subscription logic (sequential products, commitment terms)</li>
+                    </ul>
+
+                    <h3>Choose Bold When:</h3>
+                    <ul>
+                        <li>Prepaid subscriptions are a primary offering (quarterly/annual prepay)</li>
+                        <li>You already use other Bold apps (Bold Bundles, Bold Custom Pricing)</li>
+                        <li>You need fixed-term subscription boxes with defined start/end dates</li>
+                        <li>Budget is a primary concern and you are on Shopify Plus for checkout optimization</li>
+                    </ul>
+
+                    <h3>Choose Skio When:</h3>
+                    <ul>
+                        <li>Customer experience and churn reduction are top priorities</li>
+                        <li>You want the best mobile portal experience available</li>
+                        <li>Passwordless login and modern UX matter to your customer base</li>
+                        <li>You are migrating from Recharge and want a smoother experience</li>
+                        <li>You prioritize conversion rate at checkout</li>
+                    </ul>
+
+                    <h3>Choose Loop When:</h3>
+                    <ul>
+                        <li>You are cost-conscious and need competitive pricing</li>
+                        <li>Built-in retention and analytics tools are valuable to you</li>
+                        <li>You have a simpler subscription model (replenishment, basic boxes)</li>
+                        <li>You have fewer than 5,000 active subscribers</li>
+                    </ul>
+
+                    <h2 id="when-not">8. When NOT to Use Each Platform</h2>
+
+                    <p>What most guides avoid: the scenarios where each platform is the wrong choice.</p>
+
+                    <h3>Do NOT Choose Recharge If:</h3>
+                    <ul>
+                        <li>You have fewer than $20,000/month in subscription revenue (overkill)</li>
+                        <li>You want a simple plug-and-play solution without developer involvement</li>
+                        <li>Budget is your primary constraint</li>
+                        <li>You need rapid implementation (setup is more complex than alternatives)</li>
+                    </ul>
+
+                    <h3>Do NOT Choose Bold If:</h3>
+                    <ul>
+                        <li>You are on standard Shopify (non-Plus) and checkout experience is critical</li>
+                        <li>You need the most modern customer portal experience</li>
+                        <li>You require advanced API access for custom integrations</li>
+                        <li>Analytics and reporting depth are important to your operations</li>
+                    </ul>
+
+                    <h3>Do NOT Choose Skio If:</h3>
+                    <ul>
+                        <li>You need build-a-box functionality without third-party apps</li>
+                        <li>You require enterprise SLAs and dedicated account management</li>
+                        <li>You prefer working with the largest, most established vendor</li>
+                        <li>Budget is extremely tight (Skio is priced at a premium)</li>
+                    </ul>
+
+                    <h3>Do NOT Choose Loop If:</h3>
+                    <ul>
+                        <li>You have complex subscription logic requirements</li>
+                        <li>You need extensive API access for custom development</li>
+                        <li>You process very high volume and need proven enterprise scale</li>
+                        <li>Build-a-box or curated subscription boxes are central to your model</li>
+                    </ul>
+
+                    <h2 id="faq">9. Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <h4>Can I switch subscription apps without losing subscribers?</h4>
+                        <p>Technically yes, but expect 5-15% subscriber drop-off during migration due to payment method re-entry requirements. Plan for customer communication and potentially incentivized re-signup campaigns.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Which app has the lowest transaction fees?</h4>
+                        <p>Bold has slightly lower per-transaction fees (1% + 10 cents vs 1% + 19-20 cents for others). However, total cost depends on monthly fees and your order value. At high volumes, negotiate custom enterprise rates with any provider.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Do these apps work with Shopify Checkout Extensions?</h4>
+                        <p>Yes, all four now support Checkout Extensions to varying degrees. Skio and Recharge Pro offer the most native integrations. Bold requires Shopify Plus for optimal checkout experience.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Which is best for reducing subscriber churn?</h4>
+                        <p>Skio and Loop emphasize retention features most heavily. Skio's passwordless login reduces portal friction. Loop offers built-in retention analytics and cancellation flows. Recharge has robust dunning but requires configuration.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Can I use multiple subscription apps simultaneously?</h4>
+                        <p>Not recommended. Running two subscription apps creates inventory conflicts, customer confusion, and reporting nightmares. Choose one and commit.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>How long does implementation take?</h4>
+                        <p>Basic setup: 1-2 weeks. Full implementation with theme customization, email flows, and testing: 3-6 weeks. Migration from another app: 4-8 weeks including subscriber transition period.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Which app integrates best with Klaviyo?</h4>
+                        <p>All four have native Klaviyo integrations. Recharge has the deepest integration due to market longevity. Skio's integration is well-documented. Bold and Loop integrations are functional but less feature-rich.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Is Recharge worth the premium pricing?</h4>
+                        <p>For stores processing over $100,000/month in subscription revenue with complex requirements, yes. For simpler models or smaller volumes, alternatives offer similar core functionality at lower cost.</p>
+                    </div>
+
+                    <h2 id="recommendation">10. Final Recommendation Framework</h2>
+
+                    <p>The right subscription app depends on your specific situation. Use this framework:</p>
+
+                    <div class="verdict-box" style="border-left-color: #5433FF;">
+                        <h4 style="margin-top: 0; color: #5433FF;">If you prioritize enterprise reliability and complex features:</h4>
+                        <p style="margin-bottom: 0;"><strong>Choose Recharge.</strong> Higher cost, but proven at scale with the most extensive feature set.</p>
+                    </div>
+
+                    <div class="verdict-box" style="border-left-color: #00b894;">
+                        <h4 style="margin-top: 0; color: #00b894;">If prepaid subscriptions are central to your model:</h4>
+                        <p style="margin-bottom: 0;"><strong>Choose Bold.</strong> Their prepaid and fixed-term functionality is the strongest native implementation.</p>
+                    </div>
+
+                    <div class="verdict-box" style="border-left-color: #6c5ce7;">
+                        <h4 style="margin-top: 0; color: #6c5ce7;">If customer experience and churn reduction are top priorities:</h4>
+                        <p style="margin-bottom: 0;"><strong>Choose Skio.</strong> Best-in-class portal, passwordless login, and checkout experience. Worth the premium for DTC brands focused on retention.</p>
+                    </div>
+
+                    <div class="verdict-box" style="border-left-color: #e17055;">
+                        <h4 style="margin-top: 0; color: #e17055;">If you need a cost-effective solution for simpler subscription models:</h4>
+                        <p style="margin-bottom: 0;"><strong>Choose Loop.</strong> Competitive pricing with solid core features. Best value for brands with straightforward replenishment or basic box models.</p>
+                    </div>
+
+                    <h3>Next Steps</h3>
+
+                    <ol>
+                        <li>Audit your subscription requirements: prepaid, build-a-box, simple replenishment, or curated boxes</li>
+                        <li>Calculate projected monthly costs using each platform's pricing model</li>
+                        <li>Request demos from your top 2 choices</li>
+                        <li>Ask specifically about checkout conversion data and migration support</li>
+                        <li>Factor in development costs for theme integration and customization</li>
+                    </ol>
+
+                    <p>Choosing a subscription app is a 2-3 year commitment. The migration cost and subscriber friction make switching painful. Invest the time upfront to choose correctly.</p>
+
+                    <div style="background: var(--card-bg); padding: 32px; border-radius: 12px; margin: 40px 0; border: 2px solid #008060;">
+                        <h3 style="margin-top: 0; color: #008060;">Need Help Choosing or Implementing?</h3>
+                        <p style="font-size: 1.1em;">I help Shopify brands evaluate, implement, and migrate subscription apps. Whether you are launching subscriptions for the first time or unhappy with your current provider, I can help you:</p>
+                        <ul>
+                            <li>Audit your subscription requirements and recommend the right platform</li>
+                            <li>Implement the app with proper theme integration and checkout optimization</li>
+                            <li>Migrate from your current provider with minimal subscriber loss</li>
+                            <li>Optimize your subscription flows for conversion and retention</li>
+                        </ul>
+                        <a href="../#schedule" class="btn-primary" style="margin-top: 16px;">Book a Subscription Strategy Call</a>
+                    </div>
+
+                </article>
+            </div>
+        </main>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
