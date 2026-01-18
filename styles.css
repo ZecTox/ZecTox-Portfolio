@@ -1511,7 +1511,6 @@ body.night-mode .blog-cta-text p {
     .main-content {
         width: 100% !important;
         margin-left: 0 !important;
-        padding-top: 60px; /* Space for fixed header if needed? No, header is in flow */
     }
     
     /* Ensure header controls are visible */
