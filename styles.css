@@ -1483,3 +1483,46 @@ body.night-mode .blog-cta-text p {
         overflow-x: hidden; /* Prevent body scroll */
     }
 }
+
+/* CRITICAL MOBILE LAYOUT RESET */
+@media (max-width: 768px) {
+    .shopify-dashboard {
+        display: block !important;
+        overflow-x: hidden !important;
+    }
+
+    .sidebar {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 240px !important;
+        transform: translateX(-100%) !important; 
+        z-index: 10000 !important;
+        display: block !important;
+        background-color: #1a1a1a !important;
+    }
+
+    .sidebar.open {
+        transform: translateX(0) !important;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    }
+
+    .main-content {
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding-top: 60px; /* Space for fixed header if needed? No, header is in flow */
+    }
+    
+    /* Ensure header controls are visible */
+    .mobile-menu-toggle {
+        display: block !important;
+    }
+    
+    /* Fix header layout */
+    .header {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+}
