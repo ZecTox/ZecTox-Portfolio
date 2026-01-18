@@ -854,10 +854,38 @@ body.night-mode .btn-secondary:hover {
         margin-top: 24px;
     }
 
+    .article-content h2 {
+        font-size: 20px !important;
+        margin-top: 24px;
+    }
+
     .article-content p, 
     .article-content li {
         font-size: 16px;
         line-height: 1.6;
+    }
+
+    /* Fix table overflow on mobile */
+    .article-content table, 
+    .comparison-table,
+    .cost-table {
+        display: block !important;
+        width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+
+    /* Fix image overflow */
+    .article-content img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Fix code block overflow */
+    .article-content pre {
+        overflow-x: auto;
+        max-width: 100%;
     }
 
     .stats-grid {
@@ -1439,3 +1467,19 @@ body.night-mode .blog-cta-text p {
 .hover-translate:hover { transform: translateY(-4px); }
 .hover-scale:hover { transform: scale(1.02); }
 .transition-transform { transition: transform 0.2s; }
+
+/* CRITICAL MOBILE FIX: Force tables to scroll */
+@media (max-width: 768px) {
+    .article-content table,
+    table.cost-table,
+    table.comparison-table {
+        display: block !important;
+        width: 100% !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+    }
+    
+    body {
+        overflow-x: hidden; /* Prevent body scroll */
+    }
+}
