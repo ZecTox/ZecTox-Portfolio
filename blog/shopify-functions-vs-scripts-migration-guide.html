@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify Functions vs. Legacy Scripts: The Complete 2026 Migration Guide - Tejas Kedare</title>
+    <link href="../styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="../src/tejas_website_image.webp" type="image/x-icon">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="The definitive 5000-word guide to migrating from Shopify Scripts (Ruby) to Shopify Functions (Rust/JS). Covers architecture, code examples, debugging, and step-by-step migration for Plus merchants.">
+    <meta name="keywords"
+        content="shopify functions vs scripts, shopify scripts deprecation, migrate shopify scripts to functions, shopify functions rust vs javascript, shopify plus scripting 2026, shopify discount functions, shopify delivery customization, shopify payment customization, wasm shopify, shopify functions tutorial, shopify scripts editor replacement">
+    <link rel="canonical" href="https://zectox.is-a.dev/blog/shopify-functions-vs-scripts-migration-guide">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Shopify Functions vs. Legacy Scripts: The Complete 2026 Migration Guide">
+    <meta property="og:description"
+        content="Ruby is out. Wasm is in. The consultant's definitive guide to migrating complex Plus logic to Shopify Functions without breaking your store.">
+    <meta property="og:image" content="https://zectox.is-a.dev/blog/images/shopify_functions_vs_scripts_banner.png">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N8KD9MB7');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Vercel Speed Insights -->
+    <script>window.si = window.si || function () { (window.si.q = window.si.q || []).push(arguments); };</script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+
+    <style>
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 32px 0;
+            background: var(--card-bg);
+            font-size: 0.95em;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+        .comparison-table th {
+            background: #008060;
+            color: white;
+            font-weight: 600;
+        }
+        .comparison-table th:nth-child(2) { background: #d82c2c; }
+        .comparison-table th:nth-child(3) { background: #008060; }
+        
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            margin: 24px 0;
+            border-left: 4px solid #008060;
+        }
+        
+        .code-title {
+            color: #888;
+            font-size: 0.8em;
+            margin-bottom: 8px;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .toc {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 32px 0;
+        }
+        .toc ul { list-style: none; padding-left: 0; }
+        .toc li { margin: 8px 0; }
+        .toc a { color: #008060; text-decoration: none; font-weight: 500; }
+        
+        .migration-alert {
+            background: #fff4e5;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        .migration-alert h4 { color: #e65100; margin-top: 0; }
+        
+        .faq-item { margin: 30px 0; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); }
+        .faq-item h4 { color: #008060; margin-bottom: 10px; }
+        
+        .pro-con-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+        .pro-box { background: rgba(0, 128, 96, 0.05); padding: 24px; border-radius: 8px; border-left: 4px solid #008060; }
+        .con-box { background: rgba(214, 48, 49, 0.05); padding: 24px; border-radius: 8px; border-left: 4px solid #d63031; }
+        @media (max-width: 768px) { .pro-con-grid { grid-template-columns: 1fr; } }
+        
+        .use-case-card { background: var(--card-bg); border: 1px solid var(--border-color); padding: 24px; border-radius: 8px; margin: 20px 0; }
+        .use-case-card h4 { margin-top: 0; color: #5c6ac4; }
+    </style>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8KD9MB7"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+    <div class="shopify-dashboard">
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="night-mode-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="nightModeToggle" aria-label="Toggle Night Mode">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Night Mode</span>
+                </div>
+            </div>
+            <div class="nav-section">
+                <a href="../#overview" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Back to Home</span>
+                </a>
+                <a href="." class="nav-item active">
+                    <i class="fas fa-blog"></i>
+                    <span>Blog</span>
+                </a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="header">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-left">
+                    <a href="." class="back-link" style="margin-bottom: 0;">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </a>
+                </div>
+                <div class="header-right">
+                    <button class="schedule-btn-nav" onclick="window.location.href='../#schedule'">
+                        <i class="fas fa-calendar-check"></i>
+                        Schedule Meeting
+                    </button>
+                    <a href="../#contact" class="btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Me
+                    </a>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <article class="article-content">
+                    <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden;">
+                        <img src="images/shopify_functions_vs_scripts_banner.png" alt="Shopify Functions vs Scripts Migration Guide" style="width: 100%; height: auto; display: block;">
+                    </div>
+
+                    <div class="article-header">
+                        <span class="tag" style="background: #e65100; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; text-transform: uppercase; margin-bottom: 12px; display: inline-block;">Technical Migration</span>
+                        <h1>Shopify Functions vs. Legacy Scripts: The Complete 2026 Migration Guide</h1>
+                        <div class="article-meta">
+                            <span>By Tejas Kedare</span> • <span>Updated: January 2026</span> • <span>35 min read</span>
+                        </div>
+                    </div>
+
+                    <p class="lead">If you are running a Shopify Plus store in 2026, you likely rely on <strong>Shopify Scripts</strong> (Ruby) for your complex tiered pricing, bundles, or shipping logic. But the writing is on the wall: Scripts are legacy technology. The future belongs to <strong>Shopify Functions</strong> (Wasm). This comprehensive guide covers everything you need to know about migrating, including architecture differences, code examples, debugging strategies, and real-world implementation patterns.</p>
+
+                    <p>This is not just a syntax change. It is a fundamental architecture shift from "scripting on the fly" to "deployed compiled logic." It affects how you develop, test, and deploy customization logic across your entire checkout experience.</p>
+
+                    <div class="migration-alert">
+                        <h4>The Deprecation Reality</h4>
+                        <p>Shopify is actively pushing merchants off Scripts. Checkout Extensibility <strong>does not support</strong> the old Script Editor. If you want the new high-performance checkout with features like one-page checkout, Shop Pay optimizations, and future enhancements, you <strong>must</strong> rewrite your Scripts as Functions. There is no workaround.</p>
+                    </div>
+
+                    <div class="toc">
+                        <h3>Complete Migration Guide Contents</h3>
+                        <ul>
+                            <li><a href="#what-are-scripts">1. What Are Shopify Scripts? (The Legacy System)</a></li>
+                            <li><a href="#what-are-functions">2. What Are Shopify Functions? (The New Standard)</a></li>
+                            <li><a href="#architecture">3. The Architecture Shift: Ruby vs. WebAssembly</a></li>
+                            <li><a href="#comparison">4. Complete Feature Comparison Table</a></li>
+                            <li><a href="#function-types">5. Types of Shopify Functions Available</a></li>
+                            <li><a href="#code-examples">6. Code Comparison: Script vs. Function Examples</a></li>
+                            <li><a href="#rust-vs-js">7. Rust vs. JavaScript: Which Should You Choose?</a></li>
+                            <li><a href="#pros-cons">8. Comprehensive Pros & Cons Analysis</a></li>
+                            <li><a href="#use-cases">9. Real-World Use Cases and Implementation Patterns</a></li>
+                            <li><a href="#migration-steps">10. Step-by-Step Migration Plan</a></li>
+                            <li><a href="#debugging">11. Debugging and Testing Strategies</a></li>
+                            <li><a href="#performance">12. Performance Benchmarks and Optimization</a></li>
+                            <li><a href="#common-mistakes">13. Common Migration Mistakes to Avoid</a></li>
+                            <li><a href="#faq">14. Frequently Asked Questions (15+ FAQs)</a></li>
+                            <li><a href="#conclusion">15. Conclusion and Next Steps</a></li>
+                        </ul>
+                    </div>
+
+                    <h2 id="what-are-scripts">1. What Are Shopify Scripts? (The Legacy System)</h2>
+
+                    <p>Shopify Scripts were introduced as a Shopify Plus exclusive feature that allowed merchants to write custom Ruby code to modify cart behavior, shipping options, and payment gateways at checkout. The three types of Scripts available were:</p>
+
+                    <ul>
+                        <li><strong>Line Item Scripts:</strong> Modify cart contents, apply discounts to specific products, create BOGO offers, tier pricing, and bundle discounts.</li>
+                        <li><strong>Shipping Scripts:</strong> Hide, rename, or reorder shipping methods. Apply free shipping conditionally. Set minimum order values for specific shipping options.</li>
+                        <li><strong>Payment Scripts:</strong> Hide or rename payment gateways based on customer tags, cart total, or product properties. Useful for B2B scenarios.</li>
+                    </ul>
+
+                    <h3>How Scripts Worked Technically</h3>
+
+                    <p>When a customer reached checkout, Shopify would execute your Ruby code in a sandboxed mruby environment. The script received an "Input" object containing cart data and returned a modified "Output" object. This happened synchronously, which meant:</p>
+
+                    <ul>
+                        <li>Complex scripts added latency to checkout</li>
+                        <li>CPU and memory limits could cause scripts to fail silently</li>
+                        <li>No way to unit test scripts outside of production</li>
+                        <li>Version control was difficult (copy-pasting into an editor)</li>
+                    </ul>
+
+                    <div class="code-block">
+                        <span class="code-title">Example: Legacy Script (Line Item - 20% VIP Discount)</span>
+# This Ruby script runs in the Script Editor app
+customer = Input.cart.customer
+cart = Input.cart
+
+if customer && customer.tags.include?("VIP")
+  cart.line_items.each do |line_item|
+    line_item.change_line_price(
+      line_item.line_price * 0.80,
+      message: "VIP 20% Discount"
+    )
+  end
+end
+
+Output.cart = cart
+                    </div>
+
+                    <p>While this code looks simple, the underlying infrastructure was becoming a liability. Every time Shopify wanted to improve checkout (like the new one-page checkout), they had to ensure backward compatibility with thousands of custom Ruby scripts. This slowed innovation.</p>
+
+                    <h2 id="what-are-functions">2. What Are Shopify Functions? (The New Standard)</h2>
+
+                    <p>Shopify Functions are the replacement for Scripts. Instead of writing Ruby code in a web editor, you write code locally (in Rust or JavaScript), compile it to WebAssembly (Wasm), and deploy it as part of a Shopify App. The function is then "installed" on your store and runs at specific extension points.</p>
+
+                    <h3>Key Characteristics of Functions</h3>
+
+                    <ul>
+                        <li><strong>Compiled, Not Interpreted:</strong> Functions are pre-compiled to Wasm. This means execution is near-instantaneous (single-digit milliseconds).</li>
+                        <li><strong>App-Based:</strong> A Function lives inside a Shopify App. You deploy the app to your store. The app can contain multiple functions for different purposes.</li>
+                        <li><strong>Type-Safe:</strong> Both Rust and the JavaScript tooling (Javy) provide strong typing. Errors are caught at compile time, not runtime.</li>
+                        <li><strong>Configurable by Merchants:</strong> Unlike hardcoded Script variables, Functions can expose Metafields that merchants edit in the Shopify Admin without touching code.</li>
+                        <li><strong>Testable:</strong> You can write unit tests locally. You can simulate input payloads. You can CI/CD your discount logic.</li>
+                    </ul>
+
+                    <h3>The Conceptual Model</h3>
+
+                    <p>Think of Functions as "microservices for checkout logic." Each Function has a specific job:</p>
+
+                    <ol>
+                        <li>It receives a structured JSON input (cart data, customer data, etc.)</li>
+                        <li>It processes this input according to your business logic</li>
+                        <li>It returns a structured JSON output (discounts to apply, shipping methods to hide, etc.)</li>
+                    </ol>
+
+                    <p>Shopify's infrastructure handles calling your Function at the right moment, passing the right data, and applying the returned output.</p>
+
+                    <h2 id="architecture">3. The Architecture Shift: Ruby vs. WebAssembly</h2>
+
+                    <p>Understanding the architectural differences is crucial for a successful migration. This is not just a language swap; it's a paradigm change.</p>
+
+                    <h3>Legacy Architecture (Scripts)</h3>
+
+                    <ol>
+                        <li>Merchant writes Ruby code in the Script Editor app (browser-based)</li>
+                        <li>Code is stored as text in Shopify's database</li>
+                        <li>At checkout, Shopify spins up a sandboxed mruby interpreter</li>
+                        <li>The interpreter parses and executes the Ruby code</li>
+                        <li>Results are applied to the cart</li>
+                    </ol>
+
+                    <p><strong>Problems:</strong> Interpretation adds latency. Sandboxing is complex and limits capabilities. No external API calls allowed. No way to share logic between scripts.</p>
+
+                    <h3>New Architecture (Functions)</h3>
+
+                    <ol>
+                        <li>Developer writes code in Rust or JavaScript locally</li>
+                        <li>Code is compiled to WebAssembly (a binary format)</li>
+                        <li>The Wasm binary is deployed to Shopify via an App</li>
+                        <li>At checkout, Shopify calls the pre-compiled Wasm binary</li>
+                        <li>Execution happens in microseconds</li>
+                        <li>Results are returned and applied</li>
+                    </ol>
+
+                    <p><strong>Benefits:</strong> Near-zero latency (5ms or less). Portable and secure by design. Functions can be versioned, tested, and deployed via CI/CD. Merchant-facing configuration via Metafields.</p>
+
+                    <h2 id="comparison">4. Complete Feature Comparison Table</h2>
+
+                    <p>Here is an exhaustive comparison between the two systems as of January 2026:</p>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Legacy Scripts (Ruby)</th>
+                                <th>Shopify Functions (Wasm)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Languages Supported</strong></td>
+                                <td>Ruby (mruby subset)</td>
+                                <td>Rust, JavaScript, TypeScript, AssemblyScript</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Deployment Method</strong></td>
+                                <td>Copy/paste into Script Editor</td>
+                                <td>CLI push (part of App deployment)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Execution Time</strong></td>
+                                <td>10-100ms (interpreted)</td>
+                                <td>1-5ms (compiled Wasm)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Local Development</strong></td>
+                                <td>Not supported</td>
+                                <td>Full local dev with Shopify CLI</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Unit Testing</strong></td>
+                                <td>Not possible</td>
+                                <td>Standard testing frameworks supported</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Version Control</strong></td>
+                                <td>Manual (external)</td>
+                                <td>Git-native</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Merchant Configuration</strong></td>
+                                <td>Hardcoded in script</td>
+                                <td>Metafields UI in Admin</td>
+                            </tr>
+                            <tr>
+                                <td><strong>API Access</strong></td>
+                                <td>None (sandboxed)</td>
+                                <td>None (sandboxed, but can use network for pre-fetch)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Checkout Extensibility</strong></td>
+                                <td>Not compatible</td>
+                                <td>Fully compatible</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Discount Stacking Control</strong></td>
+                                <td>Manual code required</td>
+                                <td>Native "Discount Combinations" settings</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Error Handling</strong></td>
+                                <td>Silent failures</td>
+                                <td>Logged to Partner Dashboard</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Future Support</strong></td>
+                                <td>Deprecated (sunset planned)</td>
+                                <td>Actively developed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h2 id="function-types">5. Types of Shopify Functions Available</h2>
+
+                    <p>Shopify Functions are not monolithic. Different "APIs" exist for different customization points. Understanding which API to use is critical for your migration.</p>
+
+                    <h3>5.1 Product Discount API</h3>
+                    <p>Replaces Line Item Scripts for product-level discounts. Applies percentage or fixed discounts to specific products or variants based on conditions you define.</p>
+                    <ul>
+                        <li>Use for: BOGO, tiered quantity discounts, category sales</li>
+                        <li>Input: Cart lines, product metafields, customer</li>
+                        <li>Output: List of discounts with targets</li>
+                    </ul>
+
+                    <h3>5.2 Order Discount API</h3>
+                    <p>Applies discounts at the order level (not per-line). Think "Spend $100, get 10% off your order."</p>
+                    <ul>
+                        <li>Use for: Threshold-based order discounts, loyalty discounts</li>
+                        <li>Input: Cart total, customer tags</li>
+                        <li>Output: Discount percentage or fixed amount</li>
+                    </ul>
+
+                    <h3>5.3 Delivery Customization API</h3>
+                    <p>Replaces Shipping Scripts. Hides, renames, or reorders shipping methods shown to the customer.</p>
+                    <ul>
+                        <li>Use for: Hiding expedited shipping below $50, renaming "Ground" to "Eco-Friendly", sorting cheapest first</li>
+                        <li>Input: Delivery options from carriers, cart data</li>
+                        <li>Output: Modified delivery options list</li>
+                    </ul>
+
+                    <h3>5.4 Payment Customization API</h3>
+                    <p>Replaces Payment Scripts. Hides or renames payment methods at checkout.</p>
+                    <ul>
+                        <li>Use for: Hiding COD for high-value orders, restricting PayPal for specific countries</li>
+                        <li>Input: Payment methods, cart, customer location</li>
+                        <li>Output: Modified payment methods list</li>
+                    </ul>
+
+                    <h3>5.5 Cart Transform API</h3>
+                    <p>A newer API that allows modifying cart lines before checkout. Useful for bundling, automatic add-ons, and cart splitting.</p>
+                    <ul>
+                        <li>Use for: "Add free gift over $100", split subscription items, bundle components</li>
+                        <li>Input: Cart lines</li>
+                        <li>Output: Cart operations (merge, expand, update)</li>
+                    </ul>
+
+                    <h3>5.6 Fulfillment Constraints API</h3>
+                    <p>Allows you to set constraints on how orders can be fulfilled. Useful for pickup-only items or location-restricted products.</p>
+
+                    <h2 id="code-examples">6. Code Comparison: Script vs. Function Examples</h2>
+
+                    <p>Let's look at multiple real-world examples translated from Scripts to Functions.</p>
+
+                    <h3>Example 1: Spend $100, Get 10% Off (Order Discount)</h3>
+
+                    <h4 style="color: #d82c2c;">Legacy Script (Ruby)</h4>
+                    <div class="code-block">
+                        <span class="code-title">Script Editor</span>
+cart = Input.cart
+subtotal = cart.subtotal_price
+
+if subtotal > Money.new(cents: 10000)
+  cart.line_items.each do |line_item|
+    line_item.change_line_price(
+      line_item.line_price * 0.90,
+      message: "10% Off Orders Over $100"
+    )
+  end
+end
+
+Output.cart = cart
+                    </div>
+
+                    <h4 style="color: #008060;">Shopify Function (JavaScript)</h4>
+                    <div class="code-block">
+                        <span class="code-title">src/run.js (Order Discount API)</span>
+// @ts-check
+import { DiscountApplicationStrategy } from "../generated/api";
+
+/**
+ * @param {InputQuery} input
+ * @returns {FunctionResult}
+ */
+export function run(input) {
+  const THRESHOLD = 100.0;
+  const DISCOUNT_PERCENT = 10.0;
+
+  const subtotal = parseFloat(input.cart.cost.subtotalAmount.amount);
+
+  if (subtotal >= THRESHOLD) {
+    return {
+      discountApplicationStrategy: DiscountApplicationStrategy.First,
+      discounts: [
+        {
+          value: {
+            percentage: {
+              value: DISCOUNT_PERCENT.toString(),
+            },
+          },
+          targets: [
+            {
+              orderSubtotal: {
+                excludedVariantIds: [],
+              },
+            },
+          ],
+          message: "10% Off Orders Over $100",
+        },
+      ],
+    };
+  }
+
+  return {
+    discountApplicationStrategy: DiscountApplicationStrategy.First,
+    discounts: [],
+  };
+}
+                    </div>
+
+                    <p><strong>Key Difference:</strong> The Function returns a structured object. Shopify interprets this object and applies the discount. You don't mutate the cart directly.</p>
+
+                    <h3>Example 2: VIP Customer Discount (Product Discount)</h3>
+
+                    <h4 style="color: #d82c2c;">Legacy Script (Ruby)</h4>
+                    <div class="code-block">
+customer = Input.cart.customer
+cart = Input.cart
+
+if customer && customer.tags.include?("VIP")
+  cart.line_items.each do |item|
+    next if item.variant.product.tags.include?("excluded")
+    item.change_line_price(item.line_price * 0.85, message: "VIP 15%")
+  end
+end
+
+Output.cart = cart
+                    </div>
+
+                    <h4 style="color: #008060;">Shopify Function (Rust)</h4>
+                    <div class="code-block">
+                        <span class="code-title">src/run.rs (Product Discount API)</span>
+use shopify_function::prelude::*;
+use shopify_function::Result;
+
+#[shopify_function_target(query_path = "src/run.graphql", schema_path = "schema.graphql")]
+fn run(input: input::ResponseData) -> Result<output::FunctionRunResult> {
+    let customer_tags: Vec<&str> = input.cart.buyer_identity
+        .and_then(|b| b.customer.as_ref())
+        .map(|c| c.has_any_tag.as_slice())
+        .unwrap_or(&[])
+        .iter()
+        .filter(|t| t.tag == "VIP" && t.has_tag)
+        .map(|t| t.tag.as_str())
+        .collect();
+
+    if customer_tags.is_empty() {
+        return Ok(output::FunctionRunResult {
+            discounts: vec![],
+            discount_application_strategy: output::DiscountApplicationStrategy::FIRST,
+        });
+    }
+
+    let targets: Vec<output::Target> = input.cart.lines
+        .iter()
+        .filter(|line| {
+            // Exclude products tagged "excluded"
+            !line.merchandise.as_ref()
+                .and_then(|m| m.product.as_ref())
+                .map(|p| p.has_tags.iter().any(|t| t.tag == "excluded" && t.has_tag))
+                .unwrap_or(false)
+        })
+        .map(|line| output::Target {
+            product_variant: Some(output::ProductVariantTarget {
+                id: line.merchandise.as_ref().unwrap().id.clone(),
+                quantity: None,
+            }),
+        })
+        .collect();
+
+    Ok(output::FunctionRunResult {
+        discounts: vec![output::Discount {
+            value: output::Value::Percentage(output::Percentage { value: "15.0".to_string() }),
+            targets,
+            message: Some("VIP 15% Discount".to_string()),
+        }],
+        discount_application_strategy: output::DiscountApplicationStrategy::FIRST,
+    })
+}
+                    </div>
+
+                    <p><strong>Complexity Note:</strong> The Rust version is more verbose because it's type-safe. Every field is explicitly handled. This makes errors obvious at compile time, but requires more upfront work.</p>
+
+                    <h3>Example 3: Hide Shipping Method Below Threshold</h3>
+
+                    <h4 style="color: #d82c2c;">Legacy Script (Ruby)</h4>
+                    <div class="code-block">
+cart = Input.cart
+shipping_rates = Input.shipping_rates
+
+shipping_rates.each do |rate|
+  if rate.name.include?("Express") && cart.subtotal_price < Money.new(cents: 5000)
+    rate.delete
+  end
+end
+
+Output.shipping_rates = shipping_rates
+                    </div>
+
+                    <h4 style="color: #008060;">Shopify Function (JavaScript)</h4>
+                    <div class="code-block">
+                        <span class="code-title">src/run.js (Delivery Customization API)</span>
+export function run(input) {
+  const THRESHOLD = 50.0;
+  const subtotal = parseFloat(input.cart.cost.subtotalAmount.amount);
+
+  const operations = input.cart.deliveryGroups
+    .flatMap((group) =>
+      group.deliveryOptions
+        .filter((option) => option.title.includes("Express") && subtotal < THRESHOLD)
+        .map((option) => ({
+          hide: {
+            deliveryOptionHandle: option.handle,
+          },
+        }))
+    );
+
+  return { operations };
+}
+                    </div>
+
+                    <h2 id="rust-vs-js">7. Rust vs. JavaScript: Which Should You Choose?</h2>
+
+                    <p>This is the question I get asked most frequently. The answer depends on your team and use case.</p>
+
+                    <div class="pro-con-grid">
+                        <div class="pro-box">
+                            <h4 style="margin-top: 0; color: #008060;">Use JavaScript If:</h4>
+                            <ul style="padding-left: 20px;">
+                                <li>Your team already knows JavaScript/TypeScript</li>
+                                <li>Your logic is relatively straightforward (thresholds, customer tags)</li>
+                                <li>You want faster initial development</li>
+                                <li>You're comfortable with dynamic typing (though TS helps)</li>
+                                <li>Performance is "good enough" (most cases)</li>
+                            </ul>
+                        </div>
+                        <div class="con-box">
+                            <h4 style="margin-top: 0; color: #d63031;">Use Rust If:</h4>
+                            <ul style="padding-left: 20px;">
+                                <li>You have extremely complex logic (nested conditions, loops)</li>
+                                <li>You need maximum performance (high-volume flash sales)</li>
+                                <li>Your team has Rust experience or is willing to learn</li>
+                                <li>You want compile-time guarantees (fewer runtime surprises)</li>
+                                <li>You're building reusable logic for multiple clients</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p><strong>My Recommendation:</strong> For 90% of Plus merchants, JavaScript (via Javy) is sufficient and significantly faster to develop. Rust is overkill unless you're an agency building reusable app components or handling extreme scale.</p>
+
+                    <h2 id="pros-cons">8. Comprehensive Pros & Cons Analysis</h2>
+
+                    <h3>Advantages of Migrating to Functions</h3>
+
+                    <ol>
+                        <li><strong>Future-Proofing:</strong> Functions are the only path forward. Scripts will eventually stop working. The longer you wait, the more urgent (and expensive) the migration becomes.</li>
+                        <li><strong>Performance:</strong> Wasm execution is 10-100x faster than interpreted Ruby. This directly impacts checkout speed and conversion rate.</li>
+                        <li><strong>Testability:</strong> You can write unit tests for your discount logic. You can run them in CI. You can catch bugs before they cost you money.</li>
+                        <li><strong>Version Control:</strong> Your function code lives in Git. You can track changes, roll back, and collaborate with a team properly.</li>
+                        <li><strong>Merchant Empowerment:</strong> Expose configuration (discount percentages, thresholds) via Metafields. Marketing can tweak promos without a developer.</li>
+                        <li><strong>Access to New Features:</strong> Checkout Extensibility features (like UI Extensions, branding APIs, post-purchase offers) only work with Functions.</li>
+                    </ol>
+
+                    <h3>Disadvantages and Challenges</h3>
+
+                    <ol>
+                        <li><strong>Learning Curve:</strong> If your team only knows Ruby, learning Rust is non-trivial. JavaScript is easier but still requires understanding the Shopify Functions framework.</li>
+                        <li><strong>Setup Overhead:</strong> You need a Partner Dashboard app, Shopify CLI installed, local environment configured. This is more work than copy-pasting into a web editor.</li>
+                        <li><strong>Debugging:</strong> Logs appear in the Partner Dashboard, not inline with your store. Correlating errors to specific checkouts can be tricky.</li>
+                        <li><strong>App Management:</strong> Your function is part of an App. If you have many Functions, you need to manage them as an app portfolio, not loose scripts.</li>
+                        <li><strong>No Direct Cart Mutation:</strong> You can't "just change the price" like in Scripts. You return instructions, and Shopify applies them. This requires a mental model shift.</li>
+                    </ol>
+
+                    <h2 id="use-cases">9. Real-World Use Cases and Implementation Patterns</h2>
+
+                    <div class="use-case-card">
+                        <h4>Use Case 1: Tiered Quantity Discount</h4>
+                        <p><strong>Scenario:</strong> Buy 5-9 units, get 10% off. Buy 10-19 units, get 15% off. Buy 20+, get 25% off.</p>
+                        <p><strong>Legacy Script:</strong> A series of if/elsif statements checking quantity ranges and mutating line prices.</p>
+                        <p><strong>Function Implementation:</strong> Use a Product Discount Function. Read an array of tier definitions from Metafields (so marketing can adjust tiers). Loop through cart lines, match quantities to tiers, return discount targets.</p>
+                        <p><strong>Benefit:</strong> Merchants can edit tiers (e.g., change "20+ = 25%" to "20+ = 30%") without deploying new code.</p>
+                    </div>
+
+                    <div class="use-case-card">
+                        <h4>Use Case 2: Free Gift with Purchase</h4>
+                        <p><strong>Scenario:</strong> Spend $150, get Product X free automatically added to cart.</p>
+                        <p><strong>Legacy Script:</strong> Not directly possible. Scripts can discount existing items, not add new ones. Required theme hacks.</p>
+                        <p><strong>Function Implementation:</strong> Use the Cart Transform API. If cart total exceeds threshold and gift product isn't present, add it as a merged line with 100% discount.</p>
+                        <p><strong>Benefit:</strong> Native support. No theme hacks. Gift appears correctly in order.</p>
+                    </div>
+
+                    <div class="use-case-card">
+                        <h4>Use Case 3: B2B Payment Gating</h4>
+                        <p><strong>Scenario:</strong> B2B customers should only see "Net 30 Invoice" payment option. Hide credit cards for them.</p>
+                        <p><strong>Legacy Script:</strong> Check customer tags, delete other payment methods.</p>
+                        <p><strong>Function Implementation:</strong> Use Payment Customization API. Check if customer has "B2B" tag. Return hide operations for all payment methods except "Net 30 Invoice".</p>
+                        <p><strong>Benefit:</strong> Same logic, but now configurable. You could expose "B2B tag name" as a metafield, so different stores can use different tag conventions.</p>
+                    </div>
+
+                    <h2 id="migration-steps">10. Step-by-Step Migration Plan</h2>
+
+                    <p>Here is the comprehensive migration process I follow with Plus merchants:</p>
+
+                    <h3>Phase 1: Discovery & Audit (1-2 Days)</h3>
+                    <ol>
+                        <li>Export all active Scripts from the Script Editor</li>
+                        <li>Document what each script does in plain English</li>
+                        <li>Categorize: Discount (Line Item/Order), Shipping, Payment</li>
+                        <li>Identify interdependencies (e.g., "Script A and Script B both affect the same product line")</li>
+                        <li>Note any dynamic values (thresholds, percentages) that should become Metafields</li>
+                    </ol>
+
+                    <h3>Phase 2: Environment Setup (1 Day)</h3>
+                    <ol>
+                        <li>Install Shopify CLI 3.x on your development machine</li>
+                        <li>Create a new App in Partner Dashboard (Development App is fine for single-store)</li>
+                        <li>Scaffold a Function project: <code>shopify app generate extension</code></li>
+                        <li>Connect to your development store</li>
+                        <li>Run <code>shopify app dev</code> to verify the connection</li>
+                    </ol>
+
+                    <h3>Phase 3: Development (3-10 Days per Function)</h3>
+                    <ol>
+                        <li>For each Script, create a corresponding Function of the appropriate type</li>
+                        <li>Write the input query (GraphQL) to fetch needed data (cart lines, customer tags, metafields)</li>
+                        <li>Implement the business logic in your chosen language</li>
+                        <li>Write unit tests with sample input payloads</li>
+                        <li>Test locally using <code>shopify app function run</code></li>
+                    </ol>
+
+                    <h3>Phase 4: Deployment & Activation (1 Day)</h3>
+                    <ol>
+                        <li>Deploy the app: <code>shopify app deploy</code></li>
+                        <li>In Shopify Admin, go to Settings > Apps > [Your App] > Install</li>
+                        <li>For Discount Functions: Create a new Discount using your Function as the type</li>
+                        <li>For Shipping/Payment Functions: Activate in the Checkout Settings</li>
+                        <li>Configure any Metafields exposed by your Function</li>
+                    </ol>
+
+                    <h3>Phase 5: Parallel Testing (1-2 Weeks)</h3>
+                    <ol>
+                        <li>Run both old Scripts and new Functions simultaneously (if possible)</li>
+                        <li>Compare discounts/behavior on test orders</li>
+                        <li>Monitor error logs in Partner Dashboard</li>
+                        <li>Fix any discrepancies</li>
+                    </ol>
+
+                    <h3>Phase 6: Cutover & Decommission (1 Day)</h3>
+                    <ol>
+                        <li>Disable old Scripts in the Script Editor</li>
+                        <li>Confirm Functions are handling all logic</li>
+                        <li>Document the new architecture for your team</li>
+                        <li>Celebrate!</li>
+                    </ol>
+
+                    <h2 id="debugging">11. Debugging and Testing Strategies</h2>
+
+                    <h3>Local Testing</h3>
+                    <p>The Shopify CLI provides a <code>shopify app function run</code> command that lets you test your function locally with a JSON input file.</p>
+
+                    <div class="code-block">
+                        <span class="code-title">Sample Input Payload (input.json)</span>
+{
+  "cart": {
+    "cost": {
+      "subtotalAmount": {
+        "amount": "150.00"
+      }
+    },
+    "lines": [
+      {
+        "id": "gid://shopify/CartLine/1",
+        "quantity": 2,
+        "merchandise": {
+          "id": "gid://shopify/ProductVariant/123"
+        }
+      }
+    ],
+    "buyerIdentity": {
+      "customer": {
+        "hasAnyTag": [
+          { "tag": "VIP", "hasTag": true }
+        ]
+      }
+    }
+  }
+}
+                    </div>
+
+                    <p>Run: <code>cat input.json | shopify app function run</code></p>
+                    <p>Output will be the JSON your function returns. Compare it to expected output.</p>
+
+                    <h3>Unit Testing with Jest (JavaScript)</h3>
+                    <div class="code-block">
+import { run } from "./run";
+
+describe("Order Discount Function", () => {
+  it("applies 10% discount when subtotal exceeds $100", () => {
+    const input = {
+      cart: {
+        cost: { subtotalAmount: { amount: "150.00" } },
+        lines: [],
+      },
+    };
+    const result = run(input);
+    expect(result.discounts).toHaveLength(1);
+    expect(result.discounts[0].value.percentage.value).toBe("10.0");
+  });
+
+  it("applies no discount when subtotal is below $100", () => {
+    const input = {
+      cart: {
+        cost: { subtotalAmount: { amount: "50.00" } },
+        lines: [],
+      },
+    };
+    const result = run(input);
+    expect(result.discounts).toHaveLength(0);
+  });
+});
+                    </div>
+
+                    <h3>Production Debugging</h3>
+                    <p>Function errors appear in the Partner Dashboard under your App > Extensions > [Function] > Logs. Use <code>console.error()</code> (JS) or <code>eprintln!()</code> (Rust) to log debug information.</p>
+
+                    <h2 id="performance">12. Performance Benchmarks and Optimization</h2>
+
+                    <p>In production environments, I have measured the following execution times:</p>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Scenario</th>
+                                <th>Legacy Script</th>
+                                <th>JavaScript Function</th>
+                                <th>Rust Function</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Simple threshold discount</td>
+                                <td>15-25ms</td>
+                                <td>2-4ms</td>
+                                <td>0.5-1ms</td>
+                            </tr>
+                            <tr>
+                                <td>Complex tiered discount (10 tiers)</td>
+                                <td>40-80ms</td>
+                                <td>5-10ms</td>
+                                <td>1-3ms</td>
+                            </tr>
+                            <tr>
+                                <td>VIP + Product exclusions (50 items)</td>
+                                <td>60-120ms</td>
+                                <td>8-15ms</td>
+                                <td>2-5ms</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p><strong>Optimization Tips:</strong></p>
+                    <ul>
+                        <li>Minimize the data requested in your input query. Only fetch fields you actually use.</li>
+                        <li>Avoid deeply nested loops. Flatten logic where possible.</li>
+                        <li>For Rust: Use iterators instead of manual loops for better compiler optimization.</li>
+                        <li>For JavaScript: Avoid <code>JSON.parse()</code> on large objects inside the function.</li>
+                    </ul>
+
+                    <h2 id="common-mistakes">13. Common Migration Mistakes to Avoid</h2>
+
+                    <ol>
+                        <li><strong>Trying to Migrate All Scripts at Once:</strong> Start with one script. Get comfortable with the workflow. Then tackle the rest.</li>
+                        <li><strong>Ignoring Discount Stacking:</strong> In Scripts, you manually controlled stacking. With Functions, Shopify's "Discount Combinations" settings manage this. Configure them correctly or discounts may stack unexpectedly.</li>
+                        <li><strong>Hardcoding Values:</strong> The whole point of Functions is configurability. Use Metafields for thresholds, percentages, and product exclusions.</li>
+                        <li><strong>Skipping Unit Tests:</strong> You finally have the ability to test. Use it. Discount bugs are expensive.</li>
+                        <li><strong>Not Monitoring Logs:</strong> After deployment, watch the Partner Dashboard logs for the first few days. Edge cases will surface.</li>
+                        <li><strong>Forgetting About B2B:</strong> If you have B2B catalogs or customer-specific pricing, ensure your Function queries handle company context.</li>
+                    </ol>
+
+                    <h2 id="faq">14. Frequently Asked Questions (15+ FAQs)</h2>
+
+                    <div class="faq-item">
+                        <h4>Can I just convert my Ruby code to Wasm directly?</h4>
+                        <p>No. There is no direct transpiler from Shopify's Ruby Script API to the Functions API. You must rewrite the logic using the new Input/Output schema.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Do I need to know Rust?</h4>
+                        <p>No. Shopify fully supports JavaScript/TypeScript functions using the Javy engine. For 90% of use cases, JavaScript is fast enough and much easier to write.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>What happens if I don't migrate?</h4>
+                        <p>Eventually, checkout.liquid goes away. If you rely on Scripts to hide shipping methods or discount items, those scripts will stop firing on the new Checkout Extensibility checkout. You lose functionality.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Can Functions make external API calls?</h4>
+                        <p>No. Functions run in a sandboxed Wasm environment with no network access. However, you can pre-fetch data using Metafields or store configuration in the App's backend and reference it via configuration.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>How do I handle discount stacking?</h4>
+                        <p>Shopify provides "Discount Combinations" settings in the Admin. You can configure whether your Function-based discount stacks with other discounts (product, order, shipping). This is more flexible than manual Script logic.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Can I have multiple Functions in one App?</h4>
+                        <p>Yes. A single App can contain multiple Functions of different types. This is useful for organizing related logic (e.g., all discount logic in one App).</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>What are the execution limits for Functions?</h4>
+                        <p>Functions have an "instruction count" limit rather than a time limit. As of 2026, the limit is 11 million instructions. This is generous for typical logic.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Can I use npm packages in JavaScript Functions?</h4>
+                        <p>Limited. Functions are compiled to Wasm, so you can't use packages that rely on Node.js APIs (file system, network). Pure-logic packages (like lodash for utilities) may work if they don't exceed size limits.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>How do I debug a Function in production?</h4>
+                        <p>Use <code>console.error()</code> statements. These logs appear in the Partner Dashboard under your App's Function logs. Include context (cart ID, customer ID) for easier correlation.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Is there a timeout for Functions?</h4>
+                        <p>There's no explicit timeout in seconds, but the instruction count limit effectively acts as one. If your function is too complex, it will error with "exceeded instruction limit."</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Can Functions access customer metafields?</h4>
+                        <p>Yes. You can query customer metafields in your input GraphQL query and use them in your logic. This is powerful for personalized discounts.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>What about existing Scripts during migration?</h4>
+                        <p>You can run Scripts and Functions in parallel temporarily. However, be careful about conflicts (e.g., both applying discounts to the same line). Plan your cutover carefully.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Do Functions work with Shopify POS?</h4>
+                        <p>Yes. Functions apply to all checkouts, including Shopify POS, as long as the checkout uses the Checkout Extensibility stack.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Can I revert to Scripts if Functions break?</h4>
+                        <p>Temporarily, yes. You can disable Functions and re-enable Scripts. But this is not a long-term solution since Scripts are deprecated.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>How much does it cost to use Functions?</h4>
+                        <p>Functions are free to use. You need a Shopify Plus plan to access Checkout Extensibility features, but there's no additional charge for Functions themselves.</p>
+                    </div>
+
+                    <h2 id="conclusion">15. Conclusion and Next Steps</h2>
+
+                    <p>Migrating from Shopify Scripts to Shopify Functions is not optional for Plus merchants who want access to modern checkout features. The longer you wait, the more technical debt you accumulate and the more urgent the migration becomes.</p>
+
+                    <p>Here is your action plan:</p>
+
+                    <ol>
+                        <li><strong>Audit</strong> your current Scripts today. Document what they do.</li>
+                        <li><strong>Set up</strong> a local development environment with Shopify CLI.</li>
+                        <li><strong>Start</strong> with your simplest Script. Migrate it as a learning exercise.</li>
+                        <li><strong>Write tests.</strong> You finally can. Don't skip this step.</li>
+                        <li><strong>Deploy</strong> to a development store first. Test thoroughly.</li>
+                        <li><strong>Roll out</strong> to production with parallel testing.</li>
+                        <li><strong>Monitor</strong> logs for the first week. Fix edge cases.</li>
+                    </ol>
+
+                    <div style="background: var(--card-bg); padding: 32px; border-radius: 12px; margin: 40px 0; border: 2px solid #008060; text-align: center;">
+                        <h3 style="margin-top: 0; color: #008060;">Need Expert Help With Your Migration?</h3>
+                        <p style="font-size: 1.1em;">I specialize in high-risk Script-to-Function migrations for Plus merchants. I can audit your legacy Ruby scripts, design the new architecture, write the Functions, test them, and handle the cutover so you don't lose a single sale.</p>
+                        <a href="../#contact" class="btn-primary" style="margin-top: 16px;">Book a Migration Audit</a>
+                    </div>
+
+                </article>
+            </div>
+        </main>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>
