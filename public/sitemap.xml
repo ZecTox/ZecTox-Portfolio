@@ -162,18 +162,8 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  <url>
-    <loc>https://zectox.is-a.dev/blog/how-to-hire-shopify-developer-guide</loc>
-    <lastmod>2026-01-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://zectox.is-a.dev/blog/shopify-technical-audit-guide</loc>
-    <lastmod>2026-01-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
+
   <url>
     <loc>https://zectox.is-a.dev/blog/shopify-vs-woocommerce-tco-2026</loc>
     <lastmod>2026-01-08</lastmod>
@@ -219,6 +209,12 @@
   <url>
     <loc>https://zectox.is-a.dev/blog/shopify-metaobjects-complete-guide-2026</loc>
     <lastmod>2026-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://zectox.is-a.dev/blog/shopify-pre-checked-checkbox-removal-due-date-2026</loc>
+    <lastmod>2026-02-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
