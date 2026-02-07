@@ -255,3 +255,200 @@ if (document.readyState === 'loading') {
 } else {
     handleHashScroll();
 }
+
+// Blog Meeting Popup Logic
+(function() {
+    // Configuration
+    const CONFIG = {
+        popupDelay: 5000, // 5 seconds
+        frequencyHours: 1, // Show once every 1 hours
+        calLink: 'https://cal.com/zectox/30min', // Direct booking link
+        // calLink: 'https://cal.com/zectox', // Alternative generic link
+    };
+
+    function initBlogPopup() {
+        // 1. Check if we are on a blog page
+        if (!window.location.href.includes('/blog/')) return;
+        
+        // 2. Check localStorage for frequency cap
+        const lastSeen = localStorage.getItem('blogPopupSeen');
+        if (lastSeen) {
+            const timeSince = new Date().getTime() - parseInt(lastSeen);
+            const hoursSince = timeSince / (1000 * 60 * 60);
+            if (hoursSince < CONFIG.frequencyHours) {
+                console.log('Blog popup suppressed: seen recently.');
+                return;
+            }
+        }
+
+        // 3. Inject CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            .blog-popup-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.6);
+                backdrop-filter: blur(4px);
+                z-index: 9999;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.4s ease, visibility 0.4s;
+            }
+
+            .blog-popup-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .blog-popup-content {
+                background: white; /* Fallback */
+                background: rgba(255, 255, 255, 0.95);
+                width: 90%;
+                max-width: 1000px;  /* Wide enough for Cal.com */
+                height : 100%;
+                max-height: 90vh;
+                border-radius: 16px;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+                position: relative;
+                transform: translateY(20px);
+                transition: transform 0.4s ease;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+            }
+
+            .night-mode .blog-popup-content {
+                background: rgba(30, 30, 30, 0.95);
+                border-color: rgba(255, 255, 255, 0.1);
+                color: #e0e0e0;
+            }
+
+            .blog-popup-overlay.active .blog-popup-content {
+                transform: translateY(0);
+            }
+
+            .blog-popup-close {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: #666;
+                z-index: 10;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                transition: background 0.2s;
+            }
+
+            .blog-popup-close:hover {
+                background: rgba(0,0,0,0.1);
+            }
+            .night-mode .blog-popup-close { color: #aaa; }
+            .night-mode .blog-popup-close:hover { background: rgba(255,255,255,0.1); }
+
+            .blog-popup-header {
+                padding: 24px 24px 10px;
+                text-align: center;
+            }
+
+            .blog-popup-header h3 {
+                margin: 0 0 8px;
+                font-size: 1.5rem;
+                color: #1a1a1a;
+            }
+            .night-mode .blog-popup-header h3 { color: #fff; }
+
+            .blog-popup-header p {
+                margin: 0;
+                color: #666;
+                font-size: 0.95rem;
+            }
+            .night-mode .blog-popup-header p { color: #bbb; }
+
+            .blog-popup-body {
+                flex: 1;
+                overflow-y: auto;
+                padding: 0;
+                height: 500px; /* Fixed height for iframe */
+            }
+
+            .blog-popup-iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+
+            .my-20{
+                margin-bottom: 0px !important;
+            }
+
+        `;
+        document.head.appendChild(style);
+
+        // 4. Create DOM Elements
+        const overlay = document.createElement('div');
+        overlay.className = 'blog-popup-overlay';
+        
+        overlay.innerHTML = `
+            <div class="blog-popup-content">
+                <button class="blog-popup-close">&times;</button>
+                <div class="blog-popup-header">
+                    <h3>Need Expert Shopify Advice?</h3>
+                    <p>Facing issues with your store? Book a 1:1 consultation directly.</p>
+                </div>
+                <div class="blog-popup-body">
+                    <iframe src="${CONFIG.calLink}" class="blog-popup-iframe" allowfullscreen></iframe>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        // 5. Event Handlers
+        const closeBtn = overlay.querySelector('.blog-popup-close');
+        
+        function closePopup() {
+            overlay.classList.remove('active');
+            // Record timestamp in localStorage
+            localStorage.setItem('blogPopupSeen', new Date().getTime().toString());
+            
+            // Remove from DOM after transition to save memory
+            setTimeout(() => {
+                if (overlay && overlay.parentNode) {
+                    overlay.parentNode.removeChild(overlay);
+                }
+            }, 500);
+        }
+
+        closeBtn.addEventListener('click', closePopup);
+        
+        // Close on background click
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closePopup();
+        });
+
+        // 6. Trigger after delay
+        setTimeout(() => {
+            overlay.classList.add('active');
+        }, CONFIG.popupDelay);
+    }
+
+    // Run initialization
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initBlogPopup);
+    } else {
+        initBlogPopup();
+    }
+})();
