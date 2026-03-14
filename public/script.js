@@ -107,8 +107,8 @@ document.addEventListener('DOMContentLoaded', function () {
     downloadButtons.forEach(button => {
         if (button.textContent.includes('Download Resume')) {
             button.addEventListener('click', function () {
-                // Open resume in new tab
-                window.open('https://drive.google.com/file/d/1G7fBXyuW_6fvos6xbcTUWUTXWrX8Vy7p/view?usp=sharing', '_blank');
+                // Open resume PDF in new tab
+                window.open('/Tejas_Kedare_Resume_Shopify_Updated.pdf', '_blank');
             });
         }
     });
