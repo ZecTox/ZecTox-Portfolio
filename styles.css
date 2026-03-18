@@ -1480,7 +1480,7 @@ body.night-mode .blog-cta-text p {
     }
     
     body {
-        overflow-x: hidden; /* Prevent body scroll */
+        overflow-x: clip; /* Prevent body scroll but allow sticky elements */
     }
 }
 
@@ -1488,7 +1488,7 @@ body.night-mode .blog-cta-text p {
 @media (max-width: 768px) {
     .shopify-dashboard {
         display: block !important;
-        overflow-x: hidden !important;
+        overflow-x: clip !important;
     }
 
     .sidebar {

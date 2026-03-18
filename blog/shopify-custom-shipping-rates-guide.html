@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Set Up Custom Shipping Rates on Shopify (By Pincode, Weight & Zone) - Tejas Kedare</title>
+    <link href="../styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="../src/tejas_website_image.webp" type="image/x-icon">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Step-by-step guide to setting up custom shipping rates on Shopify by pincode, weight, and zone. Covers Shopify Shipping Profiles, carrier-calculated rates, and third-party integrations for India and Australia.">
+    <meta name="keywords"
+        content="Shopify custom shipping rates, Shopify shipping by pincode, Shopify zone-based shipping, Shopify weight-based shipping, Shopify shipping setup India, Shopify shipping Australia, custom shipping Shopify 2026, Tejas Kedare">
+    <link rel="canonical" href="https://zectox.is-a.dev/blog/shopify-custom-shipping-rates-guide">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How to Set Up Custom Shipping Rates on Shopify (By Pincode, Weight & Zone)">
+    <meta property="og:description"
+        content="From flat rates to pincode-based pricing — the complete guide to Shopify shipping configuration for Indian and international stores.">
+    <meta property="og:image"
+        content="https://zectox.is-a.dev/blog/images/shopify_custom_shipping_rates_banner.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "How to Set Up Custom Shipping Rates on Shopify (By Pincode, Weight & Zone)",
+      "image": "https://zectox.is-a.dev/blog/images/shopify_custom_shipping_rates_banner.png",
+      "datePublished": "2026-03-18",
+      "dateModified": "2026-03-18",
+      "author": {
+        "@type": "Person",
+        "name": "Tejas Kedare",
+        "url": "https://zectox.is-a.dev/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tejas Kedare Portfolio",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://zectox.is-a.dev/src/tejas_website_image.webp"
+        }
+      },
+      "description": "Comprehensive guide to setting up custom shipping rates on Shopify using shipping profiles, zones, weight-based rates, and pincode-based configurations."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://zectox.is-a.dev/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://zectox.is-a.dev/blog/"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Shopify Custom Shipping Rates Guide",
+        "item": "https://zectox.is-a.dev/blog/shopify-custom-shipping-rates-guide"
+      }]
+    }
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N8KD9MB7');</script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8KD9MB7"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <div class="shopify-dashboard">
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="night-mode-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="nightModeToggle" aria-label="Toggle Night Mode">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Night Mode</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <a href="../#overview" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Back to Home</span>
+                </a>
+                <a href="." class="nav-item active">
+                    <i class="fas fa-blog"></i>
+                    <span>Blog</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <!-- Mobile Hamburger Menu -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="header-left">
+                    <a href="." class="back-link" style="margin-bottom: 0;">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </a>
+                </div>
+                <div class="header-right">
+                    <button class="schedule-btn-nav" onclick="window.location.href='../#schedule'">
+                        <i class="fas fa-calendar-check"></i>
+                        Schedule Meeting
+                    </button>
+                    <button class="btn-secondary" id="downloadResumeBtn">
+                        <i class="fas fa-download"></i>
+                        Download Resume
+                    </button>
+                    <a href="../#contact" class="btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Me
+                    </a>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <article class="article-content">
+                    <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden;">
+                        <img src="images/shopify_custom_shipping_rates_banner.png" alt="How to Set Up Custom Shipping Rates on Shopify"
+                            fetchpriority="high"
+                            style="width: 100%; height: auto; display: block;">
+                    </div>
+
+                    <div class="article-header">
+                        <h1>How to Set Up Custom Shipping Rates on Shopify (By Pincode, Weight & Zone)</h1>
+                        <div class="article-meta">
+                            <span>By Tejas Kedare</span> • <span>10 min read</span> • <span>March 18, 2026</span>
+                        </div>
+                    </div>
+
+                    <p>Shipping is one of the most critical — and most confusing — parts of running a Shopify store. Charge too much and you lose customers at checkout. Charge too little and you eat into your margins. The solution? <strong>Custom shipping rates</strong> that accurately reflect your real costs.</p>
+
+                    <p>In this guide, I'll walk you through every method of setting up custom shipping rates on Shopify — from simple flat rates to complex <strong>pincode-based, weight-based, and zone-based configurations</strong>. I've set up custom shipping for stores across India, Australia, the UK, and more, including <a href="https://spicezen.com.au" target="_blank" rel="noopener">SpiceZen</a> where we configured pincode-level shipping rates across all of Australia.</p>
+
+                    <h2>Understanding Shopify's Shipping Architecture</h2>
+                    <p>Before diving into setup, you need to understand how Shopify organizes shipping:</p>
+
+                    <h3>Shipping Profiles</h3>
+                    <p>Shopify uses <strong>Shipping Profiles</strong> to group products that share the same shipping rules. You can have:</p>
+                    <ul>
+                        <li><strong>General Profile:</strong> The default — applies to all products unless overridden</li>
+                        <li><strong>Custom Profiles:</strong> For products with unique shipping requirements (e.g., oversized items, fragile goods, digital products)</li>
+                    </ul>
+                    <p>For example, if you sell both regular spice pouches and glass spice grinders, the grinders might need a different shipping rate due to weight and packaging requirements.</p>
+
+                    <h3>Shipping Zones</h3>
+                    <p>Within each profile, you create <strong>Shipping Zones</strong> — geographic regions with their own rates. A zone can be as broad as "Rest of World" or as specific as a list of postal codes.</p>
+
+                    <h3>Shipping Rates</h3>
+                    <p>Each zone has one or more <strong>rate types</strong>:</p>
+                    <ul>
+                        <li><strong>Flat Rate:</strong> A fixed price regardless of cart contents</li>
+                        <li><strong>Price-Based Rate:</strong> Different rates based on order total (e.g., free shipping over ₹999)</li>
+                        <li><strong>Weight-Based Rate:</strong> Different rates based on total cart weight</li>
+                        <li><strong>Carrier-Calculated Rate:</strong> Real-time rates from carriers like Australia Post, Shiprocket, or Delhivery</li>
+                    </ul>
+
+                    <h2>Method 1: Simple Flat Rate Shipping</h2>
+                    <p>Best for stores with consistent product sizes and domestic-only shipping.</p>
+                    <h3>Step-by-Step Setup:</h3>
+                    <ol>
+                        <li>Go to <strong>Settings → Shipping and delivery</strong></li>
+                        <li>Click on your <strong>General shipping profile</strong></li>
+                        <li>Click <strong>"Create shipping zone"</strong></li>
+                        <li>Name the zone (e.g., "Domestic - India") and select the country/region</li>
+                        <li>Click <strong>"Add rate"</strong> → Choose <strong>"Set up your own rates"</strong></li>
+                        <li>Enter a rate name (e.g., "Standard Shipping") and price (e.g., ₹49)</li>
+                        <li>Optional: Add a <strong>"Free shipping"</strong> rate with a minimum order condition</li>
+                    </ol>
+
+                    <p><strong>Pro Tip:</strong> Always add a free shipping threshold. Data consistently shows that <strong>73% of shoppers</strong> expect free shipping and will add items to their cart to qualify. A "Free shipping over ₹499" offer often increases average order value by 15-30%.</p>
+
+                    <h2>Method 2: Weight-Based Shipping Rates</h2>
+                    <p>Essential for stores with products of varying sizes and weights — spices, supplements, clothing, hardware, etc.</p>
+                    <h3>Step-by-Step Setup:</h3>
+                    <ol>
+                        <li>First, ensure all your products have <strong>accurate weights</strong> entered (go to each product → Shipping section → Weight)</li>
+                        <li>Go to <strong>Settings → Shipping and delivery → General profile</strong></li>
+                        <li>In your shipping zone, click <strong>"Add rate"</strong></li>
+                        <li>Click <strong>"Add conditions"</strong> → Select <strong>"Based on item weight"</strong></li>
+                        <li>Set the weight range and rate. Example:
+                            <ul>
+                                <li>0 - 500g: ₹49</li>
+                                <li>500g - 1kg: ₹79</li>
+                                <li>1kg - 3kg: ₹129</li>
+                                <li>3kg - 5kg: ₹199</li>
+                                <li>5kg+: ₹299</li>
+                            </ul>
+                        </li>
+                        <li>Repeat for each weight tier you need</li>
+                    </ol>
+
+                    <p><strong>Important:</strong> Shopify calculates the <strong>total cart weight</strong> and matches it against your ranges. If a customer orders 3 items weighing 200g each (600g total), they'll pay the 500g-1kg rate.</p>
+
+                    <h2>Method 3: Zone-Based Shipping (Different Rates by Region)</h2>
+                    <p>This is where it gets powerful. You can charge different rates for metro vs. regional vs. remote areas.</p>
+
+                    <h3>For Indian Stores (Shiprocket Zones):</h3>
+                    <p>India's shipping landscape is divided into zones by carriers. Here's a typical setup:</p>
+                    <ul>
+                        <li><strong>Zone A (Metro):</strong> Mumbai, Delhi, Bangalore, Hyderabad, Chennai, Kolkata — ₹49 flat</li>
+                        <li><strong>Zone B (Tier 2 Cities):</strong> Pune, Ahmedabad, Jaipur, Lucknow — ₹69 flat</li>
+                        <li><strong>Zone C (Regional):</strong> Smaller cities and towns — ₹99 flat</li>
+                        <li><strong>Zone D (Remote/NE India):</strong> J&K, NE states, Andaman — ₹149 flat</li>
+                    </ul>
+                    <p>In Shopify, you create <strong>4 separate shipping zones</strong> for India, each containing the relevant states or specific pin codes.</p>
+
+                    <h3>For Australian Stores:</h3>
+                    <p>When I set up <strong>SpiceZen's</strong> shipping, we created zones based on Australia Post's zone structure:</p>
+                    <ul>
+                        <li><strong>Metro:</strong> Sydney, Melbourne, Brisbane metro postcodes — AUD $8.95</li>
+                        <li><strong>Regional:</strong> Regional NSW, VIC, QLD — AUD $12.95</li>
+                        <li><strong>Remote:</strong> WA outback, NT, remote QLD — AUD $19.95</li>
+                        <li><strong>Free Shipping:</strong> All zones for orders over AUD $80</li>
+                    </ul>
+
+                    <h2>Method 4: Pincode-Based Custom Rates (Advanced)</h2>
+                    <p>The most granular approach — different rates for specific postal codes. This is what large D2C brands in India use.</p>
+
+                    <h3>Why Pincode-Based?</h3>
+                    <p>Carriers like Shiprocket and Delhivery charge different rates based on the pickup and delivery pincodes. If you're absorbing shipping costs or offering flat rates, you need to know your real cost per pincode to set profitable rates.</p>
+
+                    <h3>Implementation Options:</h3>
+
+                    <h4>Option A: Shopify's Native Shipping Zones (Free)</h4>
+                    <p>You can add <strong>specific postal code ranges</strong> to a shipping zone:</p>
+                    <ol>
+                        <li>Create a shipping zone</li>
+                        <li>Instead of selecting entire states, click <strong>"Add postal codes"</strong></li>
+                        <li>Enter postal code ranges (e.g., 400001-400099 for Mumbai city)</li>
+                        <li>Set your custom rate for this zone</li>
+                    </ol>
+                    <p><strong>Limitation:</strong> This gets tedious if you need 50+ pincode-level zones. But for 5-10 zones, it's the simplest free solution.</p>
+
+                    <h4>Option B: Carrier-Calculated Rates</h4>
+                    <p>Let your shipping carrier calculate the exact rate at checkout:</p>
+                    <ul>
+                        <li><strong>Shopify Shipping:</strong> Integrates with USPS, UPS, DHL (mainly US-focused)</li>
+                        <li><strong>Shiprocket:</strong> India's most popular option — install their app and enable calculated rates</li>
+                        <li><strong>Australia Post:</strong> Use the Australia Post app for real-time AusPost rates</li>
+                    </ul>
+                    <p><strong>Note:</strong> Carrier-calculated rates are available on the <strong>Advanced Shopify plan ($399/month)</strong> or <strong>Shopify Plus</strong>. On lower plans, you need a third-party app.</p>
+
+                    <h4>Option C: Third-Party Shipping Apps</h4>
+                    <p>For complex requirements, these apps extend Shopify's native capabilities:</p>
+                    <ul>
+                        <li><strong>Advanced Shipping Rules</strong> — granular control over shipping logic</li>
+                        <li><strong>Better Shipping</strong> — pincode-based rates with easy CSV import</li>
+                        <li><strong>Shiprocket</strong> — auto-calculated rates for Indian carriers</li>
+                        <li><strong>Parcelify</strong> — rule-based shipping with product tags, weights, and postal codes</li>
+                    </ul>
+
+                    <h2>Method 5: Product-Specific Shipping Profiles</h2>
+                    <p>Some products need entirely different shipping rules. Common scenarios:</p>
+                    <ul>
+                        <li><strong>Oversized items</strong> (furniture, equipment) — higher base rate</li>
+                        <li><strong>Fragile items</strong> — special handling surcharge</li>
+                        <li><strong>Digital products</strong> — no shipping at all</li>
+                        <li><strong>Perishable goods</strong> — express shipping only, no economy option</li>
+                    </ul>
+
+                    <h3>Setup:</h3>
+                    <ol>
+                        <li>Go to <strong>Settings → Shipping → Create new profile</strong></li>
+                        <li>Name it (e.g., "Oversized Items")</li>
+                        <li>Add the specific products that belong to this profile</li>
+                        <li>Set up zones and rates specific to these products</li>
+                    </ol>
+                    <p><strong>Key Point:</strong> When a customer orders products from different profiles, Shopify shows <strong>separate shipping rates for each profile</strong> at checkout. The customer pays the sum of all applicable shipping charges.</p>
+
+                    <h2>Free Shipping Strategies That Work</h2>
+                    <p>Free shipping isn't free for you — but it's the #1 driver of conversions. Here are proven strategies:</p>
+                    <ul>
+                        <li><strong>Threshold-Based:</strong> "Free shipping on orders over ₹999" — increases AOV</li>
+                        <li><strong>Product-Embedded:</strong> Build shipping cost into the product price. A ₹499 product with ₹49 shipping becomes ₹548 with "free shipping." Psychologically, customers prefer this.</li>
+                        <li><strong>Member-Only:</strong> Free shipping for loyalty program members or subscribers</li>
+                        <li><strong>First-Order:</strong> Free shipping on first orders to reduce acquisition friction</li>
+                    </ul>
+
+                    <h2>Common Shipping Setup Mistakes</h2>
+                    <ol>
+                        <li><strong>Forgetting to set product weights:</strong> Weight-based rates only work if every product has an accurate weight. Default is 0, which gives an incorrect rate.</li>
+                        <li><strong>Overlapping zones:</strong> If the same postal code appears in two zones, Shopify shows both rates at checkout — confusing customers.</li>
+                        <li><strong>No "Rest of World" rate:</strong> If a customer from an uncovered country tries to order, they'll see "no shipping available" and leave.</li>
+                        <li><strong>Not testing with real addresses:</strong> Place test orders with addresses from each zone. Verify the correct rate appears at checkout.</li>
+                        <li><strong>Ignoring packaging weight:</strong> Your 500g product ships in a 100g box. Account for packaging weight in product weights.</li>
+                    </ol>
+
+                    <h2>My Shipping Setup Checklist</h2>
+                    <p>Use this checklist before launching your store:</p>
+                    <ul>
+                        <li>☐ All products have accurate weights entered</li>
+                        <li>☐ General shipping profile covers your main product line</li>
+                        <li>☐ Custom profiles created for special items</li>
+                        <li>☐ All target countries have shipping zones</li>
+                        <li>☐ "Rest of World" zone configured (even if rates are higher)</li>
+                        <li>☐ Free shipping threshold set (recommended)</li>
+                        <li>☐ Test orders placed from each zone and verified</li>
+                        <li>☐ Checkout tested on mobile devices</li>
+                        <li>☐ Shipping policy page updated with estimated delivery times</li>
+                        <li>☐ Returns shipping process documented</li>
+                    </ul>
+
+                    <div
+                        style="margin-top: 40px; padding: 24px; border-radius: 8px; background: linear-gradient(135deg, #008060 0%, #004d3d 100%); text-align: center; color: white;">
+                        <p style="font-size: 1.15em; font-weight: 600; margin-bottom: 8px;">Need Help Setting Up Complex Shipping?</p>
+                        <p style="opacity: 0.9; margin-bottom: 16px;">I've configured pincode-based shipping for stores across India and Australia. Let me set up your rates correctly from day one.</p>
+                        <a href="../#schedule" class="btn-primary" style="margin-top: 8px; background: white; color: #004d3d;">Get Shipping Setup Help</a>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </div>
+
+    <!-- Reusing the main script -->
+    <script src="/script.js"></script>
+</body>
+
+</html>

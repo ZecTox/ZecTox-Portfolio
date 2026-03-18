@@ -96,8 +96,86 @@
                         <h2>Latest Articles</h2>
                     </div>
 
+                    <div class="search-container" style="margin-bottom: 24px; display: flex; gap: 8px;">
+                        <input type="text" id="blogSearchInput" placeholder="Search for blogs..." style="flex: 1; padding: 12px 16px; border-radius: 8px; border: 2px solid #5c5f62; background-color: var(--card-bg, #ffffff); color: var(--text-primary, #202223); font-size: 1rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#008060'" onblur="this.style.borderColor='#5c5f62'">
+                        <button id="blogSearchBtn" class="btn-primary" style="padding: 12px 24px; font-size: 1rem; border-radius: 8px; height: 100%;">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
 
-                    <div class="projects-grid">
+                    <div class="projects-grid" id="blogGrid">
+                        <!-- NEW: BigCommerce to Shopify Migration Guide -->
+                        <article class="project-card blog-card"><a href="/blog/bigcommerce-to-shopify-migration-guide.html" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                            <div class="project-image">
+                                <img src="images/bigcommerce_to_shopify_migration_banner.png" alt="BigCommerce to Shopify Migration Guide 2026" style="object-fit: cover;">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>BigCommerce to Shopify Migration: Complete 2026 Guide</h3>
+                                    <span class="project-status active" style="background: #008060; color: white;">Case Study</span>
+                                </div>
+                                <div class="project-description">
+                                    <p>How I migrated 300+ products, 10k+ customers, and complex pincode-based shipping from BigCommerce. The complete playbook.</p>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tag">Migration</span>
+                                    <span class="tag">BigCommerce</span>
+                                    <span class="tag">2026</span>
+                                </div>
+                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 12px;">
+                                    Read Case Study
+                                </div>
+                            </div>
+                        </a></article>
+
+                        <!-- NEW: Speed Score Dropped 2026 -->
+                        <article class="project-card blog-card"><a href="/blog/shopify-speed-score-dropped-2026.html" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                            <div class="project-image">
+                                <img src="images/shopify_speed_score_dropped_banner.png" alt="Why Your Shopify Speed Score Dropped" style="object-fit: cover;">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Why Your Shopify Speed Score Dropped in 2026</h3>
+                                    <span class="project-status active" style="background: #ff5c00; color: white;">Performance</span>
+                                </div>
+                                <div class="project-description">
+                                    <p>8 common causes for sudden speed score drops — from ghost app code to benchmark recalibration — with step-by-step debugging.</p>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tag">Speed</span>
+                                    <span class="tag">Debugging</span>
+                                    <span class="tag">2026</span>
+                                </div>
+                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 12px;">
+                                    Read Fix Guide
+                                </div>
+                            </div>
+                        </a></article>
+
+                        <!-- NEW: Custom Shipping Rates Guide -->
+                        <article class="project-card blog-card"><a href="/blog/shopify-custom-shipping-rates-guide.html" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                            <div class="project-image">
+                                <img src="images/shopify_custom_shipping_rates_banner.png" alt="Shopify Custom Shipping Rates Setup" style="object-fit: cover;">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Custom Shipping Rates: Pincode, Weight & Zone Guide</h3>
+                                    <span class="project-status active" style="background: #0b8a6e; color: white;">Practical</span>
+                                </div>
+                                <div class="project-description">
+                                    <p>From flat rates to pincode-level pricing. Step-by-step setup for Indian and Australian Shopify stores with real examples.</p>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tag">Shipping</span>
+                                    <span class="tag">Setup</span>
+                                    <span class="tag">India/AU</span>
+                                </div>
+                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 12px;">
+                                    Read Setup Guide
+                                </div>
+                            </div>
+                        </a></article>
+
                         <!-- NEW: Shopify Checkbox Compliance 2026 -->
                         <article class="project-card blog-card"><a href="/blog/shopify-pre-checked-checkbox-removal-due-date-2026.html" style="text-decoration:none; color:inherit; display:block; height:100%;">
                             <div class="project-image">
@@ -979,6 +1057,45 @@
 
     <!-- Reusing the main script but we need to adjust paths or add inline script for blog specific behavior -->
     <script src="/script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('blogSearchInput');
+            const searchBtn = document.getElementById('blogSearchBtn');
+            const blogCards = document.querySelectorAll('.blog-card');
+
+            function performSearch() {
+                const query = searchInput.value.toLowerCase();
+
+                blogCards.forEach(card => {
+                    const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+                    const description = card.querySelector('.project-description p')?.textContent.toLowerCase() || '';
+                    const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+
+                    const matches = title.includes(query) || description.includes(query) || tags.includes(query);
+
+                    if (matches) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener('input', performSearch);
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        performSearch();
+                    }
+                });
+            }
+            if (searchBtn) {
+                searchBtn.addEventListener('click', performSearch);
+            }
+        });
+    </script>
 </body>
 
 </html>

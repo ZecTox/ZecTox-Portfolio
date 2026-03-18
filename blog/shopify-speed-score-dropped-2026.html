@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Your Shopify Speed Score Dropped in 2026 (And How to Fix It) - Tejas Kedare</title>
+    <link href="../styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="../src/tejas_website_image.webp" type="image/x-icon">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Your Shopify speed score just dropped and you don't know why? This 2026 guide covers the real reasons — from app bloat to render-blocking scripts — and gives you a step-by-step fix using Chrome DevTools and Liquid optimization.">
+    <meta name="keywords"
+        content="Shopify speed score dropped, Shopify speed score low, improve Shopify speed score, Shopify performance 2026, Shopify Core Web Vitals, Shopify slow store fix, Tejas Kedare">
+    <link rel="canonical" href="https://zectox.is-a.dev/blog/shopify-speed-score-dropped-2026">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Why Your Shopify Speed Score Dropped in 2026 (And How to Fix It)">
+    <meta property="og:description"
+        content="Stop guessing why your score dropped. This guide explains the real causes and gives you a fix-by-fix playbook.">
+    <meta property="og:image"
+        content="https://zectox.is-a.dev/blog/images/shopify_speed_score_dropped_banner.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Why Your Shopify Speed Score Dropped in 2026 (And How to Fix It)",
+      "image": "https://zectox.is-a.dev/blog/images/shopify_speed_score_dropped_banner.png",
+      "datePublished": "2026-03-18",
+      "dateModified": "2026-03-18",
+      "author": {
+        "@type": "Person",
+        "name": "Tejas Kedare",
+        "url": "https://zectox.is-a.dev/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tejas Kedare Portfolio",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://zectox.is-a.dev/src/tejas_website_image.webp"
+        }
+      },
+      "description": "Comprehensive guide explaining why Shopify speed scores drop in 2026 and step-by-step fixes for each common cause."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://zectox.is-a.dev/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://zectox.is-a.dev/blog/"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Shopify Speed Score Dropped 2026",
+        "item": "https://zectox.is-a.dev/blog/shopify-speed-score-dropped-2026"
+      }]
+    }
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N8KD9MB7');</script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8KD9MB7"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <div class="shopify-dashboard">
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="night-mode-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="nightModeToggle" aria-label="Toggle Night Mode">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Night Mode</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <a href="../#overview" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Back to Home</span>
+                </a>
+                <a href="." class="nav-item active">
+                    <i class="fas fa-blog"></i>
+                    <span>Blog</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <!-- Mobile Hamburger Menu -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="header-left">
+                    <a href="." class="back-link" style="margin-bottom: 0;">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </a>
+                </div>
+                <div class="header-right">
+                    <button class="schedule-btn-nav" onclick="window.location.href='../#schedule'">
+                        <i class="fas fa-calendar-check"></i>
+                        Schedule Meeting
+                    </button>
+                    <button class="btn-secondary" id="downloadResumeBtn">
+                        <i class="fas fa-download"></i>
+                        Download Resume
+                    </button>
+                    <a href="../#contact" class="btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Me
+                    </a>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <article class="article-content">
+                    <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden;">
+                        <img src="images/shopify_speed_score_dropped_banner.png" alt="Why Your Shopify Speed Score Dropped in 2026"
+                            fetchpriority="high"
+                            style="width: 100%; height: auto; display: block;">
+                    </div>
+
+                    <div class="article-header">
+                        <h1>Why Your Shopify Speed Score Dropped in 2026 (And How to Fix It)</h1>
+                        <div class="article-meta">
+                            <span>By Tejas Kedare</span> • <span>10 min read</span> • <span>March 18, 2026</span>
+                        </div>
+                    </div>
+
+                    <p>You log into your Shopify admin, click on "Online Store > Speed," and your heart sinks. The score that was once a comfortable 65 now reads 38. <strong>What happened?</strong></p>
+
+                    <p>If this sounds familiar, you're not alone. Speed score drops are one of the most common complaints I hear from Shopify merchants in 2026. The good news? Most drops have identifiable, fixable causes. This guide walks you through every common culprit and exactly how to fix each one.</p>
+
+                    <h2>First: What Is the Shopify Speed Score?</h2>
+                    <p>Shopify's speed score is a <strong>composite metric</strong> based on Google Lighthouse performance data. It measures how fast your store loads for real users on real devices. The score ranges from 0 to 100 and is primarily influenced by:</p>
+                    <ul>
+                        <li><strong>Largest Contentful Paint (LCP):</strong> How long until the biggest visible element loads</li>
+                        <li><strong>First Input Delay (FID) / Interaction to Next Paint (INP):</strong> How responsive your page is to user interactions</li>
+                        <li><strong>Cumulative Layout Shift (CLS):</strong> How much the page jumps around while loading</li>
+                        <li><strong>Total Blocking Time (TBT):</strong> How long JavaScript blocks the main thread</li>
+                    </ul>
+                    <p><strong>Important:</strong> The score is relative. Shopify compares your store against similar stores. If the benchmark improves and you don't, your score drops — even if you changed nothing.</p>
+
+                    <h2>The 8 Most Common Reasons Your Score Dropped</h2>
+
+                    <h3>1. You Installed a New App (The #1 Cause)</h3>
+                    <p>Every Shopify app injects JavaScript and CSS into your theme. Even "lightweight" apps add network requests. The most common offenders:</p>
+                    <ul>
+                        <li><strong>Review apps</strong> (Judge.me, Loox, Stamped) — load third-party review widgets on every page</li>
+                        <li><strong>Live chat widgets</strong> (Tidio, Gorgias, Zendesk) — load entire chat frameworks</li>
+                        <li><strong>Pop-up and marketing apps</strong> (Privy, Omnisend popups, Justuno) — inject large JavaScript bundles</li>
+                        <li><strong>Analytics apps</strong> (Lucky Orange, Hotjar) — record user sessions with heavy scripts</li>
+                    </ul>
+                    <p><strong>The Fix:</strong></p>
+                    <ul>
+                        <li>Open Chrome DevTools (F12) → Network tab → reload your page. Sort by size. Identify the largest third-party scripts.</li>
+                        <li>Ask yourself: is this app earning its weight? If a 200KB script generates $10/month, delete it.</li>
+                        <li>For essential apps, check if they offer a "performance mode" or "lazy load" option.</li>
+                        <li>Replace simple app functionality with lightweight custom code. I've replaced entire review apps with 20 lines of Liquid.</li>
+                    </ul>
+
+                    <h3>2. Unoptimized Hero Images & Videos</h3>
+                    <p>That beautiful 4000x2000px hero banner you uploaded? It's killing your LCP. Shopify's image CDN automatically serves WebP, but it can't fix a 5MB original.</p>
+                    <p><strong>The Fix:</strong></p>
+                    <ul>
+                        <li>Resize hero images to max <strong>1920px wide</strong> before uploading</li>
+                        <li>Use <code>loading="lazy"</code> on all images below the fold</li>
+                        <li>Use <code>fetchpriority="high"</code> on your hero image for faster LCP</li>
+                        <li>For hero videos, use a poster image and load the video only on user interaction</li>
+                        <li>Leverage Shopify's <code>image_url</code> filter with width parameters: <code>{{ image | image_url: width: 800 }}</code></li>
+                    </ul>
+
+                    <h3>3. Too Many Fonts</h3>
+                    <p>Every Google Font adds 1-2 network requests and 50-150KB of data. I've seen stores loading <strong>5 different font families</strong> with 3 weights each. That's 15+ font file requests.</p>
+                    <p><strong>The Fix:</strong></p>
+                    <ul>
+                        <li>Stick to <strong>maximum 2 font families</strong> (one for headings, one for body)</li>
+                        <li>Use <code>font-display: swap</code> to prevent invisible text during loading</li>
+                        <li>Consider system fonts for body text — they load instantly:
+                            <code>font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;</code>
+                        </li>
+                        <li>If using Google Fonts, self-host them to avoid extra DNS lookups</li>
+                    </ul>
+
+                    <h3>4. Render-Blocking JavaScript</h3>
+                    <p>JavaScript that loads in the <code>&lt;head&gt;</code> without <code>async</code> or <code>defer</code> blocks the entire page from rendering. Common culprits:</p>
+                    <ul>
+                        <li>Tracking pixels loaded synchronously</li>
+                        <li>App scripts without defer attributes</li>
+                        <li>Legacy jQuery plugins</li>
+                    </ul>
+                    <p><strong>The Fix:</strong></p>
+                    <ul>
+                        <li>Add <code>defer</code> attribute to all non-critical scripts</li>
+                        <li>Move scripts to the bottom of <code>&lt;body&gt;</code> where possible</li>
+                        <li>Load tracking scripts via Google Tag Manager with "Window Loaded" trigger instead of "Page View"</li>
+                        <li>Audit your theme's <code>theme.liquid</code> — look for scripts in the <code>&lt;head&gt;</code> that don't need to be there</li>
+                    </ul>
+
+                    <h3>5. Shopify Updated the Benchmark</h3>
+                    <p>This catches many merchants off guard. Shopify periodically recalibrates its speed score algorithm. In early 2026, they updated the scoring to weigh <strong>INP (Interaction to Next Paint)</strong> more heavily, replacing FID. If your store has heavy JavaScript interactions (accordion menus, mega menus, product filters), your score may have dropped without you changing anything.</p>
+                    <p><strong>The Fix:</strong></p>
+                    <ul>
+                        <li>Focus on reducing main thread work — fewer event listeners, simpler DOM</li>
+                        <li>Debounce scroll and resize event handlers</li>
+                        <li>Use <code>requestAnimationFrame</code> for animations instead of CSS transitions on complex DOM elements</li>
+                    </ul>
+
+                    <h3>6. Ghost Code from Deleted Apps</h3>
+                    <p>Uninstalling a Shopify app removes the app, but <strong>NOT its injected code</strong>. I regularly find 5-10 dead code snippets in stores I audit. Each snippet makes unnecessary network requests to servers that may not even respond anymore — causing timeouts that destroy your speed score.</p>
+                    <p><strong>The Fix:</strong></p>
+                    <ul>
+                        <li>Open your theme code editor (Online Store > Themes > Edit Code)</li>
+                        <li>Search in <code>theme.liquid</code> for any <code>&lt;script&gt;</code> tags referencing external domains you no longer use</li>
+                        <li>Check <code>snippets/</code> folder for files named after old apps (e.g., <code>loox-reviews.liquid</code>)</li>
+                        <li>Remove them — but keep a backup of your theme first!</li>
+                    </ul>
+
+                    <h3>7. Excessive DOM Size</h3>
+                    <p>If your homepage has 3,000+ DOM elements, the browser struggles to render and respond to interactions. Common causes:</p>
+                    <ul>
+                        <li>Showing too many products on the homepage (30+ product cards)</li>
+                        <li>Complex mega menus with hundreds of nested links</li>
+                        <li>Multiple carousels/sliders on the same page</li>
+                        <li>Page builder apps that generate deeply nested HTML</li>
+                    </ul>
+                    <p><strong>The Fix:</strong></p>
+                    <ul>
+                        <li>Show fewer products on the homepage — use "View All" buttons instead</li>
+                        <li>Lazy-load sections below the fold using Intersection Observer</li>
+                        <li>Replace page builder sections with lean custom Liquid sections</li>
+                        <li>Target under 1,500 DOM elements for optimal performance</li>
+                    </ul>
+
+                    <h3>8. Third-Party Scripts You Can't Control</h3>
+                    <p>Facebook Pixel, Google Analytics 4, TikTok Pixel, Klaviyo tracking, Pinterest tag — each adds 50-200KB of JavaScript. And unlike app scripts, you <em>need</em> these.</p>
+                    <p><strong>The Fix:</strong></p>
+                    <ul>
+                        <li>Load all marketing pixels through <strong>Google Tag Manager</strong> with delayed triggers</li>
+                        <li>Use Shopify's native <strong>Customer Events (Web Pixels)</strong> — they run in a sandboxed iframe that doesn't block the main thread</li>
+                        <li>Consolidate: use Shopify's native analytics where possible instead of adding separate tools</li>
+                    </ul>
+
+                    <h2>How to Diagnose Your Specific Issue</h2>
+                    <p>Here's my exact debugging workflow when a client asks "why did my score drop?":</p>
+                    <ol>
+                        <li><strong>Check app install history:</strong> Did you install anything in the last 2 weeks? Disable it and re-test.</li>
+                        <li><strong>Run PageSpeed Insights:</strong> Go to <a href="https://pagespeed.web.dev" target="_blank" rel="noopener">pagespeed.web.dev</a> and test your homepage. Look at the "Opportunities" section.</li>
+                        <li><strong>Chrome DevTools Audit:</strong> F12 → Lighthouse tab → Generate report. Focus on "Reduce unused JavaScript" and "Eliminate render-blocking resources."</li>
+                        <li><strong>Network waterfall:</strong> F12 → Network tab → Hard refresh. Identify the 5 largest requests and the 5 slowest requests.</li>
+                        <li><strong>Compare with theme preview:</strong> Duplicate your theme, disable all apps on the duplicate, and compare speed scores. This isolates app impact vs. theme issues.</li>
+                    </ol>
+
+                    <h2>What's a "Good" Speed Score in 2026?</h2>
+                    <p>Let's be realistic:</p>
+                    <ul>
+                        <li><strong>50+:</strong> Acceptable for a feature-rich store with multiple apps</li>
+                        <li><strong>60-75:</strong> Good — you're faster than most competitors</li>
+                        <li><strong>75+:</strong> Excellent — you've invested in performance</li>
+                        <li><strong>90+:</strong> Exceptional — likely a minimal store or heavily optimized by a developer</li>
+                    </ul>
+                    <p>Don't chase a perfect 100. Focus on <strong>real user experience</strong>: does the page feel fast? Can users interact within 2 seconds? That matters more than a number.</p>
+
+                    <h2>When to Hire a Developer for Speed Optimization</h2>
+                    <p>You should consider hiring a Shopify developer when:</p>
+                    <ul>
+                        <li>Your score is below 30 and dropping</li>
+                        <li>You've removed apps but the score hasn't improved (ghost code issue)</li>
+                        <li>Your LCP is above 4 seconds on mobile</li>
+                        <li>You need to replace app functionality with custom lightweight code</li>
+                        <li>You're running paid ads and slow speed is killing your ROAS</li>
+                    </ul>
+
+                    <div
+                        style="margin-top: 40px; padding: 24px; border-radius: 8px; background: linear-gradient(135deg, #ff5c00 0%, #d63d00 100%); text-align: center; color: white;">
+                        <p style="font-size: 1.15em; font-weight: 600; margin-bottom: 8px;">Speed Score Below 50?</p>
+                        <p style="opacity: 0.9; margin-bottom: 16px;">I'll audit your store, identify the exact causes, and give you a prioritized fix list — or implement the fixes myself.</p>
+                        <a href="../#schedule" class="btn-primary" style="margin-top: 8px; background: white; color: #d63d00;">Get a Free Speed Audit</a>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </div>
+
+    <!-- Reusing the main script -->
+    <script src="/script.js"></script>
+</body>
+
+</html>
