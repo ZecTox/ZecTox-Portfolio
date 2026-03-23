@@ -10,6 +10,9 @@
     <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link href="styles.css" rel="stylesheet">
 
@@ -176,31 +179,25 @@
                 <!-- All sections now visible in single page -->
                 <section id="overview" class="content-section">
 
-                    <!-- About Card -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h2>About Me</h2>
-                        </div>
-                        <div class="card-content">
-                            <div class="profile-section">
-                                <div class="profile-image">
-                                    <img src="src/tejas_website_image.webp"
-                                        alt="Tejas Kedare - Expert Shopify Developer" width="200" height="200"
-                                        fetchpriority="high" />
+                    <!-- Hero Section -->
+                    <div class="hero">
+                        <div class="hero-content">
+                            <div class="hero-text">
+                                <h2>I Build Shopify Stores That <span class="highlight">Load Fast & Convert</span></h2>
+                                <p>Expert Shopify Developer specializing in custom theme development, speed optimization, and conversion rate optimization. From pixel-perfect design to complex app integrations — I deliver scalable e-commerce solutions that drive revenue.</p>
+                                <div class="hero-buttons">
+                                    <a href="#projects" class="hero-btn-primary" onclick="document.querySelector('[data-section=\'projects\']').click(); return false;">
+                                        <i class="fas fa-shopping-cart"></i> View My Work
+                                    </a>
+                                    <a href="#schedule" class="hero-btn-secondary" onclick="document.querySelector('[data-section=\'schedule\']').click(); return false;">
+                                        <i class="fas fa-calendar-check"></i> Book a Call
+                                    </a>
                                 </div>
-                                <div class="profile-info">
-                                    <h3>Tejas Kedare</h3>
-                                    <p class="role">Expert Shopify Developer & CRO Specialist <br> Building
-                                        High-Performance Stores 🚀</p>
-                                    <p class="description">
-                                        I am an expert Shopify Developer with a proven track record of building
-                                        <strong>high-converting, enterprise-grade stores</strong>. I specialize in
-                                        <strong>custom theme development</strong>, <strong>speed optimization</strong>,
-                                        and <strong>Conversion Rate Optimization (CRO)</strong>. From pixel-perfect
-                                        design to complex app integrations, I deliver scalable e-commerce solutions that
-                                        drive revenue and enhance user experience.
-                                    </p>
-                                </div>
+                            </div>
+                            <div class="hero-image">
+                                <img src="src/tejas_website_image.webp"
+                                    alt="Tejas Kedare - Expert Shopify Developer" width="160" height="160"
+                                    fetchpriority="high" />
                             </div>
                         </div>
                     </div>
@@ -331,105 +328,94 @@
                         <h2>Professional Experience</h2>
                     </div>
 
-
-                    <div class="card"> <!-- Knox Job Experience -->
-                        <div class="card-content">
-                            <div class="experience-item">
-                                <div class="experience-header">
-                                    <div class="experience-title">
-                                        <h3>Shopify Developer</h3>
-                                        <span class="experience-period">Sept 2025 - Present</span>
-                                    </div>
-                                    <span class="experience-company">Knox <br> Remote - India</span>
+                    <div class="premium-experience-container">
+                        <div class="exp-card reveal"> <!-- Knox Job Experience -->
+                            <div class="exp-header">
+                                <div class="exp-title-group">
+                                    <h3>Shopify Developer</h3>
+                                    <span class="exp-company-info"><i class="fas fa-building"></i> Knox &bull; Remote - India</span>
                                 </div>
-                                <div class="experience-description">
-                                    <ul>
-                                        <li>Providing my Shopify development expertise, I have worked with multiple
-                                            major D2C brands, including Rasayanam, Miduty, Atovio, Toffee Coffee
-                                            Roasters, InVogue Shop, and many more.</li>
-                                    </ul>
-                                </div>
+                                <span class="exp-period">Sept 2025 - Present</span>
+                            </div>
+                            <div class="exp-description">
+                                <ul>
+                                    <li>Providing my Shopify development expertise, I have worked with multiple major D2C brands, including Rasayanam, Miduty, Atovio, Kisah, InVogue Shop, and many more.</li>
+                                </ul>
+                            </div>
+                            <div class="exp-skills">
+                                <span class="exp-skill-tag">Shopify Plus</span>
+                                <span class="exp-skill-tag">Custom Themes</span>
+                                <span class="exp-skill-tag">App Integration</span>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card"> <!-- TechSurvi Job Experience -->
-                        <div class="card-content">
-                            <div class="experience-item">
-                                <div class="experience-header">
-                                    <div class="experience-title">
-                                        <h3>Web Developer - Shopify</h3>
-                                        <span class="experience-period">July 2025 - Present</span>
-                                    </div>
-                                    <span class="experience-company">TechSurvi <br> Pune, Maharahtra - Fulltime</span>
+                        <div class="exp-card reveal"> <!-- TechSurvi Job Experience -->
+                            <div class="exp-header">
+                                <div class="exp-title-group">
+                                    <h3>Web Developer - Shopify</h3>
+                                    <span class="exp-company-info"><i class="fas fa-building"></i> TechSurvi &bull; Pune, Maharashtra (Full-time)</span>
                                 </div>
-                                <div class="experience-description">
-                                    <ul>
-                                        <li>Developed and maintained high-performing, user-friendly Shopify eCommerce
-                                            websites with custom themes and app integrations.</li>
-                                        <li>Managing Multiple Shopify Stores of National & International Clients</li>
-                                        <li>Integrating Organisations Shopify Listed Loyalty & Rewards App - Retenzy in
-                                            multiple Shopify Stores</li>
-                                        <!-- <li>Collaborated with marketing teams to implement conversion rate optimization strategies</li> -->
-                                    </ul>
-                                </div>
+                                <span class="exp-period">July 2025 - Present</span>
+                            </div>
+                            <div class="exp-description">
+                                <ul>
+                                    <li>Developed and maintained high-performing, user-friendly Shopify eCommerce websites with custom themes and app integrations.</li>
+                                    <li>Managing Multiple Shopify Stores of National & International Clients.</li>
+                                    <li>Integrating Organizations Shopify Listed Loyalty & Rewards App - Retenzy in multiple Shopify Stores.</li>
+                                </ul>
+                            </div>
+                            <div class="exp-skills">
+                                <span class="exp-skill-tag">Theme Development</span>
+                                <span class="exp-skill-tag">Liquid</span>
+                                <span class="exp-skill-tag">Store Management</span>
+                                <span class="exp-skill-tag">Retenzy</span>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card"> <!-- The Dhindora Club Job Experience -->
-                        <div class="card-content">
-                            <div class="experience-item">
-                                <div class="experience-header">
-                                    <div class="experience-title">
-                                        <h3>Web Developer</h3>
-                                        <span class="experience-period">Dec 2024 - June 2025</span>
-                                    </div>
-                                    <span class="experience-company">The Dhindora Club<br> Hyderabad, Telangana -
-                                        Fulltime</span>
+                        <div class="exp-card reveal"> <!-- The Dhindora Club Job Experience -->
+                            <div class="exp-header">
+                                <div class="exp-title-group">
+                                    <h3>Web Developer</h3>
+                                    <span class="exp-company-info"><i class="fas fa-building"></i> The Dhindora Club &bull; Hyderabad, Telangana (Full-time)</span>
                                 </div>
-                                <div class="experience-description">
-                                    <ul>
-                                        <li>Developed and maintained high-performing, user-friendly Shopify eCommerce
-                                            websites with custom themes and app integrations.</li>
-                                        <li>Led client onboarding, gathered requirements, and maintained ongoing
-                                            communication to ensure alignment with business goals.</li>
-                                        <li>Integrated third-party services and shipping partners to optimize order
-                                            fulfillment and enhance customer experience.</li>
-                                        <li>Provided SEO/mobile optimization, payment gateway setup, and post-launch
-                                            technical support.</li>
-                                        <li>Trained clients on managing their Shopify stores for efficient day-to-day
-                                            operations.</li>
-                                    </ul>
-                                </div>
+                                <span class="exp-period">Dec 2024 - June 2025</span>
+                            </div>
+                            <div class="exp-description">
+                                <ul>
+                                    <li>Developed and maintained high-performing, user-friendly Shopify eCommerce websites with custom themes and app integrations.</li>
+                                    <li>Led client onboarding, gathered requirements, and maintained ongoing communication to ensure alignment with business goals.</li>
+                                    <li>Integrated third-party services and shipping partners to optimize order fulfillment and enhance customer experience.</li>
+                                    <li>Provided SEO/mobile optimization, payment gateway setup, and post-launch technical support.</li>
+                                    <li>Trained clients on managing their Shopify stores for efficient day-to-day operations.</li>
+                                </ul>
+                            </div>
+                            <div class="exp-skills">
+                                <span class="exp-skill-tag">Client Onboarding</span>
+                                <span class="exp-skill-tag">API Integrations</span>
+                                <span class="exp-skill-tag">SEO Optimization</span>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card"> <!-- Tru Herb Job Experience -->
-                        <div class="card-content">
-                            <div class="experience-item">
-                                <div class="experience-header">
-                                    <div class="experience-title">
-                                        <h3>Junior Shopify Developer & Category Executive</h3>
-                                        <span class="experience-period">Sept 2024 - Dec 2024</span>
-                                    </div>
-                                    <span class="experience-company">Pure Tru Herb <br> Bangalore, Karnataka -
-                                        Fulltime</span>
+                        <div class="exp-card reveal"> <!-- Tru Herb Job Experience -->
+                            <div class="exp-header">
+                                <div class="exp-title-group">
+                                    <h3>Junior Shopify Developer & Category Executive</h3>
+                                    <span class="exp-company-info"><i class="fas fa-building"></i> Pure Tru Herb &bull; Bangalore, Karnataka (Full-time)</span>
                                 </div>
-                                <div class="experience-description">
-                                    <ul>
-                                        <li>Managed and maintained the company's Shopify Store
-                                            (www.total-ingredients.com), conducting regular tests to ensure
-                                            functionality.</li>
-                                        <li>Oversaw 450+ products on the website, solely adding 200+ products to
-                                            streamline updates and management.</li>
-                                        <li>Developed a Certificate of Analysis (COA) Creator application to automate
-                                            document generation.</li>
-                                        <li>Built a sales data visualization app to enhance team decision-making with
-                                            key metrics.</li>
-                                    </ul>
-                                </div>
+                                <span class="exp-period">Sept 2024 - Dec 2024</span>
+                            </div>
+                            <div class="exp-description">
+                                <ul>
+                                    <li>Managed and maintained the company's Shopify Store (www.total-ingredients.com), conducting regular tests to ensure functionality.</li>
+                                    <li>Oversaw 450+ products on the website, solely adding 200+ products to streamline updates and management.</li>
+                                    <li>Developed a Certificate of Analysis (COA) Creator application to automate document generation.</li>
+                                    <li>Built a sales data visualization app to enhance team decision-making with key metrics.</li>
+                                </ul>
+                            </div>
+                            <div class="exp-skills">
+                                <span class="exp-skill-tag">Product Management</span>
+                                <span class="exp-skill-tag">App Development</span>
+                                <span class="exp-skill-tag">Data Visualization</span>
                             </div>
                         </div>
                     </div>
@@ -1136,7 +1122,7 @@
                             </div>
                             <div class="contact-info">
                                 <h3>LinkedIn</h3>
-                                <p>Click Here</p>
+                                <p>@zectox</p>
                             </div>
                         </div>
 
@@ -1146,7 +1132,7 @@
                             </div>
                             <div class="contact-info">
                                 <h3>GitHub</h3>
-                                <p>Click Here</p>
+                                <p>@ZecTox</p>
                             </div>
                         </div>
 
@@ -1156,18 +1142,31 @@
                             </div>
                             <div class="contact-info">
                                 <h3>Website</h3>
-                                <p>Click Here</p>
+                                <p>zectox.is-a.dev</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Footer with Social Links -->
-                <footer style="margin-top: 60px; padding: 40px 0; border-top: 2px solid var(--border-color); text-align: center;">
-                    <div style="color: #6d7175; font-size: 0.9em; margin-top: 24px;">
-                        <p style="margin: 0;">© 2025 Tejas Kedare | Expert Shopify Developer</p>
-                        <p style="margin: 8px 0 0 0;">Building high-performance ecommerce solutions that drive revenue</p>
+                <!-- Premium Footer -->
+                <footer class="premium-footer">
+                    <div class="footer-social">
+                        <a href="mailto:tejaskedare.22@gmail.com" class="footer-social-link" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/zectox/" target="_blank" class="footer-social-link" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/ZecTox" target="_blank" class="footer-social-link" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://zectox.is-a.dev/" target="_blank" class="footer-social-link" title="Website">
+                            <i class="fas fa-globe"></i>
+                        </a>
                     </div>
+                    <p class="footer-brand">Tejas Kedare</p>
+                    <p class="footer-tagline">Building high-performance ecommerce solutions that drive revenue</p>
+                    <p class="footer-copyright">© 2026 All rights reserved</p>
                 </footer>
             </div>
         </main>

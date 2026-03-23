@@ -183,12 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Smooth scrolling for better UX
     document.documentElement.style.scrollBehavior = 'smooth';
 
-    // Add loading animation for project cards
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach((card, index) => {
-        card.style.animationDelay = `${index * 0.1}s`;
-        card.classList.add('fade-in');
-    });
+    // Project card animations now handled by scroll reveal below
 
     // FAQ Accordion functionality
     const faqItems = document.querySelectorAll('.faq-item');
@@ -211,23 +206,60 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Add CSS for fade-in animation
-const style = document.createElement('style');
-style.textContent = `
-    .fade-in {
-        animation: fadeInUp 0.6s ease-out forwards;
-        opacity: 0;
-        transform: translateY(20px);
+// Scroll-triggered reveal animations using Intersection Observer
+(function () {
+    // Elements to reveal on scroll
+    const revealSelectors = [
+        '.card',
+        '.stat-card',
+        '.project-card',
+        '.contact-card',
+        '.faq-item',
+        '.experience-item',
+        '.skill-category',
+        '.hero'
+    ];
+
+    function initScrollReveal() {
+        // Add .reveal class to all target elements
+        revealSelectors.forEach(selector => {
+            document.querySelectorAll(selector).forEach(el => {
+                if (!el.classList.contains('reveal')) {
+                    el.classList.add('reveal');
+                }
+            });
+        });
+
+        // Add .reveal-stagger to grid containers
+        document.querySelectorAll('.stats-grid, .projects-grid, .contact-grid').forEach(grid => {
+            grid.classList.add('reveal-stagger');
+        });
+
+        // Create the observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // only animate once
+                }
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        // Observe all reveal elements
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
     }
 
-    @keyframes fadeInUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initScrollReveal);
+    } else {
+        initScrollReveal();
     }
-`;
-document.head.appendChild(style);
+})();
 
 // Handle specific hash scroll on load (especially for redirects from other pages)
 function handleHashScroll() {
