@@ -767,8 +767,7 @@ body.night-mode .exp-card:hover .exp-skill-tag {
         padding: 24px 20px;
     }
     .exp-card::before {
-        left: -28px;
-        top: 28px;
+        left: -26px;
     }
     .exp-header {
         flex-direction: column;
