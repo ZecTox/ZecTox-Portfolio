@@ -23,6 +23,28 @@
         content="That pop-up app is breaking your checkout. Here's how to find out before your customers do.">
     <meta property="og:image" content="https://zectox.is-a.dev/blog/images/shopify_app_conflicts_banner.png">
 
+        <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://zectox.is-a.dev/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://zectox.is-a.dev/blog/"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "App Conflicts Guide",
+        "item": "https://zectox.is-a.dev/blog/shopify-app-conflicts-guide"
+      }]
+    }
+    </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -239,8 +261,79 @@
                             </a>
                         </div>
                     </div>
+                    <h2>The App Conflict Prevention Checklist</h2>
+                    <p>Before installing any new Shopify app, run through this checklist:</p>
+                    <ol>
+                        <li><strong>Check if native Shopify features can replace it.</strong> Shopify has added many features natively (metafields, metaobjects, Shopify Forms, basic SEO). You may not need an app at all.</li>
+                        <li><strong>Test on a duplicate theme first.</strong> Never install on your live theme. Always test on an unpublished copy.</li>
+                        <li><strong>Check the app's review history for conflict reports.</strong> Sort by 1-star reviews and search for "conflict," "broke," or "slow." Other merchants have likely encountered the same issues.</li>
+                        <li><strong>Verify it uses Theme App Extensions.</strong> Modern apps should NOT ask to edit your theme code directly. If an app's installation guide says "paste this code into theme.liquid," that's a red flag.</li>
+                        <li><strong>Run a before/after PageSpeed test.</strong> Check your mobile score before installing and 24 hours after. If it drops more than 5 points, the app is too heavy.</li>
+                    </ol>
 
-                </article>
+                    <h2>Common App Conflict Pairs</h2>
+                    <p>Based on hundreds of debugging sessions, these app categories most frequently conflict with each other:</p>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; margin: 24px 0;">
+                            <thead>
+                                <tr style="background: #d82c2c; color: white;">
+                                    <th style="padding: 12px; text-align: left; border: 1px solid #e1e3e5;">App A</th>
+                                    <th style="padding: 12px; text-align: left; border: 1px solid #e1e3e5;">App B</th>
+                                    <th style="padding: 12px; text-align: left; border: 1px solid #e1e3e5;">What Breaks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Sticky ATC apps</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Chat widgets</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">z-index wars — chat covers ATC on mobile</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Upsell/Bundle apps</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Cart drawer apps</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Cart manipulation conflicts, items not adding</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Multiple tracking pixels</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Each other</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Main thread blocking, 3+ second delays</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Currency converters</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Dynamic pricing apps</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Price flickering, wrong prices displayed</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>Frequently Asked Questions</h2>
+
+                    <h3>How many apps is "too many"?</h3>
+                    <p>There's no magic number, but as a rule of thumb: if you have more than 15 active apps, you're likely experiencing performance degradation. I've seen stores with 30+ apps where the homepage took 8 seconds to load. After pruning to 10 essential apps and replacing 5 with custom code, load time dropped to 2 seconds.</p>
+
+                    <h3>Do uninstalled apps leave code behind?</h3>
+                    <p>Yes, frequently. Many apps inject JavaScript snippets into your theme.liquid file during installation. When you uninstall, the app removes its server-side functionality but the injected code often stays. I call this "ghost code" and it's one of the main reasons stores slow down over time.</p>
+
+                    <h3>How do I find ghost code from old apps?</h3>
+                    <p>Open your theme code editor and search theme.liquid for comments like "-- App Name --" or script tags pointing to third-party CDNs. Also check for Liquid snippets with names that match apps you've uninstalled. Delete them carefully after confirming they're no longer needed.</p>
+
+                    <h3>Can I prevent all app conflicts?</h3>
+                    <p>Not entirely, but you can minimize them by: using apps that leverage Theme App Extensions (sandboxed), limiting the number of apps that modify the cart/checkout flow, and doing regular app stack audits. For performance-related conflicts, see my <a href="/blog/why-is-my-shopify-store-slow" style="color: #008060; font-weight: 600;">speed optimization guide</a>.</p>
+
+
+
+                
+                         <div class="related-articles-card">
+                              <h3 style="margin-top: 0;">Related Articles</h3>
+                              <ul style="list-style: none; padding: 0; margin: 0;">
+                              <li style="margin-bottom: 12px;"><a href="/blog/why-is-my-shopify-store-slow" style="color: #008060; font-weight: 500; text-decoration: none;">Why Is My Shopify Store Slow? The Complete Performance Guide</a></li>
+                              <li style="margin-bottom: 12px;"><a href="/blog/page-builders-seo-guide" style="color: #008060; font-weight: 500; text-decoration: none;">Why Page Builders Are Destroying Your SEO</a></li>
+                              <li style="margin-bottom: 12px;"><a href="/blog/shopify-technical-audit-guide" style="color: #008060; font-weight: 500; text-decoration: none;">The Complete Shopify Technical Audit Guide</a></li>
+                              <li style="margin-bottom: 0;"><a href="/blog/custom-shopify-theme-benefits" style="color: #008060; font-weight: 500; text-decoration: none;">Why Your Brand Needs a Custom Shopify Theme</a></li>
+                              </ul>
+                         </div>
+                    </article>
             </div>
         </main>
     </div>

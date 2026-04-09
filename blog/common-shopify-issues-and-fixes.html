@@ -32,7 +32,7 @@
       "headline": "5 Critical Shopify Issues That Are Killing Your Sales",
       "image": "https://zectox.is-a.dev/blog/images/shopify_issues_banner.png",
       "datePublished": "2025-11-25",
-      "dateModified": "2025-11-25",
+      "dateModified": "2026-04-10",
       "author": {
         "@type": "Person",
         "name": "Tejas Kedare",
@@ -46,6 +46,7 @@
           "url": "https://zectox.is-a.dev/src/tejas_website_image.webp"
         }
       },
+      "wordCount": 1201,
       "description": "Discover 5 common technical issues like slow speed and mobile failures, and learn how an expert Shopify Developer fixes them."
     }
     </script>
@@ -242,7 +243,88 @@
                         <a href="../#contact" class="btn-primary" style="margin-top: 16px;">Hire Me to Audit Your
                             Store</a>
                     </div>
-                </article>
+                    <h2>Advanced Troubleshooting Techniques</h2>
+
+                    <h3>Using Chrome DevTools for Shopify Debugging</h3>
+                    <p>Chrome DevTools is your best friend when debugging Shopify issues. Here are the most useful techniques:</p>
+                    <ul>
+                        <li><strong>Console tab:</strong> Look for JavaScript errors (red text). Many cart and checkout issues are caused by JS errors from apps or theme code.</li>
+                        <li><strong>Network tab:</strong> Filter by "Fetch/XHR" to see AJAX requests. If your "Add to Cart" isn't working, check if the /cart/add.js request is returning a 422 error (variant not available) or failing silently.</li>
+                        <li><strong>Application tab → Cookies:</strong> Shopify uses cookies for cart sessions. If customers report losing their cart, cookie settings or browser privacy extensions may be the cause.</li>
+                        <li><strong>Performance tab:</strong> Record a page load to see exactly which scripts are blocking rendering. This identifies the slow apps.</li>
+                    </ul>
+
+                    <h3>Common Liquid Template Errors</h3>
+                    <p>If you're seeing broken layouts or missing content, common Liquid errors include:</p>
+                    <ul>
+                        <li><strong>Undefined object:</strong> Referencing <code>product.metafields.custom.field</code> when the metafield doesn't exist. Always wrap in <code>{% if %}</code> checks.</li>
+                        <li><strong>Section schema conflicts:</strong> Two sections having the same block type name causes the Theme Customizer to malfunction.</li>
+                        <li><strong>Missing closing tags:</strong> Unclosed <code>{% if %}</code> or <code>{% for %}</code> blocks that silently break the rest of the page.</li>
+                    </ul>
+
+                    <h2>When to Contact Shopify Support vs. Hire a Developer</h2>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; margin: 24px 0;">
+                            <thead>
+                                <tr style="background: #008060; color: white;">
+                                    <th style="padding: 12px; text-align: left; border: 1px solid #e1e3e5;">Issue Type</th>
+                                    <th style="padding: 12px; text-align: left; border: 1px solid #e1e3e5;">Contact Shopify</th>
+                                    <th style="padding: 12px; text-align: left; border: 1px solid #e1e3e5;">Hire a Developer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Billing/account issues</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">✅</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">❌</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Platform-wide outages</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">✅</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">❌</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Theme layout broken</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">❌</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">✅</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">App conflict debugging</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">❌</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">✅</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Speed optimization</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">❌</td>
+                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">✅</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>Frequently Asked Questions</h2>
+
+                    <h3>Why does my Shopify store look different on different devices?</h3>
+                    <p>This is usually a CSS responsive design issue. Themes have <code>@media</code> queries that apply different styles at different screen widths. If a recent theme update or app installation broke the responsive behavior, check for CSS conflicts in Chrome DevTools.</p>
+
+                    <h3>My discount codes aren't working. What should I check?</h3>
+                    <p>Common causes: the discount has expired, it's limited to specific products/collections that don't match the cart contents, the minimum purchase requirement isn't met, or another discount is already applied (Shopify limits discount stacking unless configured otherwise).</p>
+
+                    <h3>How do I fix "cart not updating" issues?</h3>
+                    <p>This is typically a JavaScript error. Open Chrome DevTools, go to Console, and look for errors when you click "Add to Cart." Common causes include app conflicts (see my <a href="/blog/shopify-app-conflicts-guide" style="color: #008060; font-weight: 600;">app conflicts guide</a>), variant unavailability, or cart drawer JavaScript breaking.</p>
+
+
+                
+                         <div class="related-articles-card">
+                              <h3 style="margin-top: 0;">Related Articles</h3>
+                              <ul style="list-style: none; padding: 0; margin: 0;">
+                              <li style="margin-bottom: 12px;"><a href="/blog/shopify-admin-down-login-issues" style="color: #008060; font-weight: 500; text-decoration: none;">Shopify Admin Down? Login Issues & Fixes</a></li>
+                              <li style="margin-bottom: 12px;"><a href="/blog/shopify-app-conflicts-guide" style="color: #008060; font-weight: 500; text-decoration: none;">Shopify App Conflicts: The Silent Killer of Your Conversion Rate</a></li>
+                              <li style="margin-bottom: 12px;"><a href="/blog/why-is-my-shopify-store-slow" style="color: #008060; font-weight: 500; text-decoration: none;">Why Is My Shopify Store Slow? The Complete Performance Guide</a></li>
+                              <li style="margin-bottom: 0;"><a href="/blog/shopify-technical-audit-guide" style="color: #008060; font-weight: 500; text-decoration: none;">The Complete Shopify Technical Audit Guide</a></li>
+                              </ul>
+                         </div>
+                    </article>
             </div>
         </main>
     </div>
