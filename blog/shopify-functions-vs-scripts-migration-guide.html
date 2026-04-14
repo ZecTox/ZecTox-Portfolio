@@ -7,7 +7,7 @@
     <title>Shopify Functions vs. Legacy Scripts: The Complete 2026 Migration Guide - Tejas Kedare</title>
     <link href="../styles.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="icon" href="../src/tejas_website_image.webp" type="image/x-icon">
+    <link rel="icon" href="/src/tejas_website_image.webp" type="image/x-icon">
 
     <!-- SEO Meta Tags -->
     <meta name="description"
@@ -187,7 +187,7 @@
             <div class="content-wrapper">
                 <article class="article-content">
                     <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden;">
-                        <img src="images/shopify_functions_vs_scripts_banner.png" alt="Shopify Functions vs Scripts Migration Guide" style="width: 100%; height: auto; display: block;">
+                        <img src="/blog/images/shopify_functions_vs_scripts_banner.png" alt="Shopify Functions vs Scripts Migration Guide" style="width: 100%; height: auto; display: block;">
                     </div>
 
                     <div class="article-header">
@@ -543,8 +543,8 @@ use shopify_function::prelude::*;
 use shopify_function::Result;
 
 #[shopify_function_target(query_path = "src/run.graphql", schema_path = "schema.graphql")]
-fn run(input: input::ResponseData) -> Result<output::FunctionRunResult> {
-    let customer_tags: Vec<&str> = input.cart.buyer_identity
+fn run(input: input::ResponseData) -> Result&lt;output::FunctionRunResult&gt; {
+    let customer_tags: Vec&lt;&amp;str&gt; = input.cart.buyer_identity
         .and_then(|b| b.customer.as_ref())
         .map(|c| c.has_any_tag.as_slice())
         .unwrap_or(&[])
@@ -598,7 +598,7 @@ cart = Input.cart
 shipping_rates = Input.shipping_rates
 
 shipping_rates.each do |rate|
-  if rate.name.include?("Express") && cart.subtotal_price < Money.new(cents: 5000)
+  if rate.name.include?("Express") && cart.subtotal_price &lt; Money.new(cents: 5000)
     rate.delete
   end
 end
@@ -616,7 +616,7 @@ export function run(input) {
   const operations = input.cart.deliveryGroups
     .flatMap((group) =>
       group.deliveryOptions
-        .filter((option) => option.title.includes("Express") && subtotal < THRESHOLD)
+        .filter((option) => option.title.includes("Express") && subtotal &lt; THRESHOLD)
         .map((option) => ({
           hide: {
             deliveryOptionHandle: option.handle,

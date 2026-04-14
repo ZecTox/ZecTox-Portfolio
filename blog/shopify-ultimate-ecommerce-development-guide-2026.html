@@ -7,7 +7,7 @@
     <title>The Connective Tissue of E-commerce: The Ultimate Shopify Development Handbook 2026 - Tejas Kedare</title>
     <link href="../styles.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="icon" href="../src/tejas_website_image.webp" type="image/x-icon">
+    <link rel="icon" href="/src/tejas_website_image.webp" type="image/x-icon">
 
     <!-- SEO Meta Tags -->
     <meta name="description"
@@ -225,7 +225,7 @@
             <div class="content-wrapper">
                 <article class="article-content">
                     <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden; background-color: #0b0c0d; display: flex; align-items: center; justify-content: center; min-height: 400px;">
-                         <img src="images/shopify_ultimate_guide_2026_banner.png" alt="Ultimate Shopify Development Handbook 2026"
+                         <img src="/blog/images/shopify_ultimate_guide_2026_banner.png" alt="Ultimate Shopify Development Handbook 2026"
                             fetchpriority="high"
                             style="width: 100%; height: auto; display: block;"
                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'padding:40px; text-align:center; color:#888;\'><i class=\'fas fa-book fa-3x\'></i><p>The Ultimate Guide 2026</p></div>'">
@@ -305,12 +305,20 @@
                     <p>JPEG is dead. PNG is for transparency only. You should be serving <strong>AVIF</strong> and <strong>WebP</strong>. Shopify does this automatically via its CDN, but you must code your theme to request the correct sizes.</p>
                     <p>Always use the `image_tag` filter in Liquid with explicit `widths` and `sizes` attributes. This tells the browser: <em>"I am on a mobile phone, send me the 400px image, not the 4000px desktop banner."</em></p>
 
+                    <h3 id="code-splitting">Strategic Code Splitting</h3>
+                    <p>Do not ship your entire storefront JavaScript bundle on first paint. Split heavy features such as search overlays, product configurators, quiz funnels, and account dashboards into on-demand chunks so the first interaction stays fast.</p>
+                    <p>On Shopify themes, the practical version of code splitting is conditional loading. Only load section scripts on templates that actually use them, and defer non-critical app code until after the core buying journey is interactive.</p>
+
                     <!-- Continuing with Parts 3, 4, 5... -->
 
                     <h2 id="part-3" class="chapter-header">Part 3: The Experience - UX & AI</h2>
                     <h3 id="ai-personalization">AI-Driven Personalization</h3>
                     <p>Personalization used to mean "Hello, [Name]". In 2026, it means "I see you are browsing winter coats in Chicago, here is the warmest parka we have."</p>
                     <p>Leverage Shopify's native AI and vector search to re-rank collection pages dynamically based on user intent. If a user clicks on three black items, your collection grid should instantly shuffle to prioritize black products.</p>
+
+                    <h3 id="immersive">Immersive Commerce (3D/AR)</h3>
+                    <p>Immersive commerce is no longer a gimmick for premium brands. For categories like furniture, beauty, jewelry, and made-to-order goods, 3D previews and AR reduce hesitation by helping customers visualize the product before purchase.</p>
+                    <p>The key is restraint. Use immersive experiences where they increase confidence or lower return rates, but keep the baseline storefront lightweight so performance and accessibility do not suffer for every shopper.</p>
 
                     <h2 id="part-4" class="chapter-header">Part 4: The Growth Machine - SEO & Marketing</h2>
                     <h3 id="technical-seo">Technical SEO Checklist</h3>
@@ -373,10 +381,7 @@
                     <h2>Frequently Asked Questions</h2>
 
                     <h3>Is Liquid still relevant in 2026?</h3>
-                    <p>Absolutely. Liquid is Shopify's templating language and will remain central to theme development for the foreseeable future. Even with headless/Hydrogen approaches, most stores still run on Liquid themes. The majority of the 
-
-                
-                         <div style="margin-top: 48px; padding: 32px; background: var(--card-bgB+ GMV Shopify stores use Liquid themes.</p>
+                    <p>Absolutely. Liquid is Shopify's templating language and will remain central to theme development for the foreseeable future. Even with headless/Hydrogen approaches, most stores still run on Liquid themes. Many of Shopify's highest-GMV brands still rely on Liquid themes for speed, merchandising flexibility, and operational simplicity.</p>
 
                     <h3>Should I learn Hydrogen for Shopify development?</h3>
                     <p>Hydrogen (Shopify's React-based headless framework) is powerful but overkill for 95% of stores. Learn it if you're building for brands that need fully custom experiences beyond what themes can provide. For most projects, Liquid + Shopify 2.0 sections give you 99% of the flexibility headless offers, with significantly lower complexity.</p>
