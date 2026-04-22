@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zectox.is-a.dev/</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://zectox.is-a.dev/blog</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -45,6 +45,12 @@
   <url>
     <loc>https://zectox.is-a.dev/blog/shopify-admin-down-login-issues</loc>
     <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zectox.is-a.dev/blog/shopify-agentic-storefronts-guide-2026</loc>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -93,6 +99,12 @@
   <url>
     <loc>https://zectox.is-a.dev/blog/shopify-custom-shipping-rates-guide</loc>
     <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zectox.is-a.dev/blog/shopify-functions-metaobjects-update-2026</loc>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
