@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Connective Tissue of E-commerce: The Ultimate Shopify Development Handbook 2026 - Tejas Kedare</title>
-    <link href="../styles.css" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="icon" href="/src/tejas_website_image.webp" type="image/x-icon">
 
@@ -173,7 +173,7 @@
         <div class="mobile-overlay" id="mobileOverlay"></div>
 
         <!-- Sidebar -->
-        <nav class="sidebar">
+                                <nav class="sidebar">
             <div class="sidebar-header">
                 <div class="night-mode-toggle">
                     <label class="toggle-switch">
@@ -185,13 +185,25 @@
             </div>
 
             <div class="nav-section">
-                <a href="../#overview" class="nav-item">
+                <a href="/" class="nav-item">
                     <i class="fas fa-home"></i>
-                    <span>Back to Home</span>
+                    <span>Home</span>
                 </a>
-                <a href="." class="nav-item active">
+                <a href="/#experience" class="nav-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </a>
+                <a href="/#projects" class="nav-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Stores</span>
+                </a>
+                <a href="/blog/" class="nav-item active">
                     <i class="fas fa-blog"></i>
                     <span>Blog</span>
+                </a>
+                <a href="/#contact" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
                 </a>
             </div>
         </nav>
@@ -199,25 +211,40 @@
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
-            <header class="header">
-                <!-- Mobile Hamburger Menu -->
+                                                <header class="header">
                 <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
                     <i class="fas fa-bars"></i>
                 </button>
 
                 <div class="header-left">
-                    <a href="." class="back-link" style="margin-bottom: 0;">
-                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    <a href="/" class="brand-lockup">
+                        <span id="page-title" class="brand-title">Tejas Kedare</span>
+                        <span class="brand-subtitle">Shopify Developer Portfolio</span>
                     </a>
+                    <nav class="desktop-nav" aria-label="Primary">
+                        <a href="/" class="nav-item desktop-nav-link">Home</a>
+                        <a href="/#experience" class="nav-item desktop-nav-link">Experience</a>
+                        <a href="/#projects" class="nav-item desktop-nav-link">Stores</a>
+                        <a href="/blog/" class="nav-item desktop-nav-link active">Blog</a>
+                        <a href="/#contact" class="nav-item desktop-nav-link">Contact</a>
+                    </nav>
                 </div>
                 <div class="header-right">
-                    <button class="schedule-btn-nav" onclick="window.location.href='../#schedule'">
+                    <button class="theme-toggle-button" id="themeToggleButton" type="button" aria-pressed="false">
+                        <i class="fas fa-moon"></i>
+                        Night Mode
+                    </button>
+                    <a href="/#schedule" class="schedule-btn-nav">
                         <i class="fas fa-calendar-check"></i>
                         Schedule Meeting
+                    </a>
+                    <button class="btn-secondary" id="downloadResumeBtn">
+                        <i class="fas fa-download"></i>
+                        Download Resume
                     </button>
-                    <a href="../#contact" class="btn-primary">
+                    <a href="/#contact" class="btn-primary">
                         <i class="fas fa-envelope"></i>
-                        Hire an Expert
+                        Contact Me
                     </a>
                 </div>
             </header>
@@ -347,7 +374,7 @@
                     <div style="background: #008060; color: white; padding: 40px; border-radius: 12px; text-align: center;">
                         <h2 style="color: white; margin-top: 0;">Overwhelmed by the scale of 2026?</h2>
                         <p style="font-size: 1.2em; opacity: 0.9;">Building a scalable, high-performance Shopify store is engineering, not just design. You need a partner who understands the code behind the curtain.</p>
-                        <a href="../#contact" class="btn-primary" style="background: white; color: #008060; margin-top: 20px; border: none;">Hire Tejas for Your Next Build</a>
+                        <a href="/#contact" class="btn-primary" style="background: white; color: #008060; margin-top: 20px; border: none;">Hire Tejas for Your Next Build</a>
                     </div>
                     <h2>Shopify Development Best Practices for 2026</h2>
                     <p>The Shopify ecosystem evolves rapidly. Here are the practices that separate professional developers from amateurs in 2026:</p>

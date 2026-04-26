@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to Set Up Custom Shipping Rates on Shopify (By Pincode, Weight & Zone) - Tejas Kedare</title>
-    <link href="../styles.css" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="icon" href="/src/tejas_website_image.webp" type="image/x-icon">
 
@@ -92,7 +92,7 @@
         <div class="mobile-overlay" id="mobileOverlay"></div>
 
         <!-- Sidebar -->
-        <nav class="sidebar">
+                                <nav class="sidebar">
             <div class="sidebar-header">
                 <div class="night-mode-toggle">
                     <label class="toggle-switch">
@@ -104,13 +104,25 @@
             </div>
 
             <div class="nav-section">
-                <a href="../#overview" class="nav-item">
+                <a href="/" class="nav-item">
                     <i class="fas fa-home"></i>
-                    <span>Back to Home</span>
+                    <span>Home</span>
                 </a>
-                <a href="." class="nav-item active">
+                <a href="/#experience" class="nav-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </a>
+                <a href="/#projects" class="nav-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Stores</span>
+                </a>
+                <a href="/blog/" class="nav-item active">
                     <i class="fas fa-blog"></i>
                     <span>Blog</span>
+                </a>
+                <a href="/#contact" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
                 </a>
             </div>
         </nav>
@@ -118,27 +130,38 @@
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
-            <header class="header">
-                <!-- Mobile Hamburger Menu -->
+                                                <header class="header">
                 <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
                     <i class="fas fa-bars"></i>
                 </button>
 
                 <div class="header-left">
-                    <a href="." class="back-link" style="margin-bottom: 0;">
-                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    <a href="/" class="brand-lockup">
+                        <span id="page-title" class="brand-title">Tejas Kedare</span>
+                        <span class="brand-subtitle">Shopify Developer Portfolio</span>
                     </a>
+                    <nav class="desktop-nav" aria-label="Primary">
+                        <a href="/" class="nav-item desktop-nav-link">Home</a>
+                        <a href="/#experience" class="nav-item desktop-nav-link">Experience</a>
+                        <a href="/#projects" class="nav-item desktop-nav-link">Stores</a>
+                        <a href="/blog/" class="nav-item desktop-nav-link active">Blog</a>
+                        <a href="/#contact" class="nav-item desktop-nav-link">Contact</a>
+                    </nav>
                 </div>
                 <div class="header-right">
-                    <button class="schedule-btn-nav" onclick="window.location.href='../#schedule'">
+                    <button class="theme-toggle-button" id="themeToggleButton" type="button" aria-pressed="false">
+                        <i class="fas fa-moon"></i>
+                        Night Mode
+                    </button>
+                    <a href="/#schedule" class="schedule-btn-nav">
                         <i class="fas fa-calendar-check"></i>
                         Schedule Meeting
-                    </button>
+                    </a>
                     <button class="btn-secondary" id="downloadResumeBtn">
                         <i class="fas fa-download"></i>
                         Download Resume
                     </button>
-                    <a href="../#contact" class="btn-primary">
+                    <a href="/#contact" class="btn-primary">
                         <i class="fas fa-envelope"></i>
                         Contact Me
                     </a>
@@ -337,7 +360,7 @@
                         style="margin-top: 40px; padding: 24px; border-radius: 8px; background: linear-gradient(135deg, #008060 0%, #004d3d 100%); text-align: center; color: white;">
                         <p style="font-size: 1.15em; font-weight: 600; margin-bottom: 8px;">Need Help Setting Up Complex Shipping?</p>
                         <p style="opacity: 0.9; margin-bottom: 16px;">I've configured pincode-based shipping for stores across India and Australia. Let me set up your rates correctly from day one.</p>
-                        <a href="../#schedule" class="btn-primary" style="margin-top: 8px; background: white; color: #004d3d;">Get Shipping Setup Help</a>
+                        <a href="/#schedule" class="btn-primary" style="margin-top: 8px; background: white; color: #004d3d;">Get Shipping Setup Help</a>
                     </div>
                 
                          <div class="related-articles-card">

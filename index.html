@@ -71,9 +71,6 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-N8KD9MB7');</script>
     <!-- End Google Tag Manager -->
-    <!-- Vercel Speed Insights -->
-    <script>window.si = window.si || function () { (window.si.q = window.si.q || []).push(arguments); };</script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 
 <body>
@@ -119,7 +116,7 @@
                     <i class="fas fa-question-circle"></i>
                     <span>FAQ</span>
                 </a>
-                <a href="blog/" class="nav-item">
+                <a href="/blog/" class="nav-item">
                     <i class="fas fa-blog"></i>
                     <span>Blog</span>
                 </a>
@@ -154,9 +151,24 @@
                 </button>
 
                 <div class="header-left">
-                    <h1 id="page-title">Shopify Developer Portfolio</h1>
+                    <a href="#overview" class="brand-lockup">
+                        <span id="page-title" class="brand-title">Tejas Kedare</span>
+                        <span class="brand-subtitle">Shopify Developer Portfolio</span>
+                    </a>
+                    <nav class="desktop-nav" aria-label="Primary">
+                        <a href="#overview" class="nav-item desktop-nav-link active" data-section="overview">Overview</a>
+                        <a href="#experience" class="nav-item desktop-nav-link" data-section="experience">Experience</a>
+                        <a href="#projects" class="nav-item desktop-nav-link" data-section="projects">Stores</a>
+                        <a href="#testimonials" class="nav-item desktop-nav-link" data-section="testimonials">Testimonials</a>
+                        <a href="/blog/" class="nav-item desktop-nav-link">Blog</a>
+                        <a href="#contact" class="nav-item desktop-nav-link" data-section="contact">Contact</a>
+                    </nav>
                 </div>
                 <div class="header-right">
+                    <button class="theme-toggle-button" id="themeToggleButton" type="button" aria-pressed="false">
+                        <i class="fas fa-moon"></i>
+                        Night Mode
+                    </button>
                     <button class="schedule-btn-nav"
                         onclick="document.querySelector('[data-section=\'schedule\']').click()">
                         <i class="fas fa-calendar-check"></i>
@@ -183,8 +195,15 @@
                     <div class="hero">
                         <div class="hero-content">
                             <div class="hero-text">
+                                <span class="hero-badge">Shopify developer for custom builds, migrations, speed, and CRO</span>
                                 <h2>I Build Shopify Stores That <span class="highlight">Load Fast & Convert</span></h2>
                                 <p>Expert Shopify Developer specializing in custom theme development, speed optimization, and conversion rate optimization. From pixel-perfect design to complex app integrations — I deliver scalable e-commerce solutions that drive revenue.</p>
+                                <div class="hero-proof">
+                                    <span class="hero-proof-item">Custom themes</span>
+                                    <span class="hero-proof-item">Store migrations</span>
+                                    <span class="hero-proof-item">Performance optimization</span>
+                                    <span class="hero-proof-item">Shopify support</span>
+                                </div>
                                 <div class="hero-buttons">
                                     <a href="#projects" class="hero-btn-primary" onclick="document.querySelector('[data-section=\'projects\']').click(); return false;">
                                         <i class="fas fa-shopping-cart"></i> View My Work
@@ -193,11 +212,39 @@
                                         <i class="fas fa-calendar-check"></i> Book a Call
                                     </a>
                                 </div>
+                                <div class="hero-metrics">
+                                    <div class="hero-metric">
+                                        <strong>11+</strong>
+                                        <span>Store builds and launches</span>
+                                    </div>
+                                    <div class="hero-metric">
+                                        <strong>100%</strong>
+                                        <span>Client satisfaction focus</span>
+                                    </div>
+                                    <div class="hero-metric">
+                                        <strong>B2C + B2B</strong>
+                                        <span>Hands-on Shopify experience</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="hero-image">
-                                <img src="/src/tejas_website_image.webp"
-                                    alt="Tejas Kedare - Expert Shopify Developer" width="160" height="160"
-                                    fetchpriority="high" />
+                            <div class="hero-panel">
+                                <div class="hero-image">
+                                    <img src="/src/tejas_website_image.webp"
+                                        alt="Tejas Kedare - Expert Shopify Developer" width="160" height="160"
+                                        fetchpriority="high" />
+                                </div>
+                                <div class="hero-panel-card">
+                                    <p class="hero-panel-eyebrow">What I help with</p>
+                                    <ul class="hero-panel-list">
+                                        <li>High-converting Shopify storefront builds and redesigns</li>
+                                        <li>Theme performance, app cleanup, and conversion-focused improvements</li>
+                                        <li>Migrations, custom integrations, and long-term store support</li>
+                                    </ul>
+                                </div>
+                                <div class="hero-availability">
+                                    <span class="status-dot"></span>
+                                    Open for store builds, audits, migrations, and ongoing Shopify development
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -205,15 +252,15 @@
                     <!-- Featured Articles Section -->
                     <div class="card" style="margin-top: 24px;">
                         <div class="card-header">
-                            <h2>📚 Featured Articles</h2>
+                            <h2>Featured Articles</h2>
                             <p style="margin: 8px 0 0 0; color: #6d7175; font-size: 0.9em;">Fresh Shopify platform updates alongside implementation guides and technical playbooks</p>
                         </div>
                         <div class="card-content">
                             <div class="stats-grid">
                                 <!-- Article 1: Ultimate Guide -->
-                                <a href="blog/shopify-ultimate-ecommerce-development-guide-2026" class="stat-card hover-translate transition-transform block-link">
+                                <a href="/blog/shopify-ultimate-ecommerce-development-guide-2026" class="stat-card hover-translate transition-transform block-link">
                                     <div class="stat-header">
-                                        <span class="stat-title" style="color: #008060; font-weight: 600;">📖 Ultimate Dev Handbook</span>
+                                        <span class="stat-title" style="color: #008060; font-weight: 600;">Ultimate Dev Handbook</span>
                                         <span class="stat-period" style="background: #008060; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.75em;">5200 words</span>
                                     </div>
                                     <div style="font-size: 0.9em; color: #6d7175; margin-top: 8px;">
@@ -226,9 +273,9 @@
                                 </a>
 
                                 <!-- Article 2: Agentic Storefronts -->
-                                <a href="blog/shopify-agentic-storefronts-guide-2026" class="stat-card hover-translate transition-transform block-link">
+                                <a href="/blog/shopify-agentic-storefronts-guide-2026" class="stat-card hover-translate transition-transform block-link">
                                     <div class="stat-header">
-                                        <span class="stat-title" style="color: #008060; font-weight: 600;">🤖 Agentic Storefronts</span>
+                                        <span class="stat-title" style="color: #008060; font-weight: 600;">Agentic Storefronts</span>
                                         <span class="stat-period" style="background: #008060; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.75em;">April 2026</span>
                                     </div>
                                     <div style="font-size: 0.9em; color: #6d7175; margin-top: 8px;">
@@ -241,9 +288,9 @@
                                 </a>
 
                                 <!-- Article 3: Functions + Metaobjects -->
-                                <a href="blog/shopify-functions-metaobjects-update-2026" class="stat-card hover-translate transition-transform block-link">
+                                <a href="/blog/shopify-functions-metaobjects-update-2026" class="stat-card hover-translate transition-transform block-link">
                                     <div class="stat-header">
-                                        <span class="stat-title" style="color: #008060; font-weight: 600;">🧩 Functions + Metaobjects</span>
+                                        <span class="stat-title" style="color: #008060; font-weight: 600;">Functions + Metaobjects</span>
                                         <span class="stat-period" style="background: #6c5ce7; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.75em;">2026-04</span>
                                     </div>
                                     <div style="font-size: 0.9em; color: #6d7175; margin-top: 8px;">
@@ -256,7 +303,7 @@
                                 </a>
 
                                 <!-- View All Button -->
-                                <a href="blog/" class="stat-card" style="text-decoration: none; cursor: pointer; background: linear-gradient(135deg, #008060 0%, #004d3d 100%); color: white; display: flex; align-items: center; justify-content: center; flex-direction: column; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                                <a href="/blog/" class="stat-card" style="text-decoration: none; cursor: pointer; background: linear-gradient(135deg, #008060 0%, #004d3d 100%); color: white; display: flex; align-items: center; justify-content: center; flex-direction: column; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                                     <i class="fas fa-book-open" style="font-size: 2.5em; margin-bottom: 12px; opacity: 0.9;"></i>
                                     <div style="font-size: 1.1em; font-weight: 600;">View All Articles</div>
                                     <div style="font-size: 0.85em; opacity: 0.85; margin-top: 4px; text-align: center;">Technical guides, migration playbooks, and current Shopify updates</div>
@@ -266,7 +313,8 @@
                     </div>
 
                     <div class="section-title">
-                        <h2>Overview</h2>
+                        <h2>At a Glance</h2>
+                        <p class="section-copy">A quick snapshot of the kind of Shopify work I take on and the outcomes I optimize for.</p>
                     </div>
 
                     <!-- Stats Cards -->
@@ -326,96 +374,135 @@
                 <section id="experience" class="content-section">
                     <div class="section-title">
                         <h2>Professional Experience</h2>
+                        <p class="section-copy">Hands-on Shopify roles across custom development, app integrations, SEO, migrations, and ongoing store management.</p>
+                    </div>
+
+                    <div class="experience-summary-grid reveal">
+                        <div class="experience-summary-card">
+                            <strong>4 Shopify Roles</strong>
+                            <span>Across consulting, in-house delivery, and full-time execution.</span>
+                        </div>
+                        <div class="experience-summary-card">
+                            <strong>2024 to Present</strong>
+                            <span>Hands-on work in themes, migrations, SEO, app integrations, and store support.</span>
+                        </div>
+                        <div class="experience-summary-card">
+                            <strong>Build + Support</strong>
+                            <span>Experience spanning launches, onboarding, maintenance, and operational improvements.</span>
+                        </div>
                     </div>
 
                     <div class="premium-experience-container">
-                        <div class="exp-card reveal"> <!-- Knox Job Experience -->
-                            <div class="exp-header">
+                        <div class="exp-card exp-card-current reveal">
+                            <div class="exp-meta-column">
+                                <span class="exp-status-chip exp-status-current">Current</span>
+                                <span class="exp-period">Sept 2025 - Present</span>
+                                <span class="exp-company-chip"><i class="fas fa-building"></i> Knox</span>
+                                <span class="exp-meta-chip"><i class="fas fa-location-dot"></i> Remote · India</span>
+                            </div>
+                            <div class="exp-main">
                                 <div class="exp-title-group">
                                     <h3>Shopify Developer</h3>
-                                    <span class="exp-company-info"><i class="fas fa-building"></i> Knox &bull; Remote - India</span>
+                                    <p class="exp-role-note">Supporting multiple D2C Shopify brands with ongoing development and implementation work.</p>
                                 </div>
-                                <span class="exp-period">Sept 2025 - Present</span>
-                            </div>
-                            <div class="exp-description">
-                                <ul>
-                                    <li>Providing my Shopify development expertise, I have worked with multiple major D2C brands, including Rasayanam, Miduty, Atovio, Kisah, InVogue Shop, and many more.</li>
-                                </ul>
-                            </div>
-                            <div class="exp-skills">
-                                <span class="exp-skill-tag">Shopify Plus</span>
-                                <span class="exp-skill-tag">Custom Themes</span>
-                                <span class="exp-skill-tag">App Integration</span>
+                                <div class="exp-description">
+                                    <ul>
+                                        <li>Providing my Shopify development expertise, I have worked with multiple major D2C brands, including Rasayanam, Miduty, Atovio, Kisah, InVogue Shop, and many more.</li>
+                                    </ul>
+                                </div>
+                                <div class="exp-skills">
+                                    <span class="exp-skill-tag">Shopify Plus</span>
+                                    <span class="exp-skill-tag">Custom Themes</span>
+                                    <span class="exp-skill-tag">App Integration</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="exp-card reveal"> <!-- TechSurvi Job Experience -->
-                            <div class="exp-header">
+                        <div class="exp-card reveal">
+                            <div class="exp-meta-column">
+                                <span class="exp-status-chip">Previous</span>
+                                <span class="exp-period">July 2025 - Feb 2026</span>
+                                <span class="exp-company-chip"><i class="fas fa-building"></i> TechSurvi</span>
+                                <span class="exp-meta-chip"><i class="fas fa-location-dot"></i> Pune, Maharashtra</span>
+                                <span class="exp-meta-chip"><i class="fas fa-briefcase"></i> Full-time</span>
+                            </div>
+                            <div class="exp-main">
                                 <div class="exp-title-group">
                                     <h3>Web Developer - Shopify</h3>
-                                    <span class="exp-company-info"><i class="fas fa-building"></i> TechSurvi &bull; Pune, Maharashtra (Full-time)</span>
+                                    <p class="exp-role-note">Building and maintaining Shopify stores for national and international clients.</p>
                                 </div>
-                                <span class="exp-period">July 2025 - Present</span>
-                            </div>
-                            <div class="exp-description">
-                                <ul>
-                                    <li>Developed and maintained high-performing, user-friendly Shopify eCommerce websites with custom themes and app integrations.</li>
-                                    <li>Managing Multiple Shopify Stores of National & International Clients.</li>
-                                    <li>Integrating Organizations Shopify Listed Loyalty & Rewards App - Retenzy in multiple Shopify Stores.</li>
-                                </ul>
-                            </div>
-                            <div class="exp-skills">
-                                <span class="exp-skill-tag">Theme Development</span>
-                                <span class="exp-skill-tag">Liquid</span>
-                                <span class="exp-skill-tag">Store Management</span>
-                                <span class="exp-skill-tag">Retenzy</span>
+                                <div class="exp-description">
+                                    <ul>
+                                        <li>Developed and maintained high-performing, user-friendly Shopify eCommerce websites with custom themes and app integrations.</li>
+                                        <li>Managing Multiple Shopify Stores of National & International Clients.</li>
+                                        <li>Integrating Organizations Shopify Listed Loyalty & Rewards App - Retenzy in multiple Shopify Stores.</li>
+                                    </ul>
+                                </div>
+                                <div class="exp-skills">
+                                    <span class="exp-skill-tag">Theme Development</span>
+                                    <span class="exp-skill-tag">Liquid</span>
+                                    <span class="exp-skill-tag">Store Management</span>
+                                    <span class="exp-skill-tag">Retenzy</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="exp-card reveal"> <!-- The Dhindora Club Job Experience -->
-                            <div class="exp-header">
+                        <div class="exp-card reveal">
+                            <div class="exp-meta-column">
+                                <span class="exp-status-chip">Previous</span>
+                                <span class="exp-period">Dec 2024 - June 2025</span>
+                                <span class="exp-company-chip"><i class="fas fa-building"></i> The Dhindora Club</span>
+                                <span class="exp-meta-chip"><i class="fas fa-location-dot"></i> Hyderabad, Telangana</span>
+                                <span class="exp-meta-chip"><i class="fas fa-briefcase"></i> Full-time</span>
+                            </div>
+                            <div class="exp-main">
                                 <div class="exp-title-group">
                                     <h3>Web Developer</h3>
-                                    <span class="exp-company-info"><i class="fas fa-building"></i> The Dhindora Club &bull; Hyderabad, Telangana (Full-time)</span>
+                                    <p class="exp-role-note">Owned delivery across onboarding, integrations, performance support, and store operations.</p>
                                 </div>
-                                <span class="exp-period">Dec 2024 - June 2025</span>
-                            </div>
-                            <div class="exp-description">
-                                <ul>
-                                    <li>Developed and maintained high-performing, user-friendly Shopify eCommerce websites with custom themes and app integrations.</li>
-                                    <li>Led client onboarding, gathered requirements, and maintained ongoing communication to ensure alignment with business goals.</li>
-                                    <li>Integrated third-party services and shipping partners to optimize order fulfillment and enhance customer experience.</li>
-                                    <li>Provided SEO/mobile optimization, payment gateway setup, and post-launch technical support.</li>
-                                    <li>Trained clients on managing their Shopify stores for efficient day-to-day operations.</li>
-                                </ul>
-                            </div>
-                            <div class="exp-skills">
-                                <span class="exp-skill-tag">Client Onboarding</span>
-                                <span class="exp-skill-tag">API Integrations</span>
-                                <span class="exp-skill-tag">SEO Optimization</span>
+                                <div class="exp-description">
+                                    <ul>
+                                        <li>Developed and maintained high-performing, user-friendly Shopify eCommerce websites with custom themes and app integrations.</li>
+                                        <li>Led client onboarding, gathered requirements, and maintained ongoing communication to ensure alignment with business goals.</li>
+                                        <li>Integrated third-party services and shipping partners to optimize order fulfillment and enhance customer experience.</li>
+                                        <li>Provided SEO/mobile optimization, payment gateway setup, and post-launch technical support.</li>
+                                        <li>Trained clients on managing their Shopify stores for efficient day-to-day operations.</li>
+                                    </ul>
+                                </div>
+                                <div class="exp-skills">
+                                    <span class="exp-skill-tag">Client Onboarding</span>
+                                    <span class="exp-skill-tag">API Integrations</span>
+                                    <span class="exp-skill-tag">SEO Optimization</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="exp-card reveal"> <!-- Tru Herb Job Experience -->
-                            <div class="exp-header">
+                        <div class="exp-card reveal">
+                            <div class="exp-meta-column">
+                                <span class="exp-status-chip">Previous</span>
+                                <span class="exp-period">Sept 2024 - Dec 2024</span>
+                                <span class="exp-company-chip"><i class="fas fa-building"></i> Pure Tru Herb</span>
+                                <span class="exp-meta-chip"><i class="fas fa-location-dot"></i> Bangalore, Karnataka</span>
+                                <span class="exp-meta-chip"><i class="fas fa-briefcase"></i> Full-time</span>
+                            </div>
+                            <div class="exp-main">
                                 <div class="exp-title-group">
                                     <h3>Junior Shopify Developer & Category Executive</h3>
-                                    <span class="exp-company-info"><i class="fas fa-building"></i> Pure Tru Herb &bull; Bangalore, Karnataka (Full-time)</span>
+                                    <p class="exp-role-note">Managed store operations, catalog growth, and internal tooling for a fast-moving Shopify setup.</p>
                                 </div>
-                                <span class="exp-period">Sept 2024 - Dec 2024</span>
-                            </div>
-                            <div class="exp-description">
-                                <ul>
-                                    <li>Managed and maintained the company's Shopify Store (www.total-ingredients.com), conducting regular tests to ensure functionality.</li>
-                                    <li>Oversaw 450+ products on the website, solely adding 200+ products to streamline updates and management.</li>
-                                    <li>Developed a Certificate of Analysis (COA) Creator application to automate document generation.</li>
-                                    <li>Built a sales data visualization app to enhance team decision-making with key metrics.</li>
-                                </ul>
-                            </div>
-                            <div class="exp-skills">
-                                <span class="exp-skill-tag">Product Management</span>
-                                <span class="exp-skill-tag">App Development</span>
-                                <span class="exp-skill-tag">Data Visualization</span>
+                                <div class="exp-description">
+                                    <ul>
+                                        <li>Managed and maintained the company's Shopify Store (www.total-ingredients.com), conducting regular tests to ensure functionality.</li>
+                                        <li>Oversaw 450+ products on the website, solely adding 200+ products to streamline updates and management.</li>
+                                        <li>Developed a Certificate of Analysis (COA) Creator application to automate document generation.</li>
+                                        <li>Built a sales data visualization app to enhance team decision-making with key metrics.</li>
+                                    </ul>
+                                </div>
+                                <div class="exp-skills">
+                                    <span class="exp-skill-tag">Product Management</span>
+                                    <span class="exp-skill-tag">App Development</span>
+                                    <span class="exp-skill-tag">Data Visualization</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -423,7 +510,8 @@
 
                 <section id="projects" class="content-section">
                     <div class="section-title">
-                        <h2>Shopify Stores</h2>
+                        <h2>Selected Store Builds</h2>
+                        <p class="section-copy">Real Shopify stores I have built, migrated, customized, or supported with performance and conversion-focused work.</p>
                     </div>
 
                     <div class="projects-grid">
@@ -827,6 +915,7 @@
                 <section id="testimonials" class="content-section">
                     <div class="section-title">
                         <h2>Client Testimonials</h2>
+                        <p class="section-copy">A few short notes from people I have worked with on Shopify builds and support.</p>
                     </div>
 
                     <div class="projects-grid">
@@ -881,6 +970,7 @@
                 <section id="faq" class="content-section">
                     <div class="section-title">
                         <h2>Frequently Asked Questions</h2>
+                        <p class="section-copy">The questions merchants usually ask before bringing in a Shopify developer.</p>
                     </div>
                     <div class="faq-container">
                         <div class="faq-item">
@@ -948,6 +1038,7 @@
                 <section id="blog-cta" class="content-section">
                     <div class="section-title">
                         <h2>Latest Insights</h2>
+                        <p class="section-copy">Fresh writing on Shopify architecture, performance, platform changes, and e-commerce execution.</p>
                     </div>
                     <div class="card">
                         <div class="card-content">
@@ -960,7 +1051,7 @@
                                     <p>Discover expert insights on Shopify development, performance optimization, and
                                         proven conversion strategies to scale your online business.</p>
                                 </div>
-                                <a href="blog/" class="btn-primary">
+                                <a href="/blog/" class="btn-primary">
                                     <i class="fas fa-arrow-right"></i>
                                     Read the Blog
                                 </a>
@@ -972,6 +1063,7 @@
                 <section id="skills" class="content-section">
                     <div class="section-title">
                         <h2>Technical Skills</h2>
+                        <p class="section-copy">The tools and capabilities I use to build, optimize, and maintain Shopify storefronts.</p>
                     </div>
                     <div class="card">
                         <div class="card-content">
@@ -1032,6 +1124,7 @@
                 <section id="resume" class="content-section">
                     <div class="section-title">
                         <h2>Resume</h2>
+                        <p class="section-copy">My current experience, roles, and core Shopify-related skills in one place.</p>
                     </div>
                     <div class="card">
                         <div class="card-content">
@@ -1055,25 +1148,45 @@
 
                 <section id="schedule" class="content-section">
                     <div class="section-title">
-                        <h2>Schedule a Call</h2>
+                        <h2>Book a Discovery Call</h2>
+                        <p class="section-copy">Use the inline calendar only when you need it, or open my booking page in a separate tab.</p>
                     </div>
-                    <div class="card">
+                    <div class="card schedule-card">
                         <div class="card-content">
-                            <!-- Cal.com inline embed code begins -->
-                            <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline"></div>
-                            <script type="text/javascript">
-                                (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-                                Cal("init", { origin: "https://cal.com" });
-
-                                Cal("inline", {
-                                    elementOrSelector: "#my-cal-inline",
-                                    calLink: "zectox",
-                                    layout: "month_view"
-                                });
-
-                                Cal("ui", { "styles": { "branding": { "brandColor": "#000000" } }, "hideEventTypeDetails": false, "layout": "month_view" });
-                            </script>
-                            <!-- Cal.com inline embed code ends -->
+                            <div class="schedule-shell">
+                                <div class="schedule-copy-block">
+                                    <span class="schedule-badge">30 minute Google Meet</span>
+                                    <h3>Let’s talk through your Shopify build, redesign, migration, or store issue.</h3>
+                                    <p>Choose a time for a focused conversation about your store goals, technical blockers, or next steps. If you prefer a lighter page experience, open the booking page in a new tab instead of loading the inline embed.</p>
+                                    <ul class="schedule-points">
+                                        <li>Best for project scoping, performance audits, and migration planning</li>
+                                        <li>Useful if you need theme help, app debugging, or Shopify build support</li>
+                                        <li>Quickest path if you already know what you want built</li>
+                                    </ul>
+                                    <div class="schedule-actions">
+                                        <button class="btn-primary" id="loadCalendarBtn" type="button">
+                                            <i class="fas fa-calendar-check"></i>
+                                            Load Booking Calendar
+                                        </button>
+                                        <a href="https://cal.com/zectox/30min" target="_blank" rel="noopener" class="btn-secondary">
+                                            <i class="fas fa-arrow-up-right-from-square"></i>
+                                            Open in New Tab
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="schedule-embed-shell">
+                                    <div class="schedule-placeholder" id="calendarPlaceholder">
+                                        <div class="schedule-placeholder-card">
+                                            <div class="schedule-placeholder-icon">
+                                                <i class="fas fa-calendar-alt"></i>
+                                            </div>
+                                            <h4>Load the inline scheduler only when you want it</h4>
+                                            <p>This keeps the homepage cleaner and lighter while still giving visitors a direct path to book time with you.</p>
+                                        </div>
+                                    </div>
+                                    <div class="schedule-embed" id="calendarEmbed" hidden></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -1081,6 +1194,7 @@
                 <section id="contact" class="content-section">
                     <div class="section-title">
                         <h2>Contact Information</h2>
+                        <p class="section-copy">If you prefer not to book a call yet, reach out directly through email or social.</p>
                     </div>
                     <div class="contact-grid">
                         <div class="contact-card">

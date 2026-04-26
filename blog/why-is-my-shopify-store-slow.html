@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why Is My Shopify Store So Slow? 15 Hidden Performance Killers Destroying Your Conversions</title>
-    <link href="../styles.css" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="icon" href="/src/tejas_website_image.webp" type="image/x-icon">
 
@@ -155,7 +155,7 @@
         <div class="mobile-overlay" id="mobileOverlay"></div>
 
         <!-- Sidebar -->
-        <nav class="sidebar">
+                                <nav class="sidebar">
             <div class="sidebar-header">
                 <div class="night-mode-toggle">
                     <label class="toggle-switch">
@@ -167,13 +167,25 @@
             </div>
 
             <div class="nav-section">
-                <a href="../#overview" class="nav-item">
+                <a href="/" class="nav-item">
                     <i class="fas fa-home"></i>
-                    <span>Back to Home</span>
+                    <span>Home</span>
                 </a>
-                <a href="." class="nav-item active">
+                <a href="/#experience" class="nav-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </a>
+                <a href="/#projects" class="nav-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Stores</span>
+                </a>
+                <a href="/blog/" class="nav-item active">
                     <i class="fas fa-blog"></i>
                     <span>Blog</span>
+                </a>
+                <a href="/#contact" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
                 </a>
             </div>
         </nav>
@@ -181,22 +193,38 @@
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
-            <header class="header">
+                                                <header class="header">
                 <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
                     <i class="fas fa-bars"></i>
                 </button>
 
                 <div class="header-left">
-                    <a href="." class="back-link" style="margin-bottom: 0;">
-                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    <a href="/" class="brand-lockup">
+                        <span id="page-title" class="brand-title">Tejas Kedare</span>
+                        <span class="brand-subtitle">Shopify Developer Portfolio</span>
                     </a>
+                    <nav class="desktop-nav" aria-label="Primary">
+                        <a href="/" class="nav-item desktop-nav-link">Home</a>
+                        <a href="/#experience" class="nav-item desktop-nav-link">Experience</a>
+                        <a href="/#projects" class="nav-item desktop-nav-link">Stores</a>
+                        <a href="/blog/" class="nav-item desktop-nav-link active">Blog</a>
+                        <a href="/#contact" class="nav-item desktop-nav-link">Contact</a>
+                    </nav>
                 </div>
                 <div class="header-right">
-                    <button class="schedule-btn-nav" onclick="window.location.href='../#schedule'">
+                    <button class="theme-toggle-button" id="themeToggleButton" type="button" aria-pressed="false">
+                        <i class="fas fa-moon"></i>
+                        Night Mode
+                    </button>
+                    <a href="/#schedule" class="schedule-btn-nav">
                         <i class="fas fa-calendar-check"></i>
                         Schedule Meeting
+                    </a>
+                    <button class="btn-secondary" id="downloadResumeBtn">
+                        <i class="fas fa-download"></i>
+                        Download Resume
                     </button>
-                    <a href="../#contact" class="btn-primary">
+                    <a href="/#contact" class="btn-primary">
                         <i class="fas fa-envelope"></i>
                         Contact Me
                     </a>
@@ -440,7 +468,7 @@
                             <li>Priority-ranked fixes</li>
                             <li>No-obligation quote for professional optimization</li>
                         </ul>
-                        <a href="../#contact" class="btn-primary" style="background: white; color: #008060; font-size: 1.1em; padding: 16px 32px;">Request Your Free Audit</a>
+                        <a href="/#contact" class="btn-primary" style="background: white; color: #008060; font-size: 1.1em; padding: 16px 32px;">Request Your Free Audit</a>
                         <p style="font-size: 0.9em; margin-top: 16px; opacity: 0.9;">Limited to 5 audits per month • Response within 48 hours</p>
                     </div>
 
@@ -468,7 +496,7 @@
                         <strong>💡 Key Takeaway:</strong> You don't need to fix all 15 performance killers. Fixing the top 5 for your specific store usually gets you 80% of the benefit. Start with images, apps, and render-blocking scripts—those three alone can save 2-3 seconds.
                     </div>
 
-                    <p><strong>Want help diagnosing your store's specific issues?</strong> <a href="../#contact" style="color: #008060; font-weight: 600;">Get your free speed audit here</a> or <a href="../#schedule" style="color: #008060; font-weight: 600;">schedule a strategy call</a>.</p>
+                    <p><strong>Want help diagnosing your store's specific issues?</strong> <a href="/#contact" style="color: #008060; font-weight: 600;">Get your free speed audit here</a> or <a href="/#schedule" style="color: #008060; font-weight: 600;">schedule a strategy call</a>.</p>
 
                     <hr style="margin: 60px 0; border: 0; border-top: 1px solid var(--border-color);">
 
@@ -476,10 +504,10 @@
                         <h3 style="margin-top: 0;">Ready to Fix Your Slow Store?</h3>
                         <p style="font-size: 1.1em; color: var(--text-secondary);">I specialize in Shopify performance optimization for stores doing $50K-$5M/year.</p>
                         <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
-                            <a href="../#contact" class="btn-primary">
+                            <a href="/#contact" class="btn-primary">
                                 <i class="fas fa-rocket"></i> Get Free Speed Audit
                             </a>
-                            <a href="../#schedule" class="btn-secondary">
+                            <a href="/#schedule" class="btn-secondary">
                                 <i class="fas fa-calendar"></i> Schedule Consultation
                             </a>
                         </div>

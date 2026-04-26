@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Expert Shopify Developer | Tejas Kedare</title>
-    <link href="../styles.css" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
@@ -26,9 +26,6 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-N8KD9MB7');</script>
     <!-- End Google Tag Manager -->
-    <!-- Vercel Speed Insights -->
-    <script>window.si = window.si || function () { (window.si.q = window.si.q || []).push(arguments); };</script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 
 <body>
@@ -42,7 +39,7 @@
         <div class="mobile-overlay" id="mobileOverlay"></div>
 
         <!-- Sidebar -->
-        <nav class="sidebar">
+                                <nav class="sidebar">
             <div class="sidebar-header">
                 <div class="night-mode-toggle">
                     <label class="toggle-switch">
@@ -54,13 +51,25 @@
             </div>
 
             <div class="nav-section">
-                <a href="../#overview" class="nav-item">
+                <a href="/" class="nav-item">
                     <i class="fas fa-home"></i>
-                    <span>Back to Home</span>
+                    <span>Home</span>
                 </a>
-                <a href="#" class="nav-item active">
+                <a href="/#experience" class="nav-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </a>
+                <a href="/#projects" class="nav-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Stores</span>
+                </a>
+                <a href="/blog/" class="nav-item active">
                     <i class="fas fa-blog"></i>
                     <span>Blog</span>
+                </a>
+                <a href="/#contact" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
                 </a>
             </div>
         </nav>
@@ -68,25 +77,38 @@
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
-            <header class="header">
-                <!-- Mobile Hamburger Menu -->
+                                                <header class="header">
                 <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
                     <i class="fas fa-bars"></i>
                 </button>
 
                 <div class="header-left">
-                    <h1 id="page-title">Blog & Insights</h1>
+                    <a href="/" class="brand-lockup">
+                        <span id="page-title" class="brand-title">Tejas Kedare</span>
+                        <span class="brand-subtitle">Shopify Developer Portfolio</span>
+                    </a>
+                    <nav class="desktop-nav" aria-label="Primary">
+                        <a href="/" class="nav-item desktop-nav-link">Home</a>
+                        <a href="/#experience" class="nav-item desktop-nav-link">Experience</a>
+                        <a href="/#projects" class="nav-item desktop-nav-link">Stores</a>
+                        <a href="/blog/" class="nav-item desktop-nav-link active">Blog</a>
+                        <a href="/#contact" class="nav-item desktop-nav-link">Contact</a>
+                    </nav>
                 </div>
                 <div class="header-right">
-                    <button class="schedule-btn-nav" onclick="window.location.href='../#schedule'">
+                    <button class="theme-toggle-button" id="themeToggleButton" type="button" aria-pressed="false">
+                        <i class="fas fa-moon"></i>
+                        Night Mode
+                    </button>
+                    <a href="/#schedule" class="schedule-btn-nav">
                         <i class="fas fa-calendar-check"></i>
                         Schedule Meeting
-                    </button>
+                    </a>
                     <button class="btn-secondary" id="downloadResumeBtn">
                         <i class="fas fa-download"></i>
                         Download Resume
                     </button>
-                    <a href="../#contact" class="btn-primary">
+                    <a href="/#contact" class="btn-primary">
                         <i class="fas fa-envelope"></i>
                         Contact Me
                     </a>

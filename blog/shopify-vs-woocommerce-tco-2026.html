@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopify vs WooCommerce: Real Total Cost of Ownership 2026 | Complete Analysis</title>
-    <link href="../styles.css" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="icon" href="/src/tejas_website_image.webp" type="image/x-icon">
 
@@ -30,11 +30,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-N8KD9MB7');</script>
     <!-- End Google Tag Manager -->
-    <!-- Vercel Speed Insights -->
-    <script>window.si = window.si || function () { (window.si.q = window.si.q || []).push(arguments); };</script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>
-
-    <style>
+<style>
         .cost-table {
             width: 100%;
             border-collapse: collapse;
@@ -180,7 +176,7 @@
         <!-- Mobile Overlay -->
         <div class="mobile-overlay" id="mobileOverlay"></div>
 
-        <nav class="sidebar">
+                                <nav class="sidebar">
             <div class="sidebar-header">
                 <div class="night-mode-toggle">
                     <label class="toggle-switch">
@@ -190,34 +186,64 @@
                     <span class="toggle-label">Night Mode</span>
                 </div>
             </div>
+
             <div class="nav-section">
-                <a href="../#overview" class="nav-item">
+                <a href="/" class="nav-item">
                     <i class="fas fa-home"></i>
-                    <span>Back to Home</span>
+                    <span>Home</span>
                 </a>
-                <a href="." class="nav-item active">
+                <a href="/#experience" class="nav-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </a>
+                <a href="/#projects" class="nav-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Stores</span>
+                </a>
+                <a href="/blog/" class="nav-item active">
                     <i class="fas fa-blog"></i>
                     <span>Blog</span>
+                </a>
+                <a href="/#contact" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
                 </a>
             </div>
         </nav>
 
         <main class="main-content">
-            <header class="header">
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                                                <header class="header">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
                     <i class="fas fa-bars"></i>
                 </button>
+
                 <div class="header-left">
-                    <a href="." class="back-link" style="margin-bottom: 0;">
-                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    <a href="/" class="brand-lockup">
+                        <span id="page-title" class="brand-title">Tejas Kedare</span>
+                        <span class="brand-subtitle">Shopify Developer Portfolio</span>
                     </a>
+                    <nav class="desktop-nav" aria-label="Primary">
+                        <a href="/" class="nav-item desktop-nav-link">Home</a>
+                        <a href="/#experience" class="nav-item desktop-nav-link">Experience</a>
+                        <a href="/#projects" class="nav-item desktop-nav-link">Stores</a>
+                        <a href="/blog/" class="nav-item desktop-nav-link active">Blog</a>
+                        <a href="/#contact" class="nav-item desktop-nav-link">Contact</a>
+                    </nav>
                 </div>
                 <div class="header-right">
-                    <button class="schedule-btn-nav" onclick="window.location.href='../#schedule'">
+                    <button class="theme-toggle-button" id="themeToggleButton" type="button" aria-pressed="false">
+                        <i class="fas fa-moon"></i>
+                        Night Mode
+                    </button>
+                    <a href="/#schedule" class="schedule-btn-nav">
                         <i class="fas fa-calendar-check"></i>
                         Schedule Meeting
+                    </a>
+                    <button class="btn-secondary" id="downloadResumeBtn">
+                        <i class="fas fa-download"></i>
+                        Download Resume
                     </button>
-                    <a href="../#contact" class="btn-primary">
+                    <a href="/#contact" class="btn-primary">
                         <i class="fas fa-envelope"></i>
                         Contact Me
                     </a>
@@ -906,7 +932,7 @@
                             <li>Identify which platform fits your growth stage</li>
                             <li>Provide a migration estimate if you're switching</li>
                         </ul>
-                        <a href="../#schedule" class="btn-primary" style="margin-top: 16px;">Book Your Free Platform Audit</a>
+                        <a href="/#schedule" class="btn-primary" style="margin-top: 16px;">Book Your Free Platform Audit</a>
                         <p style="margin: 16px 0 0 0; font-size: 0.9em; color: var(--text-secondary);">No sales pitch. Data-driven recommendations based on your actual situation.</p>
                     </div>
 
@@ -920,7 +946,7 @@
 
                     <p>The numbers in this article are based on real stores I've built and maintained. Your mileage will vary based on your specific situation. But now you have the framework to calculate YOUR true Total Cost of Ownership—not just compare sticker prices.</p>
 
-                    <p><strong>Questions?</strong> Feel free to <a href="../#contact" style="color: #008060; font-weight: 600;">reach out</a> or <a href="../#schedule" style="color: #008060; font-weight: 600;">schedule a call</a> to discuss your specific platform decision.</p>
+                    <p><strong>Questions?</strong> Feel free to <a href="/#contact" style="color: #008060; font-weight: 600;">reach out</a> or <a href="/#schedule" style="color: #008060; font-weight: 600;">schedule a call</a> to discuss your specific platform decision.</p>
 
                     <hr style="margin: 60px 0;">
 
@@ -928,10 +954,10 @@
                         <h3>Ready to Make the Right Platform Decision?</h3>
                         <p style="font-size: 1.1em; color: var(--text-secondary); max-width: 600px; margin: 16px auto 24px auto;">Whether you're choosing a platform for a new store or considering a migration, I can help you make a data-driven decision.</p>
                         <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                            <a href="../#schedule" class="btn-primary">
+                            <a href="/#schedule" class="btn-primary">
                                 <i class="fas fa-calendar"></i> Book Platform Audit
                             </a>
-                            <a href="../#contact" class="btn-secondary">
+                            <a href="/#contact" class="btn-secondary">
                                 <i class="fas fa-envelope"></i> Ask a Question
                             </a>
                         </div>

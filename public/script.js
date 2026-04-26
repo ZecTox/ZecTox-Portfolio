@@ -1,53 +1,66 @@
 // Navigation functionality
 document.addEventListener('DOMContentLoaded', function () {
     const navItems = document.querySelectorAll('.nav-item[data-section]');
-    const pageTitle = document.getElementById('page-title');
     const nightModeToggle = document.getElementById('nightModeToggle');
+    const themeToggleButton = document.getElementById('themeToggleButton');
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const sidebar = document.querySelector('.sidebar');
     const mobileOverlay = document.getElementById('mobileOverlay');
 
-    // Section titles mapping
-    const sectionTitles = {
-        'overview': 'Shopify Developer Portfolio',
-        'experience': 'Professional Experience',
-        'projects': 'Shopify Stores',
-        'testimonials': 'Client Testimonials',
-        'faq': 'Frequently Asked Questions',
-        'skills': 'Technical Skills',
-        'resume': 'Resume',
-        'schedule': 'Schedule a Call',
-        'contact': 'Contact Information'
-    };
+    function syncThemeToggleUI() {
+        if (!themeToggleButton || !nightModeToggle) return;
+        const isNightMode = nightModeToggle.checked;
+        themeToggleButton.setAttribute('aria-pressed', String(isNightMode));
+        themeToggleButton.innerHTML = isNightMode
+            ? '<i class="fas fa-sun"></i> Day Mode'
+            : '<i class="fas fa-moon"></i> Night Mode';
+    }
 
     // Night mode toggle functionality
-    nightModeToggle.addEventListener('change', function () {
-        document.body.classList.toggle('night-mode', this.checked);
+    if (nightModeToggle) {
+        nightModeToggle.addEventListener('change', function () {
+            document.body.classList.toggle('night-mode', this.checked);
 
-        // Save preference to localStorage
-        localStorage.setItem('nightMode', this.checked);
-    });
+            // Save preference to localStorage
+            localStorage.setItem('nightMode', this.checked);
+            syncThemeToggleUI();
+        });
+    }
 
     // Load saved night mode preference
     const savedNightMode = localStorage.getItem('nightMode') === 'true';
-    if (savedNightMode) {
+    if (savedNightMode && nightModeToggle) {
         nightModeToggle.checked = true;
         document.body.classList.add('night-mode');
+    }
+    syncThemeToggleUI();
+
+    if (themeToggleButton && nightModeToggle) {
+        themeToggleButton.addEventListener('click', function () {
+            nightModeToggle.checked = !nightModeToggle.checked;
+            nightModeToggle.dispatchEvent(new Event('change'));
+        });
     }
 
     // Mobile menu functionality
     function toggleMobileMenu() {
+        if (!sidebar || !mobileOverlay) return;
         sidebar.classList.toggle('open');
         mobileOverlay.classList.toggle('active');
     }
 
     function closeMobileMenu() {
+        if (!sidebar || !mobileOverlay) return;
         sidebar.classList.remove('open');
         mobileOverlay.classList.remove('active');
     }
 
-    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-    mobileOverlay.addEventListener('click', closeMobileMenu);
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    }
+    if (mobileOverlay) {
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+    }
 
     // Close mobile menu when clicking nav items
     navItems.forEach(item => {
@@ -69,9 +82,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     behavior: 'smooth',
                     block: 'start'
                 });
-
-                // Update page title
-                pageTitle.textContent = sectionTitles[targetSection] || 'Portfolio Dashboard';
             }
 
             // Close mobile menu after navigation
@@ -115,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Contact me button in header
     const contactButton = document.querySelector('.header-right .btn-primary');
-    if (contactButton) {
+    if (contactButton && contactButton.tagName === 'BUTTON') {
         contactButton.addEventListener('click', function () {
             // Scroll to contact section
             navItems.forEach(nav => nav.classList.remove('active'));
@@ -129,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     behavior: 'smooth',
                     block: 'start'
                 });
-                pageTitle.textContent = 'Contact Information';
             }
 
             // Close mobile menu
@@ -166,12 +175,13 @@ document.addEventListener('DOMContentLoaded', function () {
             nav.classList.remove('active');
             if (nav.getAttribute('data-section') === current) {
                 nav.classList.add('active');
-                pageTitle.textContent = sectionTitles[current] || 'Portfolio Dashboard';
             }
         });
     }, 100); // Debounce for 100ms
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    if (navItems.length > 0) {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+    }
 
     // Add keyboard navigation
     document.addEventListener('keydown', function (e) {
@@ -206,6 +216,66 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    const loadCalendarBtn = document.getElementById('loadCalendarBtn');
+    const calendarPlaceholder = document.getElementById('calendarPlaceholder');
+    const calendarEmbed = document.getElementById('calendarEmbed');
+    let calendarLoaded = false;
+
+    if (loadCalendarBtn && calendarPlaceholder && calendarEmbed) {
+        loadCalendarBtn.addEventListener('click', function () {
+            if (calendarLoaded) {
+                calendarPlaceholder.hidden = true;
+                calendarEmbed.hidden = false;
+                return;
+            }
+
+            calendarLoaded = true;
+            loadCalendarBtn.disabled = true;
+            loadCalendarBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading Calendar...';
+            calendarPlaceholder.hidden = true;
+            calendarEmbed.hidden = false;
+
+            calendarEmbed.innerHTML = '';
+
+            (function (C, A, L) {
+                let p = function (a, ar) { a.q.push(ar); };
+                const d = C.document;
+                C.Cal = C.Cal || function () {
+                    let cal = C.Cal;
+                    let ar = arguments;
+                    if (!cal.loaded) {
+                        cal.ns = {};
+                        cal.q = cal.q || [];
+                        d.head.appendChild(d.createElement('script')).src = A;
+                        cal.loaded = true;
+                    }
+                    if (ar[0] === L) {
+                        const api = function () { p(api, arguments); };
+                        const namespace = ar[1];
+                        api.q = api.q || [];
+                        typeof namespace === 'string' ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar);
+                        return;
+                    }
+                    p(cal, ar);
+                };
+            })(window, 'https://app.cal.com/embed/embed.js', 'init');
+
+            window.Cal('init', { origin: 'https://cal.com' });
+            window.Cal('inline', {
+                elementOrSelector: '#calendarEmbed',
+                calLink: 'zectox',
+                layout: 'month_view'
+            });
+            window.Cal('ui', {
+                hideEventTypeDetails: false,
+                layout: 'month_view'
+            });
+
+            loadCalendarBtn.disabled = false;
+            loadCalendarBtn.innerHTML = '<i class="fas fa-calendar-check"></i> Calendar Loaded';
+        });
+    }
 });
 
 // Scroll-triggered reveal animations using Intersection Observer
@@ -290,199 +360,226 @@ if (document.readyState === 'loading') {
     handleHashScroll();
 }
 
-// Blog Meeting Popup Logic
-(function() {
-    // Configuration
+// Lightweight blog consultation prompt
+(function () {
     const CONFIG = {
-        popupDelay: 5000, // 5 seconds
-        frequencyHours: 1, // Show once every 1 hours
-        calLink: 'https://cal.com/zectox/30min', // Direct booking link
-        // calLink: 'https://cal.com/zectox', // Alternative generic link
+        popupDelay: 7000,
+        frequencyHours: 24,
+        bookingLink: '/#schedule',
+        directCalLink: 'https://cal.com/zectox/30min'
     };
 
-    function initBlogPopup() {
-        // 1. Check if we are on a blog page
-        if (!window.location.href.includes('/blog/')) return;
-        
-        // 2. Check localStorage for frequency cap
-        const lastSeen = localStorage.getItem('blogPopupSeen');
+    function initBlogPrompt() {
+        const path = window.location.pathname;
+        const isBlogArticle = path.startsWith('/blog/') && path !== '/blog/' && path !== '/blog';
+        if (!isBlogArticle) return;
+
+        const lastSeen = localStorage.getItem('blogPromptSeen');
         if (lastSeen) {
-            const timeSince = new Date().getTime() - parseInt(lastSeen);
+            const timeSince = Date.now() - parseInt(lastSeen, 10);
             const hoursSince = timeSince / (1000 * 60 * 60);
             if (hoursSince < CONFIG.frequencyHours) {
-                console.log('Blog popup suppressed: seen recently.');
                 return;
             }
         }
 
-        // 3. Inject CSS
         const style = document.createElement('style');
         style.textContent = `
-            .blog-popup-overlay {
+            .blog-consult-prompt {
                 position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.6);
-                backdrop-filter: blur(4px);
-                z-index: 9999;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                right: 24px;
+                bottom: 24px;
+                z-index: 9998;
+                width: min(360px, calc(100vw - 32px));
+                padding: 20px;
+                border-radius: 22px;
+                background: rgba(255, 255, 255, 0.96);
+                border: 1px solid rgba(17, 24, 39, 0.08);
+                box-shadow: 0 20px 50px rgba(15, 23, 42, 0.16);
+                transform: translateY(24px);
                 opacity: 0;
-                visibility: hidden;
-                transition: opacity 0.4s ease, visibility 0.4s;
+                pointer-events: none;
+                transition: opacity 0.3s ease, transform 0.3s ease;
+                backdrop-filter: blur(16px);
             }
 
-            .blog-popup-overlay.active {
+            .blog-consult-prompt.active {
                 opacity: 1;
-                visibility: visible;
-            }
-
-            .blog-popup-content {
-                background: white; /* Fallback */
-                background: rgba(255, 255, 255, 0.95);
-                width: 90%;
-                max-width: 1000px;  /* Wide enough for Cal.com */
-                height : 100%;
-                max-height: 90vh;
-                border-radius: 16px;
-                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-                position: relative;
-                transform: translateY(20px);
-                transition: transform 0.4s ease;
-                display: flex;
-                flex-direction: column;
-                overflow: hidden;
-                border: 1px solid rgba(255, 255, 255, 0.3);
-            }
-
-            .night-mode .blog-popup-content {
-                background: rgba(30, 30, 30, 0.95);
-                border-color: rgba(255, 255, 255, 0.1);
-                color: #e0e0e0;
-            }
-
-            .blog-popup-overlay.active .blog-popup-content {
                 transform: translateY(0);
+                pointer-events: auto;
             }
 
-            .blog-popup-close {
+            .blog-consult-close {
                 position: absolute;
-                top: 15px;
-                right: 15px;
-                background: none;
+                top: 12px;
+                right: 12px;
+                width: 32px;
+                height: 32px;
+                border-radius: 999px;
                 border: none;
-                font-size: 24px;
+                background: rgba(17, 24, 39, 0.06);
+                color: #4b5563;
                 cursor: pointer;
-                color: #666;
-                z-index: 10;
-                width: 30px;
-                height: 30px;
-                display: flex;
+                font-size: 1.1rem;
+            }
+
+            .blog-consult-kicker {
+                display: inline-flex;
                 align-items: center;
-                justify-content: center;
-                border-radius: 50%;
-                transition: background 0.2s;
+                gap: 8px;
+                margin-bottom: 12px;
+                padding: 8px 12px;
+                border-radius: 999px;
+                background: rgba(0, 128, 96, 0.1);
+                color: #006b51;
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.03em;
+                text-transform: uppercase;
             }
 
-            .blog-popup-close:hover {
-                background: rgba(0,0,0,0.1);
-            }
-            .night-mode .blog-popup-close { color: #aaa; }
-            .night-mode .blog-popup-close:hover { background: rgba(255,255,255,0.1); }
-
-            .blog-popup-header {
-                padding: 24px 24px 10px;
-                text-align: center;
+            .blog-consult-prompt h3 {
+                margin: 0 0 10px;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.18rem;
+                line-height: 1.3;
+                color: #111827;
             }
 
-            .blog-popup-header h3 {
-                margin: 0 0 8px;
-                font-size: 1.5rem;
-                color: #1a1a1a;
-            }
-            .night-mode .blog-popup-header h3 { color: #fff; }
-
-            .blog-popup-header p {
-                margin: 0;
-                color: #666;
+            .blog-consult-prompt p {
+                margin: 0 0 16px;
+                color: #6d7175;
+                line-height: 1.65;
                 font-size: 0.95rem;
             }
-            .night-mode .blog-popup-header p { color: #bbb; }
 
-            .blog-popup-body {
-                flex: 1;
-                overflow-y: auto;
-                padding: 0;
-                height: 500px; /* Fixed height for iframe */
+            .blog-consult-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
             }
 
-            .blog-popup-iframe {
-                width: 100%;
-                height: 100%;
+            .blog-consult-actions a,
+            .blog-consult-actions button {
+                min-height: 42px;
+                padding: 0 14px;
+                border-radius: 999px;
+                border: 1px solid rgba(17, 24, 39, 0.1);
+                font-size: 0.9rem;
+                font-weight: 600;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                cursor: pointer;
+            }
+
+            .blog-consult-primary {
+                background: linear-gradient(135deg, #00c878, #008060);
+                color: #ffffff;
                 border: none;
+                box-shadow: 0 14px 32px rgba(0, 200, 120, 0.2);
             }
 
-            .my-20{
-                margin-bottom: 0px !important;
+            .blog-consult-secondary {
+                background: rgba(255, 255, 255, 0.9);
+                color: #111827;
             }
 
+            body.night-mode .blog-consult-prompt {
+                background: rgba(15, 23, 42, 0.96);
+                border-color: rgba(255, 255, 255, 0.08);
+                box-shadow: 0 20px 50px rgba(2, 8, 23, 0.35);
+            }
+
+            body.night-mode .blog-consult-close {
+                background: rgba(255, 255, 255, 0.08);
+                color: #cbd5e1;
+            }
+
+            body.night-mode .blog-consult-prompt h3 {
+                color: #f8fafc;
+            }
+
+            body.night-mode .blog-consult-prompt p {
+                color: #cbd5e1;
+            }
+
+            body.night-mode .blog-consult-kicker {
+                background: rgba(0, 232, 138, 0.14);
+                color: #00e88a;
+            }
+
+            body.night-mode .blog-consult-secondary {
+                background: rgba(255, 255, 255, 0.04);
+                border-color: rgba(255, 255, 255, 0.08);
+                color: #f8fafc;
+            }
+
+            @media (max-width: 640px) {
+                .blog-consult-prompt {
+                    right: 16px;
+                    left: 16px;
+                    bottom: 16px;
+                    width: auto;
+                }
+
+                .blog-consult-actions {
+                    flex-direction: column;
+                }
+
+                .blog-consult-actions a,
+                .blog-consult-actions button {
+                    width: 100%;
+                }
+            }
         `;
         document.head.appendChild(style);
 
-        // 4. Create DOM Elements
-        const overlay = document.createElement('div');
-        overlay.className = 'blog-popup-overlay';
-        
-        overlay.innerHTML = `
-            <div class="blog-popup-content">
-                <button class="blog-popup-close">&times;</button>
-                <div class="blog-popup-header">
-                    <h3>Need Expert Shopify Advice?</h3>
-                    <p>Facing issues with your store? Book a 1:1 consultation directly.</p>
-                </div>
-                <div class="blog-popup-body">
-                    <iframe src="${CONFIG.calLink}" class="blog-popup-iframe" allowfullscreen></iframe>
-                </div>
+        const prompt = document.createElement('aside');
+        prompt.className = 'blog-consult-prompt';
+        prompt.innerHTML = `
+            <button class="blog-consult-close" type="button" aria-label="Dismiss consultation prompt">&times;</button>
+            <span class="blog-consult-kicker">
+                <i class="fas fa-calendar-check"></i>
+                Need Shopify help?
+            </span>
+            <h3>Want help turning this advice into real store improvements?</h3>
+            <p>Book a short discovery call if you want support with Shopify performance, migrations, theme work, or technical audits.</p>
+            <div class="blog-consult-actions">
+                <a href="${CONFIG.bookingLink}" class="blog-consult-primary">
+                    <i class="fas fa-arrow-right"></i>
+                    Open booking section
+                </a>
+                <a href="${CONFIG.directCalLink}" target="_blank" rel="noopener" class="blog-consult-secondary">
+                    <i class="fas fa-up-right-from-square"></i>
+                    Open calendar
+                </a>
             </div>
         `;
-        document.body.appendChild(overlay);
+        document.body.appendChild(prompt);
 
-        // 5. Event Handlers
-        const closeBtn = overlay.querySelector('.blog-popup-close');
-        
-        function closePopup() {
-            overlay.classList.remove('active');
-            // Record timestamp in localStorage
-            localStorage.setItem('blogPopupSeen', new Date().getTime().toString());
-            
-            // Remove from DOM after transition to save memory
+        const dismissPrompt = () => {
+            prompt.classList.remove('active');
+            localStorage.setItem('blogPromptSeen', Date.now().toString());
             setTimeout(() => {
-                if (overlay && overlay.parentNode) {
-                    overlay.parentNode.removeChild(overlay);
+                if (prompt.parentNode) {
+                    prompt.parentNode.removeChild(prompt);
                 }
-            }, 500);
-        }
+            }, 300);
+        };
 
-        closeBtn.addEventListener('click', closePopup);
-        
-        // Close on background click
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) closePopup();
-        });
+        prompt.querySelector('.blog-consult-close')?.addEventListener('click', dismissPrompt);
 
-        // 6. Trigger after delay
         setTimeout(() => {
-            overlay.classList.add('active');
+            prompt.classList.add('active');
         }, CONFIG.popupDelay);
     }
 
-    // Run initialization
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initBlogPopup);
+        document.addEventListener('DOMContentLoaded', initBlogPrompt);
     } else {
-        initBlogPopup();
+        initBlogPrompt();
     }
 })();

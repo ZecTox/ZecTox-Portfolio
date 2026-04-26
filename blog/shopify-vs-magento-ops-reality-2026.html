@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopify vs Magento (Adobe Commerce): Security, Maintenance & Team Cost Reality</title>
-    <link href="../styles.css" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="icon" href="/src/tejas_website_image.webp" type="image/x-icon">
 
@@ -30,11 +30,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-N8KD9MB7');</script>
     <!-- End Google Tag Manager -->
-    <!-- Vercel Speed Insights -->
-    <script>window.si = window.si || function () { (window.si.q = window.si.q || []).push(arguments); };</script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>
-
-    <style>
+<style>
         .ops-table { width: 100%; border-collapse: collapse; margin: 40px 0; background: var(--card-bg); }
         .ops-table th, .ops-table td { padding: 16px; border: 1px solid var(--border-color); text-align: left; }
         .ops-table th { background: #008060; color: white; font-weight: 600; }
@@ -67,7 +63,7 @@
         <!-- Mobile Overlay -->
         <div class="mobile-overlay" id="mobileOverlay"></div>
 
-        <nav class="sidebar">
+                                <nav class="sidebar">
             <div class="sidebar-header">
                 <div class="night-mode-toggle">
                     <label class="toggle-switch">
@@ -77,21 +73,67 @@
                     <span class="toggle-label">Night Mode</span>
                 </div>
             </div>
+
             <div class="nav-section">
-                <a href="../#overview" class="nav-item"><i class="fas fa-home"></i><span>Back to Home</span></a>
-                <a href="." class="nav-item active"><i class="fas fa-blog"></i><span>Blog</span></a>
+                <a href="/" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="/#experience" class="nav-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </a>
+                <a href="/#projects" class="nav-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Stores</span>
+                </a>
+                <a href="/blog/" class="nav-item active">
+                    <i class="fas fa-blog"></i>
+                    <span>Blog</span>
+                </a>
+                <a href="/#contact" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
             </div>
         </nav>
 
         <main class="main-content">
-            <header class="header">
-                <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="fas fa-bars"></i></button>
+                                                <header class="header">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
                 <div class="header-left">
-                    <a href="." class="back-link" style="margin-bottom: 0;"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+                    <a href="/" class="brand-lockup">
+                        <span id="page-title" class="brand-title">Tejas Kedare</span>
+                        <span class="brand-subtitle">Shopify Developer Portfolio</span>
+                    </a>
+                    <nav class="desktop-nav" aria-label="Primary">
+                        <a href="/" class="nav-item desktop-nav-link">Home</a>
+                        <a href="/#experience" class="nav-item desktop-nav-link">Experience</a>
+                        <a href="/#projects" class="nav-item desktop-nav-link">Stores</a>
+                        <a href="/blog/" class="nav-item desktop-nav-link active">Blog</a>
+                        <a href="/#contact" class="nav-item desktop-nav-link">Contact</a>
+                    </nav>
                 </div>
                 <div class="header-right">
-                    <button class="schedule-btn-nav" onclick="window.location.href='../#schedule'"><i class="fas fa-calendar-check"></i>Schedule Meeting</button>
-                    <a href="../#contact" class="btn-primary"><i class="fas fa-envelope"></i>Contact Me</a>
+                    <button class="theme-toggle-button" id="themeToggleButton" type="button" aria-pressed="false">
+                        <i class="fas fa-moon"></i>
+                        Night Mode
+                    </button>
+                    <a href="/#schedule" class="schedule-btn-nav">
+                        <i class="fas fa-calendar-check"></i>
+                        Schedule Meeting
+                    </a>
+                    <button class="btn-secondary" id="downloadResumeBtn">
+                        <i class="fas fa-download"></i>
+                        Download Resume
+                    </button>
+                    <a href="/#contact" class="btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Me
+                    </a>
                 </div>
             </header>
 
@@ -650,7 +692,7 @@
                             <li>Calculate your potential TCO savings</li>
                             <li>Provide an honest recommendation (including "don't migrate" if appropriate)</li>
                         </ul>
-                        <a href="../#schedule" class="btn-primary" style="margin-top: 16px;">Book Replatform Assessment</a>
+                        <a href="/#schedule" class="btn-primary" style="margin-top: 16px;">Book Replatform Assessment</a>
                         <p style="margin: 16px 0 0 0; font-size: 0.9em; color: var(--text-secondary);">No obligation. Data-driven analysis for your specific situation.</p>
                     </div>
 
@@ -664,7 +706,7 @@
 
                     <p>The question isn't "which is better?" It's "what operational model can your business sustain?"</p>
 
-                    <p>If you're tired of being in the ecommerce platform management business and want to get back to the commerce business, <a href="../#schedule" style="color: #008060; font-weight: 600;">let's talk about your options</a>.</p>
+                    <p>If you're tired of being in the ecommerce platform management business and want to get back to the commerce business, <a href="/#schedule" style="color: #008060; font-weight: 600;">let's talk about your options</a>.</p>
 
                     <hr style="margin: 60px 0;">
 
@@ -672,8 +714,8 @@
                         <h3>Ready to Escape the Ops Burden?</h3>
                         <p style="font-size: 1.1em; color: var(--text-secondary); max-width: 600px; margin: 16px auto 24px auto;">Whether you want to migrate away from Magento or optimize your current setup, I can help you reduce operational overhead.</p>
                         <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                            <a href="../#schedule" class="btn-primary"><i class="fas fa-calendar"></i> Book Assessment</a>
-                            <a href="../#contact" class="btn-secondary"><i class="fas fa-envelope"></i> Ask Questions</a>
+                            <a href="/#schedule" class="btn-primary"><i class="fas fa-calendar"></i> Book Assessment</a>
+                            <a href="/#contact" class="btn-secondary"><i class="fas fa-envelope"></i> Ask Questions</a>
                         </div>
                     </div>
 

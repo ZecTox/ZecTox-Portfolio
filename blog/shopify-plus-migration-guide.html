@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopify Plus Migration: The ROI Calculator & Technical Checklist (2026)</title>
-    <link href="../styles.css" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="icon" href="/src/tejas_website_image.webp" type="image/x-icon">
 
@@ -103,7 +103,7 @@
         <!-- Mobile Overlay -->
         <div class="mobile-overlay" id="mobileOverlay"></div>
 
-        <nav class="sidebar">
+                                <nav class="sidebar">
             <div class="sidebar-header">
                 <div class="night-mode-toggle">
                     <label class="toggle-switch">
@@ -113,34 +113,64 @@
                     <span class="toggle-label">Night Mode</span>
                 </div>
             </div>
+
             <div class="nav-section">
-                <a href="../#overview" class="nav-item">
+                <a href="/" class="nav-item">
                     <i class="fas fa-home"></i>
-                    <span>Back to Home</span>
+                    <span>Home</span>
                 </a>
-                <a href="." class="nav-item active">
+                <a href="/#experience" class="nav-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </a>
+                <a href="/#projects" class="nav-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Stores</span>
+                </a>
+                <a href="/blog/" class="nav-item active">
                     <i class="fas fa-blog"></i>
                     <span>Blog</span>
+                </a>
+                <a href="/#contact" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
                 </a>
             </div>
         </nav>
 
         <main class="main-content">
-            <header class="header">
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                                                <header class="header">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
                     <i class="fas fa-bars"></i>
                 </button>
+
                 <div class="header-left">
-                    <a href="." class="back-link" style="margin-bottom: 0;">
-                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    <a href="/" class="brand-lockup">
+                        <span id="page-title" class="brand-title">Tejas Kedare</span>
+                        <span class="brand-subtitle">Shopify Developer Portfolio</span>
                     </a>
+                    <nav class="desktop-nav" aria-label="Primary">
+                        <a href="/" class="nav-item desktop-nav-link">Home</a>
+                        <a href="/#experience" class="nav-item desktop-nav-link">Experience</a>
+                        <a href="/#projects" class="nav-item desktop-nav-link">Stores</a>
+                        <a href="/blog/" class="nav-item desktop-nav-link active">Blog</a>
+                        <a href="/#contact" class="nav-item desktop-nav-link">Contact</a>
+                    </nav>
                 </div>
                 <div class="header-right">
-                    <button class="schedule-btn-nav" onclick="window.location.href='../#schedule'">
+                    <button class="theme-toggle-button" id="themeToggleButton" type="button" aria-pressed="false">
+                        <i class="fas fa-moon"></i>
+                        Night Mode
+                    </button>
+                    <a href="/#schedule" class="schedule-btn-nav">
                         <i class="fas fa-calendar-check"></i>
                         Schedule Meeting
+                    </a>
+                    <button class="btn-secondary" id="downloadResumeBtn">
+                        <i class="fas fa-download"></i>
+                        Download Resume
                     </button>
-                    <a href="../#contact" class="btn-primary">
+                    <a href="/#contact" class="btn-primary">
                         <i class="fas fa-envelope"></i>
                         Contact Me
                     </a>
@@ -270,7 +300,7 @@
                         <h3 style="margin-top: 0; color: #008060;">Planning a Migration?</h3>
                         <p style="font-size: 1.1em;">I specialize in high-complexity migrations to Shopify Plus.</p>
                         <p>Let's map out your data, SEO, and integration needs to ensure a seamless switch.</p>
-                        <a href="../#contact" class="btn-primary" style="margin-top: 16px;">Discuss Your Migration</a>
+                        <a href="/#contact" class="btn-primary" style="margin-top: 16px;">Discuss Your Migration</a>
                     </div>
 
                     <p><strong>Conclusion:</strong> Shopify Plus isn't just "expensive Shopify." It's an enterprise operating system. If you're doing over $5M/year, you are likely losing money by NOT being on it due to inefficiencies and lower conversion ceilings.</p>
@@ -280,7 +310,7 @@
                     <div style="text-align: center; padding: 40px 20px;">
                         <h3>Ready to Scale?</h3>
                         <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                            <a href="../#schedule" class="btn-primary">
+                            <a href="/#schedule" class="btn-primary">
                                 <i class="fas fa-calendar"></i> Book Migration Call
                             </a>
                         </div>

@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "prebuild": "node generate-sitemap.js",
+    "sync:blog-shells": "node scripts/sync-blog-shells.mjs",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
