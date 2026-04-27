@@ -1587,6 +1587,72 @@ body.night-mode .faq-answer p {
     color: #008060;
 }
 
+.related-reading {
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid #e1e3e5;
+}
+
+.related-reading-header {
+    margin-bottom: 20px;
+}
+
+.related-reading-kicker {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #008060;
+}
+
+.related-reading-header p:last-child {
+    margin: 0;
+}
+
+.related-reading-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.related-reading-link {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid #e1e3e5;
+    background: #f6f6f7;
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.related-reading-link:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0, 128, 96, 0.35);
+    box-shadow: 0 10px 24px rgba(32, 34, 35, 0.08);
+}
+
+.related-reading-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6d7175;
+}
+
+.related-reading-link strong {
+    color: #202223;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .related-reading-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Night Mode for Article */
 body.night-mode .article-content {
     background-color: #1f1f1f;
@@ -1614,6 +1680,28 @@ body.night-mode .back-link {
 
 body.night-mode .back-link:hover {
     color: #00a96e;
+}
+
+body.night-mode .related-reading {
+    border-top-color: #404040;
+}
+
+body.night-mode .related-reading-link {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: #404040;
+}
+
+body.night-mode .related-reading-link:hover {
+    border-color: rgba(0, 169, 110, 0.45);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+body.night-mode .related-reading-label {
+    color: #9a9a9a;
+}
+
+body.night-mode .related-reading-link strong {
+    color: #e3e3e3;
 }
 /* Blog CTA Section */
 .blog-cta-wrapper {
@@ -2200,6 +2288,7 @@ body.night-mode .footer-social-link {
     pointer-events: none;
 }
 
+.blog-hero h1,
 .blog-hero h2 {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 32px;
@@ -2224,6 +2313,7 @@ body.night-mode .footer-social-link {
     .blog-hero {
         padding: 28px 20px;
     }
+    .blog-hero h1,
     .blog-hero h2 {
         font-size: 24px;
     }

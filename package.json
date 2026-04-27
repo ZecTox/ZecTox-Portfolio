@@ -7,6 +7,8 @@
     "dev": "vite",
     "prebuild": "node generate-sitemap.js",
     "sync:blog-shells": "node scripts/sync-blog-shells.mjs",
+    "sync:blog-seo": "node scripts/normalize-blog-seo.mjs",
+    "sync:blog-related": "node scripts/inject-related-reading.mjs",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
