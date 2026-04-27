@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 .env
 .vercel
+
+# Local Codex review artifacts
+.codex-*
+.codex-review/
+lh-*.json
