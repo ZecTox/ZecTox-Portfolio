@@ -11,11 +11,6 @@ const routes = [
   { url: '/blog', priority: 0.9, changefreq: 'weekly' }
 ];
 
-// Helper to format date as YYYY-MM-DD
-const formatDate = (date) => {
-  return date.toISOString().split('T')[0];
-};
-
 // Scan the blog directory for HTML files
 if (fs.existsSync(BLOG_DIR)) {
   const files = fs.readdirSync(BLOG_DIR);
@@ -24,16 +19,20 @@ if (fs.existsSync(BLOG_DIR)) {
     // Exclude the blog index file since we added it manually
     if (file.endsWith('.html') && file !== 'index.html') {
       const filePath = path.join(BLOG_DIR, file);
-      const stat = fs.statSync(filePath);
       
       // Remove .html extension for clean URL compatible with canonical tags
       const slug = file.replace('.html', '');
+      
+      // Extract lastmod from the SEO metadata inside the HTML
+      const content = fs.readFileSync(filePath, 'utf8');
+      const match = content.match(/<meta property="article:modified_time"\s+content="([^"]+)"\s*\/?>/i);
+      const lastmod = match ? match[1].split('T')[0] : undefined;
       
       routes.push({
         url: `/blog/${slug}`,
         priority: 0.8,
         changefreq: 'monthly',
-        lastmod: formatDate(stat.mtime)
+        ...(lastmod && { lastmod })
       });
     }
   });
@@ -50,9 +49,6 @@ routes.forEach(route => {
   
   if (route.lastmod) {
     xml += `    <lastmod>${route.lastmod}</lastmod>\n`;
-  } else {
-    // Fallback static routes to today's date if not specified
-    xml += `    <lastmod>${formatDate(new Date())}</lastmod>\n`;
   }
   
   xml += `    <changefreq>${route.changefreq}</changefreq>\n`;
