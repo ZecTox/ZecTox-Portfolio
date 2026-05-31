@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify Checkout Extensibility UI Components 2026: The Ultimate Guide - Tejas Kedare</title>
+    <link href="/styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <meta name="author" content="Tejas Kedare">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="icon" href="/src/tejas_website_image.webp" type="image/x-icon">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="checkout.liquid is dead. Learn how to build custom upsells, trust badges, and custom logic using Shopify Checkout UI Extensions in 2026.">
+    <meta name="keywords"
+        content="Shopify Checkout Extensibility, Checkout UI Extensions, Shopify Plus 2026, React Native, Custom Checkout, Shopify Developer">
+    <link rel="canonical" href="https://zectox.is-a.dev/blog/shopify-checkout-extensibility-ui-components-2026">
+
+    <!-- Open Graph -->
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Shopify Checkout Extensibility UI Components 2026: The Ultimate Guide">
+        <meta property="og:description" content="checkout.liquid is dead. Learn how to build custom upsells, trust badges, and custom logic using Shopify Checkout UI Extensions in 2026.">
+        <meta property="og:image" content="https://zectox.is-a.dev/blog/images/shopify_checkout_extensibility_2026.png">
+
+    <style>
+        .toc-box {
+            background: rgba(0, 128, 96, 0.05);
+            border: 1px solid rgba(0, 128, 96, 0.2);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+
+        .toc-box h3 {
+            margin-top: 0;
+            color: #008060;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 12px;
+        }
+
+        .toc-list a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .toc-list a:hover {
+            color: #008060;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 16px;
+            border-radius: 6px;
+            margin: 24px 0;
+            font-family: monospace;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shopify-dashboard">
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="night-mode-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="nightModeToggle" aria-label="Toggle Night Mode">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Night Mode</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <a href="/" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="/#experience" class="nav-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </a>
+                <a href="/#projects" class="nav-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Stores</span>
+                </a>
+                <a href="/blog/" class="nav-item active">
+                    <i class="fas fa-blog"></i>
+                    <span>Blog</span>
+                </a>
+                <a href="/#contact" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="header-left">
+                    <a href="/" class="brand-lockup">
+                        <span id="page-title" class="brand-title">Tejas Kedare</span>
+                        <span class="brand-subtitle">Shopify Developer Portfolio</span>
+                    </a>
+                    <nav class="desktop-nav" aria-label="Primary">
+                        <a href="/" class="nav-item desktop-nav-link">Home</a>
+                        <a href="/#experience" class="nav-item desktop-nav-link">Experience</a>
+                        <a href="/#projects" class="nav-item desktop-nav-link">Stores</a>
+                        <a href="/blog/" class="nav-item desktop-nav-link active">Blog</a>
+                        <a href="/#contact" class="nav-item desktop-nav-link">Contact</a>
+                    </nav>
+                </div>
+                <div class="header-right">
+                    <button class="theme-toggle-button" id="themeToggleButton" type="button" aria-pressed="false">
+                        <i class="fas fa-moon"></i>
+                        Night Mode
+                    </button>
+                    <a href="/#schedule" class="schedule-btn-nav">
+                        <i class="fas fa-calendar-check"></i>
+                        Schedule Meeting
+                    </a>
+                    <a href="/#contact" class="btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Me
+                    </a>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <article class="article-content">
+                    <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden; background-color: #202020; display: flex; align-items: center; justify-content: center; min-height: 300px;">
+                        <img src="/blog/images/shopify_checkout_extensibility_2026_banner.png" alt="Shopify Checkout Extensibility 2026"
+                            fetchpriority="high"
+                            style="width: 100%; height: auto; display: block;"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'padding:40px; text-align:center; color:#888;\'><i class=\'fas fa-code fa-3x\'></i><p>Image Pending Generation</p></div>'">
+                    </div>
+
+                    <div class="article-header">
+                        <h1>Shopify Checkout Extensibility UI Components 2026: The Ultimate Guide</h1>
+                        <div class="article-meta">
+                            <span>By Tejas Kedare</span> • <span>Updated: May 31, 2026</span> • <span>15 min read</span>
+                        </div>
+                    </div>
+
+                    <p class="lead">For years, Shopify Plus developers relied on <code>checkout.liquid</code> to inject custom JavaScript and CSS into the most critical page of an e-commerce store. As of 2025, that approach is dead. In 2026, <strong>Checkout Extensibility</strong> is the mandatory standard. Here is exactly how to build secure, lightning-fast Checkout UI Extensions using React.</p>
+
+                    <div class="toc-box">
+                        <h3>Table of Contents</h3>
+                        <ul class="toc-list">
+                            <li><a href="#chapter-1">Chapter 1: Why checkout.liquid Had to Die</a></li>
+                            <li><a href="#chapter-2">Chapter 2: The Architecture of Checkout UI Extensions</a></li>
+                            <li><a href="#chapter-3">Chapter 3: Building a Post-Purchase Upsell Component</a></li>
+                            <li><a href="#chapter-4">Chapter 4: Security and Network Calls</a></li>
+                            <li><a href="#faq">Frequently Asked Questions</a></li>
+                        </ul>
+                    </div>
+
+                    <h2 id="chapter-1">Chapter 1: Why checkout.liquid Had to Die</h2>
+                    <p>The old <code>checkout.liquid</code> file was a security nightmare and a performance bottleneck. Because merchants could inject arbitrary JavaScript (like jQuery, tracking pixels, and custom DOM manipulators), the checkout was brittle. If Shopify updated a class name, half the custom checkouts on the internet broke.</p>
+                    <p>Worse, arbitrary JS meant malicious scripts (Magecart attacks) could theoretically scrape credit card numbers if a merchant installed a shady tracking pixel.</p>
+                    <p>Checkout Extensibility fixes this by locking down the DOM. You can no longer write custom CSS or arbitrary JS that touches the checkout fields. Instead, you build isolated components that run in a secure sandbox (Web Workers) and render natively on the client.</p>
+
+                    <h2 id="chapter-2">Chapter 2: The Architecture of Checkout UI Extensions</h2>
+                    <p>Checkout UI Extensions are built using Preact/React. But there is a catch: you cannot use standard HTML tags like <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code>. Because Shopify renders these components natively on mobile (Shop app) and web, you must use their proprietary UI components.</p>
+                    <p>For example, instead of a <code>&lt;div&gt;</code>, you use a <code>&lt;BlockStack&gt;</code>. Instead of an <code>&lt;h1&gt;</code>, you use <code>&lt;Heading&gt;</code>.</p>
+                    <div class="code-block">
+<pre style="margin: 0;">import {
+  extend,
+  Banner,
+  BlockStack,
+  Text,
+} from '@shopify/checkout-ui-extensions';
+
+extend('Checkout::Dynamic::Render', (root) => {
+  const banner = root.createComponent(Banner, {
+    status: 'success',
+    title: 'Free shipping unlocked!',
+  });
+  root.appendChild(banner);
+});</pre>
+                    </div>
+
+                    <h2 id="chapter-3">Chapter 3: Building a Post-Purchase Upsell Component</h2>
+                    <p>One of the highest ROI extensions you can build is an in-checkout cross-sell. Let's look at a React-based example of an extension that offers a complementary product right before the payment step.</p>
+                    <div class="code-block">
+<pre style="margin: 0;">import {
+  reactExtension,
+  useCartLines,
+  useApplyCartLinesChange,
+  BlockStack,
+  Button,
+  Text,
+  InlineLayout,
+  Image
+} from '@shopify/ui-extensions-react/checkout';
+
+export default reactExtension('Checkout::Actions::RenderBefore', () => &lt;UpsellApp /&gt;);
+
+function UpsellApp() {
+  const lines = useCartLines();
+  const applyCartLinesChange = useApplyCartLinesChange();
+
+  // Simple logic: if they are buying coffee, offer a mug
+  const hasCoffee = lines.some(line =&gt; line.merchandise.title.includes('Coffee'));
+  const hasMug = lines.some(line =&gt; line.merchandise.title.includes('Mug'));
+
+  if (!hasCoffee || hasMug) return null;
+
+  return (
+    &lt;BlockStack border="base" padding="tight" borderRadius="base"&gt;
+      &lt;Text size="medium" emphasis="bold"&gt;Add a matching mug?&lt;/Text&gt;
+      &lt;InlineLayout spacing="base" columns={['20%', 'fill', 'auto']}&gt;
+        &lt;Image source="https://cdn.shopify.com/mug.jpg" /&gt;
+        &lt;Text&gt;Ceramic Mug - $15.00&lt;/Text&gt;
+        &lt;Button onPress={() =&gt; {
+          applyCartLinesChange({
+            type: 'addCartLine',
+            merchandiseId: 'gid://shopify/ProductVariant/123456789',
+            quantity: 1
+          });
+        }}&gt;
+          Add to Order
+        &lt;/Button&gt;
+      &lt;/InlineLayout&gt;
+    &lt;/BlockStack&gt;
+  );
+}</pre>
+                    </div>
+                    <p>This code runs completely securely, inherits the merchant's brand styling automatically, and is blazing fast because it doesn't wait for a heavy DOM to parse.</p>
+
+                    <h2 id="chapter-4">Chapter 4: Security and Network Calls</h2>
+                    <p>What if your extension needs to fetch external data, like a customer's loyalty point balance from Yotpo or a custom database? You can use the standard <code>fetch()</code> API inside your extension.</p>
+                    <p>However, to prevent data leakage, Shopify requires you to explicitly declare network access in your <code>shopify.extension.toml</code> configuration file. If you try to fetch a domain that isn't whitelisted in the TOML file, the request is instantly blocked by the sandbox.</p>
+
+                    <h2 id="faq">Frequently Asked Questions (FAQ)</h2>
+                    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/FAQPage">
+                        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom: 20px;">
+                            <h3 itemprop="name" style="margin-bottom: 8px;">Do I need Shopify Plus for Checkout Extensibility?</h3>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p itemprop="text">Checkout UI Extensions are available exclusively to Shopify Plus merchants. Standard plans cannot customize the checkout beyond basic branding colors and logos.</p>
+                            </div>
+                        </div>
+                        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom: 20px;">
+                            <h3 itemprop="name" style="margin-bottom: 8px;">Can I inject tracking pixels using UI Extensions?</h3>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p itemprop="text">No. UI Extensions are sandboxed. To install tracking pixels (like Meta or Google Ads), you must use Shopify Web Pixels (Customer Events API) which runs in an isolated environment specifically designed for analytics.</p>
+                            </div>
+                        </div>
+                        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom: 20px;">
+                            <h3 itemprop="name" style="margin-bottom: 8px;">Can I use standard CSS or Tailwind?</h3>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p itemprop="text">No. You cannot write raw CSS. All styling is handled via component props (like padding="tight" or display="inline"). The overall aesthetic (colors, fonts) is controlled globally by the merchant in the Checkout Branding settings.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Conclusion</h2>
+                    <p>Checkout Extensibility might feel restrictive at first compared to the Wild West of <code>checkout.liquid</code>, but it is vastly superior. By standardizing components and enforcing a strict sandbox, Shopify has guaranteed that checkouts will never break during platform updates.</p>
+
+                    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e1e3e5; text-align: center;">
+                        <p><strong>Need to migrate your legacy checkout.liquid?</strong></p>
+                        <p>I help Shopify Plus brands build custom Checkout UI Extensions, Functions, and Web Pixels.</p>
+                        <a href="/#contact" class="btn-primary" style="margin-top: 16px;">Hire a Checkout Expert</a>
+                    </div>
+                    <section class="related-reading" aria-labelledby="related-reading-title">
+                        <div class="related-reading-header">
+                            <p class="related-reading-kicker">Continue reading</p>
+                            <h2 id="related-reading-title">Related Shopify Guides</h2>
+                            <p>Explore a few closely related articles so the research journey doesn't stop at one page.</p>
+                        </div>
+                        <div class="related-reading-grid">
+                            <a href="/blog/shopify-technical-seo-checklist-2026" class="related-reading-link">
+                                <span class="related-reading-label">Read next</span>
+                                <strong>Shopify Technical SEO Checklist 2026: 10 Steps to Rank #1 on Google</strong>
+                            </a>
+                            <a href="/blog/shopify-ultimate-ecommerce-development-guide-2026" class="related-reading-link">
+                                <span class="related-reading-label">Read next</span>
+                                <strong>The Connective Tissue of E-commerce: The Ultimate Shopify Development Handbook 2026</strong>
+                            </a>
+                            <a href="/blog/shopify-markets-vs-multistore-architecture-2026" class="related-reading-link">
+                                <span class="related-reading-label">Read next</span>
+                                <strong>Shopify Markets vs. Expansion Stores: The 2026 International Architecture Guide</strong>
+                            </a>
+                        </div>
+                    </section>
+                </article>
+            </div>
+        </main>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
