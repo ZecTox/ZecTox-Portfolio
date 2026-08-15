@@ -449,6 +449,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (cta) {
       gsap.fromTo(cta, { backgroundPositionY: '0%' }, { backgroundPositionY: '100%', ease: "none", scrollTrigger: { trigger: cta, start: "top bottom", end: "bottom top", scrub: true } });
     }
+
+
 }
 
 // Custom Cursor Logic (Decoupled)
@@ -489,7 +491,7 @@ function initCursor() {
                 const rect = el.getBoundingClientRect();
                 const x = e.clientX - rect.left - rect.width/2;
                 const y = e.clientY - rect.top - rect.height/2;
-                gsap.to(el, { x: x*0.2, y: y*0.2, duration: 0.5, ease: "power3.out" });
+                gsap.to(el, { x: x*0.05, y: y*0.05, duration: 0.5, ease: "power3.out" });
             });
         });
     }
@@ -794,6 +796,58 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         lightbox.on('close', () => {
             if(window.lenis) window.lenis.start();
+        });
+    }
+
+    // Page Transition Curtain
+    const curtain = document.querySelector('.page-transition-curtain');
+    if (curtain && typeof gsap !== 'undefined') {
+        // Entrance: curtain covers the page (from CSS), reveal by sliding it up
+        gsap.fromTo(curtain,
+            { y: 0 },
+            {
+                y: '-100%',
+                duration: 0.8,
+                ease: 'power2.inOut',
+                force3D: true,
+                delay: 0.05,
+                onComplete: () => {
+                    curtain.style.pointerEvents = 'none';
+                }
+            }
+        );
+
+        // Exit: intercept local links
+        document.querySelectorAll('a[href]').forEach(link => {
+            // Skip non-navigating links
+            if (link.target === '_blank') return;
+            if (link.classList.contains('glightbox')) return;
+            if (link.style.display === 'none') return;
+            if (link.href.includes('mailto:') || link.href.includes('tel:')) return;
+            if (link.hash && link.pathname === window.location.pathname) return;
+            if (link.hostname !== window.location.hostname) return;
+
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const dest = link.href;
+
+                // Freeze Lenis so scrolling doesn't fight the animation
+                if (window.lenis) window.lenis.stop();
+
+                curtain.style.pointerEvents = 'auto';
+                gsap.fromTo(curtain,
+                    { y: '100%' },
+                    {
+                        y: '0%',
+                        duration: 0.6,
+                        ease: 'power2.inOut',
+                        force3D: true,
+                        onComplete: () => {
+                            window.location.href = dest;
+                        }
+                    }
+                );
+            });
         });
     }
 });

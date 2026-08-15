@@ -787,6 +787,15 @@ body.night-mode .exp-card:hover .exp-skill-tag {
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.04);
     will-change: transform;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.project-card > a {
+    display: flex !important;
+    flex-direction: column;
+    height: 100%;
+    flex: 1;
 }
 
 .project-card:hover {
@@ -807,6 +816,9 @@ body.night-mode .exp-card:hover .exp-skill-tag {
 
 .project-content {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .project-header {
@@ -3870,4 +3882,20 @@ body.night-mode .view-page-btn:hover {
 }
 .gslide-inner-content::-webkit-scrollbar {
     display: none;
+}
+
+/* Page Transition Curtain */
+.page-transition-curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0a0c10;
+    z-index: 999999;
+    pointer-events: none;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
 }
