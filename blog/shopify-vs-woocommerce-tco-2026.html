@@ -274,44 +274,81 @@
             </div>
         </nav>
 
-        <main class="main-content">
+        <main id="swup" class="main-content transition-fade">
                                                 <header class="header">
-                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
-                    <i class="fas fa-bars"></i>
-                </button>
+          <!-- Mobile Hamburger Menu -->
+          <button
+            class="mobile-menu-toggle"
+            id="mobileMenuToggle"
+            aria-label="Toggle mobile menu"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
 
-                <div class="header-left">
-                    <a href="/" class="brand-lockup">
-                        <span id="page-title" class="brand-title">Tejas Kedare</span>
-                        <span class="brand-subtitle">Shopify Developer Portfolio</span>
-                    </a>
-                    <nav class="desktop-nav" aria-label="Primary">
-                        <a href="/" class="nav-item desktop-nav-link">Home</a>
-                        <a href="/#experience" class="nav-item desktop-nav-link">Experience</a>
-                        <a href="/#projects" class="nav-item desktop-nav-link">Stores</a>
-                        <a href="/blog/" class="nav-item desktop-nav-link active">Blog</a>
-                        <a href="/#contact" class="nav-item desktop-nav-link">Contact</a>
-                    </nav>
-                </div>
-                <div class="header-right">
-                    <button class="theme-toggle-button" id="themeToggleButton" type="button" aria-pressed="false">
-                        <i class="fas fa-moon"></i>
-                        Night Mode
-                    </button>
-                    <a href="/#schedule" class="schedule-btn-nav">
-                        <i class="fas fa-calendar-check"></i>
-                        Schedule Meeting
-                    </a>
-                    <button class="btn-secondary" id="downloadResumeBtn">
-                        <i class="fas fa-download"></i>
-                        Download Resume
-                    </button>
-                    <a href="/#contact" class="btn-primary">
-                        <i class="fas fa-envelope"></i>
-                        Contact Me
-                    </a>
-                </div>
-            </header>
+          <div class="header-left">
+            <a href="/#overview" class="brand-lockup">
+              <span id="page-title" class="brand-title">Tejas Kedare</span>
+              <span class="brand-subtitle">Shopify Developer Portfolio</span>
+            </a>
+            <nav class="desktop-nav" aria-label="Primary">
+              <a
+                href="/#overview"
+                class="nav-item desktop-nav-link active"
+                data-section="overview"
+                >Overview</a
+              >
+              <a
+                href="/#experience"
+                class="nav-item desktop-nav-link"
+                data-section="experience"
+                >Experience</a
+              >
+              <a
+                href="/#projects"
+                class="nav-item desktop-nav-link"
+                data-section="projects"
+                >Stores</a
+              >
+              <a
+                href="/#testimonials"
+                class="nav-item desktop-nav-link"
+                data-section="testimonials"
+                >Testimonials</a
+              >
+              <a href="/blog/" class="nav-item desktop-nav-link">Blog</a>
+              <a
+                href="/#contact"
+                class="nav-item desktop-nav-link"
+                data-section="contact"
+                >Contact</a
+              >
+            </nav>
+          </div>
+          <div class="header-right">
+            <button
+              class="theme-toggle-button"
+              id="themeToggleButton"
+              type="button"
+              aria-pressed="false"
+            >
+              <i class="fas fa-moon"></i>
+            </button>
+            <button
+              class="schedule-btn-nav"
+              onclick="
+                document.querySelector('[data-section=\'schedule\']').click()
+              "
+            >
+              <i class="fas fa-calendar-check"></i>
+              Schedule Meeting
+            </button>
+
+            <button class="btn-primary">
+              <i class="fas fa-envelope"></i>
+              Contact Me
+            </button>
+          </div>
+        </header>
 
             <div class="content-wrapper">
                 <article class="article-content">
@@ -1059,6 +1096,46 @@
                     </section>
                 </article>
             </div>
+            <footer class="premium-footer">
+            <div class="footer-social">
+              <a
+                href="mailto:tejaskedare.22@gmail.com"
+                class="footer-social-link"
+                title="Email"
+              >
+                <i class="fas fa-envelope"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/zectox/"
+                target="_blank"
+                class="footer-social-link"
+                title="LinkedIn"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="https://github.com/ZecTox"
+                target="_blank"
+                class="footer-social-link"
+                title="GitHub"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="https://zectox.is-a.dev/"
+                target="_blank"
+                class="footer-social-link"
+                title="Website"
+              >
+                <i class="fas fa-globe"></i>
+              </a>
+            </div>
+            <p class="footer-brand">Tejas Kedare</p>
+            <p class="footer-tagline">
+              Building high-performance ecommerce solutions that drive revenue
+            </p>
+            <p class="footer-copyright">© 2026 All rights reserved</p>
+          </footer>
         </main>
     </div>
 
@@ -1071,6 +1148,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 
+    <script src="https://unpkg.com/swup@4"></script>
+    <script src="https://unpkg.com/@swup/scripts-plugin@2"></script>
+    <script src="https://unpkg.com/@swup/head-plugin@2"></script>
     <script src="/script.js"></script>
 </body>
 </html>

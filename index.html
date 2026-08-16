@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expert Shopify Developer - Tejas Kedare | Portfolio</title>
     <!-- Preload critical CSS -->
-    <link rel="preload" href="styles.css" as="style" />
+    <link rel="preload" href="/styles.css" as="style" />
     <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
@@ -24,7 +24,7 @@
         this.rel = 'stylesheet';
       "
     />
-    <link href="styles.css" rel="stylesheet" />
+    <link href="/styles.css" rel="stylesheet" />
 
     <link rel="icon" href="/src/tejas_website_image.webp" type="image/x-icon" />
 
@@ -257,7 +257,7 @@
       </nav>
 
       <!-- Main Content -->
-      <main class="main-content">
+      <main id="swup" class="main-content transition-fade">
         <!-- Header -->
         <header class="header">
           <!-- Mobile Hamburger Menu -->
@@ -270,38 +270,38 @@
           </button>
 
           <div class="header-left">
-            <a href="#overview" class="brand-lockup">
+            <a href="/#overview" class="brand-lockup">
               <span id="page-title" class="brand-title">Tejas Kedare</span>
               <span class="brand-subtitle">Shopify Developer Portfolio</span>
             </a>
             <nav class="desktop-nav" aria-label="Primary">
               <a
-                href="#overview"
+                href="/#overview"
                 class="nav-item desktop-nav-link active"
                 data-section="overview"
                 >Overview</a
               >
               <a
-                href="#experience"
+                href="/#experience"
                 class="nav-item desktop-nav-link"
                 data-section="experience"
                 >Experience</a
               >
               <a
-                href="#projects"
+                href="/#projects"
                 class="nav-item desktop-nav-link"
                 data-section="projects"
                 >Stores</a
               >
               <a
-                href="#testimonials"
+                href="/#testimonials"
                 class="nav-item desktop-nav-link"
                 data-section="testimonials"
                 >Testimonials</a
               >
               <a href="/blog/" class="nav-item desktop-nav-link">Blog</a>
               <a
-                href="#contact"
+                href="/#contact"
                 class="nav-item desktop-nav-link"
                 data-section="contact"
                 >Contact</a
@@ -316,7 +316,6 @@
               aria-pressed="false"
             >
               <i class="fas fa-moon"></i>
-              Night Mode
             </button>
             <button
               class="schedule-btn-nav"
@@ -327,10 +326,7 @@
               <i class="fas fa-calendar-check"></i>
               Schedule Meeting
             </button>
-            <button class="btn-secondary" id="downloadResumeBtn">
-              <i class="fas fa-download"></i>
-              Download Resume
-            </button>
+
             <button class="btn-primary">
               <i class="fas fa-envelope"></i>
               Contact Me
@@ -349,14 +345,13 @@
             <div class="hero">
               <div class="hero-content">
                 <div class="hero-text">
-                  <span class="hero-badge"
-                    >Shopify developer for custom builds, migrations, speed, and
-                    CRO</span
-                  >
-                  <h2>
-                    I Build Shopify Stores That
-                    <span class="highlight">Load Fast & Convert</span>
-                  </h2>
+                  <h2>I Build Shopify Stores<br>That <span class="highlight">Load Fast & Convert</span></h2>
+                  <div class="hero-proof">
+                    <span class="hero-proof-item">Custom themes</span>
+                    <span class="hero-proof-item">Store migrations</span>
+                    <span class="hero-proof-item">Performance optimization</span>
+                    <span class="hero-proof-item">Shopify support</span>
+                  </div>
                   <p>
                     Expert Shopify Developer specializing in custom theme
                     development, speed optimization, and conversion rate
@@ -364,14 +359,7 @@
                     integrations — I deliver scalable e-commerce solutions that
                     drive revenue.
                   </p>
-                  <div class="hero-proof">
-                    <span class="hero-proof-item">Custom themes</span>
-                    <span class="hero-proof-item">Store migrations</span>
-                    <span class="hero-proof-item"
-                      >Performance optimization</span
-                    >
-                    <span class="hero-proof-item">Shopify support</span>
-                  </div>
+                  
                   <div class="hero-buttons">
                     <a
                       href="#projects"
@@ -400,49 +388,58 @@
                   </div>
                   <div class="hero-metrics">
                     <div class="hero-metric">
-                      <strong>11+</strong>
-                      <span>Store builds and launches</span>
+                      <strong>15+</strong>
+                      <span>Store builds</span>
                     </div>
+                    <div class="hero-metric-divider"></div>
                     <div class="hero-metric">
                       <strong>100%</strong>
-                      <span>Client satisfaction focus</span>
+                      <span>Client satisfaction</span>
                     </div>
+                    <div class="hero-metric-divider"></div>
                     <div class="hero-metric">
                       <strong>B2C + B2B</strong>
-                      <span>Hands-on Shopify experience</span>
+                      <span>Deep experience</span>
                     </div>
                   </div>
                 </div>
                 <div class="hero-panel">
-                  <div class="hero-image">
-                    <img
-                      src="/src/tejas_website_image.webp"
-                      alt="Tejas Kedare - Expert Shopify Developer"
-                      width="160"
-                      height="160"
-                      fetchpriority="high"
-                    />
-                  </div>
-                  <div class="hero-panel-card">
-                    <p class="hero-panel-eyebrow">What I help with</p>
-                    <ul class="hero-panel-list">
-                      <li>
-                        High-converting Shopify storefront builds and redesigns
-                      </li>
-                      <li>
-                        Theme performance, app cleanup, and conversion-focused
-                        improvements
-                      </li>
-                      <li>
-                        Migrations, custom integrations, and long-term store
-                        support
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="hero-availability">
-                    <span class="status-dot"></span>
-                    Open for store builds, audits, migrations, and ongoing
-                    Shopify development
+                  <div class="hero-profile-card">
+                    <div class="hero-profile-header">
+                      <div class="hero-image">
+                        <img
+                          src="/src/tejas_website_image.webp"
+                          alt="Tejas Kedare - Expert Shopify Developer"
+                          width="90"
+                          height="90"
+                          fetchpriority="high"
+                        />
+                      </div>
+                      <div class="hero-profile-info">
+                        <h3>Tejas Kedare</h3>
+                        <p>Senior Shopify Developer</p>
+                      </div>
+                    </div>
+                    <div class="hero-panel-card">
+                      <p class="hero-panel-eyebrow">Core Capabilities</p>
+                      <ul class="hero-panel-list">
+                        <li>
+                          <i class="fas fa-check-circle"></i>
+                          <span>High-converting Shopify storefront builds and redesigns</span>
+                        </li>
+                        <li>
+                          <i class="fas fa-check-circle"></i>
+                          <span>Theme performance, app cleanup, and conversion-focused improvements</span>
+                        </li>
+                        <li>
+                          <i class="fas fa-check-circle"></i>
+                          <span>Migrations, custom integrations, and long-term store support</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="hero-availability-pill">
+                      <i class="fas fa-bolt"></i> Available for store builds & migrations
+                    </div>
                   </div>
                 </div>
               </div>
@@ -640,7 +637,7 @@
                   <span class="stat-title">Years Experience</span>
                   <span class="stat-period">Professional</span>
                 </div>
-                <div class="stat-value">1+</div>
+                <div class="stat-value">2+</div>
                 <div class="stat-change positive">
                   <i class="fas fa-arrow-up"></i>
                   <span>Growing</span>
@@ -3750,6 +3747,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="https://unpkg.com/swup@4"></script>
+    <script src="https://unpkg.com/@swup/scripts-plugin@2"></script>
+    <script src="https://unpkg.com/@swup/head-plugin@2"></script>
     <script src="/script.js"></script>
   
 
