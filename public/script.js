@@ -50,6 +50,7 @@
 
 // Declare Swup instance
 var swupInstance = null;
+var glightboxInstance = null;
 var cursorInitializedGlobal = false;
 var xTo, yTo, xToRing, yToRing;
 
@@ -761,7 +762,11 @@ function initPage() {
 
     // Initialize GLightbox for premium modal galleries
     if (typeof GLightbox !== 'undefined') {
-        const lightbox = GLightbox({
+        if (window.glightboxInstance) {
+            window.glightboxInstance.destroy();
+            window.glightboxInstance = null;
+        }
+        window.glightboxInstance = GLightbox({
             selector: '.glightbox',
             touchNavigation: true,
             loop: false,
@@ -771,7 +776,7 @@ function initPage() {
         });
         
         // Pause Lenis scrolling when lightbox opens
-        lightbox.on('open', () => {
+        window.glightboxInstance.on('open', () => {
             if(window.lenis) window.lenis.stop();
             
             // Stop scroll/touch events from bubbling up to Lenis so it doesn't preventDefault() them
@@ -785,7 +790,7 @@ function initPage() {
                 }
             }, 100);
         });
-        lightbox.on('close', () => {
+        window.glightboxInstance.on('close', () => {
             if(window.lenis) window.lenis.start();
         });
     }
