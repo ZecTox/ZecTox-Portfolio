@@ -796,10 +796,8 @@ function initPage() {
     }
 
     if (typeof gsap !== 'undefined') {
-        setTimeout(() => {
-            initGSAPAnimations();
-            initCursor();
-        }, 100);
+        initGSAPAnimations();
+        initCursor();
     }
 }
 
