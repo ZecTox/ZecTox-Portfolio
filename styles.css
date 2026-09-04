@@ -2259,7 +2259,7 @@ body.night-mode .nav-item.active {
 }
 
 .footer-copyright {
-    color: #9a9ca0;
+    color: #5c5f62;
     font-size: 12px;
 }
 
@@ -2447,7 +2447,7 @@ body {
 
 .brand-subtitle {
     font-size: 0.8rem;
-    color: #6d7175;
+    color: #5c5f62;
     letter-spacing: 0.01em;
 }
 
@@ -2461,7 +2461,7 @@ body {
 .desktop-nav-link {
     padding: 8px 10px;
     border-radius: 999px;
-    color: #4b5563;
+    color: #374151;
     background: transparent;
     border: 1px solid transparent;
     font-size: 0.86rem;
@@ -2476,7 +2476,7 @@ body {
 .desktop-nav-link.active {
     background: rgba(0, 128, 96, 0.1);
     border-color: rgba(0, 128, 96, 0.12);
-    color: #006b51;
+    color: #005c43;
 }
 
 .theme-toggle-button,
@@ -3798,15 +3798,15 @@ body.night-mode .testimonial-text {
     background: linear-gradient(135deg, #00ff9d, #00b8ff) !important;
     box-shadow: 0 4px 12px rgba(0, 255, 157, 0.3) !important;
 }
-.testimonial-info h4 {
+.testimonial-author h3 {
     margin: 0 0 4px 0;
     font-size: 1rem;
     color: #111827;
 }
-body.night-mode .testimonial-info h4 {
+body.night-mode .testimonial-author h3 {
     color: #f8fafc;
 }
-.testimonial-info p {
+.testimonial-author span {
     margin: 0;
     font-size: 0.85rem;
     color: #6d7175;
