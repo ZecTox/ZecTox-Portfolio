@@ -4004,6 +4004,11 @@ body.night-mode .view-page-btn:hover {
 }
 
 /* Page Transition Curtain */
+@keyframes curtainReveal {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-100%); }
+}
+
 .page-transition-curtain {
     position: fixed;
     top: 0;
@@ -4016,7 +4021,8 @@ body.night-mode .view-page-btn:hover {
     will-change: transform;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    transform: translateZ(0);
+    /* CSS fallback: auto-dismiss after 1s if GSAP doesn't load in time */
+    animation: curtainReveal 0.8s ease-in-out 0.3s forwards;
 }
 
 /* ============================================

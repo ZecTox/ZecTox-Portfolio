@@ -874,8 +874,20 @@ document.addEventListener("DOMContentLoaded", () => {
     initPage();
     
     const curtain = document.querySelector('.page-transition-curtain');
-    if (curtain && typeof gsap !== 'undefined') {
-        gsap.fromTo(curtain, { y: 0 }, { y: '-100%', duration: 0.8, ease: 'power2.inOut', force3D: true, delay: 0.05, onComplete: () => { curtain.style.pointerEvents = 'none'; } });
+    if (curtain) {
+        if (typeof gsap !== 'undefined') {
+            // GSAP is loaded: stop CSS fallback animation and use GSAP for smooth reveal
+            curtain.style.animation = 'none';
+            gsap.fromTo(curtain, { y: 0 }, { 
+                y: '-100%', 
+                duration: 0.8, 
+                ease: 'power2.inOut', 
+                force3D: true, 
+                delay: 0.05, 
+                onComplete: () => { curtain.style.pointerEvents = 'none'; } 
+            });
+        }
+        // If GSAP is not ready yet, the CSS animation fallback handles it automatically
     }
 });
 
