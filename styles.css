@@ -429,7 +429,7 @@ a.btn-primary {
 
 .stat-period {
     font-size: 12px;
-    color: #8a8a8a;
+    color: #6d7175; /* 4.92:1 on the card; #8a8a8a was 3.1:1 */
 }
 
 /* Night Mode Styles */
@@ -2917,7 +2917,7 @@ body.night-mode .hero-image img {
 }
 
 .stat-period {
-    color: #8a8f98;
+    color: #6d7175; /* 4.92:1 on the card; #8a8f98 was 3.25:1 */
 }
 
 .stat-value {
@@ -4341,4 +4341,867 @@ body.night-mode .stage-section {
     background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%);
     border-color: rgba(255, 255, 255, 0.14);
     color: #e3e3e3;
+}
+
+/* ============================================
+   SELECTED WORK — featured case studies + all-projects modal
+   Three builds get a large, deliberately heavier treatment so they outrank
+   everything else on the page; the remaining thirteen live behind a filterable
+   modal instead of adding four screens of scroll between the hero and the CTA.
+   ============================================ */
+
+.featured-work {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.case-card {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid #e3e5e7;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 32px rgba(15, 23, 42, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.case-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 128, 96, 0.45);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 20px 46px rgba(15, 23, 42, 0.12);
+}
+
+.case-media {
+    flex: none;
+    aspect-ratio: 2 / 1;
+    overflow: hidden;
+    background: #0b0c0d;
+}
+
+.case-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.5s ease;
+}
+
+.case-card:hover .case-media img {
+    transform: scale(1.03);
+}
+
+.case-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 24px;
+}
+
+.case-kicker {
+    margin: 0 0 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #006b50;
+}
+
+.case-body h3 {
+    margin: 0 0 10px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.case-lede {
+    margin: 0 0 20px;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: #4a4f54;
+}
+
+.case-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 16px 0;
+    margin-bottom: 18px;
+    border-top: 1px solid #e3e5e7;
+    border-bottom: 1px solid #e3e5e7;
+}
+
+.case-stat strong {
+    display: block;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    color: #006b50;
+    line-height: 1.2;
+}
+
+.case-stat span {
+    display: block;
+    margin-top: 3px;
+    font-size: 11px;
+    line-height: 1.35;
+    color: #6d7175;
+}
+
+.case-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.case-visit,
+.case-gallery {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 15px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.case-visit {
+    background: #008060;
+    color: #fff;
+}
+
+.case-visit:hover {
+    background: #00614a;
+}
+
+.case-visit.is-offline {
+    background: transparent;
+    border: 1px dashed rgba(109, 113, 117, 0.45);
+    color: #6d7175;
+    cursor: default;
+}
+
+.case-gallery {
+    border: 1px solid #d4d7da;
+    color: #202223;
+}
+
+.case-gallery:hover {
+    border-color: #008060;
+    color: #006b50;
+}
+
+/* ---- "see all" affordance ---- */
+
+.work-more {
+    text-align: center;
+}
+
+.work-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border: 1px solid #008060;
+    border-radius: 10px;
+    background: transparent;
+    color: #008060;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.work-more-btn:hover {
+    background: #008060;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.work-more-btn i {
+    transition: transform 0.2s ease;
+}
+
+.work-more-btn:hover i {
+    transform: translateX(3px);
+}
+
+.work-more-note {
+    margin: 12px 0 0;
+    font-size: 13px;
+    color: #6d7175;
+}
+
+/* ---- modal ---- */
+
+.projects-modal[hidden] {
+    display: none;
+}
+
+.projects-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.projects-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 12, 18, 0.62);
+    backdrop-filter: blur(5px);
+    animation: projectsFade 0.22s ease;
+}
+
+.projects-modal-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: min(1180px, 100%);
+    max-height: min(88vh, 900px);
+    background: #f6f6f7;
+    border-radius: 18px;
+    box-shadow: 0 32px 80px rgba(8, 12, 18, 0.4);
+    overflow: hidden;
+    animation: projectsRise 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes projectsFade {
+    from { opacity: 0; }
+}
+
+@keyframes projectsRise {
+    from { opacity: 0; transform: translateY(16px) scale(0.985); }
+}
+
+.projects-modal-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 26px 16px;
+    background: #ffffff;
+    border-bottom: 1px solid #e3e5e7;
+}
+
+.projects-modal-head h3 {
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.projects-modal-sub {
+    margin: 5px 0 0;
+    font-size: 13.5px;
+    color: #6d7175;
+}
+
+.projects-modal-close {
+    flex: none;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #e3e5e7;
+    border-radius: 10px;
+    background: #fff;
+    color: #202223;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.projects-modal-close:hover {
+    background: #202223;
+    border-color: #202223;
+    color: #fff;
+}
+
+.projects-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px 26px;
+    background: #ffffff;
+    border-bottom: 1px solid #e3e5e7;
+}
+
+.filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    border: 1px solid #d4d7da;
+    border-radius: 999px;
+    background: #fff;
+    color: #42474c;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.filter-chip:hover {
+    border-color: #008060;
+    color: #006b50;
+}
+
+.filter-chip.is-active {
+    background: #008060;
+    border-color: #008060;
+    color: #fff;
+}
+
+.chip-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.07);
+    font-size: 11px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.filter-chip.is-active .chip-count {
+    background: rgba(255, 255, 255, 0.24);
+}
+
+.projects-modal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(258px, 1fr));
+    grid-auto-rows: min-content;
+    align-content: start;
+    gap: 16px;
+    padding: 22px 26px 28px;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.mini-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #e3e5e7;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mini-card[hidden] {
+    display: none;
+}
+
+.mini-card:hover {
+    border-color: rgba(0, 128, 96, 0.5);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+}
+
+.mini-media {
+    flex: none;
+    aspect-ratio: 2 / 1;
+    overflow: hidden;
+    background: #0b0c0d;
+}
+
+.mini-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.mini-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 14px 16px 16px;
+}
+
+.mini-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 7px;
+}
+
+.mini-tag {
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(0, 128, 96, 0.1);
+    color: #006b50;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.mini-region {
+    font-size: 11.5px;
+    color: #6d7175;
+}
+
+.mini-body h4 {
+    margin: 0 0 5px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.mini-metric {
+    margin: 0 0 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #4a4f54;
+}
+
+.mini-details {
+    margin-bottom: 12px;
+    font-size: 12.5px;
+}
+
+.mini-details summary {
+    cursor: pointer;
+    color: #006b50;
+    font-weight: 600;
+    list-style: none;
+}
+
+.mini-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.mini-details summary::before {
+    content: "+ ";
+    font-weight: 700;
+}
+
+.mini-details[open] summary::before {
+    content: "\2212 ";
+}
+
+.mini-details ul {
+    margin: 9px 0 0;
+    padding-left: 16px;
+    color: #4a4f54;
+}
+
+.mini-details li {
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+
+/* Both card actions are real buttons: "View page designs" opens a lightbox and
+   deserves the same affordance as "Visit store", not an underlined text link. */
+.mini-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+.mini-visit,
+.mini-gallery {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex: 1 1 auto;
+    min-height: 36px;
+    padding: 8px 13px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.18s ease;
+}
+
+.mini-visit {
+    background: #008060;
+    color: #ffffff;
+}
+
+.mini-visit:hover {
+    background: #00614a;
+}
+
+.mini-visit i,
+.mini-gallery i {
+    font-size: 11px;
+}
+
+.mini-gallery {
+    border: 1px solid #d4d7da;
+    background: transparent;
+    color: #202223;
+}
+
+.mini-gallery:hover {
+    border-color: #008060;
+    color: #006b50;
+    background: rgba(0, 128, 96, 0.06);
+}
+
+.mini-visit.is-offline {
+    flex: 1 1 100%;
+    background: transparent;
+    border: 1px dashed rgba(109, 113, 117, 0.45);
+    color: #6d7175;
+    font-weight: 500;
+    cursor: default;
+}
+
+.mini-visit.is-offline:hover {
+    background: transparent;
+}
+
+.projects-modal-empty {
+    padding: 0 26px 26px;
+    color: #6d7175;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .projects-modal {
+        padding: 0;
+    }
+
+    .projects-modal-panel {
+        max-height: 100vh;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .projects-modal-grid {
+        grid-template-columns: 1fr;
+        padding: 18px 16px 24px;
+    }
+
+    .projects-filters,
+    .projects-modal-head {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .case-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+}
+
+/* ---- night mode ---- */
+
+body.night-mode .case-card,
+body.night-mode .mini-card {
+    background: #1f1f1f;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+body.night-mode .case-card:hover,
+body.night-mode .mini-card:hover {
+    border-color: rgba(0, 169, 110, 0.55);
+}
+
+body.night-mode .case-kicker,
+body.night-mode .case-stat strong,
+body.night-mode .mini-details summary {
+    color: #00a96e;
+}
+
+body.night-mode .mini-visit {
+    background: #00a96e;
+    color: #0c1118;
+}
+
+body.night-mode .mini-visit:hover {
+    background: #00c878;
+}
+
+body.night-mode .case-lede,
+body.night-mode .mini-metric,
+body.night-mode .mini-details ul {
+    color: #b8bcc0;
+}
+
+body.night-mode .case-stats {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.night-mode .case-stat span,
+body.night-mode .mini-region,
+body.night-mode .work-more-note,
+body.night-mode .projects-modal-sub,
+body.night-mode .projects-modal-empty {
+    color: #9aa0a6;
+}
+
+body.night-mode .case-visit {
+    background: #00a96e;
+    color: #0c1118;
+}
+
+body.night-mode .case-visit:hover {
+    background: #00c878;
+}
+
+body.night-mode .case-gallery {
+    border-color: rgba(255, 255, 255, 0.18);
+    color: #e3e3e3;
+}
+
+body.night-mode .case-gallery:hover {
+    border-color: #00a96e;
+    color: #00a96e;
+}
+
+body.night-mode .work-more-btn {
+    border-color: #00a96e;
+    color: #00a96e;
+}
+
+body.night-mode .work-more-btn:hover {
+    background: #00a96e;
+    color: #0c1118;
+}
+
+body.night-mode .projects-modal-panel {
+    background: #141414;
+}
+
+body.night-mode .projects-modal-head,
+body.night-mode .projects-filters {
+    background: #1a1a1a;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body.night-mode .projects-modal-close,
+body.night-mode .filter-chip {
+    background: #242424;
+    border-color: rgba(255, 255, 255, 0.14);
+    color: #e3e3e3;
+}
+
+body.night-mode .projects-modal-close:hover {
+    background: #e3e3e3;
+    border-color: #e3e3e3;
+    color: #141414;
+}
+
+body.night-mode .filter-chip:hover {
+    border-color: #00a96e;
+    color: #00a96e;
+}
+
+body.night-mode .filter-chip.is-active {
+    background: #00a96e;
+    border-color: #00a96e;
+    color: #0c1118;
+}
+
+body.night-mode .chip-count {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+body.night-mode .filter-chip.is-active .chip-count {
+    background: rgba(0, 0, 0, 0.22);
+}
+
+body.night-mode .mini-tag {
+    background: rgba(0, 169, 110, 0.16);
+    color: #00c878;
+}
+
+body.night-mode .case-visit.is-offline,
+body.night-mode .mini-visit.is-offline {
+    color: #9aa0a6;
+    border-color: rgba(154, 160, 166, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .projects-modal-backdrop,
+    .projects-modal-panel {
+        animation: none;
+    }
+
+    .case-card:hover,
+    .work-more-btn:hover {
+        transform: none;
+    }
+
+    .case-card:hover .case-media img {
+        transform: none;
+    }
+}
+
+/* ============================================
+   HOW WE WORK TOGETHER
+   The page previously said nothing about engagement or process, which is the
+   first thing anyone hiring a contractor wants to know.
+   ============================================ */
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: none;
+}
+
+.process-step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 26px;
+    background: #ffffff;
+    border: 1px solid #e3e5e7;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.process-step::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, #008060, #00c878);
+}
+
+.process-num {
+    display: block;
+    margin-bottom: 14px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1;
+    color: rgba(0, 128, 96, 0.22);
+    font-variant-numeric: tabular-nums;
+}
+
+.process-body h3 {
+    margin: 0 0 10px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.process-body p {
+    margin: 0 0 14px;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: #4a4f54;
+}
+
+.process-out {
+    margin: auto 0 0 !important;
+    padding-top: 14px;
+    border-top: 1px solid #e3e5e7;
+    font-size: 13.5px !important;
+}
+
+.process-out strong {
+    color: #006b50;
+}
+
+body.night-mode .process-step {
+    background: #1f1f1f;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.night-mode .process-num {
+    color: rgba(0, 169, 110, 0.32);
+}
+
+body.night-mode .process-body p {
+    color: #b8bcc0;
+}
+
+body.night-mode .process-out {
+    border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+body.night-mode .process-out strong {
+    color: #00a96e;
+}
+
+/* The stat cards sit on a near-black surface where #008060 scores 3.63:1.
+   #00a96e is the same hue at 5.88:1. */
+body.night-mode .stat-change.positive {
+    color: #00a96e;
+}
+
+/* Blog carousel cards: these were hard-coded inline, which outranked every
+   night-mode rule and left the text at 3.59:1 on the dark card. */
+.card-note {
+    font-size: 0.9em;
+    color: #6d7175;
+}
+
+.text-strong {
+    font-weight: 600;
+}
+
+.mt-8 { margin-top: 8px; }
+.mt-24 { margin-top: 24px; }
+
+.pill-brand {
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: #008060;
+    color: #ffffff;
+    font-size: 0.75em;
+}
+
+body.night-mode .card-note {
+    color: #b8bcc0;
+}
+
+body.night-mode .pill-brand {
+    background: #00a96e;
+    color: #0c1118;
+}
+
+body.night-mode .mini-gallery {
+    border-color: rgba(255, 255, 255, 0.18);
+    color: #e3e3e3;
+}
+
+body.night-mode .mini-gallery:hover {
+    border-color: #00a96e;
+    color: #00a96e;
+    background: rgba(0, 169, 110, 0.1);
+}
+
+/* body.night-mode .mini-visit (0,2,1) outranks .mini-visit.is-offline (0,2,0), so
+   the offline badge picked up the filled green background and dropped to 1.15:1.
+   Restate it at matching specificity. */
+body.night-mode .mini-visit.is-offline,
+body.night-mode .case-visit.is-offline {
+    background: transparent;
+    border: 1px dashed rgba(154, 160, 166, 0.4);
+    color: #9aa0a6;
+}
+
+body.night-mode .mini-visit.is-offline:hover,
+body.night-mode .case-visit.is-offline:hover {
+    background: transparent;
 }

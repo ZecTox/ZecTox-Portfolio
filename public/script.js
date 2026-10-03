@@ -558,6 +558,102 @@ function initPage() {
     mobileOverlay.addEventListener("click", closeMobileMenu, { signal });
   }
 
+  // ---- All-projects modal -------------------------------------------------
+  // The homepage shows three featured builds; the rest live here, filterable by
+  // industry, so the work section stays one screen instead of five.
+  const projectsModal = document.getElementById("projectsModal");
+  if (projectsModal) {
+    const panel = projectsModal.querySelector(".projects-modal-panel");
+    const grid = projectsModal.querySelector(".projects-modal-grid");
+    const empty = projectsModal.querySelector(".projects-modal-empty");
+    const chips = [...projectsModal.querySelectorAll(".filter-chip")];
+    const cards = [...projectsModal.querySelectorAll(".mini-card")];
+    let lastFocused = null;
+
+    const focusable = () =>
+      [...panel.querySelectorAll('a[href], button, summary, [tabindex]:not([tabindex="-1"])')].filter(
+        (el) => el.offsetParent !== null
+      );
+
+    function openModal(e) {
+      // Remember the trigger explicitly: Safari does not focus a <button> on click,
+      // so document.activeElement is unreliable here.
+      lastFocused = (e && e.currentTarget) || document.activeElement;
+      projectsModal.hidden = false;
+      document.body.style.overflow = "hidden";
+      // Lenis keeps driving the page behind the overlay unless it is stopped.
+      if (window.lenis) window.lenis.stop();
+      const first = focusable()[0];
+      if (first) first.focus();
+    }
+
+    function closeModal() {
+      projectsModal.hidden = true;
+      document.body.style.overflow = "";
+      if (window.lenis) window.lenis.start();
+      if (lastFocused && document.contains(lastFocused) && lastFocused.focus) {
+        lastFocused.focus();
+      }
+    }
+
+    document.querySelectorAll("[data-open-projects]").forEach((btn) => {
+      btn.addEventListener("click", openModal, { signal });
+    });
+
+    projectsModal.querySelectorAll("[data-close-projects]").forEach((btn) => {
+      btn.addEventListener("click", closeModal, { signal });
+    });
+
+    document.addEventListener(
+      "keydown",
+      (e) => {
+        if (projectsModal.hidden) return;
+        if (e.key === "Escape") {
+          closeModal();
+          return;
+        }
+        if (e.key !== "Tab") return;
+        // Trap focus inside the dialog.
+        const items = focusable();
+        if (!items.length) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      },
+      { signal }
+    );
+
+    chips.forEach((chip) => {
+      chip.addEventListener(
+        "click",
+        () => {
+          const filter = chip.dataset.filter;
+          chips.forEach((c) => c.classList.toggle("is-active", c === chip));
+          let shown = 0;
+          cards.forEach((card) => {
+            const match = filter === "all" || card.dataset.industry === filter;
+            card.hidden = !match;
+            if (match) shown++;
+          });
+          if (empty) empty.hidden = shown > 0;
+          grid.scrollTop = 0;
+        },
+        { signal }
+      );
+    });
+
+    // The panel scrolls natively; stop wheel/touch reaching Lenis underneath.
+    const swallow = (e) => e.stopPropagation();
+    panel.addEventListener("wheel", swallow, { passive: true, signal });
+    panel.addEventListener("touchmove", swallow, { passive: true, signal });
+  }
+
   // Smooth-scroll any in-page hash link (header CTAs, hero buttons, footer).
   // Project rule: use lenis.scrollTo, never scroll-behavior or scrollIntoView.
   document.addEventListener("click", function (e) {
