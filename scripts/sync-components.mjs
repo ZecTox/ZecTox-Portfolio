@@ -34,8 +34,8 @@ async function syncComponents() {
         process.exit(1);
     }
     
-    let baseHeaderHTML = headerMatch[0];
-    let absoluteHeaderHTML = baseHeaderHTML.replace(/href="#([a-zA-Z0-9_-]+)"/g, 'href="/#$1"');
+    const baseHeaderHTML = headerMatch[0];
+    const absoluteHeaderHTML = baseHeaderHTML.replace(/href="#([a-zA-Z0-9_-]+)"/g, 'href="/#$1"');
 
     // --- Footer Sync ---
     const footerRegex = /<footer class="premium-footer">[\s\S]*?<\/footer>/;
@@ -46,8 +46,8 @@ async function syncComponents() {
         process.exit(1);
     }
     
-    let baseFooterHTML = footerMatch[0];
-    let absoluteFooterHTML = baseFooterHTML.replace(/href="#([a-zA-Z0-9_-]+)"/g, 'href="/#$1"');
+    const baseFooterHTML = footerMatch[0];
+    const absoluteFooterHTML = baseFooterHTML.replace(/href="#([a-zA-Z0-9_-]+)"/g, 'href="/#$1"');
     
     // Find all HTML files
     const htmlFiles = await getHtmlFiles(rootDir);

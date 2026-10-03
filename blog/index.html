@@ -4,17 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Expert Shopify Developer | Tejas Kedare</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" crossorigin>
+    <title>Shopify Blog: Technical Guides and Growth Insights</title>
     <link href="/styles.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="icon" href="/src/tejas_website_image.webp" type="image/x-icon">
+    <!-- Font Awesome is icon-only: load it without blocking first paint -->
+    <link rel="stylesheet" href="/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="preload" as="font" type="font/woff2" href="/webfonts/fa-solid-900.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/webfonts/fa-brands-400.woff2" crossorigin>
+    <noscript><link rel="stylesheet" href="/css/all.min.css"></noscript>
+    <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/src/tejas_website_image.webp" sizes="any" type="image/webp">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#071512">
 
     <!-- SEO Meta Tags -->
     <meta name="description"
-        content="Insights, tips, and guides on Shopify development, speed optimization, and e-commerce growth strategies by Tejas Kedare.">
+        content="Deep-dive Shopify guides on performance, migrations, checkout extensibility, SEO and conversion, written from real client work by Tejas Kedare.">
     <meta name="keywords"
         content="Shopify Blog, E-commerce Tips, Shopify Development Guide, Speed Optimization, Liquid Programming">
     <link rel="canonical" href="https://zectox.is-a.dev/blog">
@@ -22,27 +33,33 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Tejas Kedare — Shopify Developer">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://zectox.is-a.dev/blog">
-    <meta property="og:title" content="Shopify Blog - Technical Guides & Growth Insights | Tejas Kedare">
+    <meta property="og:title" content="Shopify Blog: Technical Guides and Growth Insights">
     <meta property="og:description"
-        content="Current Shopify updates, implementation guides, and practical growth insights from Tejas Kedare.">
-    <meta property="og:image" content="https://zectox.is-a.dev/src/tejas_website_image.webp">
+        content="Deep-dive Shopify guides on performance, migrations, checkout extensibility, SEO and conversion, written from real client work by Tejas Kedare.">
+    <meta property="og:image" content="https://zectox.is-a.dev/og-image.jpg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://zectox.is-a.dev/blog">
-    <meta name="twitter:title" content="Shopify Blog - Technical Guides & Growth Insights | Tejas Kedare">
+    <meta name="twitter:title" content="Shopify Blog: Technical Guides and Growth Insights">
     <meta name="twitter:description"
-        content="Current Shopify updates, implementation guides, and practical growth insights from Tejas Kedare.">
-    <meta name="twitter:image" content="https://zectox.is-a.dev/src/tejas_website_image.webp">
+        content="Deep-dive Shopify guides on performance, migrations, checkout extensibility, SEO and conversion, written from real client work by Tejas Kedare.">
+    <meta name="twitter:image" content="https://zectox.is-a.dev/og-image.jpg">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "Shopify Blog - Technical Guides & Growth Insights",
+      "@id": "https://zectox.is-a.dev/blog#collection",
+      "isPartOf": { "@id": "https://zectox.is-a.dev/#website" },
+      "name": "Shopify Blog: Technical Guides and Growth Insights",
       "url": "https://zectox.is-a.dev/blog",
-      "description": "Current Shopify updates, implementation guides, and practical e-commerce growth strategies by Tejas Kedare."
+      "description": "Deep-dive Shopify guides on performance, migrations, checkout extensibility, SEO and conversion, written from real client work by Tejas Kedare."
     }
     </script>
     
@@ -56,6 +73,22 @@
 </head>
 
 <body>
+    <script>
+      /* Apply the saved colour scheme before first paint, so dark-mode visitors
+         never see a flash of the light theme. Runs before the page is painted
+         because the parser has not reached any visible markup yet. */
+      (function () {
+        try {
+          var saved = localStorage.getItem("nightMode");
+          var dark =
+            saved === null
+              ? window.matchMedia("(prefers-color-scheme: dark)").matches
+              : saved === "true";
+          if (dark) document.body.classList.add("night-mode");
+        } catch (e) {}
+      })();
+    </script>
+
     <div class="page-transition-curtain"></div>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8KD9MB7"
@@ -91,7 +124,7 @@
                     <i class="fas fa-shopping-cart"></i>
                     <span>Stores</span>
                 </a>
-                <a href="/blog/" class="nav-item active">
+                <a href="/blog" class="nav-item active">
                     <i class="fas fa-blog"></i>
                     <span>Blog</span>
                 </a>
@@ -145,7 +178,7 @@
                 data-section="testimonials"
                 >Testimonials</a
               >
-              <a href="/blog/" class="nav-item desktop-nav-link">Blog</a>
+              <a href="/blog" class="nav-item desktop-nav-link">Blog</a>
               <a
                 href="/#contact"
                 class="nav-item desktop-nav-link"
@@ -164,20 +197,15 @@
             >
               <i class="fas fa-moon"></i>
             </button>
-            <button
-              class="schedule-btn-nav"
-              onclick="
-                document.querySelector('[data-section=\'schedule\']').click()
-              "
-            >
+            <a class="schedule-btn-nav" href="/#schedule">
               <i class="fas fa-calendar-check"></i>
               Schedule Meeting
-            </button>
+            </a>
 
-            <button class="btn-primary">
+            <a class="btn-primary" href="/#contact">
               <i class="fas fa-envelope"></i>
               Contact Me
-            </button>
+            </a>
           </div>
         </header>
 
@@ -201,12 +229,9 @@
                     </div>
 
                     <div class="projects-grid" id="blogGrid">
-                        <article class="project-card blog-card"><a href="/blog/shopify-scripttag-deprecation-migration-guide-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
-                            <div class="project-image" style="background: linear-gradient(135deg, #1a0a0a, #2d0b0b); display:flex; align-items:center; justify-content:center; min-height:180px;">
-                                <div style="text-align:center; color:#dc2626;">
-                                    <i class="fas fa-exclamation-triangle" style="font-size:3rem; margin-bottom:12px; display:block;"></i>
-                                    <span style="font-weight:700; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.05em;">Oct 1, 2026 Deadline</span>
-                                </div>
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-scripttag-deprecation-migration-guide-2026">
+                            <div class="project-image">
+                                <img src="/blog/images/shopify_scripttag_deprecation_2026_banner.webp" alt="Shopify Script Tag deprecation 2026" width="1200" height="630" loading="lazy" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -221,23 +246,20 @@
                                     <span class="tag">Web Pixels</span>
                                     <span class="tag">Migration</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Migration Guide
                                 </div>
                             </div>
                         </a></article>
 
-                        <article class="project-card blog-card"><a href="/blog/shopify-sidekick-ai-guide-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
-                            <div class="project-image" style="background: linear-gradient(135deg, #0a1a0f, #0b2d1a); display:flex; align-items:center; justify-content:center; min-height:180px;">
-                                <div style="text-align:center; color:#00a872;">
-                                    <i class="fas fa-robot" style="font-size:3rem; margin-bottom:12px; display:block;"></i>
-                                    <span style="font-weight:700; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.05em;">AI & Platform</span>
-                                </div>
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-sidekick-ai-guide-2026">
+                            <div class="project-image">
+                                <img src="/blog/images/shopify_sidekick_ai_2026_banner.webp" alt="Shopify Sidekick AI in 2026" width="1200" height="630" loading="lazy" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
                                     <h3>Shopify Sidekick AI in 2026: What It Can Actually Do for Your Store</h3>
-                                    <span class="project-status active" style="background: #008060; color: white;">New Guide</span>
+                                    <span class="project-status active badge-brand">New Guide</span>
                                 </div>
                                 <div class="project-description">
                                     <p>An honest, detailed look at Sidekick's real capabilities in 2026 — theme editing, Pulse monitoring, store management, and where it still falls short.</p>
@@ -247,20 +269,20 @@
                                     <span class="tag">Store Management</span>
                                     <span class="tag">2026</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Full Review
                                 </div>
                             </div>
                         </a></article>
 
-                        <article class="project-card blog-card"><a href="/blog/shopify-checkout-extensibility-ui-components-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-checkout-extensibility-ui-components-2026">
                             <div class="project-image">
-                                <img src="/blog/images/checkout_extensibility_banner.png" alt="Shopify Checkout Extensibility 2026" loading="lazy" style="object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'padding:40px; text-align:center; color:#888; background:#202020; min-height:180px; display:flex; align-items:center; justify-content:center;\'><i class=\'fas fa-code fa-3x\'></i></div>'">
+                                <img src="/blog/images/shopify_checkout_extensibility_ui_2026_banner.webp" alt="Shopify Checkout UI components 2026" width="1200" height="630" loading="lazy" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
                                     <h3>Shopify Checkout Extensibility UI Components 2026: The Ultimate Guide</h3>
-                                    <span class="project-status active" style="background: #008060; color: white;">New Guide</span>
+                                    <span class="project-status active badge-brand">New Guide</span>
                                 </div>
                                 <div class="project-description">
                                     <p>checkout.liquid is dead. Learn how to build custom upsells, trust badges, and custom logic using Shopify Checkout UI Extensions in 2026.</p>
@@ -270,20 +292,20 @@
                                     <span class="tag">React Native</span>
                                     <span class="tag">2026</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Guide
                                 </div>
                             </div>
                         </a></article>
 
-                        <article class="project-card blog-card"><a href="/blog/shopify-agentic-storefronts-guide-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-agentic-storefronts-guide-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_agentic_storefronts_2026_banner.webp" alt="Shopify Agentic Storefronts in 2026" loading="lazy" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_agentic_storefronts_2026_banner.webp" alt="Shopify Agentic Storefronts in 2026" loading="lazy" width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
                                     <h3>Shopify Agentic Storefronts in 2026: What Merchants Need to Know</h3>
-                                    <span class="project-status active" style="background: #008060; color: white;">Shopify News</span>
+                                    <span class="project-status active badge-brand">Shopify News</span>
                                 </div>
                                 <div class="project-description">
                                     <p>A clear merchant guide to Shopify's AI shopping rollout, built-in checkout channels, unsupported features, and what to audit before turning it on.</p>
@@ -293,15 +315,15 @@
                                     <span class="tag">Shopify News</span>
                                     <span class="tag">2026</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Analysis
                                 </div>
                             </div>
                         </a></article>
 
-                        <article class="project-card blog-card"><a href="/blog/shopify-functions-metaobjects-update-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-functions-metaobjects-update-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_functions_metaobjects_2026_banner.webp" alt="Metaobject access in Shopify Functions update" loading="lazy" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_functions_metaobjects_2026_banner.webp" alt="Metaobject access in Shopify Functions update" loading="lazy" width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -316,21 +338,21 @@
                                     <span class="tag">Metaobjects</span>
                                     <span class="tag">2026-04</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Update
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- NEW: BigCommerce to Shopify Migration Guide -->
-                        <article class="project-card blog-card"><a href="/blog/bigcommerce-to-shopify-migration-guide" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/bigcommerce-to-shopify-migration-guide">
                             <div class="project-image">
-                                <img src="/blog/images/bigcommerce_to_shopify_migration_banner.png" alt="BigCommerce to Shopify Migration Guide 2026" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/bigcommerce_to_shopify_migration_banner.webp" alt="BigCommerce to Shopify Migration Guide 2026" width="640" height="640" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
                                     <h3>BigCommerce to Shopify Migration: Complete 2026 Guide</h3>
-                                    <span class="project-status active" style="background: #008060; color: white;">Case Study</span>
+                                    <span class="project-status active badge-brand">Case Study</span>
                                 </div>
                                 <div class="project-description">
                                     <p>How I migrated 300+ products, 10k+ customers, and complex pincode-based shipping from BigCommerce. The complete playbook.</p>
@@ -340,16 +362,16 @@
                                     <span class="tag">BigCommerce</span>
                                     <span class="tag">2026</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Case Study
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- NEW: Speed Score Dropped 2026 -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-speed-score-dropped-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-speed-score-dropped-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_speed_score_dropped_banner.png" alt="Why Your Shopify Speed Score Dropped" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_speed_score_dropped_banner.webp" alt="Why Your Shopify Speed Score Dropped" width="640" height="640" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -364,16 +386,16 @@
                                     <span class="tag">Debugging</span>
                                     <span class="tag">2026</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Fix Guide
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- NEW: Custom Shipping Rates Guide -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-custom-shipping-rates-guide" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-custom-shipping-rates-guide">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_custom_shipping_rates_banner.png" alt="Shopify Custom Shipping Rates Setup" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_custom_shipping_rates_banner.webp" alt="Shopify Custom Shipping Rates Setup" width="640" height="640" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -388,16 +410,16 @@
                                     <span class="tag">Setup</span>
                                     <span class="tag">India/AU</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Setup Guide
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- NEW: Shopify Checkbox Compliance 2026 -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-pre-checked-checkbox-removal-due-date-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-pre-checked-checkbox-removal-due-date-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_checkbox_compliance_banner.png" alt="Shopify Pre-Checked Checkbox Removal 2026" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_checkbox_compliance_banner.webp" alt="Shopify Pre-Checked Checkbox Removal 2026" width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -412,15 +434,15 @@
                                     <span class="tag">Privacy</span>
                                     <span class="tag">2026</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Alert
                                 </div>
                             </div>
                         </a></article>
                         <!-- NEW: Shopify Metaobjects Guide 2026 -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-metaobjects-complete-guide-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-metaobjects-complete-guide-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_metaobjects_banner.png" alt="Shopify Metaobjects Complete Developer Guide" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_metaobjects_banner.webp" alt="Shopify Metaobjects Complete Developer Guide" width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -435,15 +457,15 @@
                                     <span class="tag">CMS</span>
                                     <span class="tag">Development</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Guide
                                 </div>
                             </div>
                         </a></article>
                         <!-- NEW: Shopify Functions vs Scripts 2026 -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-functions-vs-scripts-migration-guide" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-functions-vs-scripts-migration-guide">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_functions_vs_scripts_banner.png" alt="Shopify Functions vs Legacy Scripts Migration" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_functions_vs_scripts_banner.webp" alt="Shopify Functions vs Legacy Scripts Migration" width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -458,16 +480,16 @@
                                     <span class="tag">Functions</span>
                                     <span class="tag">Plus</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Guide
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- NEW: Shopify Combined Listings 2026 -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-combined-listings-guide-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-combined-listings-guide-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_combined_listings_banner.png" alt="Shopify Combined Listings Guide" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_combined_listings_banner.webp" alt="Shopify Combined Listings Guide" width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -482,15 +504,15 @@
                                     <span class="tag">Combined Listings</span>
                                     <span class="tag">SEO</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Guide
                                 </div>
                             </div>
                         </a></article>
                         <!-- NEW: Shopify Markets vs Multi-Store 2026 -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-markets-vs-multistore-architecture-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-markets-vs-multistore-architecture-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_markets_vs_multistore_banner.png" alt="Shopify Markets vs Expansion Stores Architecture" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_markets_vs_multistore_banner.webp" alt="Shopify Markets vs Expansion Stores Architecture" width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -505,15 +527,15 @@
                                     <span class="tag">Global</span>
                                     <span class="tag">2026</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Guide
                                 </div>
                             </div>
                         </a></article>
                         <!-- NEW: Subscription Apps Comparison 2026 -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-subscription-apps-comparison-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-subscription-apps-comparison-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_subscription_apps_banner.png" alt="Shopify Subscription Apps Comparison Banner" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_subscription_apps_banner.webp" alt="Shopify Subscription Apps Comparison Banner" width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -528,16 +550,16 @@
                                     <span class="tag">App Comparison</span>
                                     <span class="tag">2026</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Comparison
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- NEW: Shopify vs WooCommerce TCO 2026 -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-vs-woocommerce-tco-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-vs-woocommerce-tco-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_woocommerce_tco_banner.png" alt="Shopify vs WooCommerce TCO 2026 Comparison" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_woocommerce_tco_banner.webp" alt="Shopify vs WooCommerce TCO 2026 Comparison" width="1200" height="630" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -552,16 +574,16 @@
                                     <span class="tag">Cost Analysis</span>
                                     <span class="tag">2026</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read TCO Guide
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- NEW: Shopify vs BigCommerce vs Wix 2026 -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-vs-bigcommerce-vs-wix-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-vs-bigcommerce-vs-wix-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_bigcommerce_wix_banner.png" alt="Shopify vs BigCommerce vs Wix Growth Stage Guide" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_bigcommerce_wix_banner.webp" alt="Shopify vs BigCommerce vs Wix Growth Stage Guide" width="1200" height="630" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -576,16 +598,16 @@
                                     <span class="tag">Growth Stage</span>
                                     <span class="tag">2026</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Comparison
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- NEW: Shopify vs Magento Ops Reality 2026 -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-vs-magento-ops-reality-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-vs-magento-ops-reality-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_magento_ops_banner_NEW.png" alt="Shopify vs Magento Operations Reality" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_magento_ops_banner_NEW.webp" alt="Shopify vs Magento Operations Reality" width="1200" height="630" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -600,18 +622,17 @@
                                     <span class="tag">Replatform</span>
                                     <span class="tag">Security</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Ops Analysis
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: Shop is Slow -->
-                        <article class="project-card blog-card"><a href="/blog/why-is-my-shopify-store-slow" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/why-is-my-shopify-store-slow">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_slow_store_banner.png" alt="Why Is My Shopify Store So Slow?"
-                                    style="object-fit: cover;"
-                                    onerror="this.src='https://placehold.co/600x400/000000/FFF?text=Slow+Store'">
+                                <img class="img-cover" src="/blog/images/shopify_slow_store_banner.webp" alt="Why Is My Shopify Store So Slow?"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -626,23 +647,22 @@
                                     <span class="tag">Core Web Vitals</span>
                                     <span class="tag">Guide</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Guide
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: Theme vs Custom -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-theme-vs-custom-development" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-theme-vs-custom-development">
                             <div class="project-image">
-                                <img src="/blog/images/theme_vs_custom_banner.png" alt="Theme vs Custom Development"
-                                    style="object-fit: cover;"
-                                    onerror="this.src='https://placehold.co/600x400/008060/FFF?text=Theme+vs+Custom'">
+                                <img class="img-cover" src="/blog/images/theme_vs_custom_banner.webp" alt="Theme vs Custom Development"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
                                     <h3>Theme vs Custom: The $30k Decision</h3>
-                                    <span class="project-status active" style="background: #008060; color: white;">Strategy</span>
+                                    <span class="project-status active badge-brand">Strategy</span>
                                 </div>
                                 <div class="project-description">
                                     <p>Should you buy a $300 theme or hire a developer? A complete ROI analysis for brands doing $1M+ revenue.</p>
@@ -652,18 +672,17 @@
                                     <span class="tag">Scaling</span>
                                     <span class="tag">Guide</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Analysis
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: App Conflicts -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-app-conflicts-guide" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-app-conflicts-guide">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_app_conflicts_banner.png" alt="Shopify App Conflicts"
-                                    style="object-fit: cover;"
-                                    onerror="this.src='https://placehold.co/600x400/d82c2c/FFF?text=App+Conflicts'">
+                                <img class="img-cover" src="/blog/images/shopify_app_conflicts_banner.webp" alt="Shopify App Conflicts"
+                                    width="1200" height="630" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -678,18 +697,17 @@
                                     <span class="tag">Apps</span>
                                     <span class="tag">Fixes</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Diagnose Now
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: Plus Migration -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-plus-migration-guide" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-plus-migration-guide">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_plus_migration_banner.png" alt="Shopify Plus Migration Guide"
-                                    style="object-fit: cover;"
-                                    onerror="this.src='https://placehold.co/600x400/7c3aed/FFF?text=Plus+Migration'">
+                                <img class="img-cover" src="/blog/images/shopify_plus_migration_banner.webp" alt="Shopify Plus Migration Guide"
+                                    width="1200" height="630" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -704,23 +722,22 @@
                                     <span class="tag">Enterprise</span>
                                     <span class="tag">Migration</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     View Checklist
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: CRO Playbook -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-cro-playbook" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-cro-playbook">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_cro_playbook_banner.png" alt="Shopify CRO Playbook"
-                                    style="object-fit: cover;"
-                                    onerror="this.src='https://placehold.co/600x400/008060/FFF?text=CRO+Playbook'">
+                                <img class="img-cover" src="/blog/images/shopify_cro_playbook_banner.webp" alt="Shopify CRO Playbook"
+                                    width="1200" height="630" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
                                     <h3>Shopify CRO Playbook: Double Your Conversion</h3>
-                                    <span class="project-status active" style="background: #008060; color: white;">Growth</span>
+                                    <span class="project-status active badge-brand">Growth</span>
                                 </div>
                                 <div class="project-description">
                                     <p>From 1% to 2%+. A comprehensive guide to frictionless UX, mobile optimization, and A/B testing strategies.</p>
@@ -730,17 +747,16 @@
                                     <span class="tag">Conversion</span>
                                     <span class="tag">Design</span>
                                 </div>
-                                <div class="btn-secondary" style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block">
                                     Read Playbook
                                 </div>
                             </div>
                         </a></article>
                         <!-- Article: Ultimate Mega Guide (5000+ Words) -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-ultimate-ecommerce-development-guide-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-ultimate-ecommerce-development-guide-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_ultimate_guide_2026_banner.png" alt="Ultimate Shopify Guide 2026"
-                                    style="object-fit: cover;"
-                                    onerror="this.src='https://placehold.co/600x400/0b0c0d/FFF?text=Ultimate+Guide+2026'">
+                                <img class="img-cover" src="/blog/images/shopify_ultimate_guide_2026_banner.webp" alt="Ultimate Shopify Guide 2026"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -755,19 +771,18 @@
                                     <span class="tag">Architecture</span>
                                     <span class="tag">Scale</span>
                                 </div>
-                                <div  class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div  class="btn-secondary btn-block"
+                                   >
                                     Read Handbook
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: Technical SEO Checklist -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-technical-seo-checklist-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-technical-seo-checklist-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_technical_seo_checklist_banner.png" alt="Shopify Technical SEO Checklist"
-                                    style="object-fit: cover;"
-                                    onerror="this.src='https://placehold.co/600x400/f1f2f3/333?text=SEO+Checklist'">
+                                <img class="img-cover" src="/blog/images/shopify_technical_seo_checklist_banner.webp" alt="Shopify Technical SEO Checklist"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -782,19 +797,18 @@
                                     <span class="tag">Ranking</span>
                                     <span class="tag">Technical</span>
                                 </div>
-                                <div  class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div  class="btn-secondary btn-block"
+                                   >
                                     Get Checklist
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: Store Launch Checklist -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-store-launch-checklist-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-store-launch-checklist-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_store_launch_checklist_banner.png" alt="Shopify Store Launch Checklist"
-                                    style="object-fit: cover;"
-                                    onerror="this.src='https://placehold.co/600x400/ffe8d6/333?text=Launch+Checklist'">
+                                <img class="img-cover" src="/blog/images/shopify_store_launch_checklist_banner.webp" alt="Shopify Store Launch Checklist"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -809,18 +823,17 @@
                                     <span class="tag">Setup</span>
                                     <span class="tag">Guide</span>
                                 </div>
-                                <div  class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div  class="btn-secondary btn-block"
+                                   >
                                     View Checklist
                                 </div>
                             </div>
                         </a></article>
                         <!-- Article: POS Unified Commerce (Featured 2026) -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-unified-commerce-pos-guide-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-unified-commerce-pos-guide-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_unified_commerce_pos_2026_banner.png" alt="Shopify Unified Commerce Guide"
-                                    style="object-fit: cover;"
-                                    onerror="this.src='https://placehold.co/600x400/202020/FFF?text=POS+Unified+Commerce'">
+                                <img class="img-cover" src="/blog/images/shopify_unified_commerce_pos_2026_banner.webp" alt="Shopify Unified Commerce Guide"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -835,18 +848,18 @@
                                     <span class="tag">Retail</span>
                                     <span class="tag">2026</span>
                                 </div>
-                                <div  class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div  class="btn-secondary btn-block"
+                                   >
                                     Read Article
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: Headless (Hydrogen) -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-headless-hydrogen-guide-2026" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-headless-hydrogen-guide-2026">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_headless_hydrogen_2026_banner.png" alt="Shopify Headless Hydrogen Guide"
-                                    style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_headless_hydrogen_2026_banner.webp" alt="Shopify Headless Hydrogen Guide"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -861,18 +874,18 @@
                                     <span class="tag">React</span>
                                     <span class="tag">Scale</span>
                                 </div>
-                                <div  class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div  class="btn-secondary btn-block"
+                                   >
                                     Read Guide
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: Immersive Commerce (AR/3D) -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-immersive-commerce-3d-ar-guide" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-immersive-commerce-3d-ar-guide">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_immersive_commerce_ar_3d_banner.png" alt="Shopify Immersive Commerce Guide"
-                                    style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_immersive_commerce_ar_3d_banner.webp" alt="Shopify Immersive Commerce Guide"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -887,17 +900,17 @@
                                     <span class="tag">3D</span>
                                     <span class="tag">Video</span>
                                 </div>
-                                <div  class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div  class="btn-secondary btn-block"
+                                   >
                                     Read Article
                                 </div>
                             </div>
                         </a></article>
                         <!-- Article: AI (Featured) -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-ai-tools-guide-2025" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-ai-tools-guide-2025">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_ai_2025_banner.png" alt="Shopify AI Tools Guide"
-                                    style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_ai_2025_banner.webp" alt="Shopify AI Tools Guide"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -912,23 +925,23 @@
                                     <span class="tag">Automation</span>
                                     <span class="tag">2025</span>
                                 </div>
-                                <div  class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div  class="btn-secondary btn-block"
+                                   >
                                     Read Guide
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: B2B -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-b2b-wholesale-guide-2025" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-b2b-wholesale-guide-2025">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_b2b_2025_banner.png" alt="Shopify B2B Wholesale"
-                                    style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_b2b_2025_banner.webp" alt="Shopify B2B Wholesale"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
                                     <h3>Shopify B2B in 2025: Ready for Enterprise?</h3>
-                                    <span class="project-status active" style="background: #008060; color: white;">Wholesale</span>
+                                    <span class="project-status active badge-brand">Wholesale</span>
                                 </div>
                                 <div class="project-description">
                                     <p>Forget Magento. Discover why enterprise wholesalers are moving to Shopify. A deep dive into Company Profiles and Quantity Breaks.</p>
@@ -938,18 +951,18 @@
                                     <span class="tag">Enterprise</span>
                                     <span class="tag">Guide</span>
                                 </div>
-                                <div  class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div  class="btn-secondary btn-block"
+                                   >
                                     Read Article
                                 </div>
                             </div>
                         </a></article>
 
                          <!-- Article: Global Markets -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-markets-pro-global-guide" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-markets-pro-global-guide">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_markets_pro_banner.png" alt="Shopify Markets Pro Guide"
-                                    style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_markets_pro_banner.webp" alt="Shopify Markets Pro Guide"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -964,16 +977,16 @@
                                     <span class="tag">Markets Pro</span>
                                     <span class="tag">Growth</span>
                                 </div>
-                                <div  class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div  class="btn-secondary btn-block"
+                                   >
                                     Read Guide
                                 </div>
                             </div>
                         </a></article>
-                        <article class="project-card blog-card"><a href="/blog/shopify-apps-to-delete-guide" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-apps-to-delete-guide">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_apps_to_delete_banner.png" alt="Shopify Apps to Delete"
-                                    style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_apps_to_delete_banner.webp" alt="Shopify Apps to Delete"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -990,17 +1003,17 @@
                                     <span class="tag">Guide</span>
                                     <span class="tag">Performance</span>
                                 </div>
-                                <div  class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div  class="btn-secondary btn-block"
+                                   >
                                     Read Article
                                 </div>
                             </div>
                         </a></article>
 
-                        <article class="project-card blog-card"><a href="/blog/page-builders-seo-guide" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/page-builders-seo-guide">
                             <div class="project-image">
-                                <img src="/blog/images/page_builders_seo_banner.png" alt="Page Builder SEO"
-                                    style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/page_builders_seo_banner.webp" alt="Page Builder SEO"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -1018,18 +1031,18 @@
                                     <span class="tag">Speed</span>
                                     <span class="tag">Migration</span>
                                 </div>
-                                <div  class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div  class="btn-secondary btn-block"
+                                   >
                                     Read Article
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: How to Hire (Featured) -->
-                        <article class="project-card blog-card"><a href="/blog/how-to-hire-shopify-developer-guide" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/how-to-hire-shopify-developer-guide">
                             <div class="project-image">
-                                <img src="/blog/images/how-to-hire-shopify-developer-guide.png"
-                                    alt="How to Hire Shopify Developer" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/how-to-hire-shopify-developer-guide.webp"
+                                    alt="How to Hire Shopify Developer" width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -1045,18 +1058,18 @@
                                     <span class="tag">Guide</span>
                                     <span class="tag">2025</span>
                                 </div>
-                                <div class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block"
+                                   >
                                     Read Guide
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: Technical Audit -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-technical-audit-guide" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-technical-audit-guide">
                             <div class="project-image">
-                                <img src="/blog/images/shopify-technical-audit-guide.png" alt="Shopify Technical Audit"
-                                    style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify-technical-audit-guide.webp" alt="Shopify Technical Audit"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -1072,18 +1085,18 @@
                                     <span class="tag">Technical</span>
                                     <span class="tag">Checklist</span>
                                 </div>
-                                <div class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block"
+                                   >
                                     Start Audit
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article 1 (Featured) -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-seo-guide-2025" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-seo-guide-2025">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_seo_2025_banner.png" alt="Shopify SEO 2025"
-                                    style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_seo_2025_banner.webp" alt="Shopify SEO 2025"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -1099,18 +1112,18 @@
                                     <span class="tag">Growth</span>
                                     <span class="tag">2025</span>
                                 </div>
-                                <div class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block"
+                                   >
                                     Read Guide
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article 2 -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-admin-down-login-issues" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-admin-down-login-issues">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_down_banner.png" alt="Shopify Admin Down"
-                                    style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_down_banner.webp" alt="Shopify Admin Down"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -1127,18 +1140,18 @@
                                     <span class="tag">Status</span>
                                     <span class="tag">Fixes</span>
                                 </div>
-                                <div class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block"
+                                   >
                                     Read Updates
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: Checkout Extensibility -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-checkout-extensibility-guide" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-checkout-extensibility-guide">
                             <div class="project-image">
-                                <img src="/blog/images/checkout_extensibility_banner.png" alt="Shopify Checkout Extensibility"
-                                    style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/checkout_extensibility_banner.webp" alt="Shopify Checkout Extensibility"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -1154,18 +1167,18 @@
                                     <span class="tag">Plus</span>
                                     <span class="tag">Migration</span>
                                 </div>
-                                <div class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block"
+                                   >
                                     Read Guide
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: Shopify Issues and Fixes -->
-                        <article class="project-card blog-card"><a href="/blog/common-shopify-issues-and-fixes" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/common-shopify-issues-and-fixes">
                             <div class="project-image">
-                                <img src="/blog/images/shopify_issues_banner.png" alt="Shopify Issues and Fixes"
-                                    style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_issues_banner.webp" alt="Shopify Issues and Fixes"
+                                    width="1024" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -1185,10 +1198,10 @@
                         </a></article>
 
                         <!-- Article: Speed Optimization -->
-                        <article class="project-card blog-card"><a href="/blog/shopify-speed-optimization-guide" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/shopify-speed-optimization-guide">
                             <div class="project-image">
-                                <img src="/blog/images/The Ultimate Guide to Shopify Speed Optimization.webp"
-                                    alt="Shopify Speed Optimization" style="object-fit: cover;">
+                                <img class="img-cover" src="/blog/images/shopify_speed_optimization_banner.webp"
+                                    alt="Shopify Speed Optimization" width="1536" height="1024" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -1204,18 +1217,17 @@
                                     <span class="tag">SEO</span>
                                     <span class="tag">Guide</span>
                                 </div>
-                                <div class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block"
+                                   >
                                     Read Article
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: Custom Theme -->
-                        <article class="project-card blog-card"><a href="/blog/custom-shopify-theme-benefits" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/custom-shopify-theme-benefits">
                             <div class="project-image">
-                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                                    alt="Custom Shopify Theme" style="object-fit: cover;">
+                                <img src="/blog/images/custom_shopify_theme_benefits_banner.webp" alt="Why your brand needs a custom Shopify theme" width="1200" height="630" loading="lazy" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -1232,18 +1244,17 @@
                                     <span class="tag">Design</span>
                                     <span class="tag">Strategy</span>
                                 </div>
-                                <div class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block"
+                                   >
                                     Read Article
                                 </div>
                             </div>
                         </a></article>
 
                         <!-- Article: Accessibilty & WooCommerce -->
-                        <article class="project-card blog-card"><a href="/blog/woocommerce-to-shopify-migration-guide" style="text-decoration:none; color:inherit; display:block; height:100%;">
+                        <article class="project-card blog-card"><a class="card-link" href="/blog/woocommerce-to-shopify-migration-guide">
                             <div class="project-image">
-                                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                                    alt="WooCommerce Migration" style="object-fit: cover;">
+                                <img src="/blog/images/woocommerce_to_shopify_migration_banner.webp" alt="WooCommerce to Shopify migration" width="1200" height="630" loading="lazy" decoding="async">
                             </div>
                             <div class="project-content">
                                 <div class="project-header">
@@ -1259,8 +1270,8 @@
                                     <span class="tag">WooCommerce</span>
                                     <span class="tag">Guide</span>
                                 </div>
-                                <div class="btn-secondary"
-                                    style="width: 100%; justify-content: center; margin-top: auto;">
+                                <div class="btn-secondary btn-block"
+                                   >
                                     Read Article
                                 </div>
                             </div>
@@ -1283,24 +1294,21 @@
                 href="https://www.linkedin.com/in/zectox/"
                 target="_blank"
                 class="footer-social-link"
-                title="LinkedIn"
-              >
+                title="LinkedIn" rel="noopener noreferrer">
                 <i class="fab fa-linkedin-in"></i>
               </a>
               <a
                 href="https://github.com/ZecTox"
                 target="_blank"
                 class="footer-social-link"
-                title="GitHub"
-              >
+                title="GitHub" rel="noopener noreferrer">
                 <i class="fab fa-github"></i>
               </a>
               <a
                 href="https://zectox.is-a.dev/"
                 target="_blank"
                 class="footer-social-link"
-                title="Website"
-              >
+                title="Website" rel="noopener noreferrer">
                 <i class="fas fa-globe"></i>
               </a>
             </div>
@@ -1318,15 +1326,15 @@
     <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
     <div class="cursor-ring"></div>
-    <script src="https://unpkg.com/split-type"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js" integrity="sha384-wQImCCD/id1jPTwSloatzKlEpnEAQ5aH8H2Ud27FnNcJ1lf2+hB75ctoWnWxyD8X" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js" integrity="sha384-d+vyQ0dYcymoP8ndq2hW7FGC50nqGdXUEgoOUGxbbkAJwZqL7h+jKN0GGgn9hFDS" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js" integrity="sha384-poC0r6usQOX2Ayt/VGA+t81H6V3iN9L+Irz9iO8o+s0X20tLpzc9DOOtnKxhaQSE" crossorigin="anonymous"></script>
 
 
-    <script src="https://unpkg.com/swup@4"></script>
-    <script src="https://unpkg.com/@swup/scripts-plugin@2"></script>
-    <script src="https://unpkg.com/@swup/head-plugin@2"></script>
-    <script src="/script.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/swup@4.10.0/dist/Swup.umd.js" integrity="sha384-rHeYt38qWf9UmFaUXj3OKA3CqUD0E5hbtwK0lTQQ/YXHyP8t4BvujfDAZKUagHz7" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@swup/scripts-plugin@2.1.0/dist/index.umd.js" integrity="sha384-0OOd/P3xw2RWbA6Dv7vjhsqkMf5b+ak1ekw6K+JNstuXFnzUio9JORhTVZD+xcWH" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@swup/head-plugin@2.3.1/dist/index.umd.js" integrity="sha384-6Ai7SRlZ50QYQ/dc9y6MRZwhlK74Cwab40Sb63ZxrVuoJL9DG9eNpi70b4zL+qvP" crossorigin="anonymous"></script>
+    <script defer src="/script.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

@@ -1,9 +1,18 @@
 
 // Navigation functionality
+// Visitors who ask for reduced motion get the same site without the smooth-scroll
+// hijack, the trailing cursor, the hero character animation or the page curtain.
+var prefersReducedMotion =
+  window.matchMedia &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 // Dynamically load Lenis Smooth Scrolling so it works site-wide automatically
 (function loadLenis() {
+  if (prefersReducedMotion) return;
   const lenisScript = document.createElement("script");
-  lenisScript.src = "https://unpkg.com/lenis@1.1.13/dist/lenis.min.js";
+  lenisScript.src = "https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js";
+  lenisScript.integrity = "sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed";
+  lenisScript.crossOrigin = "anonymous";
   lenisScript.onload = () => {
     if (typeof Lenis !== "undefined") {
       window.lenis = new Lenis({
@@ -42,7 +51,9 @@
   // Also load Lenis CSS
   const lenisStyle = document.createElement("link");
   lenisStyle.rel = "stylesheet";
-  lenisStyle.href = "https://unpkg.com/lenis@1.1.13/dist/lenis.css";
+  lenisStyle.href = "https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.css";
+  lenisStyle.integrity = "sha384-pAFowDtEJGvoq8dGiFmgKkO1h5cvbHkCysvXumyjfJBsi8qJwG429whEp2xanR+c";
+  lenisStyle.crossOrigin = "anonymous";
   document.head.appendChild(lenisStyle);
 })();
 
@@ -50,7 +61,6 @@
 
 // Declare Swup instance
 var swupInstance = null;
-var glightboxInstance = null;
 var cursorInitializedGlobal = false;
 var xTo, yTo, xToRing, yToRing;
 
@@ -93,7 +103,9 @@ if (document.readyState === "loading") {
 // Lightweight blog consultation prompt
 (function () {
   const CONFIG = {
-    popupDelay: 7000,
+    // Shown once the reader is actually invested in the article, not 7s after arrival.
+    scrollTrigger: 0.45,
+    dwellFallback: 45000,
     frequencyHours: 24,
     bookingLink: "/#schedule",
     directCalLink: "https://cal.com/zectox/30min",
@@ -207,7 +219,7 @@ if (document.readyState === "loading") {
             }
 
             .blog-consult-primary {
-                background: linear-gradient(135deg, #00c878, #008060);
+                background: linear-gradient(135deg, #00855f, #00614a);
                 color: #ffffff;
                 border: none;
                 box-shadow: 0 14px 32px rgba(0, 200, 120, 0.2);
@@ -305,9 +317,23 @@ if (document.readyState === "loading") {
       .querySelector(".blog-consult-close")
       ?.addEventListener("click", dismissPrompt);
 
-    setTimeout(() => {
+    // Ask only after the reader has engaged: 45% of the way down the article, or a
+    // long dwell as a fallback for short posts that never scroll that far.
+    let shown = false;
+    const reveal = () => {
+      if (shown) return;
+      shown = true;
+      window.removeEventListener("scroll", onScroll);
+      clearTimeout(dwellTimer);
       prompt.classList.add("active");
-    }, CONFIG.popupDelay);
+    };
+    const onScroll = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      if (window.scrollY / scrollable >= CONFIG.scrollTrigger) reveal();
+    };
+    const dwellTimer = setTimeout(reveal, CONFIG.dwellFallback);
+    window.addEventListener("scroll", onScroll, { passive: true });
   }
 
   if (document.readyState === "loading") {
@@ -321,8 +347,8 @@ function initGSAPAnimations() {
     if (typeof gsap === "undefined") return;
 
     // 1. Cinematic Hero Text Reveal
-    if (typeof SplitType !== 'undefined') {
-        const heroTitle = document.querySelector('.hero-text h2');
+    if (!prefersReducedMotion && typeof SplitType !== 'undefined') {
+        const heroTitle = document.querySelector('.hero-text h1, .hero-text h2');
         if (heroTitle) {
             const split = new SplitType(heroTitle, { types: 'words, chars' });
             gsap.from(split.chars, {
@@ -335,7 +361,7 @@ function initGSAPAnimations() {
                 delay: 0.2
             });
             
-            const heroSiblings = document.querySelectorAll('.hero-text > :not(h2), .hero-profile-card');
+            const heroSiblings = document.querySelectorAll('.hero-text > :not(h1):not(h2), .hero-profile-card');
             gsap.fromTo(heroSiblings, 
                 { y: 30, opacity: 0 }, 
                 { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power3.out", delay: 0.8 }
@@ -362,8 +388,8 @@ function initGSAPAnimations() {
         children.forEach(child => track.appendChild(child.cloneNode(true)));
 
         setTimeout(() => {
-            let scrollWidth = track.scrollWidth / 2;
-            let tween = gsap.to(track, {
+            const scrollWidth = track.scrollWidth / 2;
+            const tween = gsap.to(track, {
                 x: -scrollWidth,
                 ease: "none",
                 duration: 360,
@@ -413,6 +439,7 @@ function initGSAPAnimations() {
 
 
 function initCursor() {
+    if (prefersReducedMotion) return;
     if (typeof gsap === "undefined") return;
     if (window.innerWidth < 1080) return; // Disable custom cursor on mobile/tablet
     
@@ -439,28 +466,37 @@ function initCursor() {
         cursorInitializedGlobal = true;
     }
 
+    // Tie to the page controller: .nav-item lives in the sidebar, which survives
+    // Swup navigations, so untracked listeners would stack up there.
+    const signal = window.__pageListeners ? window.__pageListeners.signal : undefined;
     const interactives = document.querySelectorAll('a, button, .project-card, .btn, .nav-item');
     interactives.forEach(el => {
         el.addEventListener('mouseenter', () => {
             gsap.to(cursor, { scale: 0, duration: 0.3 });
             gsap.to(ring, { width: 60, height: 60, backgroundColor: 'rgba(255,255,255,0.1)', borderColor: 'transparent', backdropFilter: 'blur(4px)', duration: 0.3 });
-        });
+        }, { signal });
         el.addEventListener('mouseleave', () => {
             gsap.to(cursor, { scale: 1, duration: 0.3 });
             gsap.to(ring, { width: 40, height: 40, backgroundColor: 'transparent', borderColor: 'rgba(255,255,255,0.5)', backdropFilter: 'none', duration: 0.3 });
             gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: "power3.out" });
-        });
+        }, { signal });
         el.addEventListener('mousemove', (e) => {
             if(el.classList.contains('project-card')) return; 
             const rect = el.getBoundingClientRect();
             const x = e.clientX - rect.left - rect.width/2;
             const y = e.clientY - rect.top - rect.height/2;
             gsap.to(el, { x: x*0.05, y: y*0.05, duration: 0.5, ease: "power3.out" });
-        });
+        }, { signal });
     });
 }
 
 function initPage() {
+  // Swup only swaps #swup, so the sidebar, window and document keep the listeners
+  // from the previous page. Tie every listener registered here to one controller
+  // and abort it on re-init, otherwise handlers stack up on each navigation.
+  if (window.__pageListeners) window.__pageListeners.abort();
+  window.__pageListeners = new AbortController();
+  var signal = window.__pageListeners.signal;
     
   const navItems = document.querySelectorAll(".nav-item[data-section]");
   const nightModeToggle = document.getElementById("nightModeToggle");
@@ -486,22 +522,20 @@ function initPage() {
       // Save preference to localStorage
       localStorage.setItem("nightMode", this.checked);
       syncThemeToggleUI();
-    });
+    }, { signal });
   }
 
-  // Load saved night mode preference
-  const savedNightMode = localStorage.getItem("nightMode") === "true";
-  if (savedNightMode && nightModeToggle) {
-    nightModeToggle.checked = true;
-    document.body.classList.add("night-mode");
-  }
+  // The pre-paint script in each page has already put <body> into the right
+  // theme; read it back so both toggles show the correct state.
+  const isNight = document.body.classList.contains("night-mode");
+  if (nightModeToggle) nightModeToggle.checked = isNight;
   syncThemeToggleUI();
 
   if (themeToggleButton && nightModeToggle) {
     themeToggleButton.addEventListener("click", function () {
       nightModeToggle.checked = !nightModeToggle.checked;
       nightModeToggle.dispatchEvent(new Event("change"));
-    });
+    }, { signal });
   }
 
   // Mobile menu functionality
@@ -518,11 +552,33 @@ function initPage() {
   }
 
   if (mobileMenuToggle) {
-    mobileMenuToggle.addEventListener("click", toggleMobileMenu);
+    mobileMenuToggle.addEventListener("click", toggleMobileMenu, { signal });
   }
   if (mobileOverlay) {
-    mobileOverlay.addEventListener("click", closeMobileMenu);
+    mobileOverlay.addEventListener("click", closeMobileMenu, { signal });
   }
+
+  // Smooth-scroll any in-page hash link (header CTAs, hero buttons, footer).
+  // Project rule: use lenis.scrollTo, never scroll-behavior or scrollIntoView.
+  document.addEventListener("click", function (e) {
+    const link = e.target.closest('a[href*="#"]');
+    if (!link || link.closest("[data-no-swup], .glightbox")) return;
+    if (link.hasAttribute("data-section")) return; // handled by the nav-item logic
+
+    const url = new URL(link.href, window.location.href);
+    if (url.pathname !== window.location.pathname || !url.hash) return;
+
+    const target = document.querySelector(url.hash);
+    if (!target) return;
+
+    e.preventDefault();
+    if (window.lenis) {
+      window.lenis.scrollTo(target, { offset: -50 });
+    } else {
+      target.scrollIntoView({ block: "start" });
+    }
+    history.pushState(null, "", url.hash);
+  }, { signal });
 
   // Close mobile menu when clicking nav items
   navItems.forEach((item) => {
@@ -552,7 +608,7 @@ function initPage() {
 
       // Close mobile menu after navigation
       closeMobileMenu();
-    });
+    }, { signal });
   });
 
   // Contact card click handlers
@@ -575,48 +631,10 @@ function initPage() {
           window.open("https://zectox.is-a.dev/", "_blank");
           break;
       }
-    });
+    }, { signal });
   });
 
-  // Resume download button
-  const downloadButtons = document.querySelectorAll("button");
-  downloadButtons.forEach((button) => {
-    if (button.textContent.includes("Download Resume")) {
-      button.addEventListener("click", function () {
-        // Open resume PDF in new tab
-        window.open("/Tejas_Kedare_Resume_Shopify_Updated.pdf", "_blank");
-      });
-    }
-  });
 
-  // Contact me button in header
-  const contactButton = document.querySelector(".header-right .btn-primary");
-  if (contactButton && contactButton.tagName === "BUTTON") {
-    contactButton.addEventListener("click", function () {
-      // Scroll to contact section
-      navItems.forEach((nav) => nav.classList.remove("active"));
-
-      const contactNav = document.querySelector(
-        '.nav-item[data-section="contact"]',
-      );
-      const contactSection = document.getElementById("contact");
-
-      if (contactNav && contactSection) {
-        contactNav.classList.add("active");
-        if (window.lenis) {
-          window.lenis.scrollTo(contactSection, { offset: -50 });
-        } else {
-          contactSection.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      }
-
-      // Close mobile menu
-      closeMobileMenu();
-    });
-  }
 
   // Debounce function for performance
   function debounce(func, wait) {
@@ -652,7 +670,7 @@ function initPage() {
   }, 100); // Debounce for 100ms
 
   if (navItems.length > 0) {
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true, signal });
   }
 
   // Add keyboard navigation
@@ -660,7 +678,7 @@ function initPage() {
     if (e.key === "Escape") {
       closeMobileMenu();
     }
-  });
+  }, { signal });
 
   // Smooth scrolling for better UX
   // Removed document.documentElement.style.scrollBehavior = 'smooth'; as it breaks Lenis
@@ -686,7 +704,7 @@ function initPage() {
       if (!isActive) {
         item.classList.add("active");
       }
-    });
+    }, { signal });
   });
 
   const loadCalendarBtn = document.getElementById("loadCalendarBtn");
@@ -711,6 +729,7 @@ function initPage() {
 
       calendarEmbed.innerHTML = "";
 
+      /* eslint-disable prefer-const, prefer-rest-params, @typescript-eslint/no-unused-expressions -- vendor embed from cal.com, kept verbatim */
       (function (C, A, L) {
         let p = function (a, ar) {
           a.q.push(ar);
@@ -741,6 +760,7 @@ function initPage() {
             p(cal, ar);
           };
       })(window, "https://app.cal.com/embed/embed.js", "init");
+      /* eslint-enable prefer-const, prefer-rest-params, @typescript-eslint/no-unused-expressions */
 
       window.Cal("init", { origin: "https://cal.com" });
       window.Cal("inline", {
@@ -756,7 +776,7 @@ function initPage() {
       loadCalendarBtn.disabled = false;
       loadCalendarBtn.innerHTML =
         '<i class="fas fa-calendar-check"></i> Calendar Loaded';
-    });
+    }, { signal });
   }
 
 
@@ -784,9 +804,9 @@ function initPage() {
                 const container = document.querySelector('.glightbox-container');
                 if (container) {
                     const stopPropagation = (e) => e.stopPropagation();
-                    container.addEventListener('wheel', stopPropagation, { passive: false });
-                    container.addEventListener('touchstart', stopPropagation, { passive: true });
-                    container.addEventListener('touchmove', stopPropagation, { passive: true });
+                    container.addEventListener('wheel', stopPropagation, { passive: false, signal });
+                    container.addEventListener('touchstart', stopPropagation, { passive: true, signal });
+                    container.addEventListener('touchmove', stopPropagation, { passive: true, signal });
                 }
             }, 100);
         });
@@ -799,6 +819,20 @@ function initPage() {
         initGSAPAnimations();
         initCursor();
     }
+}
+
+// A visit that gets interrupted (an impatient second click) can leave the curtain
+// mid-animation on a full-screen, z-index 999999 layer with pointer-events: auto.
+// Park it and make it inert again -- but only once nothing else is animating it,
+// otherwise this races the replacement visit and kills its tween instead.
+function resetCurtain() {
+    if (swupInstance && swupInstance.navigating) return;
+    const curtain = document.querySelector('.page-transition-curtain');
+    if (!curtain) return;
+    if (typeof gsap !== 'undefined') gsap.killTweensOf(curtain);
+    curtain.style.pointerEvents = 'none';
+    curtain.style.transform = 'translateY(-100%)';
+    if (window.lenis) window.lenis.start();
 }
 
 function initSwup() {
@@ -815,9 +849,9 @@ function initSwup() {
         ignoreVisit: (url, { el } = {}) => !!(el && el.closest('[data-no-swup], .glightbox'))
     });
 
-    swupInstance.hooks.replace('animation:out:await', async (visit) => {
+    swupInstance.hooks.replace('animation:out:await', async () => {
         const curtain = document.querySelector('.page-transition-curtain');
-        if (!curtain || typeof gsap === 'undefined') return;
+        if (prefersReducedMotion || !curtain || typeof gsap === 'undefined') return;
 
         if (window.lenis) window.lenis.stop();
         curtain.style.pointerEvents = 'auto';
@@ -836,9 +870,9 @@ function initSwup() {
         });
     });
 
-    swupInstance.hooks.replace('animation:in:await', async (visit) => {
+    swupInstance.hooks.replace('animation:in:await', async () => {
         const curtain = document.querySelector('.page-transition-curtain');
-        if (!curtain || typeof gsap === 'undefined') return;
+        if (prefersReducedMotion || !curtain || typeof gsap === 'undefined') return;
 
         await new Promise(resolve => {
             gsap.fromTo(curtain,
@@ -865,6 +899,9 @@ function initSwup() {
         }
         initPage();
     });
+
+    swupInstance.hooks.on('visit:end', resetCurtain);
+    swupInstance.hooks.on('visit:abort', resetCurtain);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -872,7 +909,11 @@ document.addEventListener("DOMContentLoaded", () => {
     initPage();
     
     const curtain = document.querySelector('.page-transition-curtain');
-    if (curtain) {
+    if (curtain && prefersReducedMotion) {
+        curtain.style.animation = 'none';
+        curtain.style.transform = 'translateY(-100%)';
+        curtain.style.pointerEvents = 'none';
+    } else if (curtain) {
         if (typeof gsap !== 'undefined') {
             // GSAP is loaded: stop CSS fallback animation and use GSAP for smooth reveal
             curtain.style.animation = 'none';

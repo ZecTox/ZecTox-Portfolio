@@ -4,40 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopify Functions vs. Legacy Scripts: The Complete 2026 Migration Guide - Tejas Kedare</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <title>Shopify Functions vs Scripts: 2026 Migration Guide</title>
     <link href="/styles.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Font Awesome is icon-only: load it without blocking first paint -->
+    <link rel="stylesheet" href="/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="preload" as="font" type="font/woff2" href="/webfonts/fa-solid-900.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/webfonts/fa-brands-400.woff2" crossorigin>
+    <noscript><link rel="stylesheet" href="/css/all.min.css"></noscript>
                                     <meta name="author" content="Tejas Kedare">
                                 <meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="icon" href="/src/tejas_website_image.webp" type="image/x-icon">
+<link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/src/tejas_website_image.webp" sizes="any" type="image/webp">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#071512">
 
     <!-- SEO Meta Tags -->
     <meta name="description"
-        content="The definitive 5000-word guide to migrating from Shopify Scripts (Ruby) to Shopify Functions (Rust/JS). Covers architecture, code examples, debugging, and step-by-step migration for Plus merchants.">
+        content="Moving from Ruby Shopify Scripts to Functions in Rust or JavaScript: architecture, code examples, debugging and a step-by-step migration path for Plus.">
     <meta name="keywords"
         content="shopify functions vs scripts, shopify scripts deprecation, migrate shopify scripts to functions, shopify functions rust vs javascript, shopify plus scripting 2026, shopify discount functions, shopify delivery customization, shopify payment customization, wasm shopify, shopify functions tutorial, shopify scripts editor replacement">
     <link rel="canonical" href="https://zectox.is-a.dev/blog/shopify-functions-vs-scripts-migration-guide">
 
     <!-- Open Graph -->
                                     <meta property="og:type" content="article">
-                                    <meta property="og:title" content="Shopify Functions vs. Legacy Scripts: The Complete 2026 Migration Guide">
-                                    <meta property="og:description" content="The definitive 5000-word guide to migrating from Shopify Scripts (Ruby) to Shopify Functions (Rust/JS). Covers architecture, code examples, debugging, and step-by-step migration for Plus merchants.">
-                                    <meta property="og:image" content="https://zectox.is-a.dev/blog/images/shopify_functions_vs_scripts_banner.png">
+                                    <meta property="og:title" content="Shopify Functions vs Scripts: 2026 Migration Guide">
+                                    <meta property="og:description" content="Moving from Ruby Shopify Scripts to Functions in Rust or JavaScript: architecture, code examples, debugging and a step-by-step migration path for Plus.">
+                                    <meta property="og:image" content="https://zectox.is-a.dev/blog/images/shopify_functions_vs_scripts_banner.webp">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://zectox.is-a.dev/blog/shopify-functions-vs-scripts-migration-guide">
-    <meta property="twitter:title" content="Shopify Functions vs. Legacy Scripts: The Complete 2026 Migration Guide">
-    <meta property="twitter:description"
-        content="Ruby is out. Wasm is in. The consultant's definitive guide to migrating complex Plus logic to Shopify Functions without breaking your store.">
-    <meta property="twitter:image" content="https://zectox.is-a.dev/blog/images/shopify_functions_vs_scripts_banner.png">
 
                                     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": "Shopify Functions vs. Legacy Scripts: The Complete 2026 Migration Guide",
-      "image": "https://zectox.is-a.dev/blog/images/shopify_functions_vs_scripts_banner.png",
+      "image": "https://zectox.is-a.dev/blog/images/shopify_functions_vs_scripts_banner.webp",
       "datePublished": "2026-01-01",
       "dateModified": "2026-01-01",
       "author": {
@@ -54,7 +63,7 @@
         }
       },
       "wordCount": 3863,
-      "description": "The definitive 5000-word guide to migrating from Shopify Scripts (Ruby) to Shopify Functions (Rust/JS). Covers architecture, code examples, debugging, and step-by-step migration for Plus merchants.",
+      "description": "Moving from Ruby Shopify Scripts to Functions in Rust or JavaScript: architecture, code examples, debugging and a step-by-step migration path for Plus.",
       "mainEntityOfPage": "https://zectox.is-a.dev/blog/shopify-functions-vs-scripts-migration-guide"
     }
     </script>
@@ -72,7 +81,7 @@
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://zectox.is-a.dev/blog/"
+        "item": "https://zectox.is-a.dev/blog"
       },{
         "@type": "ListItem",
         "position": 3,
@@ -85,9 +94,9 @@
                                     <meta property="og:url" content="https://zectox.is-a.dev/blog/shopify-functions-vs-scripts-migration-guide">
                                 <meta property="og:site_name" content="Tejas Kedare Portfolio">
                                 <meta name="twitter:card" content="summary_large_image">
-                                <meta name="twitter:title" content="Shopify Functions vs. Legacy Scripts: The Complete 2026 Migration Guide">
-                                <meta name="twitter:description" content="The definitive 5000-word guide to migrating from Shopify Scripts (Ruby) to Shopify Functions (Rust/JS). Covers architecture, code examples, debugging, and step-by-step migration for Plus merchants.">
-                                <meta name="twitter:image" content="https://zectox.is-a.dev/blog/images/shopify_functions_vs_scripts_banner.png">
+                                <meta name="twitter:title" content="Shopify Functions vs Scripts: 2026 Migration Guide">
+                                <meta name="twitter:description" content="Moving from Ruby Shopify Scripts to Functions in Rust or JavaScript: architecture, code examples, debugging and a step-by-step migration path for Plus.">
+                                <meta name="twitter:image" content="https://zectox.is-a.dev/blog/images/shopify_functions_vs_scripts_banner.webp">
                                 <meta property="article:published_time" content="2026-01-01">
                                 <meta property="article:modified_time" content="2026-01-01">
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -171,6 +180,22 @@
 </head>
 
 <body>
+    <script>
+      /* Apply the saved colour scheme before first paint, so dark-mode visitors
+         never see a flash of the light theme. Runs before the page is painted
+         because the parser has not reached any visible markup yet. */
+      (function () {
+        try {
+          var saved = localStorage.getItem("nightMode");
+          var dark =
+            saved === null
+              ? window.matchMedia("(prefers-color-scheme: dark)").matches
+              : saved === "true";
+          if (dark) document.body.classList.add("night-mode");
+        } catch (e) {}
+      })();
+    </script>
+
     <div class="page-transition-curtain"></div>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8KD9MB7"
@@ -204,7 +229,7 @@
                     <i class="fas fa-shopping-cart"></i>
                     <span>Stores</span>
                 </a>
-                <a href="/blog/" class="nav-item active">
+                <a href="/blog" class="nav-item active">
                     <i class="fas fa-blog"></i>
                     <span>Blog</span>
                 </a>
@@ -256,7 +281,7 @@
                 data-section="testimonials"
                 >Testimonials</a
               >
-              <a href="/blog/" class="nav-item desktop-nav-link">Blog</a>
+              <a href="/blog" class="nav-item desktop-nav-link">Blog</a>
               <a
                 href="/#contact"
                 class="nav-item desktop-nav-link"
@@ -275,27 +300,22 @@
             >
               <i class="fas fa-moon"></i>
             </button>
-            <button
-              class="schedule-btn-nav"
-              onclick="
-                document.querySelector('[data-section=\'schedule\']').click()
-              "
-            >
+            <a class="schedule-btn-nav" href="/#schedule">
               <i class="fas fa-calendar-check"></i>
               Schedule Meeting
-            </button>
+            </a>
 
-            <button class="btn-primary">
+            <a class="btn-primary" href="/#contact">
               <i class="fas fa-envelope"></i>
               Contact Me
-            </button>
+            </a>
           </div>
         </header>
 
             <div class="content-wrapper">
                 <article class="article-content">
-                    <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden;">
-                        <img src="/blog/images/shopify_functions_vs_scripts_banner.png" alt="Shopify Functions vs Scripts Migration Guide" style="width: 100%; height: auto; display: block;">
+                    <div class="article-banner">
+                        <img class="img-fluid" src="/blog/images/shopify_functions_vs_scripts_banner.webp" alt="Shopify Functions vs Scripts Migration Guide" width="1024" height="1024" decoding="async">
                     </div>
 
                     <div class="article-header">
@@ -579,7 +599,7 @@ end
 Output.cart = cart
                     </div>
 
-                    <h4 style="color: #008060;">Shopify Function (JavaScript)</h4>
+                    <h4 class="text-brand">Shopify Function (JavaScript)</h4>
                     <div class="code-block">
                         <span class="code-title">src/run.js (Order Discount API)</span>
 // @ts-check
@@ -644,7 +664,7 @@ end
 Output.cart = cart
                     </div>
 
-                    <h4 style="color: #008060;">Shopify Function (Rust)</h4>
+                    <h4 class="text-brand">Shopify Function (Rust)</h4>
                     <div class="code-block">
                         <span class="code-title">src/run.rs (Product Discount API)</span>
 use shopify_function::prelude::*;
@@ -714,7 +734,7 @@ end
 Output.shipping_rates = shipping_rates
                     </div>
 
-                    <h4 style="color: #008060;">Shopify Function (JavaScript)</h4>
+                    <h4 class="text-brand">Shopify Function (JavaScript)</h4>
                     <div class="code-block">
                         <span class="code-title">src/run.js (Delivery Customization API)</span>
 export function run(input) {
@@ -742,7 +762,7 @@ export function run(input) {
 
                     <div class="pro-con-grid">
                         <div class="pro-box">
-                            <h4 style="margin-top: 0; color: #008060;">Use JavaScript If:</h4>
+                            <h4 class="mt-0 text-brand">Use JavaScript If:</h4>
                             <ul style="padding-left: 20px;">
                                 <li>Your team already knows JavaScript/TypeScript</li>
                                 <li>Your logic is relatively straightforward (thresholds, customer tags)</li>
@@ -1088,19 +1108,19 @@ describe("Order Discount Function", () => {
                     </ol>
 
                     <div style="background: var(--card-bg); padding: 32px; border-radius: 12px; margin: 40px 0; border: 2px solid #008060; text-align: center;">
-                        <h3 style="margin-top: 0; color: #008060;">Need Expert Help With Your Migration?</h3>
-                        <p style="font-size: 1.1em;">I specialize in high-risk Script-to-Function migrations for Plus merchants. I can audit your legacy Ruby scripts, design the new architecture, write the Functions, test them, and handle the cutover so you don't lose a single sale.</p>
-                        <a href="/#contact" class="btn-primary" style="margin-top: 16px;">Book a Migration Audit</a>
+                        <h3 class="mt-0 text-brand">Need Expert Help With Your Migration?</h3>
+                        <p class="text-lg">I specialize in high-risk Script-to-Function migrations for Plus merchants. I can audit your legacy Ruby scripts, design the new architecture, write the Functions, test them, and handle the cutover so you don't lose a single sale.</p>
+                        <a href="/#contact" class="btn-primary mt-16">Book a Migration Audit</a>
                     </div>
 
                 
                          <div class="related-articles-card">
-                              <h3 style="margin-top: 0;">Related Articles</h3>
-                              <ul style="list-style: none; padding: 0; margin: 0;">
-                              <li style="margin-bottom: 12px;"><a href="/blog/shopify-plus-migration-guide" style="color: #008060; font-weight: 500; text-decoration: none;">Shopify Plus Migration: ROI Calculator & Technical Checklist</a></li>
-                              <li style="margin-bottom: 12px;"><a href="/blog/shopify-technical-audit-guide" style="color: #008060; font-weight: 500; text-decoration: none;">The Complete Shopify Technical Audit Guide</a></li>
-                              <li style="margin-bottom: 12px;"><a href="/blog/shopify-markets-pro-global-guide" style="color: #008060; font-weight: 500; text-decoration: none;">Shopify Markets Pro: The Complete Global Commerce Guide</a></li>
-                              <li style="margin-bottom: 0;"><a href="/blog/custom-shopify-theme-benefits" style="color: #008060; font-weight: 500; text-decoration: none;">Why Your Brand Needs a Custom Shopify Theme</a></li>
+                              <h3 class="mt-0">Related Articles</h3>
+                              <ul class="list-plain">
+                              <li class="mb-12"><a class="link-brand" href="/blog/shopify-plus-migration-guide">Shopify Plus Migration: ROI Calculator & Technical Checklist</a></li>
+                              <li class="mb-12"><a class="link-brand" href="/blog/shopify-technical-audit-guide">The Complete Shopify Technical Audit Guide</a></li>
+                              <li class="mb-12"><a class="link-brand" href="/blog/shopify-markets-pro-global-guide">Shopify Markets Pro: The Complete Global Commerce Guide</a></li>
+                              <li class="mb-0"><a class="link-brand" href="/blog/custom-shopify-theme-benefits">Why Your Brand Needs a Custom Shopify Theme</a></li>
                               </ul>
                          </div>
                                                             <section class="related-reading" aria-labelledby="related-reading-title">
@@ -1139,24 +1159,21 @@ describe("Order Discount Function", () => {
                 href="https://www.linkedin.com/in/zectox/"
                 target="_blank"
                 class="footer-social-link"
-                title="LinkedIn"
-              >
+                title="LinkedIn" rel="noopener noreferrer">
                 <i class="fab fa-linkedin-in"></i>
               </a>
               <a
                 href="https://github.com/ZecTox"
                 target="_blank"
                 class="footer-social-link"
-                title="GitHub"
-              >
+                title="GitHub" rel="noopener noreferrer">
                 <i class="fab fa-github"></i>
               </a>
               <a
                 href="https://zectox.is-a.dev/"
                 target="_blank"
                 class="footer-social-link"
-                title="Website"
-              >
+                title="Website" rel="noopener noreferrer">
                 <i class="fas fa-globe"></i>
               </a>
             </div>
@@ -1172,14 +1189,14 @@ describe("Order Discount Function", () => {
     <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
     <div class="cursor-ring"></div>
-    <script src="https://unpkg.com/split-type"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js" integrity="sha384-wQImCCD/id1jPTwSloatzKlEpnEAQ5aH8H2Ud27FnNcJ1lf2+hB75ctoWnWxyD8X" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js" integrity="sha384-d+vyQ0dYcymoP8ndq2hW7FGC50nqGdXUEgoOUGxbbkAJwZqL7h+jKN0GGgn9hFDS" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js" integrity="sha384-poC0r6usQOX2Ayt/VGA+t81H6V3iN9L+Irz9iO8o+s0X20tLpzc9DOOtnKxhaQSE" crossorigin="anonymous"></script>
 
 
-    <script src="https://unpkg.com/swup@4"></script>
-    <script src="https://unpkg.com/@swup/scripts-plugin@2"></script>
-    <script src="https://unpkg.com/@swup/head-plugin@2"></script>
-    <script src="/script.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/swup@4.10.0/dist/Swup.umd.js" integrity="sha384-rHeYt38qWf9UmFaUXj3OKA3CqUD0E5hbtwK0lTQQ/YXHyP8t4BvujfDAZKUagHz7" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@swup/scripts-plugin@2.1.0/dist/index.umd.js" integrity="sha384-0OOd/P3xw2RWbA6Dv7vjhsqkMf5b+ak1ekw6K+JNstuXFnzUio9JORhTVZD+xcWH" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@swup/head-plugin@2.3.1/dist/index.umd.js" integrity="sha384-6Ai7SRlZ50QYQ/dc9y6MRZwhlK74Cwab40Sb63ZxrVuoJL9DG9eNpi70b4zL+qvP" crossorigin="anonymous"></script>
+    <script defer src="/script.js"></script>
 </body>
 </html>

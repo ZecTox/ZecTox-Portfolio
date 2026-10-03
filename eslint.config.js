@@ -1,28 +1,38 @@
 import js from '@eslint/js';
 import globals from 'globals';
-import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  { ignores: ['dist', 'node_modules', 'public/css/all.min.css'] },
   {
+    files: ['**/*.{js,mjs,ts}'],
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      ecmaVersion: 2022,
+      globals: { ...globals.node, ...globals.browser },
     },
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+  },
+  {
+    // The site bundle is a classic browser script, not a module.
+    files: ['public/script.js'],
+    languageOptions: {
+      sourceType: 'script',
+      globals: {
+        ...globals.browser,
+        gsap: 'readonly',
+        ScrollTrigger: 'readonly',
+        Lenis: 'readonly',
+        Swup: 'readonly',
+        SwupScriptsPlugin: 'readonly',
+        SwupHeadPlugin: 'readonly',
+        SplitType: 'readonly',
+        GLightbox: 'readonly',
+      },
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      // Swup can re-evaluate this file; `let`/`const` at the top level would throw
+      // "Identifier has already been declared". See .agents/AGENTS.md §4C.
+      'no-var': 'off',
     },
   }
 );

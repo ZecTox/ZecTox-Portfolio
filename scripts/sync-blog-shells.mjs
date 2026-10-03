@@ -83,7 +83,7 @@ for (const file of files) {
     const filePath = path.join(blogDir, file);
     const original = await readFile(filePath, 'utf8');
 
-    let html = original
+    const html = original
         .replace(/<link href="\.\.\/styles\.css" rel="stylesheet">/g, '<link href="/styles.css" rel="stylesheet">')
         .replace(/<script src="\.\.\/script\.js"><\/script>/g, '<script src="/script.js"></script>')
         .replace(/href="\.\.\/#(overview|experience|projects|testimonials|faq|skills|resume|schedule|contact)"/g, 'href="/#$1"')

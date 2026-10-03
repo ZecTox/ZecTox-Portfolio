@@ -1,6 +1,5 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 import { readdirSync } from 'fs';
 
 // Helper to find all HTML files in the blog directory
@@ -32,10 +31,6 @@ const getBlogInputs = () => {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  optimizeDeps: {
-    exclude: ['lucide-react'],
-  },
   build: {
     rollupOptions: {
       input: getBlogInputs(),

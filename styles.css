@@ -14,6 +14,30 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Keyboard users land on a 10-item sidebar before any content; let them jump past it. */
+.skip-link {
+    position: absolute;
+    left: 16px;
+    top: -60px;
+    z-index: 10000;
+    padding: 10px 18px;
+    border-radius: 0 0 8px 8px;
+    background: #008060;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.18s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Gallery members GLightbox needs in the DOM but nobody should see or focus. */
+.glightbox.is-gallery-item {
+    display: none;
+}
+
 .shopify-dashboard {
     display: flex;
     min-height: 100vh;
@@ -258,8 +282,12 @@ input:checked+.toggle-slider:before {
     transition: all 0.2s ease;
 }
 
+a.btn-primary {
+    text-decoration: none;
+}
+
 .btn-primary {
-    background: linear-gradient(135deg, #00c878 0%, #008060 100%);
+    background: linear-gradient(135deg, #00855f 0%, #00614a 100%);
     color: white;
     box-shadow: 0 2px 8px rgba(0, 200, 120, 0.25);
 }
@@ -845,7 +873,7 @@ body.night-mode .exp-card:hover .exp-skill-tag {
 
 .project-status.active {
     background-color: #e8f5e8;
-    color: #008060;
+    color: #006b50; /* 5.80:1 on #e8f5e8; #008060 was 4.38:1 */
 }
 
 .project-description {
@@ -1238,6 +1266,19 @@ body.night-mode .visit-store-link {
     border-color: #00a96e;
 }
 
+/* A store that has since gone offline: keep the case study, drop the dead link. */
+.visit-store-link.is-offline {
+    color: #6d7175;
+    border-color: rgba(109, 113, 117, 0.4);
+    border-style: dashed;
+    cursor: default;
+}
+
+body.night-mode .visit-store-link.is-offline {
+    color: #9aa0a6;
+    border-color: rgba(154, 160, 166, 0.35);
+}
+
 body.night-mode .visit-store-link:hover {
     background-color: #00a96e;
     color: #1a1a1a;
@@ -1367,6 +1408,13 @@ body.night-mode .project-work li::before {
 }
 
 /* Navbar Schedule Button */
+/* These two CTAs are anchors now, not buttons: anchors carry a default underline
+   and an inherited colour that the button rules never had to override. */
+a.schedule-btn-nav,
+a.btn-primary {
+    text-decoration: none;
+}
+
 .schedule-btn-nav {
     padding: 8px 16px;
     background-color: #008060;
@@ -1883,6 +1931,7 @@ body.night-mode .blog-cta-text p {
     flex: 1;
 }
 
+.hero-text h1,
 .hero-text h2 {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 36px;
@@ -1893,6 +1942,7 @@ body.night-mode .blog-cta-text p {
     color: white;
 }
 
+.hero-text h1 .highlight,
 .hero-text h2 .highlight {
     background: linear-gradient(135deg, #00c878, #00e88a);
     -webkit-background-clip: text;
@@ -1900,6 +1950,7 @@ body.night-mode .blog-cta-text p {
     background-clip: text;
 }
 
+.hero-text h1 .highlight .char,
 .hero-text h2 .highlight .char {
     background: linear-gradient(135deg, #00c878, #00e88a);
     -webkit-background-clip: text;
@@ -1926,7 +1977,7 @@ body.night-mode .blog-cta-text p {
     align-items: center;
     gap: 8px;
     padding: 12px 24px;
-    background: linear-gradient(135deg, #00c878, #008060);
+    background: linear-gradient(135deg, #00855f, #00614a);
     color: white;
     border: none;
     border-radius: 10px;
@@ -1991,7 +2042,8 @@ body.night-mode .blog-cta-text p {
         gap: 24px;
     }
 
-    .hero-text h2 {
+    .hero-text h1,
+.hero-text h2 {
         font-size: 26px;
     }
 
@@ -2039,8 +2091,35 @@ body.night-mode .blog-cta-text p {
         transform: none;
         transition: none;
     }
+
     .hero {
         animation: none;
+    }
+
+    /* The site leans on marquees, a full-screen page curtain and a trailing custom
+       cursor. None of that is safe for a visitor who has asked for reduced motion. */
+    .testimonials-track {
+        animation: none !important;
+    }
+
+    .page-transition-curtain {
+        animation: none !important;
+        transform: translateY(-100%) !important;
+        pointer-events: none !important;
+    }
+
+    .custom-cursor,
+    .cursor-ring {
+        display: none !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
 
@@ -2236,7 +2315,7 @@ body.night-mode .nav-item.active {
 }
 
 .footer-social-link:hover {
-    background: linear-gradient(135deg, #00c878, #008060);
+    background: linear-gradient(135deg, #00855f, #00614a);
     color: white;
     transform: translateY(-3px);
     box-shadow: 0 4px 16px rgba(0, 200, 120, 0.3);
@@ -2595,6 +2674,7 @@ body {
     letter-spacing: 0.01em;
 }
 
+.hero-text h1,
 .hero-text h2 {
     font-size: clamp(2.8rem, 4.4vw, 4.2rem);
     line-height: 1.04;
@@ -2916,7 +2996,7 @@ body.night-mode .hero-image img {
 
 .project-status.active {
     background-color: rgba(0, 128, 96, 0.1);
-    color: #007254;
+    color: #00a96e; /* 4.97:1 on the night surface; #007254 was 2.54:1 */
 }
 
 .faq-item,
@@ -4025,6 +4105,23 @@ body.night-mode .view-page-btn:hover {
     animation: curtainReveal 0.8s ease-in-out 0.3s forwards;
 }
 
+
+/* Article hero banner. Sized by the image's own aspect ratio so it never leaves a
+   band of dead colour above and below on narrow screens. */
+.article-banner {
+    margin-bottom: 32px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #0b0c0d;
+    line-height: 0;
+}
+
+.article-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* ============================================
    HEADER BREAKPOINT OVERRIDES (1250px)
    ============================================ */
@@ -4063,4 +4160,185 @@ body.night-mode .view-page-btn:hover {
         margin-left: 0 !important;
         width: 100% !important;
     }
+}
+
+/* ============================================
+   ARTICLE UTILITIES
+   Replaces ~870 repeated inline style attributes across the blog. Inline styles
+   beat every `body.night-mode` rule on specificity, so the brand green and the
+   light hairline borders could never adapt to the dark theme — these classes can.
+   ============================================ */
+
+.article-content .cell {
+    padding: 12px;
+    border: 1px solid #e1e3e5;
+}
+
+.article-content .cell-left {
+    text-align: left;
+}
+
+.article-content .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+}
+
+.article-content .scroll-x {
+    overflow-x: auto;
+}
+
+.link-brand {
+    color: #008060;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.link-brand:hover {
+    text-decoration: underline;
+}
+
+.text-brand {
+    color: #008060;
+}
+
+.text-brand-strong {
+    color: #008060;
+    font-weight: 600;
+}
+
+.badge-brand {
+    background: #008060;
+    color: #fff;
+}
+
+.card-link {
+    display: block;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+.btn-block {
+    width: 100%;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.img-cover {
+    object-fit: cover;
+}
+
+.list-plain {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.article-end-cta {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #e1e3e5;
+    text-align: center;
+}
+
+.text-lg {
+    font-size: 1.1em;
+}
+
+.m-0 { margin: 0; }
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.mt-16 { margin-top: 16px; }
+.mb-12 { margin-bottom: 12px; }
+
+/* Night mode: #008060 scores 3.34:1 on the dark surface, below the 4.5:1 floor.
+   #00a96e scores 5.42:1 and matches the green already used elsewhere in the theme. */
+body.night-mode .link-brand,
+body.night-mode .text-brand,
+body.night-mode .text-brand-strong {
+    color: #00a96e;
+}
+
+body.night-mode .badge-brand {
+    background: #00a96e;
+    color: #10231c;
+}
+
+body.night-mode .article-content .cell {
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+body.night-mode .article-end-cta {
+    border-top-color: rgba(255, 255, 255, 0.14);
+}
+
+/* ============================================
+   NIGHT MODE FOR PER-ARTICLE COMPONENTS
+   Each blog post ships its own <style> block, and those blocks were written
+   for the light theme only: brand green at 3.34:1 on the dark surface, and
+   callout boxes that stayed white while the text around them went light.
+   Generated from those blocks -- rerun the audit if you add a new component.
+   ============================================ */
+
+/* brand green -> 5.42:1 on the dark surface */
+body.night-mode .chapter-header,
+body.night-mode .check,
+body.night-mode .checklist-icon,
+body.night-mode .checklist-item h2,
+body.night-mode .checklist-item i,
+body.night-mode .faq-item h4,
+body.night-mode .feature-card .feature-icon,
+body.night-mode .feature-card h4,
+body.night-mode .insight-card h3,
+body.night-mode .phase-section h2,
+body.night-mode .result-box::before,
+body.night-mode .scenario-card h4,
+body.night-mode .toc a,
+body.night-mode .toc-box h3,
+body.night-mode .toc-list a:hover,
+body.night-mode .win,
+body.night-mode strong {
+    color: #00a96e;
+}
+
+/* light callout surfaces */
+body.night-mode .alert-box,
+body.night-mode .ba-after,
+body.night-mode .ba-before,
+body.night-mode .comparison-table th,
+body.night-mode .comparison-table th:nth-child(5),
+body.night-mode .comparison-table tr:nth-child(even),
+body.night-mode .conflict-box,
+body.night-mode .cost-highlight,
+body.night-mode .killer-number,
+body.night-mode .migration-alert,
+body.night-mode .ops-table th.magento,
+body.night-mode .schema-diagram,
+body.night-mode .security-alert,
+body.night-mode .solution-box,
+body.night-mode .steps-list li::before,
+body.night-mode .troubleshoot-step {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.14);
+    color: #e3e3e3;
+}
+
+/* These four callout surfaces are painted with a light linear-gradient in the
+   article's own <style> block. A gradient is background-image, not
+   background-color, so the solid-colour overrides above never reached them: in
+   night mode they stayed near-white while their text went light grey. */
+body.night-mode .cost-breakdown-box,
+body.night-mode .pricing-note,
+body.night-mode .roi-calculator,
+body.night-mode .stage-section {
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%);
+    border-color: rgba(255, 255, 255, 0.14);
+    color: #e3e3e3;
 }

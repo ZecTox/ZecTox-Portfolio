@@ -4,12 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <title>Shopify App Conflicts: The Silent Killer of Your Conversion Rate</title>
     <link href="/styles.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Font Awesome is icon-only: load it without blocking first paint -->
+    <link rel="stylesheet" href="/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="preload" as="font" type="font/woff2" href="/webfonts/fa-solid-900.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/webfonts/fa-brands-400.woff2" crossorigin>
+    <noscript><link rel="stylesheet" href="/css/all.min.css"></noscript>
                                     <meta name="author" content="Tejas Kedare">
                                 <meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="icon" href="/src/tejas_website_image.webp" type="image/x-icon">
+<link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/src/tejas_website_image.webp" sizes="any" type="image/webp">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#071512">
 
     <!-- SEO Meta Tags -->
     <meta name="description"
@@ -22,22 +36,17 @@
                                     <meta property="og:type" content="article">
                                     <meta property="og:title" content="Shopify App Conflicts: The Silent Killer of Your Conversion Rate">
                                     <meta property="og:description" content="Is your Shopify store acting up? It might be app conflicts. Learn how to diagnose, fix, and prevent app compatibility issues that kill sales.">
-                                    <meta property="og:image" content="https://zectox.is-a.dev/blog/images/shopify_app_conflicts_banner.png">
+                                    <meta property="og:image" content="https://zectox.is-a.dev/blog/images/shopify_app_conflicts_banner.webp">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://zectox.is-a.dev/blog/shopify-app-conflicts-guide">
-    <meta property="twitter:title" content="Shopify App Conflicts: The Silent Killer of Conversion Rate">
-    <meta property="twitter:description"
-        content="That pop-up app is breaking your checkout. Here's how to find out before your customers do.">
-    <meta property="twitter:image" content="https://zectox.is-a.dev/blog/images/shopify_app_conflicts_banner.png">
 
                                     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": "Shopify App Conflicts: The Silent Killer of Your Conversion Rate",
-      "image": "https://zectox.is-a.dev/blog/images/shopify_app_conflicts_banner.png",
+      "image": "https://zectox.is-a.dev/blog/images/shopify_app_conflicts_banner.webp",
       "datePublished": "2026-01-02",
       "dateModified": "2026-01-02",
       "author": {
@@ -72,7 +81,7 @@
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://zectox.is-a.dev/blog/"
+        "item": "https://zectox.is-a.dev/blog"
       },{
         "@type": "ListItem",
         "position": 3,
@@ -87,7 +96,7 @@
                                 <meta name="twitter:card" content="summary_large_image">
                                 <meta name="twitter:title" content="Shopify App Conflicts: The Silent Killer of Your Conversion Rate">
                                 <meta name="twitter:description" content="Is your Shopify store acting up? It might be app conflicts. Learn how to diagnose, fix, and prevent app compatibility issues that kill sales.">
-                                <meta name="twitter:image" content="https://zectox.is-a.dev/blog/images/shopify_app_conflicts_banner.png">
+                                <meta name="twitter:image" content="https://zectox.is-a.dev/blog/images/shopify_app_conflicts_banner.webp">
                                 <meta property="article:published_time" content="2026-01-02">
                                 <meta property="article:modified_time" content="2026-01-02">
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -126,9 +135,26 @@
             margin-top: 4px;
         }
     </style>
+    <link rel="preload" as="image" href="/blog/images/shopify_app_conflicts_banner.webp" fetchpriority="high">
 </head>
 
 <body>
+    <script>
+      /* Apply the saved colour scheme before first paint, so dark-mode visitors
+         never see a flash of the light theme. Runs before the page is painted
+         because the parser has not reached any visible markup yet. */
+      (function () {
+        try {
+          var saved = localStorage.getItem("nightMode");
+          var dark =
+            saved === null
+              ? window.matchMedia("(prefers-color-scheme: dark)").matches
+              : saved === "true";
+          if (dark) document.body.classList.add("night-mode");
+        } catch (e) {}
+      })();
+    </script>
+
     <div class="page-transition-curtain"></div>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8KD9MB7"
@@ -163,7 +189,7 @@
                     <i class="fas fa-shopping-cart"></i>
                     <span>Stores</span>
                 </a>
-                <a href="/blog/" class="nav-item active">
+                <a href="/blog" class="nav-item active">
                     <i class="fas fa-blog"></i>
                     <span>Blog</span>
                 </a>
@@ -215,7 +241,7 @@
                 data-section="testimonials"
                 >Testimonials</a
               >
-              <a href="/blog/" class="nav-item desktop-nav-link">Blog</a>
+              <a href="/blog" class="nav-item desktop-nav-link">Blog</a>
               <a
                 href="/#contact"
                 class="nav-item desktop-nav-link"
@@ -234,30 +260,24 @@
             >
               <i class="fas fa-moon"></i>
             </button>
-            <button
-              class="schedule-btn-nav"
-              onclick="
-                document.querySelector('[data-section=\'schedule\']').click()
-              "
-            >
+            <a class="schedule-btn-nav" href="/#schedule">
               <i class="fas fa-calendar-check"></i>
               Schedule Meeting
-            </button>
+            </a>
 
-            <button class="btn-primary">
+            <a class="btn-primary" href="/#contact">
               <i class="fas fa-envelope"></i>
               Contact Me
-            </button>
+            </a>
           </div>
         </header>
 
             <div class="content-wrapper">
                 <article class="article-content">
-                    <div class="article-banner" style="margin-bottom: 32px; border-radius: 8px; overflow: hidden; background-color: #0b0c0d; display: flex; align-items: center; justify-content: center; min-height: 400px;">
-                        <img src="/blog/images/shopify_app_conflicts_banner.png" alt="Shopify App Conflicts Guide"
+                    <div class="article-banner">
+                        <img class="img-fluid" src="/blog/images/shopify_app_conflicts_banner.webp" alt="Shopify App Conflicts Guide" width="1200" height="630" decoding="async"
                             fetchpriority="high"
-                            style="width: 100%; height: auto; display: block;"
-                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'padding:40px; text-align:center; color:#888;\'><i class=\'fas fa-bug fa-3x\'></i><p>App Conflicts Guide</p></div>'">
+                           >
                     </div>
 
                     <div class="article-header">
@@ -330,7 +350,7 @@
                     <p>If you're tired of playing "whack-a-mole" with bugs, you need a cleaner architecture.</p>
 
                     <h3>1. Audit and Prune</h3>
-                    <p>Do you really need that "Snowfall Effect" app from Christmas 2023? Delete it. Properly. (Uninstalling often leaves ghost code—see my <a href="why-is-my-shopify-store-slow" style="color: #008060; font-weight: 600;">speed guide</a> for how to clean that up).</p>
+                    <p>Do you really need that "Snowfall Effect" app from Christmas 2023? Delete it. Properly. (Uninstalling often leaves ghost code—see my <a class="text-brand-strong" href="why-is-my-shopify-store-slow">speed guide</a> for how to clean that up).</p>
 
                     <h3>2. Move to App Extensions</h3>
                     <p>Modern Shopify apps use "Theme App Extensions" which are sandboxed and safer. Avoid legacy apps that ask to edit your `theme.liquid` code directly.</p>
@@ -339,15 +359,15 @@
                     <p>If you have an app just for a simple "Free Shipping Bar" or "Trust Badges", you're wasting money and performance. A developer can build that directly into your theme in 2 hours, with zero monthly fees and zero conflicts.</p>
 
                     <div style="background: var(--card-bg); padding: 32px; border-radius: 12px; margin: 40px 0; border: 2px solid #008060;">
-                        <h3 style="margin-top: 0; color: #008060;">Need a Professional "conflict Audit"?</h3>
-                        <p style="font-size: 1.1em;">I specialize in debugging complex Shopify stores. I will:</p>
+                        <h3 class="mt-0 text-brand">Need a Professional "conflict Audit"?</h3>
+                        <p class="text-lg">I specialize in debugging complex Shopify stores. I will:</p>
                         <ul>
                             <li>Identify exactly which apps are conflicting</li>
                             <li>Clean up leftover code from uninstalled apps</li>
                             <li>Replace bloated apps with lightweight custom code</li>
                             <li>Restore your store's stability and speed</li>
                         </ul>
-                        <a href="/#contact" class="btn-primary" style="margin-top: 16px;">Request a Conflict Audit</a>
+                        <a href="/#contact" class="btn-primary mt-16">Request a Conflict Audit</a>
                     </div>
 
                     <h2>Real World Example: The $300k/Month Bug</h2>
@@ -386,35 +406,35 @@
 
                     <h2>Common App Conflict Pairs</h2>
                     <p>Based on hundreds of debugging sessions, these app categories most frequently conflict with each other:</p>
-                    <div style="overflow-x: auto;">
-                        <table style="width: 100%; border-collapse: collapse; margin: 24px 0;">
+                    <div class="scroll-x">
+                        <table class="data-table">
                             <thead>
                                 <tr style="background: #d82c2c; color: white;">
-                                    <th style="padding: 12px; text-align: left; border: 1px solid #e1e3e5;">App A</th>
-                                    <th style="padding: 12px; text-align: left; border: 1px solid #e1e3e5;">App B</th>
-                                    <th style="padding: 12px; text-align: left; border: 1px solid #e1e3e5;">What Breaks</th>
+                                    <th class="cell cell-left">App A</th>
+                                    <th class="cell cell-left">App B</th>
+                                    <th class="cell cell-left">What Breaks</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Sticky ATC apps</td>
-                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Chat widgets</td>
-                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">z-index wars — chat covers ATC on mobile</td>
+                                    <td class="cell">Sticky ATC apps</td>
+                                    <td class="cell">Chat widgets</td>
+                                    <td class="cell">z-index wars — chat covers ATC on mobile</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Upsell/Bundle apps</td>
-                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Cart drawer apps</td>
-                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Cart manipulation conflicts, items not adding</td>
+                                    <td class="cell">Upsell/Bundle apps</td>
+                                    <td class="cell">Cart drawer apps</td>
+                                    <td class="cell">Cart manipulation conflicts, items not adding</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Multiple tracking pixels</td>
-                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Each other</td>
-                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Main thread blocking, 3+ second delays</td>
+                                    <td class="cell">Multiple tracking pixels</td>
+                                    <td class="cell">Each other</td>
+                                    <td class="cell">Main thread blocking, 3+ second delays</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Currency converters</td>
-                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Dynamic pricing apps</td>
-                                    <td style="padding: 12px; border: 1px solid #e1e3e5;">Price flickering, wrong prices displayed</td>
+                                    <td class="cell">Currency converters</td>
+                                    <td class="cell">Dynamic pricing apps</td>
+                                    <td class="cell">Price flickering, wrong prices displayed</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -432,18 +452,18 @@
                     <p>Open your theme code editor and search theme.liquid for comments like "-- App Name --" or script tags pointing to third-party CDNs. Also check for Liquid snippets with names that match apps you've uninstalled. Delete them carefully after confirming they're no longer needed.</p>
 
                     <h3>Can I prevent all app conflicts?</h3>
-                    <p>Not entirely, but you can minimize them by: using apps that leverage Theme App Extensions (sandboxed), limiting the number of apps that modify the cart/checkout flow, and doing regular app stack audits. For performance-related conflicts, see my <a href="/blog/why-is-my-shopify-store-slow" style="color: #008060; font-weight: 600;">speed optimization guide</a>.</p>
+                    <p>Not entirely, but you can minimize them by: using apps that leverage Theme App Extensions (sandboxed), limiting the number of apps that modify the cart/checkout flow, and doing regular app stack audits. For performance-related conflicts, see my <a class="text-brand-strong" href="/blog/why-is-my-shopify-store-slow">speed optimization guide</a>.</p>
 
 
 
                 
                          <div class="related-articles-card">
-                              <h3 style="margin-top: 0;">Related Articles</h3>
-                              <ul style="list-style: none; padding: 0; margin: 0;">
-                              <li style="margin-bottom: 12px;"><a href="/blog/why-is-my-shopify-store-slow" style="color: #008060; font-weight: 500; text-decoration: none;">Why Is My Shopify Store Slow? The Complete Performance Guide</a></li>
-                              <li style="margin-bottom: 12px;"><a href="/blog/page-builders-seo-guide" style="color: #008060; font-weight: 500; text-decoration: none;">Why Page Builders Are Destroying Your SEO</a></li>
-                              <li style="margin-bottom: 12px;"><a href="/blog/shopify-technical-audit-guide" style="color: #008060; font-weight: 500; text-decoration: none;">The Complete Shopify Technical Audit Guide</a></li>
-                              <li style="margin-bottom: 0;"><a href="/blog/custom-shopify-theme-benefits" style="color: #008060; font-weight: 500; text-decoration: none;">Why Your Brand Needs a Custom Shopify Theme</a></li>
+                              <h3 class="mt-0">Related Articles</h3>
+                              <ul class="list-plain">
+                              <li class="mb-12"><a class="link-brand" href="/blog/why-is-my-shopify-store-slow">Why Is My Shopify Store Slow? The Complete Performance Guide</a></li>
+                              <li class="mb-12"><a class="link-brand" href="/blog/page-builders-seo-guide">Why Page Builders Are Destroying Your SEO</a></li>
+                              <li class="mb-12"><a class="link-brand" href="/blog/shopify-technical-audit-guide">The Complete Shopify Technical Audit Guide</a></li>
+                              <li class="mb-0"><a class="link-brand" href="/blog/custom-shopify-theme-benefits">Why Your Brand Needs a Custom Shopify Theme</a></li>
                               </ul>
                          </div>
                                                             <section class="related-reading" aria-labelledby="related-reading-title">
@@ -482,24 +502,21 @@
                 href="https://www.linkedin.com/in/zectox/"
                 target="_blank"
                 class="footer-social-link"
-                title="LinkedIn"
-              >
+                title="LinkedIn" rel="noopener noreferrer">
                 <i class="fab fa-linkedin-in"></i>
               </a>
               <a
                 href="https://github.com/ZecTox"
                 target="_blank"
                 class="footer-social-link"
-                title="GitHub"
-              >
+                title="GitHub" rel="noopener noreferrer">
                 <i class="fab fa-github"></i>
               </a>
               <a
                 href="https://zectox.is-a.dev/"
                 target="_blank"
                 class="footer-social-link"
-                title="Website"
-              >
+                title="Website" rel="noopener noreferrer">
                 <i class="fas fa-globe"></i>
               </a>
             </div>
@@ -516,14 +533,14 @@
     <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
     <div class="cursor-ring"></div>
-    <script src="https://unpkg.com/split-type"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js" integrity="sha384-wQImCCD/id1jPTwSloatzKlEpnEAQ5aH8H2Ud27FnNcJ1lf2+hB75ctoWnWxyD8X" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js" integrity="sha384-d+vyQ0dYcymoP8ndq2hW7FGC50nqGdXUEgoOUGxbbkAJwZqL7h+jKN0GGgn9hFDS" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js" integrity="sha384-poC0r6usQOX2Ayt/VGA+t81H6V3iN9L+Irz9iO8o+s0X20tLpzc9DOOtnKxhaQSE" crossorigin="anonymous"></script>
 
 
-    <script src="https://unpkg.com/swup@4"></script>
-    <script src="https://unpkg.com/@swup/scripts-plugin@2"></script>
-    <script src="https://unpkg.com/@swup/head-plugin@2"></script>
-    <script src="/script.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/swup@4.10.0/dist/Swup.umd.js" integrity="sha384-rHeYt38qWf9UmFaUXj3OKA3CqUD0E5hbtwK0lTQQ/YXHyP8t4BvujfDAZKUagHz7" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@swup/scripts-plugin@2.1.0/dist/index.umd.js" integrity="sha384-0OOd/P3xw2RWbA6Dv7vjhsqkMf5b+ak1ekw6K+JNstuXFnzUio9JORhTVZD+xcWH" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@swup/head-plugin@2.3.1/dist/index.umd.js" integrity="sha384-6Ai7SRlZ50QYQ/dc9y6MRZwhlK74Cwab40Sb63ZxrVuoJL9DG9eNpi70b4zL+qvP" crossorigin="anonymous"></script>
+    <script defer src="/script.js"></script>
 </body>
 </html>

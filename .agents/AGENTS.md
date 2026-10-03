@@ -22,6 +22,8 @@ The website is a multi-page portfolio and blog with the following core structure
   - For anchor link scrolling, ALWAYS use `window.lenis.scrollTo(element, { offset: -50 })` instead of native `scrollIntoView`.
 - **Night Mode (Dark Theme):** Every single UI component added must have a corresponding `.night-mode` or `body.night-mode` CSS override in `styles.css`. Ensure contrast is always perfectly readable. Toggle logic is handled in JS and persisted in `localStorage`.
 - **Section Spacing:** Maintain strict rhythm. Use existing `.content-section` padding (120px desktop, 60px/80px mobile) uniformly.
+- **Theme Before Paint:** Every page carries a small inline script immediately after `<body>` that reads `localStorage.nightMode` (falling back to `prefers-color-scheme`) and adds `.night-mode` to `<body>` before first paint. Do not move it into `<head>` (`document.body` does not exist yet) and do not remove it — without it, dark-mode visitors get a white flash on every single page load. `script.js` reads the resulting class back; it must never re-derive the theme from `localStorage` itself.
+- **Reduced Motion:** `script.js` sets a global `prefersReducedMotion`. Lenis, the custom cursor, the SplitType hero animation and the page curtain are all skipped when it is true, and `styles.css` has a matching `@media (prefers-reduced-motion: reduce)` block. Any new animation must be covered by both.
 
 ## 4. SPA / Swup Integration Guardrails (CRITICAL)
 This project operates as a Single Page Application (SPA) using Swup. To prevent the site from breaking during transitions, you **MUST** adhere to these rules:
@@ -41,6 +43,12 @@ This project operates as a Single Page Application (SPA) using Swup. To prevent 
 - **Animate History:** Always explicitly pass `animateHistoryBrowsing: true` to Swup if the user expects back/forward browser buttons to trigger exit/entrance animations.
 - **Head Synchronization:** We rely on `SwupHeadPlugin` to ensure SEO `<title>` and `<meta>` tags are automatically updated during client-side routing.
 
+### D. Listener Lifetime (CRITICAL)
+Swup only swaps `#swup`. The sidebar, `window` and `document` survive every navigation, so a listener attached in `initPage()` without cleanup is attached **again** on each visit and never removed — after ten navigations the scroll handler runs ten times per frame.
+- `initPage()` opens with an `AbortController` stored on `window.__pageListeners` and aborts the previous one.
+- **Every** `addEventListener` inside `initPage()` (and inside `initCursor()`, which it calls) must pass `{ signal }`. There is no exception for elements inside `#swup` — passing the signal there is harmless.
+- `resetCurtain()` runs on `visit:end` / `visit:abort` and parks the full-screen curtain. It bails out when `swupInstance.navigating` is true, otherwise it kills the incoming visit's own tween.
+
 ## 5. Component Synchronization (The Master Sync Script)
 Since this is a vanilla HTML project without a templating engine (like React or EJS), we use Node scripts to manage global components across all 43 HTML files.
 
@@ -57,10 +65,23 @@ Since this is a vanilla HTML project without a templating engine (like React or 
 - **Typography:** Uses a clean sans-serif font stack. Quote icons are sourced from Lucide SVGs (stroke-based, highly elegant).
 
 ## 7. SEO & Structured Data
-- The site heavily relies on JSON-LD Schema (`application/ld+json`). 
-- **Homepage:** Contains `Person` schema, and `ProfessionalService` schema (which includes `AggregateRating` and `Review` blocks mirroring the visible testimonials).
-- **Blog Pages:** Contain `Article` and `BreadcrumbList` schemas.
-- Ensure all images have descriptive `alt` tags and `loading="lazy"` attributes where appropriate.
+- The site relies on JSON-LD Schema (`application/ld+json`).
+- **Homepage:** one `@graph` tying together `WebSite`, `WebPage`, `ImageObject`, `Person`, `ProfessionalService` and `FAQPage` by `@id`. Keep it as a single connected graph — separate unlinked blocks stop Google resolving the entities. The `FAQPage` block must stay in step with the visible FAQ section; mismatched copy is a structured-data violation.
+- **Blog Pages:** `BlogPosting` plus `BreadcrumbList`.
+- **No trailing slashes.** `vercel.json` sets `trailingSlash: false`, so `/blog/` 308-redirects to `/blog`. Never write `href="/blog/"`, and never use a trailing-slash URL in canonical tags, breadcrumb schema or the sitemap.
+- **Titles ≤ 65 characters, descriptions ≤ 165**, or Google truncates them. Do not append " - Tejas Kedare" to blog titles; the brand suffix costs 15 characters and Google strips it anyway.
+- **Exactly one `<h1>` per page.** The homepage `<h1>` is the hero line in `.hero-text`; section titles are `<h2>`.
+- Every image needs a descriptive `alt`, explicit `width`/`height` (CLS), and `loading="lazy"` unless it is the LCP element — the LCP banner instead gets `fetchpriority="high"` plus a `<link rel="preload" as="image">`.
+- **Never hotlink images.** No Unsplash, Pexels or placehold.co. Social cards and banners live in `public/`.
+- `scripts/` contains an end-to-end validator workflow; `npm run build` must be followed by a check that every canonical, sitemap entry, internal link and social image resolves.
+
+## 7a. Third-Party Assets & Fonts
+- **Pin every CDN URL to an exact version and attach SRI.** Range specifiers like `unpkg.com/swup@4` cost a redirect on every load (measured at ~1 s) and let the code change under you. Everything is served from `cdn.jsdelivr.net/npm/<pkg>@<exact>` with `integrity` + `crossorigin`, and loaded with `defer` (which preserves execution order and still runs before `DOMContentLoaded`).
+- **Font Awesome is self-hosted and subsetted.** `public/webfonts/*.woff2` contain only the ~54 icons the site actually uses (6 KB instead of 232 KB). **If you add an icon class that was not already in use, run `npm run build:icons`** or it renders as a blank box. That script needs `pip3 install fonttools brotli`.
+- Brand webfonts (Inter, Plus Jakarta Sans) must be linked on **every** page. `styles.css` asks for them by name, so a page that omits the Google Fonts link silently falls back to system sans.
+
+## 7b. Caching
+`vercel.json` must only mark **content-hashed** paths `immutable`. `/script.js` is copied verbatim out of `public/` and is not hashed, so it is served `must-revalidate`. A blanket `/(.*).(css|js)` immutable rule means returning visitors never receive JavaScript fixes.
 
 ## 8. Code Quality & Formatting
 - **Zero Inline Styles:** You must NEVER use `style="..."` attributes on HTML elements. All styling must be abstracted into semantic CSS classes or utility classes within `styles.css`.
