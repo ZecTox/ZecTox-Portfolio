@@ -4771,7 +4771,7 @@ body.night-mode .stage-section {
 }
 
 .mini-details {
-    margin-bottom: 12px;
+    margin-bottom: 0;
     font-size: 12.5px;
 }
 
@@ -4806,14 +4806,16 @@ body.night-mode .stage-section {
     line-height: 1.5;
 }
 
-/* Both card actions are real buttons: "View page designs" opens a lightbox and
-   deserves the same affordance as "Visit store", not an underlined text link. */
+/* Card body is a fixed rhythm so every card in a row ends with the same button
+   bar at the same height, instead of a ragged gap above a stranded link. */
 .mini-actions {
     display: flex;
-    flex-wrap: wrap;
+    align-items: stretch;
     gap: 8px;
-    margin-top: auto;
-    padding-top: 12px;
+    margin: 14px -16px -16px;
+    padding: 12px 16px;
+    border-top: 1px solid #e3e5e7;
+    background: #fafbfb;
 }
 
 .mini-visit,
@@ -4822,9 +4824,8 @@ body.night-mode .stage-section {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    flex: 1 1 auto;
-    min-height: 36px;
-    padding: 8px 13px;
+    min-height: 38px;
+    padding: 0 14px;
     border-radius: 8px;
     font-size: 13px;
     font-weight: 600;
@@ -4833,7 +4834,9 @@ body.night-mode .stage-section {
     transition: all 0.18s ease;
 }
 
+/* Primary action takes the room; the lightbox is a compact square beside it. */
 .mini-visit {
+    flex: 1 1 auto;
     background: #008060;
     color: #ffffff;
 }
@@ -4842,14 +4845,10 @@ body.night-mode .stage-section {
     background: #00614a;
 }
 
-.mini-visit i,
-.mini-gallery i {
-    font-size: 11px;
-}
-
 .mini-gallery {
+    flex: 0 0 auto;
     border: 1px solid #d4d7da;
-    background: transparent;
+    background: #ffffff;
     color: #202223;
 }
 
@@ -4859,8 +4858,18 @@ body.night-mode .stage-section {
     background: rgba(0, 128, 96, 0.06);
 }
 
+/* On its own it is the primary action, so it fills the bar. */
+.mini-actions > .mini-gallery:only-child {
+    flex: 1 1 auto;
+}
+
+.mini-visit i,
+.mini-gallery i {
+    font-size: 11px;
+}
+
 .mini-visit.is-offline {
-    flex: 1 1 100%;
+    flex: 1 1 auto;
     background: transparent;
     border: 1px dashed rgba(109, 113, 117, 0.45);
     color: #6d7175;
@@ -5180,7 +5189,13 @@ body.night-mode .pill-brand {
     color: #0c1118;
 }
 
+body.night-mode .mini-actions {
+    border-top-color: rgba(255, 255, 255, 0.09);
+    background: rgba(255, 255, 255, 0.025);
+}
+
 body.night-mode .mini-gallery {
+    background: transparent;
     border-color: rgba(255, 255, 255, 0.18);
     color: #e3e3e3;
 }
@@ -5204,4 +5219,14 @@ body.night-mode .case-visit.is-offline {
 body.night-mode .mini-visit.is-offline:hover,
 body.night-mode .case-visit.is-offline:hover {
     background: transparent;
+}
+
+/* Label hides on the compact variant so the lightbox button stays a neat square
+   next to "Visit store"; it shows when the button stands alone. */
+.mini-actions > .mini-gallery:not(:only-child) .mini-gallery-label {
+    display: none;
+}
+
+.mini-actions > .mini-gallery:not(:only-child) {
+    padding: 0 12px;
 }

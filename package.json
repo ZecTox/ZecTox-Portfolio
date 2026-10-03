@@ -10,7 +10,7 @@
     "sync:blog-seo": "node scripts/normalize-blog-seo.mjs",
     "sync:blog-related": "node scripts/inject-related-reading.mjs",
     "sync:components": "node scripts/sync-components.mjs",
-    "build": "vite build",
+    "build": "vite build && node scripts/hash-assets.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "build:icons": "node scripts/subset-icons.mjs",

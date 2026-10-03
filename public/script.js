@@ -401,37 +401,95 @@ function initGSAPAnimations() {
         }, 100);
     }
 
-    // 3. Staggered reveals
+    // 3. Staggered reveals.
+    // These selectors must track the markup: .project-card/.projects-grid and
+    // .services-grid were removed in the work-section rebuild, so the old entries
+    // silently animated nothing.
     const staggerSections = [
-        { selector: '.project-card', trigger: '.projects-grid' },
-        { selector: '.exp-card', trigger: '.experience-section' },
-        { selector: '.card', trigger: '.services-grid' },
-        { selector: '.profile-section > *', trigger: '.profile-section' }
+        { selector: '.case-card',   trigger: '.featured-work' },
+        { selector: '.stat-card',   trigger: '.stats-grid' },
+        { selector: '.process-step', trigger: '.process-steps' },
+        { selector: '.exp-card',    trigger: '.experience-section' },
+        { selector: '.skill-category', trigger: '.skills-grid' },
+        { selector: '.contact-card', trigger: '.contact-grid' },
+        { selector: '.faq-item',    trigger: '.faq-container' }
     ];
 
     staggerSections.forEach(sec => {
         const elements = gsap.utils.toArray(sec.selector);
-        if (elements.length > 0) {
-            gsap.fromTo(
-                elements,
-                { y: 60, opacity: 0 },
-                {
-                    y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out",
-                    scrollTrigger: { trigger: sec.trigger, start: "top 85%" }
-                }
-            );
+        const trigger = document.querySelector(sec.trigger);
+        if (!elements.length || !trigger) return;
+        if (prefersReducedMotion) {
+            gsap.set(elements, { clearProps: 'all' });
+            return;
         }
+        gsap.fromTo(
+            elements,
+            { y: 40, opacity: 0 },
+            {
+                y: 0, opacity: 1, duration: 0.7, stagger: 0.08, ease: "power3.out",
+                scrollTrigger: { trigger: trigger, start: "top 85%", once: true }
+            }
+        );
+    });
+
+    // 4. Count the headline figures up as they come into view.
+    //    Fail-safe by construction: the real value stays in the DOM until the
+    //    trigger actually fires, and is written back verbatim on completion, so a
+    //    missing ScrollTrigger or a thrown tween can never leave a visitor
+    //    looking at "0". Only a plain number with an optional "+" qualifies --
+    //    "B2C + B2B" must not be read as the number 2.
+    gsap.utils.toArray('.stat-value, .hero-metric strong').forEach((el) => {
+        const raw = el.textContent.trim();
+        const m = raw.match(/^([\d,]+)(\+?)$/);
+        if (!m) return;
+        const target = parseInt(m[1].replace(/,/g, ''), 10);
+        if (!Number.isFinite(target) || target <= 0) return;
+        if (prefersReducedMotion) return;
+
+        const grouped = m[1].includes(',');
+        const suffix = m[2];
+        const render = (v) => {
+            const n = Math.round(v);
+            el.textContent = (grouped ? n.toLocaleString('en-US') : String(n)) + suffix;
+        };
+        const restore = () => { el.textContent = raw; };
+
+        ScrollTrigger.create({
+            trigger: el,
+            start: 'top 92%',
+            once: true,
+            onEnter: () => {
+                const counter = { v: 0 };
+                render(0);
+                gsap.to(counter, {
+                    v: target,
+                    duration: Math.min(1.8, 0.8 + target / 10000),
+                    ease: 'power2.out',
+                    onUpdate: () => render(counter.v),
+                    onComplete: restore,
+                    onInterrupt: restore
+                });
+            }
+        });
     });
 
     // 5. ScrollTrigger for Section Titles
-    gsap.utils.toArray(".section-header, .section-title").forEach((header) => {
-      gsap.fromTo(header, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: header, start: "top 90%" } });
-    });
+    if (!prefersReducedMotion) {
+        gsap.utils.toArray(".section-header, .section-title").forEach((header) => {
+          gsap.fromTo(header, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power3.out", scrollTrigger: { trigger: header, start: "top 90%", once: true } });
+        });
+    }
 
-    // 6. Parallax effect for Contact CTA
-    const cta = document.querySelector("#contact");
-    if (cta) {
-      gsap.fromTo(cta, { backgroundPositionY: '0%' }, { backgroundPositionY: '100%', ease: "none", scrollTrigger: { trigger: cta, start: "top bottom", end: "bottom top", scrub: true } });
+    // 6. Slow drift on the featured case screenshots. Subtle: 6% over the whole
+    //    scroll past, enough to feel alive without becoming a distraction.
+    if (!prefersReducedMotion) {
+        gsap.utils.toArray('.case-media img').forEach((img) => {
+            gsap.fromTo(img, { yPercent: -3 }, {
+                yPercent: 3, ease: 'none',
+                scrollTrigger: { trigger: img.closest('.case-card'), start: 'top bottom', end: 'bottom top', scrub: 0.5 }
+            });
+        });
     }
 
 
@@ -570,6 +628,18 @@ function initPage() {
     const cards = [...projectsModal.querySelectorAll(".mini-card")];
     let lastFocused = null;
 
+    // Cards fade in on a short stagger so sixteen of them do not land at once.
+    const animateCards = (list) => {
+      if (prefersReducedMotion || typeof gsap === "undefined" || !list.length) return;
+      gsap.killTweensOf(list);
+      gsap.fromTo(
+        list,
+        { y: 14, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.42, stagger: 0.025, ease: "power2.out", overwrite: true,
+          onComplete: () => gsap.set(list, { clearProps: "all" }) }
+      );
+    };
+
     const focusable = () =>
       [...panel.querySelectorAll('a[href], button, summary, [tabindex]:not([tabindex="-1"])')].filter(
         (el) => el.offsetParent !== null
@@ -585,9 +655,14 @@ function initPage() {
       if (window.lenis) window.lenis.stop();
       const first = focusable()[0];
       if (first) first.focus();
+      animateCards(cards.filter((c) => !c.hidden));
     }
 
     function closeModal() {
+      if (typeof gsap !== "undefined") {
+        gsap.killTweensOf(cards);
+        gsap.set(cards, { clearProps: "all" });
+      }
       projectsModal.hidden = true;
       document.body.style.overflow = "";
       if (window.lenis) window.lenis.start();
@@ -643,6 +718,7 @@ function initPage() {
           });
           if (empty) empty.hidden = shown > 0;
           grid.scrollTop = 0;
+          animateCards(cards.filter((c) => !c.hidden));
         },
         { signal }
       );
@@ -668,12 +744,24 @@ function initPage() {
     if (!target) return;
 
     e.preventDefault();
+
+    // Resolve the destination ourselves and hand Lenis a number. Passing the
+    // element lets Lenis re-measure mid-flight, and writing the hash before the
+    // animation finishes makes the browser jump to the fragment underneath it --
+    // between them the scroll landed at the offset instead of the section.
+    const top = target.getBoundingClientRect().top + window.scrollY - 50;
+    const setHash = () => {
+      if (window.location.hash !== url.hash) {
+        history.replaceState(null, "", url.hash);
+      }
+    };
+
     if (window.lenis) {
-      window.lenis.scrollTo(target, { offset: -50 });
+      window.lenis.scrollTo(top, { onComplete: setHash });
     } else {
-      target.scrollIntoView({ block: "start" });
+      window.scrollTo({ top: top, behavior: "smooth" });
+      setHash();
     }
-    history.pushState(null, "", url.hash);
   }, { signal });
 
   // Close mobile menu when clicking nav items
