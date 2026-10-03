@@ -434,18 +434,26 @@ function initGSAPAnimations() {
     });
 
     // 4. Count the headline figures up as they come into view.
-    //    Fail-safe by construction: the real value stays in the DOM until the
-    //    trigger actually fires, and is written back verbatim on completion, so a
-    //    missing ScrollTrigger or a thrown tween can never leave a visitor
-    //    looking at "0". Only a plain number with an optional "+" qualifies --
-    //    "B2C + B2B" must not be read as the number 2.
+    //
+    //    initGSAPAnimations() runs more than once (initPage, then again on
+    //    lenisAndGsapReady). The canonical value is therefore latched into a data
+    //    attribute on first sight and every later run reads that -- reading
+    //    el.textContent would capture a half-counted "2" as the new target and
+    //    permanently corrupt the figure, differently on each page load.
     gsap.utils.toArray('.stat-value, .hero-metric strong').forEach((el) => {
-        const raw = el.textContent.trim();
+        if (!el.dataset.countValue) el.dataset.countValue = el.textContent.trim();
+        const raw = el.dataset.countValue;
+
+        // Always put the real value back before doing anything else, so a re-init
+        // mid-animation cannot leave a visitor looking at a partial number.
+        if (el.textContent.trim() !== raw) el.textContent = raw;
+
         const m = raw.match(/^([\d,]+)(\+?)$/);
         if (!m) return;
         const target = parseInt(m[1].replace(/,/g, ''), 10);
         if (!Number.isFinite(target) || target <= 0) return;
         if (prefersReducedMotion) return;
+        if (el.dataset.countDone === 'true') return;
 
         const grouped = m[1].includes(',');
         const suffix = m[2];
@@ -453,13 +461,14 @@ function initGSAPAnimations() {
             const n = Math.round(v);
             el.textContent = (grouped ? n.toLocaleString('en-US') : String(n)) + suffix;
         };
-        const restore = () => { el.textContent = raw; };
+        const restore = () => { el.textContent = raw; el.dataset.countDone = 'true'; };
 
         ScrollTrigger.create({
             trigger: el,
             start: 'top 92%',
             once: true,
             onEnter: () => {
+                if (el.dataset.countDone === 'true') return;
                 const counter = { v: 0 };
                 render(0);
                 gsap.to(counter, {

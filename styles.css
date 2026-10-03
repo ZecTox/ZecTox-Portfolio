@@ -4728,7 +4728,7 @@ body.night-mode .stage-section {
 .mini-body {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex: 1 0 auto;
     padding: 14px 16px 16px;
 }
 
@@ -4812,7 +4812,7 @@ body.night-mode .stage-section {
     display: flex;
     align-items: stretch;
     gap: 8px;
-    margin: 14px -16px -16px;
+    margin: 0;
     padding: 12px 16px;
     border-top: 1px solid #e3e5e7;
     background: #fafbfb;
